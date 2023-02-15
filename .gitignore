@@ -1,0 +1,6 @@
+### direnv
+.direnv
+.envrc
+
+### nix
+result

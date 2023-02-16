@@ -26,8 +26,8 @@
         };
         packages = {
           default = config.neovim.final;
-          init = config.neovim.init-lua;
-          inherit (config.neovim.build) plugins;
+          init = config.neovim.final.init-lua;
+          inherit (config.neovim.final) globals options plugins;
         };
       };
     };

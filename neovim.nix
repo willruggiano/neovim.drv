@@ -14,7 +14,6 @@
           # }
           {
             package = lir-nvim;
-            name = "lir.nvim";
             dependencies = [
               nvim-web-devicons
               plenary-nvim
@@ -25,6 +24,13 @@
                 enable = true;
               };
             };
+          }
+          {
+            package = nvim-web-devicons;
+            dependencies = [
+              nvim-nonicons
+            ];
+            config = ./config/devicons.lua;
           }
         ];
       };
@@ -47,9 +53,6 @@
             fold = eob;
             foldopen = eob;
             foldsep = eob;
-            # foldclose = _: ''
-            #   icons.get "chevron-right"
-            # '';
           };
           foldenable = true;
           foldlevel = 99;
@@ -73,9 +76,7 @@
           secure = true;
           shada = ["!" "'1000" "<50" "s10" "h"];
           shiftwidth = tabstop;
-          shortmess = _: ''
-            vim.opt.shortmess + "a" + "F"
-          '';
+          shortmess = _: ''vim.opt.shortmess + "a" + "F"'';
           showbreak = "   ";
           showcmd = true;
           showmatch = true;
@@ -91,7 +92,7 @@
           timeoutlen = 500;
           updatetime = 1000;
           # TODO: It'd be nice to generate this, e.g.
-          # `luaexpr ''require("git-ignore").files()''`;
+          # `_: ''require("git-ignore").files()''`;
           # wildignore = ["*.o" "*~" "*.pyc" "*pycache*"];
           wildmode = ["longest" "full"];
           wildoptions = "pum";

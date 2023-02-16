@@ -21,7 +21,14 @@
         ...
       }: {
         apps.default.program = config.neovim.final;
-        packages.default = config.neovim.final;
+        devShells.default = pkgs.mkShell {
+          name = "example-neovim-nix";
+        };
+        packages = {
+          default = config.neovim.final;
+          init = config.neovim.init-lua;
+          inherit (config.neovim.build) plugins;
+        };
       };
     };
 }

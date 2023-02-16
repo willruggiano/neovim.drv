@@ -1,8 +1,32 @@
 {
   config = {
     perSystem = {pkgs, ...}: {
-      neovim.plugins = {
-        lir.enable = true;
+      neovim.lazy = {
+        opts = {
+          dev.path = "~/dev";
+        };
+        plugins = with pkgs.vimPlugins; [
+          # TODO: This doesn't work => 'invalid plugin spec'
+          # {
+          #   name = "firvish.nvim";
+          #   config = true;
+          #   dev = true;
+          # }
+          {
+            package = lir-nvim;
+            name = "lir.nvim";
+            dependencies = [
+              nvim-web-devicons
+              plenary-nvim
+            ];
+            config = true;
+            opts = {
+              devicons = {
+                enable = true;
+              };
+            };
+          }
+        ];
       };
 
       vim = {

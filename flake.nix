@@ -23,11 +23,11 @@
         apps.default.program = config.neovim.final;
         devShells.default = pkgs.mkShell {
           name = "example-neovim-nix";
+          buildInput = with pkgs; [niv];
         };
         packages = {
           default = config.neovim.final;
-          init = config.neovim.final.init-lua;
-          inherit (config.neovim.final) globals options plugins;
+          inherit (config.neovim.final) initlua globals options plugins;
         };
       };
     };

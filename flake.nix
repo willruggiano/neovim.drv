@@ -23,7 +23,7 @@
         apps.default.program = config.neovim.final;
         devShells.default = pkgs.mkShell {
           name = "example-neovim-nix";
-          buildInput = with pkgs; [niv];
+          buildInputs = with pkgs; [niv];
         };
         packages = {
           default = config.neovim.final;

@@ -1,38 +1,57 @@
 {
   config = {
-    perSystem = {pkgs, ...}: {
-      neovim.lazy = {
-        opts = {
-          dev.path = "~/dev";
-        };
-        plugins = with pkgs.vimPlugins; [
-          # TODO: This doesn't work => 'invalid plugin spec'
-          # {
-          #   name = "firvish.nvim";
-          #   config = true;
-          #   dev = true;
-          # }
-          {
-            package = lir-nvim;
-            dependencies = [
-              nvim-web-devicons
-              plenary-nvim
-            ];
-            config = true;
-            opts = {
-              devicons = {
-                enable = true;
-              };
-            };
-          }
-          {
-            package = nvim-web-devicons;
-            dependencies = [
-              nvim-nonicons
-            ];
-            config = ./config/devicons.lua;
-          }
+    perSystem = {
+      lib,
+      pkgs,
+      neovim-lib,
+      inputs',
+      ...
+    } @ args: let
+      inherit (inputs'.neovim-nix.packages) utils;
+    in {
+      neovim = {
+        # Tools to bake into the neovim environment.
+        # These tools are *appended* to neovim's PATH variable,
+        # such that if a tool is available locally (i.e. on the system PATH)
+        # then it will be used instead. For example, you might want to provide
+        # a default version of some lsp (rust-analyzer), but a project might
+        # provide it's own version via direnv; neovim will use the latter,
+        # project-specific version of the tool.
+        paths = with pkgs; [
+          # Docsets
+          # dasht
+          # (lib.optionals stdenv.isLinux elinks)
+          # # C++
+          # clang-tools_14
+          # cmake-language-server
+          # cppcheck
+          # # Json
+          # nodePackages.jsonlint
+          # # Lua
+          luajitPackages.luacheck
+          (lib.optionals stdenv.isLinux sumneko-lua-language-server)
+          # # Markdown
+          # marksman
+          # # Nix
+          # nil
+          # # Python
+          # nodePackages.pyright
+          # # Rust
+          # rust-analyzer
+          # # Sourcegraph
+          # # sg-nvim
+          # # Zig
+          # zls
         ];
+
+        # TODO: Should this just be lazy? Instead of neovim.lazy?
+        lazy = {
+          opts = {
+            dev.path = "~/dev";
+          };
+          plugins = import ./plugins {inherit lib pkgs utils;};
+          # plugins = neovim-lib.importPluginsFromSpec ./plugins args;
+        };
       };
 
       vim = {

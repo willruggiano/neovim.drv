@@ -1,1 +1,68 @@
-{}
+{
+    "bufdelete.nvim": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/famiu/bufdelete.nvim",
+        "rev": "8933abc09df6c381d47dc271b1ee5d266541448e",
+        "type": "git"
+    },
+    "cargo-expand.nvim": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/willruggiano/cargo-expand.nvim",
+        "rev": "1eabd52902e1fdd5abad523e8b2a33d163fcd9af",
+        "type": "git"
+    },
+    "clang-format.nvim": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/willruggiano/clang-format.nvim",
+        "rev": "8dc172e5d4e9239b036fd7568e43c9c30b64d61c",
+        "type": "git"
+    },
+    "close-buffers.nvim": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/kazhala/close-buffers.nvim",
+        "rev": "3acbcad1211572342632a6c0151f839e7dead27f",
+        "type": "git"
+    },
+    "indent-blankline.nvim": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/lukas-reineke/indent-blankline.nvim",
+        "rev": "8299fe7703dfff4b1752aeed271c3b95281a952d",
+        "type": "git"
+    },
+    "lir.nvim": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/tamago324/lir.nvim",
+        "rev": "248f6b1da1f597e51513dd970672c7e57253f92a",
+        "type": "git"
+    },
+    "nvim-autopairs": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/windwp/nvim-autopairs",
+        "rev": "45ae3122a4c7744db41298b41f9f5a3f092123e6",
+        "type": "git"
+    },
+    "nvim-bqf": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/kevinhwang91/nvim-bqf",
+        "rev": "7a278012efb0a12bc49ecc3e16ec5591c41fae88",
+        "type": "git"
+    },
+    "nvim-nonicons": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/yamatsum/nvim-nonicons",
+        "rev": "ceda07dc7339f35444b5f4c4016f76a9eb42ac16",
+        "type": "git"
+    },
+    "nvim-web-devicons": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/kyazdani42/nvim-web-devicons",
+        "rev": "bb6d4fd1e010300510172b173ab5205d37af084f",
+        "type": "git"
+    },
+    "plenary.nvim": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/nvim-lua/plenary.nvim",
+        "rev": "9a0d3bf7b832818c042aaf30f692b081ddd58bd9",
+        "type": "git"
+    }
+}

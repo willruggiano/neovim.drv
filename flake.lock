@@ -148,8 +148,8 @@
         "pre-commit-nix": "pre-commit-nix"
       },
       "locked": {
-        "lastModified": 1676586114,
-        "narHash": "sha256-qJIk1MVcLbjAu3DJMD01WUzqc3jM83Vxet2RlXNC+pw=",
+        "lastModified": 1676596313,
+        "narHash": "sha256-R5pYIw6EjrRsmfXuVwondbkNK0nWoE9w2aLLWhm8Yfc=",
         "path": "/home/bombadil/dev/neovim.nix",
         "type": "path"
       },

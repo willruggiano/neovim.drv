@@ -17,10 +17,82 @@
         "rev": "8dc172e5d4e9239b036fd7568e43c9c30b64d61c",
         "type": "git"
     },
+    "clangd_extensions.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:p00f/clangd_extensions.nvim",
+        "rev": "722ee39d4c1b309bef4a6c2da1749c3e3358757f",
+        "type": "git"
+    },
     "close-buffers.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/kazhala/close-buffers.nvim",
         "rev": "3acbcad1211572342632a6c0151f839e7dead27f",
+        "type": "git"
+    },
+    "cmp-buffer": {
+        "branch": "main",
+        "repo": "git@github.com:hrsh7th/cmp-buffer",
+        "rev": "3022dbc9166796b644a841a02de8dd1cc1d311fa",
+        "type": "git"
+    },
+    "cmp-fuzzy-path": {
+        "branch": "master",
+        "repo": "git@github.com:tzachar/cmp-fuzzy-path",
+        "rev": "0caa34810c03a94ef01a57c3758fcaeab3130cf3",
+        "type": "git"
+    },
+    "cmp-git": {
+        "branch": "main",
+        "repo": "git@github.com:petertriho/cmp-git",
+        "rev": "a798a25b21e7204597f56029af2e8a17d65e2518",
+        "type": "git"
+    },
+    "cmp-nvim-lsp": {
+        "branch": "main",
+        "repo": "git@github.com:hrsh7th/cmp-nvim-lsp",
+        "rev": "0e6b2ed705ddcff9738ec4ea838141654f12eeef",
+        "type": "git"
+    },
+    "cmp-nvim-lsp-signature-help": {
+        "branch": "main",
+        "repo": "git@github.com:hrsh7th/cmp-nvim-lsp-signature-help",
+        "rev": "3d8912ebeb56e5ae08ef0906e3a54de1c66b92f1",
+        "type": "git"
+    },
+    "cmp-path": {
+        "branch": "main",
+        "repo": "git@github.com:hrsh7th/cmp-path",
+        "rev": "91ff86cd9c29299a64f968ebb45846c485725f23",
+        "type": "git"
+    },
+    "cmp-snippy": {
+        "branch": "master",
+        "repo": "git@github.com:dcampos/cmp-snippy",
+        "rev": "9af1635fe40385ffa3dabf322039cb5ae1fd7d35",
+        "type": "git"
+    },
+    "cmp-under-comparator": {
+        "branch": "master",
+        "repo": "git@github.com:lukas-reineke/cmp-under-comparator",
+        "rev": "6857f10272c3cfe930cece2afa2406e1385bfef8",
+        "type": "git"
+    },
+    "cpsm": {
+        "branch": "master",
+        "repo": "git@github.com:nixprime/cpsm",
+        "rev": "814961aef3eba4412e5e63342575c46f87eaead4",
+        "type": "git"
+    },
+    "fuzzy.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:tzachar/fuzzy.nvim",
+        "rev": "04b3d969002b5fd2db23a33aaf33a13a533cbdbd",
+        "type": "git"
+    },
+    "fzy-lua-native": {
+        "branch": "master",
+        "repo": "git@github.com:romgrk/fzy-lua-native",
+        "rev": "085c7d262aa35cc55a8523e8c1618d398bf717a7",
         "type": "git"
     },
     "indent-blankline.nvim": {
@@ -35,6 +107,30 @@
         "rev": "248f6b1da1f597e51513dd970672c7e57253f92a",
         "type": "git"
     },
+    "lspkind-nvim": {
+        "branch": "master",
+        "repo": "git@github.com:onsails/lspkind-nvim",
+        "rev": "c68b3a003483cf382428a43035079f78474cd11e",
+        "type": "git"
+    },
+    "neodev.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:folke/neodev.nvim",
+        "rev": "98c5330cc93df975da6f4bd6bd826b993c126057",
+        "type": "git"
+    },
+    "neogen": {
+        "branch": "main",
+        "repo": "git@github.com:danymat/neogen",
+        "rev": "93d997dbddfe084e77ba4541c54a7b8bfd754fb1",
+        "type": "git"
+    },
+    "null-ls.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:jose-elias-alvarez/null-ls.nvim",
+        "rev": "689cdd78f70af20a37b5309ebc287ac645ae4f76",
+        "type": "git"
+    },
     "nvim-autopairs": {
         "branch": "master",
         "repo": "ssh://git@github.com/windwp/nvim-autopairs",
@@ -47,10 +143,34 @@
         "rev": "7a278012efb0a12bc49ecc3e16ec5591c41fae88",
         "type": "git"
     },
+    "nvim-cmp": {
+        "branch": "main",
+        "repo": "git@github.com:hrsh7th/nvim-cmp",
+        "rev": "01f697a68905f9dcae70960a9eb013695a17f9a2",
+        "type": "git"
+    },
+    "nvim-colorizer.lua": {
+        "branch": "master",
+        "repo": "git@github.com:norcalli/nvim-colorizer.lua",
+        "rev": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6",
+        "type": "git"
+    },
+    "nvim-lspconfig": {
+        "branch": "master",
+        "repo": "git@github.com:neovim/nvim-lspconfig",
+        "rev": "95b7a69bc6da2a6a740584ea3c555e5327638b7d",
+        "type": "git"
+    },
     "nvim-nonicons": {
         "branch": "main",
         "repo": "ssh://git@github.com/yamatsum/nvim-nonicons",
         "rev": "ceda07dc7339f35444b5f4c4016f76a9eb42ac16",
+        "type": "git"
+    },
+    "nvim-snippy": {
+        "branch": "master",
+        "repo": "git@github.com:dcampos/nvim-snippy",
+        "rev": "80104ebd1e77d019f736bee46de2f1dbfe36f8af",
         "type": "git"
     },
     "nvim-web-devicons": {

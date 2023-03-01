@@ -4,6 +4,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     neovim.url = "github:neovim/neovim?dir=contrib";
     neovim-nix.url = "path:///home/bombadil/dev/neovim.nix";
+    sg-nvim.url = "github:willruggiano/sg.nvim";
   };
 
   outputs = {flake-parts, ...} @ inputs:

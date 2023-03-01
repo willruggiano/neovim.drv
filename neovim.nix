@@ -10,6 +10,10 @@
       inherit (inputs'.neovim-nix.packages) utils;
     in {
       neovim = {
+        # This would include the current directory in Neovim's runtimepath.
+        # So we can put normal Vim stuff in this repo, e.g. after/plugin/*.lua
+        src = ./.;
+
         # Tools to bake into the neovim environment.
         # These tools are *appended* to neovim's PATH variable,
         # such that if a tool is available locally (i.e. on the system PATH)
@@ -21,26 +25,26 @@
           # Docsets
           # dasht
           # (lib.optionals stdenv.isLinux elinks)
-          # # C++
+          # C++
           # clang-tools_14
           # cmake-language-server
           # cppcheck
-          # # Json
+          # Json
           # nodePackages.jsonlint
-          # # Lua
+          # Lua
           luajitPackages.luacheck
           (lib.optionals stdenv.isLinux sumneko-lua-language-server)
-          # # Markdown
+          # Markdown
           # marksman
-          # # Nix
+          # Nix
           # nil
-          # # Python
+          # Python
           # nodePackages.pyright
-          # # Rust
+          # Rust
           # rust-analyzer
-          # # Sourcegraph
-          # # sg-nvim
-          # # Zig
+          # Sourcegraph
+          inputs'.sg-nvim.packages.default
+          # Zig
           # zls
         ];
 
@@ -49,7 +53,11 @@
           opts = {
             dev.path = "~/dev";
           };
-          plugins = import ./plugins {inherit lib pkgs utils;};
+          plugins = import ./plugins/spec.nix {
+            inherit inputs' pkgs;
+            neovim-utils = utils;
+          };
+          # plugins = import ./plugins {inherit lib pkgs utils;};
           # plugins = neovim-lib.importPluginsFromSpec ./plugins args;
         };
       };

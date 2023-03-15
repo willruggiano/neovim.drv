@@ -6,7 +6,7 @@
       neovim-lib,
       inputs',
       ...
-    } @ args: let
+    }: let
       inherit (inputs'.neovim-nix.packages) utils;
     in {
       neovim = {
@@ -23,36 +23,35 @@
         # project-specific version of the tool.
         paths = with pkgs; [
           # Docsets
-          # dasht
-          # (lib.optionals stdenv.isLinux elinks)
+          dasht
+          (lib.optionals stdenv.isLinux elinks)
           # C++
-          # clang-tools_14
-          # cmake-language-server
-          # cppcheck
+          clang-tools
+          cmake-language-server
+          cppcheck
           # Json
-          # nodePackages.jsonlint
+          nodePackages.jsonlint
           # Lua
           luajitPackages.luacheck
           (lib.optionals stdenv.isLinux sumneko-lua-language-server)
           # Markdown
-          # marksman
+          marksman
           # Nix
-          # nil
+          nil
           # Python
-          # nodePackages.pyright
+          nodePackages.pyright
           # Rust
-          # rust-analyzer
+          rust-analyzer
           # Sourcegraph
           inputs'.sg-nvim.packages.default
+          # Typescript
+          nodePackages.typescript-language-server
           # Zig
-          # zls
+          zls
         ];
 
         # TODO: Should this just be lazy? Instead of neovim.lazy?
         lazy = {
-          opts = {
-            dev.path = "~/dev";
-          };
           plugins = import ./plugins/spec.nix {
             inherit inputs' pkgs;
             neovim-utils = utils;

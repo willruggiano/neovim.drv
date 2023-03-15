@@ -1,0 +1,10 @@
+snippet ok
+  local ok, $1 = pcall(require, "$2")
+  if not ok then
+    return
+  end
+  $0
+
+snippet lreq
+  local ${1:modname} = require "${1:modname}"
+  $0

@@ -1,0 +1,39 @@
+snippet class
+  class ${1}
+  {
+  public:
+    using type = ${1};
+    $0
+  };
+
+snippet tclass
+  template<$1>
+  class $2
+  {
+  public:
+    using type = $2;
+    $0
+  };
+
+snippet pragma
+  #pragma $0
+
+snippet ponce
+  #pragma once
+
+snippet lambda
+  auto ${1} = [${2}](${3}) { $0 };
+
+snippet inline
+  [${1}](${2}) { $0 }
+
+snippet clang-format
+  // clang-format off
+  $0
+  // clang-format on
+
+snippet include
+  #include "$1"
+
+snippet stdinclude
+  #include <$1>

@@ -7,10 +7,9 @@
   sources = import ../nix/sources.nix {};
   inherit (pkgs) luajitPackages;
 in {
-  # NOTE: This contains our colorscheme!
-  flavours = {
-    config = ./flavours.lua;
-    src = ./flavours;
+  bombadil = {
+    config = ./bombadil.lua;
+    src = ./bombadil;
     lazy = false;
     priority = 1000;
   };

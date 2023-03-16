@@ -28,7 +28,6 @@
         };
         packages = {
           default = config.neovim.final;
-          inherit (config.neovim.final) initlua filetype globals options plugins;
         };
       };
     };

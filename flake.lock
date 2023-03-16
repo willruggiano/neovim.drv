@@ -205,6 +205,22 @@
         "type": "github"
       }
     },
+    "lazy-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1678889456,
+        "narHash": "sha256-R+sfPOuWfwbrNXUiKQcb8MHYqK+o5Pw8gkEaYaidqp0=",
+        "owner": "folke",
+        "repo": "lazy.nvim",
+        "rev": "6b55862d2d264f0b48e0b9e42cc2d14f136bed55",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "lazy.nvim",
+        "type": "github"
+      }
+    },
     "neovim": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -229,13 +245,14 @@
     "neovim-nix": {
       "inputs": {
         "flake-parts": "flake-parts_2",
+        "lazy-nvim": "lazy-nvim",
         "neovim": "neovim_2",
         "nixpkgs": "nixpkgs_3",
         "pre-commit-nix": "pre-commit-nix"
       },
       "locked": {
-        "lastModified": 1678946127,
-        "narHash": "sha256-9oeafD62gelViKh6akJAhe4M8mXUnd9rtf0Ag1zvqu0=",
+        "lastModified": 1678948964,
+        "narHash": "sha256-uTQhV7y2ggEDVJDlheWxvq5BlOZ8Ux3RMllkMq63Wz4=",
         "path": "/home/bombadil/dev/neovim.nix",
         "type": "path"
       },

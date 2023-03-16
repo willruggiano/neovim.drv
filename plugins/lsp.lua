@@ -39,11 +39,7 @@ return function()
   local nnoremap = require("bombadil.lib.keymap").nnoremap
   local vnoremap = require("bombadil.lib.keymap").vnoremap
 
-  local disable_lsp_formatting = {
-    "cmake",
-    "rnix",
-    "sumneko_lua",
-  }
+  local enable_lsp_formatting = { "null-ls" }
 
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
@@ -51,10 +47,9 @@ return function()
     -- Enable completion triggered by <c-x><c-o>
     vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    if vim.tbl_contains(disable_lsp_formatting, client.name) then
-      client.server_capabilities.documentFormattingProvider = false
-      client.server_capabilities.documentRangeFormattingProvider = false
-    end
+    local enable_formatting = vim.tbl_contains(enable_lsp_formatting, client.name)
+    client.server_capabilities.documentFormattingProvider = enable_formatting
+    client.server_capabilities.documentRangeFormattingProvider = enable_formatting
 
     local mappings = {
       ["]d"] = {

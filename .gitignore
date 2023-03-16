@@ -2,5 +2,9 @@
 .direnv
 .envrc
 
+### lua-ls
+# because this has /nix/store paths in it
+.luarc.json
+
 ### nix
 result

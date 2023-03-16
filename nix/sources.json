@@ -5,6 +5,12 @@
         "rev": "8933abc09df6c381d47dc271b1ee5d266541448e",
         "type": "git"
     },
+    "buffers.firvish": {
+        "branch": "main",
+        "repo": "git@github.com:willruggiano/buffers.firvish",
+        "rev": "5a2e70f0cf14c292fef2d3a540ae72e2e66d3be5",
+        "type": "git"
+    },
     "cargo-expand.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/willruggiano/cargo-expand.nvim",
@@ -83,6 +89,12 @@
         "rev": "814961aef3eba4412e5e63342575c46f87eaead4",
         "type": "git"
     },
+    "firvish.nvim": {
+        "branch": "wip/v2.0",
+        "repo": "git@github.com:willruggiano/firvish.nvim",
+        "rev": "d86582103b03454f2cffcaee1bb186a897cd7eef",
+        "type": "git"
+    },
     "fuzzy.nvim": {
         "branch": "master",
         "repo": "git@github.com:tzachar/fuzzy.nvim",
@@ -95,10 +107,34 @@
         "rev": "085c7d262aa35cc55a8523e8c1618d398bf717a7",
         "type": "git"
     },
+    "git.firvish": {
+        "branch": "main",
+        "repo": "git@github.com:willruggiano/git.firvish",
+        "rev": "3d6b638c11f6c453970c34a4537b627a1389942c",
+        "type": "git"
+    },
+    "history.firvish": {
+        "branch": "main",
+        "repo": "git@github.com:willruggiano/history.firvish",
+        "rev": "2bd6d7d3074b034e4bbbfbece34553cdae1c5160",
+        "type": "git"
+    },
     "indent-blankline.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/lukas-reineke/indent-blankline.nvim",
         "rev": "8299fe7703dfff4b1752aeed271c3b95281a952d",
+        "type": "git"
+    },
+    "jobs.firvish": {
+        "branch": "main",
+        "repo": "git@github.com:willruggiano/jobs.firvish",
+        "rev": "7bbae91ba66c858513724459c703621e3b4dbe08",
+        "type": "git"
+    },
+    "lir-git-status.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:tamago324/lir-git-status.nvim",
+        "rev": "6e15a3ade508522ecc027f059a814ca75a364db7",
         "type": "git"
     },
     "lir.nvim": {
@@ -183,6 +219,12 @@
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-lua/plenary.nvim",
         "rev": "9a0d3bf7b832818c042aaf30f692b081ddd58bd9",
+        "type": "git"
+    },
+    "which-key.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:folke/which-key.nvim",
+        "rev": "fb027738340502b556c3f43051f113bcaa7e8e63",
         "type": "git"
     }
 }

@@ -20,6 +20,10 @@ in {
     src = sources.nvim-bqf;
   };
 
+  bufdelete = {
+    src = sources."bufdelete.nvim";
+  };
+
   cargo-expand = {
     ft = "rust";
     src = sources."cargo-expand.nvim";
@@ -27,11 +31,11 @@ in {
 
   clang-format = {
     dependencies = [
-      # rocks.lyaml
       {
         name = "clangd_extensions";
         src = sources."clangd_extensions.nvim";
       }
+      "lyaml"
     ];
     ft = ["c" "cpp"];
     src = sources."clang-format.nvim";
@@ -115,6 +119,29 @@ in {
     };
   };
 
+  firvish = {
+    src = sources."firvish.nvim";
+    config = ./firvish.lua;
+    dependencies = [
+      {
+        name = "buffers-firvish";
+        src = sources."buffers.firvish";
+      }
+      {
+        name = "git-firvish";
+        src = sources."git.firvish";
+      }
+      {
+        name = "firvish-history";
+        src = sources."history.firvish";
+      }
+      {
+        name = "jobs-firvish";
+        src = sources."jobs.firvish";
+      }
+    ];
+  };
+
   fun = {
     package = let
       luafun = luajitPackages.callPackage ../pkgs/luafun.nix {};
@@ -127,15 +154,20 @@ in {
     src = sources."indent-blankline.nvim";
   };
 
+  lfs = {
+    package = neovim-utils.toLuarocksPlugin luajitPackages.luafilesystem;
+  };
+
   lir = {
-    config = {
-      devicons = {
-        enable = true;
-      };
-    };
+    config = ./lir.lua;
     dependencies = [
+      "firvish"
       "nvim-web-devicons"
       "plenary"
+      {
+        name = "git_status";
+        src = sources."lir-git-status.nvim";
+      }
     ];
     src = sources."lir.nvim";
   };
@@ -161,6 +193,10 @@ in {
     src = sources.lspkind-nvim;
   };
 
+  lyaml = {
+    package = neovim-utils.toLuarocksPlugin luajitPackages.lyaml;
+  };
+
   nvim-autopairs = {
     config = true;
     src = sources.nvim-autopairs;
@@ -184,5 +220,10 @@ in {
 
   sg = {
     package = inputs'.sg-nvim.packages.default;
+  };
+
+  which-key = {
+    src = sources."which-key.nvim";
+    config = true;
   };
 }

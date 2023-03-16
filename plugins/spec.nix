@@ -149,6 +149,11 @@ in {
       neovim-utils.toLuarocksPlugin luafun;
   };
 
+  git-worktree = {
+    src = sources."git-worktree.nvim";
+    config = ./git-worktree.lua;
+  };
+
   indent_blankline = {
     config = true;
     src = sources."indent-blankline.nvim";
@@ -193,6 +198,14 @@ in {
     src = sources.lspkind-nvim;
   };
 
+  lualine = {
+    src = sources."lualine.nvim";
+    config = ./lualine.lua;
+    dependencies = [
+      "lir"
+    ];
+  };
+
   lyaml = {
     package = neovim-utils.toLuarocksPlugin luajitPackages.lyaml;
   };
@@ -207,11 +220,11 @@ in {
   };
 
   nvim-web-devicons = {
+    src = sources.nvim-web-devicons;
     config = ./devicons.lua;
     dependencies = [
       "nvim-nonicons"
     ];
-    src = sources.nvim-web-devicons;
   };
 
   plenary = {
@@ -220,6 +233,57 @@ in {
 
   sg = {
     package = inputs'.sg-nvim.packages.default;
+  };
+
+  telescope = {
+    src = sources."telescope.nvim";
+    config = ./telescope.lua;
+    dependencies = [
+      "nvim-web-devicons"
+      "git-worktree"
+      {
+        name = "telescope-arecibo";
+        src = sources."telescope-arecibo.nvim";
+      }
+      {
+        name = "telescope-docsets";
+        src = sources."telescope-docsets.nvim";
+      }
+      {
+        name = "telescope-dotfiles";
+        src = ./telescope-dotfiles;
+      }
+      "telescope-fzf-native"
+      {
+        name = "telescope-github";
+        src = sources."telescope-github.nvim";
+      }
+      {
+        name = "telescope-project";
+        src = sources."telescope-project.nvim";
+      }
+      {
+        name = "telescope-symbols";
+        src = sources."telescope-symbols.nvim";
+      }
+      {
+        name = "telescope-ui-select";
+        src = sources."telescope-ui-select.nvim";
+      }
+    ];
+  };
+
+  telescope-fzf-native = {
+    package = neovim-utils.mkPlugin {
+      name = "telescope-fzf-native";
+      src = sources."telescope-fzf-native.nvim";
+      buildPhase = "";
+    };
+  };
+
+  toggleterm = {
+    src = sources."toggleterm.nvim";
+    config = ./toggleterm.lua;
   };
 
   which-key = {

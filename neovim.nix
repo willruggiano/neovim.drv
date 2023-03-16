@@ -29,6 +29,8 @@
           clang-tools
           cmake-language-server
           cppcheck
+          # Git
+          lazygit
           # Json
           nodePackages.jsonlint
           # Lua
@@ -62,6 +64,23 @@
       };
 
       vim = {
+        filetype = {
+          extension = {
+            snippet = "snip";
+            xit = "xit";
+            ixx = "cpp";
+            mxx = "cpp";
+            txx = "cpp";
+          };
+          filename = {
+            # TODO: Can't do these just yet.
+            # They need to be converted to ["..."] syntax.
+            # ".clang-format" = "yaml";
+            # "flake.lock" = "json";
+            # git-rebase-todo = "gitrebase";
+          };
+        };
+
         opt = rec {
           autoindent = true;
           belloff = "all";

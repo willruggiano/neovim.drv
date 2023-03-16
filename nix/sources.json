@@ -107,6 +107,12 @@
         "rev": "085c7d262aa35cc55a8523e8c1618d398bf717a7",
         "type": "git"
     },
+    "git-worktree.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:ThePrimeagen/git-worktree.nvim",
+        "rev": "d7f4e2584e81670154f07ca9fa5dd791d9c1b458",
+        "type": "git"
+    },
     "git.firvish": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/git.firvish",
@@ -147,6 +153,12 @@
         "branch": "master",
         "repo": "git@github.com:onsails/lspkind-nvim",
         "rev": "c68b3a003483cf382428a43035079f78474cd11e",
+        "type": "git"
+    },
+    "lualine.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:nvim-lualine/lualine.nvim",
+        "rev": "e99d733e0213ceb8f548ae6551b04ae32e590c80",
         "type": "git"
     },
     "neodev.nvim": {
@@ -219,6 +231,60 @@
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-lua/plenary.nvim",
         "rev": "9a0d3bf7b832818c042aaf30f692b081ddd58bd9",
+        "type": "git"
+    },
+    "telescope-arecibo.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:nvim-telescope/telescope-arecibo.nvim",
+        "rev": "b706322027e44894c30f1d0a9bd79b35eb3e451a",
+        "type": "git"
+    },
+    "telescope-docsets.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:willruggiano/telescope-docsets.nvim",
+        "rev": "5728746789d07201979c0a6f9c8cfaece04cb7ee",
+        "type": "git"
+    },
+    "telescope-fzf-native.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:nvim-telescope/telescope-fzf-native.nvim",
+        "rev": "580b6c48651cabb63455e97d7e131ed557b8c7e2",
+        "type": "git"
+    },
+    "telescope-github.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:nvim-telescope/telescope-github.nvim",
+        "rev": "ee95c509901c3357679e9f2f9eaac3561c811736",
+        "type": "git"
+    },
+    "telescope-project.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:nvim-telescope/telescope-project.nvim",
+        "rev": "8e8ee37b7210761502cdf2c3a82b5ba8fb5b2972",
+        "type": "git"
+    },
+    "telescope-symbols.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:nvim-telescope/telescope-symbols.nvim",
+        "rev": "f2060117d965df4a626f068a4ebbd8ee051aa076",
+        "type": "git"
+    },
+    "telescope-ui-select.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:nvim-telescope/telescope-ui-select.nvim",
+        "rev": "62ea5e58c7bbe191297b983a9e7e89420f581369",
+        "type": "git"
+    },
+    "telescope.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:nvim-telescope/telescope.nvim",
+        "rev": "a3f17d3baf70df58b9d3544ea30abe52a7a832c2",
+        "type": "git"
+    },
+    "toggleterm.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:akinsho/toggleterm.nvim",
+        "rev": "c8e982ad2739eeb0b13d0fecb14820c9bf5e3da0",
         "type": "git"
     },
     "which-key.nvim": {

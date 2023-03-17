@@ -188,11 +188,17 @@ return function()
     },
     ["<space>k"] = {
       function()
+        require("telescope").extensions.docsets.query(vim.tbl_deep_extend("force", themes.ivy, { previewer = false }))
+      end,
+      { desc = "Docsets CWORD" },
+    },
+    ["<leader>k"] = {
+      function()
         require("telescope").extensions.docsets.find_word_under_cursor(
           vim.tbl_deep_extend("force", themes.ivy, { previewer = false })
         )
       end,
-      { desc = "Docsets" },
+      { desc = "Docsets CWORD" },
     },
   }
 

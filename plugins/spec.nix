@@ -6,17 +6,21 @@
 }: let
   sources = import ../nix/sources.nix {};
   inherit (pkgs) luajitPackages;
-in {
+in rec {
   bombadil = {
-    config = ./bombadil.lua;
     src = ./bombadil;
+    config = ./bombadil.lua;
     lazy = false;
     priority = 1000;
+
+    dependencies = {
+      inherit lfs;
+    };
   };
 
   bqf = {
-    config = true;
     src = sources.nvim-bqf;
+    config = true;
   };
 
   bufdelete = {
@@ -24,20 +28,16 @@ in {
   };
 
   cargo-expand = {
-    ft = "rust";
     src = sources."cargo-expand.nvim";
+    ft = "rust";
   };
 
   clang-format = {
-    dependencies = [
-      {
-        name = "clangd_extensions";
-        src = sources."clangd_extensions.nvim";
-      }
-      "lyaml"
-    ];
-    ft = ["c" "cpp"];
     src = sources."clang-format.nvim";
+    dependencies = {
+      inherit lyaml;
+    };
+    ft = ["c" "cpp"];
   };
 
   close-buffers = {
@@ -47,57 +47,49 @@ in {
   cmp = {
     src = sources.nvim-cmp;
     config = ./cmp.lua;
-    dependencies = [
-      {
-        name = "cmp-buffer";
+    dependencies = {
+      cmp-buffer = {
         src = sources.cmp-buffer;
-      }
-      {
-        name = "cmp-fuzzy-path";
+      };
+      cmp-fuzzy-path = {
         src = sources.cmp-fuzzy-path;
-      }
-      {
-        name = "fuzzy_nvim";
-        src = sources."fuzzy.nvim";
-      }
-      {
-        name = "fzy-lua-native";
-        src = sources.fzy-lua-native;
-      }
-      {
-        name = "cmp-git";
+        dependencies = {
+          fuzzy_nvim = {
+            src = sources."fuzzy.nvim";
+          };
+          fzy-lua-native = {
+            src = sources.fzy-lua-native;
+          };
+        };
+      };
+      cmp-git = {
         src = sources.cmp-git;
-      }
-      "lspkind"
-      {
-        name = "cmp-nvim-lsp";
+      };
+      cmp-nvim-lsp = {
         src = sources.cmp-nvim-lsp;
-      }
-      {
-        name = "cmp-nvim-lsp-signature-help";
+        dependencies = {
+          inherit lspkind;
+        };
+      };
+      cmp-nvim-lsp-signature-help = {
         src = sources.cmp-nvim-lsp-signature-help;
-      }
-      {
-        name = "cmp-path";
+      };
+      cmp-path = {
         src = sources.cmp-path;
-      }
-      {
-        name = "cmp-snippy";
+      };
+      cmp-snippy = {
         src = sources.cmp-snippy;
-      }
-      {
-        name = "snippy";
-        src = sources.nvim-snippy;
-      }
-      {
-        name = "cmp-under-comparator";
+        dependencies = {
+          snippy = {
+            src = sources.nvim-snippy;
+          };
+        };
+      };
+      cmp-under-comparator = {
         src = sources.cmp-under-comparator;
-      }
-      {
-        name = "neogen";
-        src = sources.neogen;
-      }
-    ];
+      };
+      inherit neogen;
+    };
   };
 
   colorizer = {
@@ -121,24 +113,20 @@ in {
   firvish = {
     src = sources."firvish.nvim";
     config = ./firvish.lua;
-    dependencies = [
-      {
-        name = "buffers-firvish";
+    dependencies = {
+      buffers-firvish = {
         src = sources."buffers.firvish";
-      }
-      {
-        name = "git-firvish";
+      };
+      git-firvish = {
         src = sources."git.firvish";
-      }
-      {
-        name = "firvish-history";
+      };
+      firvish-history = {
         src = sources."history.firvish";
-      }
-      {
-        name = "jobs-firvish";
+      };
+      jobs-firvish = {
         src = sources."jobs.firvish";
-      }
-    ];
+      };
+    };
   };
 
   fun = {
@@ -164,32 +152,29 @@ in {
 
   lir = {
     config = ./lir.lua;
-    dependencies = [
-      "firvish"
-      "nvim-web-devicons"
-      "plenary"
-      {
-        name = "git_status";
+    dependencies = {
+      inherit firvish nvim-web-devicons plenary;
+      git_status = {
         src = sources."lir-git-status.nvim";
-      }
-    ];
+      };
+    };
     src = sources."lir.nvim";
   };
 
   lspconfig = {
     config = ./lsp.lua;
-    dependencies = [
-      "lspkind"
-      "fun"
-      {
-        name = "neodev";
+    dependencies = {
+      clangd_extensions = {
+        src = sources."clangd_extensions.nvim";
+      };
+      inherit fun lspkind;
+      neodev = {
         src = sources."neodev.nvim";
-      }
-      {
-        name = "null-ls";
+      };
+      null-ls = {
         src = sources."null-ls.nvim";
-      }
-    ];
+      };
+    };
     src = sources.nvim-lspconfig;
   };
 
@@ -200,13 +185,17 @@ in {
   lualine = {
     src = sources."lualine.nvim";
     config = ./lualine.lua;
-    dependencies = [
-      "lir"
-    ];
+    dependencies = {
+      inherit lir;
+    };
   };
 
   lyaml = {
     package = neovim-utils.toLuarocksPlugin luajitPackages.lyaml;
+  };
+
+  neogen = {
+    src = sources.neogen;
   };
 
   nvim-autopairs = {
@@ -214,16 +203,14 @@ in {
     src = sources.nvim-autopairs;
   };
 
-  nvim-nonicons = {
-    src = sources.nvim-nonicons;
-  };
-
   nvim-web-devicons = {
     src = sources.nvim-web-devicons;
     config = ./devicons.lua;
-    dependencies = [
-      "nvim-nonicons"
-    ];
+    dependencies = {
+      nvim-nonicons = {
+        src = sources.nvim-nonicons;
+      };
+    };
   };
 
   plenary = {
@@ -237,46 +224,36 @@ in {
   telescope = {
     src = sources."telescope.nvim";
     config = ./telescope.lua;
-    dependencies = [
-      "nvim-web-devicons"
-      "git-worktree"
-      {
-        name = "telescope-arecibo";
+    dependencies = {
+      inherit git-worktree nvim-web-devicons;
+      telescope-arecibo = {
         src = sources."telescope-arecibo.nvim";
-      }
-      {
-        name = "telescope-docsets";
+      };
+      telescope-docsets = {
         src = sources."telescope-docsets.nvim";
-      }
-      {
-        name = "telescope-dotfiles";
+      };
+      telescope-dotfiles = {
         src = ./telescope-dotfiles;
-      }
-      "telescope-fzf-native"
-      {
-        name = "telescope-github";
+      };
+      telescope-fzf-native = {
+        package = neovim-utils.mkPlugin {
+          name = "telescope-fzf-native";
+          src = sources."telescope-fzf-native.nvim";
+          buildPhase = "";
+        };
+      };
+      telescope-github = {
         src = sources."telescope-github.nvim";
-      }
-      {
-        name = "telescope-project";
+      };
+      telescope-project = {
         src = sources."telescope-project.nvim";
-      }
-      {
-        name = "telescope-symbols";
+      };
+      telescope-symbols = {
         src = sources."telescope-symbols.nvim";
-      }
-      {
-        name = "telescope-ui-select";
+      };
+      telescope-ui-select = {
         src = sources."telescope-ui-select.nvim";
-      }
-    ];
-  };
-
-  telescope-fzf-native = {
-    package = neovim-utils.mkPlugin {
-      name = "telescope-fzf-native";
-      src = sources."telescope-fzf-native.nvim";
-      buildPhase = "";
+      };
     };
   };
 

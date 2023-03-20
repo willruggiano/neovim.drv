@@ -233,6 +233,12 @@
         "rev": "93d997dbddfe084e77ba4541c54a7b8bfd754fb1",
         "type": "git"
     },
+    "neogit": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/timuntersberger/neogit",
+        "rev": "039ff3212ec43cc4d3332956dfb54e263c8d5033",
+        "type": "git"
+    },
     "null-ls.nvim": {
         "branch": "main",
         "repo": "git@github.com:jose-elias-alvarez/null-ls.nvim",

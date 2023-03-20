@@ -281,6 +281,11 @@ in rec {
     config = ./neogen.lua;
   };
 
+  neogit = {
+    src = sources.neogit;
+    config = ./neogit.lua;
+  };
+
   nvim-autopairs = {
     config = true;
     src = sources.nvim-autopairs;

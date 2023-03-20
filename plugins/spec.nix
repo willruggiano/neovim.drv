@@ -128,9 +128,14 @@ in rec {
     config = ./git-worktree.lua;
   };
 
+  harpoon = {
+    src = sources.harpoon;
+    config = ./harpoon.lua;
+  };
+
   indent_blankline = {
-    config = true;
     src = sources."indent-blankline.nvim";
+    config = ./indent-blankline.lua;
   };
 
   lfs = let

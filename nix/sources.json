@@ -119,6 +119,12 @@
         "rev": "3d6b638c11f6c453970c34a4537b627a1389942c",
         "type": "git"
     },
+    "harpoon": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/ThePrimeagen/harpoon",
+        "rev": "f7040fd0c44e7a4010369136547de5604b9c22a1",
+        "type": "git"
+    },
     "history.firvish": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/history.firvish",

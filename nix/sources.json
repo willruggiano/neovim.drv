@@ -305,6 +305,12 @@
         "rev": "ceda07dc7339f35444b5f4c4016f76a9eb42ac16",
         "type": "git"
     },
+    "nvim-pqf": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/yorickpeterse/nvim-pqf",
+        "rev": "d15582d3d0c09280f371fa5f21537cf4530ed330",
+        "type": "git"
+    },
     "nvim-snippy": {
         "branch": "master",
         "repo": "git@github.com:dcampos/nvim-snippy",

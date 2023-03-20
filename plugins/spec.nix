@@ -310,6 +310,11 @@ in rec {
     src = sources."plenary.nvim";
   };
 
+  pqf = {
+    src = sources.nvim-pqf;
+    config = ./pqf.lua;
+  };
+
   rapidjson = let
     package = luajitPackages.rapidjson;
   in {

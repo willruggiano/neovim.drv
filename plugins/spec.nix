@@ -336,6 +336,13 @@ in rec {
   #   package = inputs'.sg-nvim.packages.default;
   # };
 
+  statuscol = {
+    src = sources."statuscol.nvim";
+    config = {
+      setopt = true;
+    };
+  };
+
   telescope = {
     src = sources."telescope.nvim";
     config = ./telescope.lua;

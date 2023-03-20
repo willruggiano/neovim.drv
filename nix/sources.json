@@ -335,6 +335,12 @@
         "rev": "57c32c6b7a211e5a3a5e4ddc4ad2033daff5cf9a",
         "type": "git"
     },
+    "statuscol.nvim": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/luukvbaal/statuscol.nvim",
+        "rev": "f21566fabb9e37c14f4ae8acccfe91443cd59299",
+        "type": "git"
+    },
     "telescope-arecibo.nvim": {
         "branch": "master",
         "repo": "git@github.com:nvim-telescope/telescope-arecibo.nvim",

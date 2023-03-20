@@ -89,6 +89,12 @@
         "rev": "814961aef3eba4412e5e63342575c46f87eaead4",
         "type": "git"
     },
+    "crates.nvim": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/saecki/crates.nvim",
+        "rev": "aa94d3844d6a12b1a8bf73c8a242ff2f540fb749",
+        "type": "git"
+    },
     "firvish.nvim": {
         "branch": "wip/v2.0",
         "repo": "git@github.com:willruggiano/firvish.nvim",

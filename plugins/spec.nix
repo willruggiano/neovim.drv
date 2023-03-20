@@ -180,6 +180,17 @@ in rec {
       };
       null-ls = {
         src = sources."null-ls.nvim";
+        dependencies = {
+          crates = {
+            src = sources."crates.nvim";
+            config = {
+              null_ls = {
+                enabled = true;
+                name = "crates";
+              };
+            };
+          };
+        };
       };
     };
     src = sources.nvim-lspconfig;

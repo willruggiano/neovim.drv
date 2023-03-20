@@ -137,6 +137,12 @@
         "rev": "3d6b638c11f6c453970c34a4537b627a1389942c",
         "type": "git"
     },
+    "gitsigns.nvim": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/lewis6991/gitsigns.nvim",
+        "rev": "b1f9cf7c5c5639c006c937fc1819e09f358210fc",
+        "type": "git"
+    },
     "harpoon": {
         "branch": "master",
         "repo": "ssh://git@github.com/ThePrimeagen/harpoon",

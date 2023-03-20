@@ -161,6 +161,11 @@ in rec {
     config = ./git-worktree.lua;
   };
 
+  gitsigns = {
+    src = sources."gitsigns.nvim";
+    config = ./gitsigns.lua;
+  };
+
   harpoon = {
     src = sources.harpoon;
     config = ./harpoon.lua;

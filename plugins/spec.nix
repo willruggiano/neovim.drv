@@ -111,6 +111,11 @@ in rec {
     };
   };
 
+  dial = {
+    src = sources."dial.nvim";
+    config = ./dial.lua;
+  };
+
   firvish = {
     src = sources."firvish.nvim";
     config = ./firvish.lua;

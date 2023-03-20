@@ -95,6 +95,12 @@
         "rev": "aa94d3844d6a12b1a8bf73c8a242ff2f540fb749",
         "type": "git"
     },
+    "dial.nvim": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/monaqa/dial.nvim",
+        "rev": "5020da900cc5dfd7067f181ee2ebd872ca7c84e8",
+        "type": "git"
+    },
     "firvish.nvim": {
         "branch": "wip/v2.0",
         "repo": "git@github.com:willruggiano/firvish.nvim",

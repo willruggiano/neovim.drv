@@ -108,6 +108,7 @@ in rec {
         src = sources.nvim-dap-virtual-text;
         config = true;
       };
+      inherit rapidjson;
     };
   };
 
@@ -263,6 +264,11 @@ in rec {
 
   lyaml = {
     package = neovim-utils.toLuarocksPlugin luajitPackages.lyaml;
+  };
+
+  markdown = {
+    src = sources.vim-markdown;
+    config = ./markdown.lua;
   };
 
   neogen = {

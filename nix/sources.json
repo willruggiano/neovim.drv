@@ -365,6 +365,12 @@
         "rev": "c8e982ad2739eeb0b13d0fecb14820c9bf5e3da0",
         "type": "git"
     },
+    "vim-markdown": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/preservim/vim-markdown",
+        "rev": "5d3d1b6cbdc4be0b4c6105c1ab1f769d76d3c68f",
+        "type": "git"
+    },
     "which-key.nvim": {
         "branch": "main",
         "repo": "git@github.com:folke/which-key.nvim",

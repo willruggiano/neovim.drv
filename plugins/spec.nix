@@ -205,6 +205,11 @@ in rec {
     src = sources.nvim-autopairs;
   };
 
+  nvim-cheat = {
+    src = sources."nvim-cheat.sh";
+    config = ./cheat.lua;
+  };
+
   nvim-web-devicons = {
     src = sources.nvim-web-devicons;
     config = ./devicons.lua;

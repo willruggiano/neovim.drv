@@ -197,6 +197,12 @@
         "rev": "7a278012efb0a12bc49ecc3e16ec5591c41fae88",
         "type": "git"
     },
+    "nvim-cheat.sh": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/rishabhrd/nvim-cheat.sh",
+        "rev": "eb6acbacd39cf7c1966cb58d6586351db14607da",
+        "type": "git"
+    },
     "nvim-cmp": {
         "branch": "main",
         "repo": "git@github.com:hrsh7th/nvim-cmp",

@@ -97,6 +97,20 @@ in rec {
     config = true;
   };
 
+  dap = {
+    src = sources.nvim-dap;
+    config = ./dap.lua;
+    dependencies = {
+      dapui = {
+        src = sources.nvim-dap-ui;
+      };
+      nvim-dap-virtual-text = {
+        src = sources.nvim-dap-virtual-text;
+        config = true;
+      };
+    };
+  };
+
   firvish = {
     src = sources."firvish.nvim";
     config = ./firvish.lua;
@@ -238,6 +252,20 @@ in rec {
 
   plenary = {
     src = sources."plenary.nvim";
+  };
+
+  rapidjson = let
+    package = luajitPackages.rapidjson;
+  in {
+    inherit package;
+    config = toString (pkgs.writeTextFile {
+      name = "rapidjson.lua";
+      text = ''
+        return function()
+          package.cpath = package.cpath .. ";" .. "${package}/lib/lua/5.1/?.so"
+        end
+      '';
+    });
   };
 
   # sg = {

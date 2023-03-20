@@ -278,6 +278,7 @@ in rec {
 
   neogen = {
     src = sources.neogen;
+    config = ./neogen.lua;
   };
 
   nvim-autopairs = {

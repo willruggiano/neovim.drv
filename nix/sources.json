@@ -395,6 +395,12 @@
         "rev": "a3f17d3baf70df58b9d3544ea30abe52a7a832c2",
         "type": "git"
     },
+    "todo-comments.nvim": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/folke/todo-comments.nvim",
+        "rev": "14e2cd9a6e5e67483a03660f08471ca9a981c4a5",
+        "type": "git"
+    },
     "toggleterm.nvim": {
         "branch": "main",
         "repo": "git@github.com:akinsho/toggleterm.nvim",

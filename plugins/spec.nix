@@ -299,13 +299,15 @@ in rec {
     config = ./cheat.lua;
   };
 
+  nvim-nonicons = {
+    src = sources.nvim-nonicons;
+  };
+
   nvim-web-devicons = {
     src = sources.nvim-web-devicons;
     config = ./devicons.lua;
     dependencies = {
-      nvim-nonicons = {
-        src = sources.nvim-nonicons;
-      };
+      inherit nvim-nonicons;
     };
   };
 
@@ -343,10 +345,10 @@ in rec {
     };
   };
 
-  tabout = {
-    src = sources."tabout.nvim";
-    config = ./tabout.lua;
-  };
+  # tabout = {
+  #   src = sources."tabout.nvim";
+  #   config = ./tabout.lua;
+  # };
 
   telescope = {
     src = sources."telescope.nvim";
@@ -381,6 +383,14 @@ in rec {
       telescope-ui-select = {
         src = sources."telescope-ui-select.nvim";
       };
+    };
+  };
+
+  todo = {
+    src = sources."todo-comments.nvim";
+    config = ./todo.lua;
+    dependencies = {
+      inherit nvim-nonicons;
     };
   };
 

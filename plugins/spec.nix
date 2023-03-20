@@ -343,6 +343,11 @@ in rec {
     };
   };
 
+  tabout = {
+    src = sources."tabout.nvim";
+    config = ./tabout.lua;
+  };
+
   telescope = {
     src = sources."telescope.nvim";
     config = ./telescope.lua;

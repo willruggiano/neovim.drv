@@ -341,6 +341,12 @@
         "rev": "f21566fabb9e37c14f4ae8acccfe91443cd59299",
         "type": "git"
     },
+    "tabout.nvim": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/abecodes/tabout.nvim",
+        "rev": "c37ce26f316a2df693140450b8def41e89c0f57e",
+        "type": "git"
+    },
     "telescope-arecibo.nvim": {
         "branch": "master",
         "repo": "git@github.com:nvim-telescope/telescope-arecibo.nvim",

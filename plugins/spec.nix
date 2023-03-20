@@ -244,6 +244,9 @@ in rec {
               };
             };
           };
+          refactoring = {
+            src = sources."refactoring.nvim";
+          };
         };
       };
     };

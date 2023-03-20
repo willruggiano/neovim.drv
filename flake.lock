@@ -251,14 +251,17 @@
         "pre-commit-nix": "pre-commit-nix"
       },
       "locked": {
-        "lastModified": 1679009511,
-        "narHash": "sha256-6a5BLODtzK2+DbXMyVstx7OreJw5+Glg/WLMSt3yh1k=",
-        "path": "/home/bombadil/dev/neovim.nix",
-        "type": "path"
+        "lastModified": 1679351181,
+        "narHash": "sha256-7CX2bKTTGiwoRA1U7p26VK4lXwm4mdvswGb0+vyHA4k=",
+        "owner": "willruggiano",
+        "repo": "neovim.nix",
+        "rev": "45d759a5fe92236dc91b756d08af50277e400829",
+        "type": "github"
       },
       "original": {
-        "path": "/home/bombadil/dev/neovim.nix",
-        "type": "path"
+        "owner": "willruggiano",
+        "repo": "neovim.nix",
+        "type": "github"
       }
     },
     "neovim_2": {
@@ -576,15 +579,15 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1675592426,
-        "narHash": "sha256-lTARaAzx04+hFLXQEZE/Q73Xh4gOeUl9WN1QsN5s2A8=",
-        "owner": "willruggiano",
+        "lastModified": 1679338489,
+        "narHash": "sha256-otRXR+uuhncnh3cRZXUcBL/2sVo8PqmdN8Q2sGReIyc=",
+        "owner": "sourcegraph",
         "repo": "sg.nvim",
-        "rev": "289a635597d4b4850827f35512cf3d165f97412f",
+        "rev": "8432c5fb3934aff8f3b466c009cd9e7bb1bf771a",
         "type": "github"
       },
       "original": {
-        "owner": "willruggiano",
+        "owner": "sourcegraph",
         "repo": "sg.nvim",
         "type": "github"
       }

@@ -45,7 +45,7 @@
           # Rust
           rust-analyzer
           # Sourcegraph
-          inputs'.sg-nvim.packages.default
+          # inputs'.sg-nvim.packages.default
           # Typescript
           nodePackages.typescript-language-server
           # Zig

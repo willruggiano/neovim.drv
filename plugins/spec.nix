@@ -97,19 +97,6 @@ in rec {
     config = true;
   };
 
-  cpsm = {
-    package = neovim-utils.mkPlugin {
-      name = "cpsm";
-      src = sources.cpsm;
-      nativeBuildInputs = [pkgs.cmake];
-      buildInputs = with pkgs; [boost ncurses python3];
-      buildPhase = ''
-        cmake -S . -B build -DPY3:BOOL=ON
-        cmake --build build --target install
-      '';
-    };
-  };
-
   firvish = {
     src = sources."firvish.nvim";
     config = ./firvish.lua;
@@ -146,8 +133,18 @@ in rec {
     src = sources."indent-blankline.nvim";
   };
 
-  lfs = {
-    package = neovim-utils.toLuarocksPlugin luajitPackages.luafilesystem;
+  lfs = let
+    package = luajitPackages.luafilesystem;
+  in {
+    inherit package;
+    config = toString (pkgs.writeTextFile {
+      name = "lfs.lua";
+      text = ''
+        return function()
+          package.cpath = package.cpath .. ";" .. "${package}/lib/lua/5.1/?.so"
+        end
+      '';
+    });
   };
 
   lir = {
@@ -217,9 +214,9 @@ in rec {
     src = sources."plenary.nvim";
   };
 
-  sg = {
-    package = inputs'.sg-nvim.packages.default;
-  };
+  # sg = {
+  #   package = inputs'.sg-nvim.packages.default;
+  # };
 
   telescope = {
     src = sources."telescope.nvim";
@@ -265,5 +262,24 @@ in rec {
   which-key = {
     src = sources."which-key.nvim";
     config = true;
+  };
+
+  wilder = {
+    src = sources."wilder.nvim";
+    config = ./wilder.lua;
+    dependencies = {
+      cpsm = {
+        package = neovim-utils.mkPlugin {
+          name = "cpsm";
+          src = sources.cpsm;
+          nativeBuildInputs = [pkgs.cmake];
+          buildInputs = with pkgs; [boost ncurses python3];
+          buildPhase = ''
+            cmake -S . -B build -DPY3:BOOL=ON
+            cmake --build build --target install
+          '';
+        };
+      };
+    };
   };
 }

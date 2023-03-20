@@ -292,5 +292,11 @@
         "repo": "git@github.com:folke/which-key.nvim",
         "rev": "fb027738340502b556c3f43051f113bcaa7e8e63",
         "type": "git"
+    },
+    "wilder.nvim": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/gelguy/wilder.nvim",
+        "rev": "679f348dc90d80ff9ba0e7c470c40a4d038dcecf",
+        "type": "git"
     }
 }

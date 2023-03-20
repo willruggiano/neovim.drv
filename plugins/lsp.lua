@@ -380,9 +380,11 @@ return function()
     on_attach = on_attach,
   }
 
-  require("sg").setup {
-    on_attach = on_attach,
-  }
+  if pcall(require, "sg") then
+    require("sg").setup {
+      on_attach = on_attach,
+    }
+  end
 
   nnoremap("<leader>s", function()
     require("sg.telescope").fuzzy_search_results()

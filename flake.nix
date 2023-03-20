@@ -3,8 +3,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
     neovim.url = "github:neovim/neovim?dir=contrib";
-    neovim-nix.url = "path:///home/bombadil/dev/neovim.nix";
-    sg-nvim.url = "github:willruggiano/sg.nvim";
+    neovim-nix.url = "github:willruggiano/neovim.nix";
+    sg-nvim.url = "github:sourcegraph/sg.nvim";
   };
 
   outputs = {flake-parts, ...} @ inputs:

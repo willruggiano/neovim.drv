@@ -271,6 +271,11 @@ in rec {
     config = ./markdown.lua;
   };
 
+  marks = {
+    src = sources."marks.nvim";
+    config = ./marks.lua;
+  };
+
   neogen = {
     src = sources.neogen;
   };

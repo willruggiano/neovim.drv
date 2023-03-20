@@ -215,6 +215,12 @@
         "rev": "e99d733e0213ceb8f548ae6551b04ae32e590c80",
         "type": "git"
     },
+    "marks.nvim": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/chentoast/marks.nvim",
+        "rev": "76aca5069c5ce5c0099e30168649e6393e494f26",
+        "type": "git"
+    },
     "neodev.nvim": {
         "branch": "main",
         "repo": "git@github.com:folke/neodev.nvim",

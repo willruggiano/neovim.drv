@@ -138,6 +138,11 @@ in rec {
     config = ./indent-blankline.lua;
   };
 
+  kommentary = {
+    src = sources.kommentary;
+    config = ./kommentary.lua;
+  };
+
   lfs = let
     package = luajitPackages.luafilesystem;
   in {

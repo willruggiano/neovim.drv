@@ -143,6 +143,12 @@
         "rev": "7bbae91ba66c858513724459c703621e3b4dbe08",
         "type": "git"
     },
+    "kommentary": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/b3nj5m1n/kommentary",
+        "rev": "3a80117148c6798972bb69414423311ab151d368",
+        "type": "git"
+    },
     "lir-git-status.nvim": {
         "branch": "main",
         "repo": "git@github.com:tamago324/lir-git-status.nvim",

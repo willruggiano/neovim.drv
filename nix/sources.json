@@ -101,6 +101,12 @@
         "rev": "5020da900cc5dfd7067f181ee2ebd872ca7c84e8",
         "type": "git"
     },
+    "fidget.nvim": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/j-hui/fidget.nvim",
+        "rev": "688b4fec4517650e29c3e63cfbb6e498b3112ba1",
+        "type": "git"
+    },
     "firvish.nvim": {
         "branch": "wip/v2.0",
         "repo": "git@github.com:willruggiano/firvish.nvim",

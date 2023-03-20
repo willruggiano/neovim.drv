@@ -116,6 +116,20 @@ in rec {
     config = ./dial.lua;
   };
 
+  fidget = {
+    src = sources."fidget.nvim";
+    config = {
+      text = {
+        spinner = "dots";
+      };
+      sources = {
+        null-ls = {
+          ignore = true;
+        };
+      };
+    };
+  };
+
   firvish = {
     src = sources."firvish.nvim";
     config = ./firvish.lua;

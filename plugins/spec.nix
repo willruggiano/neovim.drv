@@ -181,6 +181,21 @@ in rec {
     config = ./kommentary.lua;
   };
 
+  leap = {
+    src = sources."leap.nvim";
+    config = ./leap.lua;
+    dependencies = {
+      flit = {
+        src = sources."flit.nvim";
+        config = true;
+      };
+      leap-spooky = {
+        src = sources."leap-spooky.nvim";
+        config = true;
+      };
+    };
+  };
+
   lfs = let
     package = luajitPackages.luafilesystem;
   in {

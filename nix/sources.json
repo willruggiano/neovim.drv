@@ -113,6 +113,12 @@
         "rev": "d86582103b03454f2cffcaee1bb186a897cd7eef",
         "type": "git"
     },
+    "flit.nvim": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/ggandor/flit.nvim",
+        "rev": "4c1739137acd3e7f03e2065a7be8a4dc41c7e461",
+        "type": "git"
+    },
     "fuzzy.nvim": {
         "branch": "master",
         "repo": "git@github.com:tzachar/fuzzy.nvim",
@@ -171,6 +177,18 @@
         "branch": "main",
         "repo": "ssh://git@github.com/b3nj5m1n/kommentary",
         "rev": "3a80117148c6798972bb69414423311ab151d368",
+        "type": "git"
+    },
+    "leap-spooky.nvim": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/ggandor/leap-spooky.nvim",
+        "rev": "79a7a3f28897d99e5da970e7121ac8ff738e1554",
+        "type": "git"
+    },
+    "leap.nvim": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/ggandor/leap.nvim",
+        "rev": "f74473d23ebf60957e0db3ff8172349a82e5a442",
         "type": "git"
     },
     "lir-git-status.nvim": {

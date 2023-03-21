@@ -446,4 +446,9 @@ in rec {
       };
     };
   };
+
+  xit = {
+    src = sources."xit.nvim";
+    config = true;
+  };
 }

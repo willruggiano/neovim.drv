@@ -1,4 +1,7 @@
 return function()
+  -- NOTE: We must setup neodev first!
+  require("neodev").setup()
+
   local lsp = require "bombadil.lsp"
   local lspconfig = require "lspconfig"
   local lspconfig_util = require "lspconfig.util"
@@ -102,35 +105,11 @@ return function()
         { buffer = bufnr, desc = "Toggle inlay hints" },
       },
       ["<space>s"] = {
-        function()
-          vim.lsp.buf.document_symbol {
-            ---@type fun(items: table[], title: string, context: table|nil)
-            on_list = function(items, title, context)
-              vim.fn.setloclist(vim.api.nvim_get_current_win(), {}, " ", {
-                context = context,
-                items = items,
-                title = title,
-              })
-              vim.cmd.lopen()
-            end,
-          }
-        end,
+        vim.lsp.buf.document_symbol,
         { buffer = bufnr, desc = "Symbols" },
       },
       ["<leader>ww"] = {
-        function()
-          vim.lsp.buf.workspace_symbol("", {
-            ---@type fun(items: table[], title: string, context: table|nil)
-            on_list = function(items, title, context)
-              vim.fn.setqflist({}, " ", {
-                context = context,
-                items = items,
-                title = title,
-              })
-              vim.cmd.copen()
-            end,
-          })
-        end,
+        require("telescope.builtin").lsp_dynamic_workspace_symbols,
         { buffer = bufnr, desc = "Workspace symbols" },
       },
       ["<leader>K"] = {
@@ -192,6 +171,11 @@ return function()
   if has_cmp then
     updated_capabilities = cmp.default_capabilities()
   end
+  local has_coq, coq = pcall(require, "coq")
+  if has_coq then
+    ---@diagnostic disable-next-line: cast-local-type
+    updated_capabilities = coq.lsp_ensure_capabilities(updated_capabilities)
+  end
   assert(updated_capabilities)
 
   updated_capabilities.textDocument.codeLens = {
@@ -210,6 +194,16 @@ return function()
     lineFoldingOnly = true,
   }
 
+  local simple_servers = { "cmake", "marksman", "nil_ls", "pyright", "tsserver", "zls" }
+  for _, name in ipairs(simple_servers) do
+    lspconfig[name].setup {
+      on_init = on_init,
+      on_attach = on_attach,
+      capabilities = updated_capabilities,
+    }
+  end
+
+  -- TODO: Move to separate file
   local null_ls = require "null-ls"
   local custom_sources = require "bombadil.lsp.null-ls"
   null_ls.setup {
@@ -223,6 +217,7 @@ return function()
       null_ls.builtins.formatting.cmake_format,
       -- null_ls.builtins.formatting.isort, -- via pylsp
       null_ls.builtins.formatting.alejandra,
+      null_ls.builtins.formatting.eslint_d,
       null_ls.builtins.formatting.prettier,
       null_ls.builtins.formatting.rustfmt,
       null_ls.builtins.formatting.shfmt.with { filetypes = { "bash", "sh" } },
@@ -231,6 +226,7 @@ return function()
       custom_sources.jsonnet.formatting,
       -- Diagnostics
       null_ls.builtins.diagnostics.codespell.with { disabled_filetypes = { "log" } },
+      null_ls.builtins.diagnostics.eslint_d,
       null_ls.builtins.diagnostics.jsonlint,
       null_ls.builtins.diagnostics.luacheck.with {
         extra_args = { "--globals", "vim", "--no-max-line-length" },
@@ -240,6 +236,7 @@ return function()
       -- custom_sources.statix.diagnostics,
 
       -- Code actions
+      null_ls.builtins.code_actions.eslint_d,
       null_ls.builtins.code_actions.gitsigns,
       null_ls.builtins.code_actions.refactoring,
       null_ls.builtins.code_actions.shellcheck.with { filetypes = { "bash", "sh" } },
@@ -308,28 +305,24 @@ return function()
     },
   }
 
-  lspconfig.cmake.setup {
+  lspconfig.lua_ls.setup {
     on_init = on_init,
     on_attach = on_attach,
     capabilities = updated_capabilities,
-  }
-
-  lspconfig.marksman.setup {
-    on_init = on_init,
-    on_attach = on_attach,
-    capabilities = updated_capabilities,
-  }
-
-  lspconfig.nil_ls.setup {
-    on_init = on_init,
-    on_attach = on_attach,
-    capabilities = updated_capabilities,
-  }
-
-  lspconfig.pyright.setup {
-    on_init = on_init,
-    on_attach = on_attach,
-    capabilities = updated_capabilities,
+    root_dir = function(fname)
+      return lspconfig_util.find_git_ancestor(fname) or lspconfig_util.path.dirname(fname)
+    end,
+    settings = {
+      Lua = {
+        completion = {
+          callSnippet = "Replace",
+          keywordSnippet = "Replace",
+        },
+        format = {
+          enable = false,
+        },
+      },
+    },
   }
 
   lspconfig.rust_analyzer.setup {
@@ -352,41 +345,13 @@ return function()
     },
   }
 
-  -- NOTE: We must setup neodev first!
-  require("neodev").setup {}
-  -- ... and then the lsp
-  lspconfig.lua_ls.setup {
-    on_init = on_init,
-    on_attach = on_attach,
-    capabilities = updated_capabilities,
-    root_dir = function(fname)
-      return lspconfig_util.find_git_ancestor(fname) or lspconfig_util.path.dirname(fname)
-    end,
-    settings = {
-      Lua = {
-        completion = {
-          callSnippet = "Replace",
-          keywordSnippet = "Replace",
-        },
-        format = {
-          enable = false,
-        },
-      },
-    },
-  }
-
-  lspconfig.zls.setup {
-    on_init = on_init,
-    on_attach = on_attach,
-  }
-
   if pcall(require, "sg") then
     require("sg").setup {
       on_attach = on_attach,
     }
-  end
 
-  nnoremap("<leader>s", function()
-    require("sg.telescope").fuzzy_search_results()
-  end, { desc = "Sourcegraph search" })
+    nnoremap("<leader>s", function()
+      require("sg.telescope").fuzzy_search_results()
+    end, { desc = "Sourcegraph search" })
+  end
 end

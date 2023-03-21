@@ -10,10 +10,6 @@
       inherit (inputs'.neovim-nix.packages) utils;
     in {
       neovim = {
-        # This would include the current directory in Neovim's runtimepath.
-        # So we can put normal Vim stuff in this repo, e.g. after/plugin/*.lua
-        src = ./.;
-
         # Tools to bake into the neovim environment.
         # These tools are *appended* to neovim's PATH variable,
         # such that if a tool is available locally (i.e. on the system PATH)

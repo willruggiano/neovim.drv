@@ -367,9 +367,9 @@ in rec {
     });
   };
 
-  # sg = {
-  #   package = inputs'.sg-nvim.packages.default;
-  # };
+  sg = {
+    package = inputs'.sg-nvim.packages.default;
+  };
 
   statuscol = {
     src = sources."statuscol.nvim";

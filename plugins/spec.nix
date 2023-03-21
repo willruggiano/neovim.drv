@@ -451,4 +451,9 @@ in rec {
     src = sources."xit.nvim";
     config = true;
   };
+
+  zk = {
+    src = sources.zk-nvim;
+    config = ./zk.lua;
+  };
 }

@@ -472,5 +472,11 @@
         "repo": "git@github.com:synaptiko/xit.nvim",
         "rev": "fe89a5df51f3c08bd4cd9aa5c698d9877f99684e",
         "type": "git"
+    },
+    "zk-nvim": {
+        "branch": "main",
+        "repo": "git@github.com:mickael-menu/zk-nvim",
+        "rev": "0413c52500cd0133b0cd8e7e7d43084855ac1760",
+        "type": "git"
     }
 }

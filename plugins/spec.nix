@@ -14,7 +14,7 @@ in rec {
     priority = 1000;
 
     dependencies = {
-      inherit lfs;
+      inherit lfs lua-utf8;
     };
   };
 
@@ -263,6 +263,20 @@ in rec {
     dependencies = {
       inherit lir;
     };
+  };
+
+  lua-utf8 = let
+    package = luajitPackages.luautf8;
+  in {
+    inherit package;
+    config = toString (pkgs.writeTextFile {
+      name = "lfs.lua";
+      text = ''
+        return function()
+          package.cpath = package.cpath .. ";" .. "${package}/lib/lua/5.1/?.so"
+        end
+      '';
+    });
   };
 
   lyaml = {

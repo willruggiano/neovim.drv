@@ -136,7 +136,7 @@
 
   lockfile = lib.importJSON "${src}/lockfile.json";
 
-  allGrammars =
+  grammars' =
     builtins.mapAttrs (name: value: rec {
       inherit (value) owner;
       repo =
@@ -163,20 +163,24 @@
     runtimeInputs = [nix-prefetch-git];
     text = ''
       out="''${1}/grammars"
+      grammars="''${2:-all}"
       mkdir -p "$out"
       ${
-        foreachSh allGrammars ({
+        foreachSh grammars' ({
           name,
           url,
           rev,
           ...
         }: ''
-          echo "Updating treesitter parser for ${name}"
-          ${nix-prefetch-git}/bin/nix-prefetch-git \
-            --quiet \
-            --no-deepClone \
-            --url "${url}" \
-            --rev "${rev}" > "$out"/${name}.json'')
+          [ "''${grammars}" = "${name}" ] || [ "''${grammars}" = "all" ] && {
+            echo "Updating treesitter parser for ${name}"
+            ${nix-prefetch-git}/bin/nix-prefetch-git \
+              --quiet \
+              --no-deepClone \
+              --url "${url}" \
+              --rev "${rev}" > "$out"/${name}.json
+          }
+        '')
       }
     '';
   };
@@ -188,7 +192,7 @@
           src' = lib.importJSON "${./.}/grammars/${name}.json";
         in
           fetchgit {
-            inherit (src') url rev sha256;
+            inherit (src') url rev sha256 fetchLFS fetchSubmodules deepClone leaveDotGit;
           };
 
         buildInputs = [tree-sitter];

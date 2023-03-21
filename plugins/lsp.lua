@@ -1,7 +1,4 @@
 return function()
-  -- NOTE: We must setup neodev first!
-  require("neodev").setup()
-
   local lsp = require "bombadil.lsp"
   local lspconfig = require "lspconfig"
   local lspconfig_util = require "lspconfig.util"
@@ -83,7 +80,6 @@ return function()
       },
       ["<leader><leader>w"] = {
         function()
-          local foo
           vim.diagnostic.setqflist { open = false }
           vim.cmd.copen { mods = { split = "botright" } }
         end,
@@ -320,6 +316,32 @@ return function()
         },
         format = {
           enable = false,
+        },
+        runtime = {
+          version = "LuaJIT",
+          path = { "?.lua", "?/init.lua" },
+          pathStrict = true,
+        },
+        workspace = {
+          library = (function()
+            local library = {}
+
+            local function add(dir)
+              for _, p in ipairs(vim.fn.expand(dir .. "/lua", false, true)) do
+                table.insert(library, p)
+              end
+            end
+
+            for _, plugin in ipairs(require("lazy").plugins()) do
+              add(plugin.dir)
+            end
+
+            table.insert(library, require("neodev.config").types())
+
+            add "$VIMRUNTIME"
+
+            return library
+          end)(),
         },
       },
     },

@@ -1,0 +1,11 @@
+{
+  "url": "https://github.com/synaptiko/tree-sitter-xit",
+  "rev": "7d7902456061bc2ad21c64c44054f67b5515734c",
+  "date": "2022-04-18T12:25:00+02:00",
+  "path": "/nix/store/nwb0dpfsfs9sm0hp3piq7sxba1p68c5s-tree-sitter-xit-7d79024",
+  "sha256": "0lj3p8grbb8527k23mibn2cfxzrikpgwv4qmlcfnvsqqhqfc83w7",
+  "fetchLFS": false,
+  "fetchSubmodules": false,
+  "deepClone": false,
+  "leaveDotGit": false
+}

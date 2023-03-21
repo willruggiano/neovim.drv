@@ -317,10 +317,34 @@
         "rev": "80104ebd1e77d019f736bee46de2f1dbfe36f8af",
         "type": "git"
     },
+    "nvim-treesitter": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter",
+        "rev": "379305aa7f55e810950cde24a82789681478df04",
+        "type": "git"
+    },
+    "nvim-treesitter-refactor": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter-refactor",
+        "rev": "b216290a2a47c856cf95cdc35e0c8d2c6306d89a",
+        "type": "git"
+    },
+    "nvim-treesitter-textobjects": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter-textobjects",
+        "rev": "582cbb5a4cb50f6161cac8cc01f55aeaff6d836a",
+        "type": "git"
+    },
     "nvim-web-devicons": {
         "branch": "master",
         "repo": "ssh://git@github.com/kyazdani42/nvim-web-devicons",
         "rev": "bb6d4fd1e010300510172b173ab5205d37af084f",
+        "type": "git"
+    },
+    "playground": {
+        "branch": "master",
+        "repo": "ssh://git@github.com/nvim-treesitter/playground",
+        "rev": "4044b53c4d4fcd7a78eae20b8627f78ce7dc6f56",
         "type": "git"
     },
     "plenary.nvim": {
@@ -405,6 +429,18 @@
         "branch": "main",
         "repo": "git@github.com:akinsho/toggleterm.nvim",
         "rev": "c8e982ad2739eeb0b13d0fecb14820c9bf5e3da0",
+        "type": "git"
+    },
+    "tree-sitter-vimdoc": {
+        "branch": "master",
+        "repo": "git@github.com:neovim/tree-sitter-vimdoc",
+        "rev": "v1.3.0",
+        "type": "git"
+    },
+    "treesitter-unit": {
+        "branch": "main",
+        "repo": "ssh://git@github.com/david-kunz/treesitter-unit",
+        "rev": "89968a1f8c72427691088e6d09d26a52c2ddc6f4",
         "type": "git"
     },
     "vim-markdown": {

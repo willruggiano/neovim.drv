@@ -20,14 +20,20 @@
         pkgs,
         inputs',
         ...
-      }: {
-        apps.default.program = config.neovim.final;
+      }: let
+        nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
+      in {
+        apps = {
+          default.program = config.neovim.final;
+          update-grammars.program = nvim-treesitter.update-grammars;
+        };
         devShells.default = pkgs.mkShell {
           name = "neovim";
           buildInputs = with pkgs; [niv];
         };
         packages = {
           default = config.neovim.final;
+          inherit nvim-treesitter;
         };
       };
     };

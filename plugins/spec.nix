@@ -303,6 +303,25 @@ in rec {
     src = sources.nvim-nonicons;
   };
 
+  nvim-treesitter = {
+    package = pkgs.callPackage ../pkgs/nvim-treesitter {};
+    config = ./treesitter.lua;
+    dependencies = {
+      nvim-treesitter-playground = {
+        src = sources.playground;
+      };
+      nvim-treesitter-refactor = {
+        src = sources.nvim-treesitter-refactor;
+      };
+      nvim-treesitter-textobjects = {
+        src = sources.nvim-treesitter-textobjects;
+      };
+      treesitter-unit = {
+        src = sources.treesitter-unit;
+      };
+    };
+  };
+
   nvim-web-devicons = {
     src = sources.nvim-web-devicons;
     config = ./devicons.lua;

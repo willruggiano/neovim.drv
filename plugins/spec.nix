@@ -418,6 +418,11 @@ in rec {
     config = ./toggleterm.lua;
   };
 
+  undotree = {
+    src = sources.undotree;
+    config = ./undotree.lua;
+  };
+
   which-key = {
     src = sources."which-key.nvim";
     config = true;

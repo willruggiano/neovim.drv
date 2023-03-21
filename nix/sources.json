@@ -443,6 +443,12 @@
         "rev": "89968a1f8c72427691088e6d09d26a52c2ddc6f4",
         "type": "git"
     },
+    "undotree": {
+        "branch": "main",
+        "repo": "git@github.com:jiaoshijie/undotree",
+        "rev": "6cb7e65e03871d2567d2c44745d3de57d07ca1fd",
+        "type": "git"
+    },
     "vim-markdown": {
         "branch": "master",
         "repo": "ssh://git@github.com/preservim/vim-markdown",

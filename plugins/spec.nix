@@ -367,8 +367,18 @@ in rec {
     });
   };
 
-  sg = {
+  sg = let
     package = inputs'.sg-nvim.packages.default;
+  in {
+    inherit package;
+    config = toString (pkgs.writeTextFile {
+      name = "sg.lua";
+      text = ''
+        return function()
+          package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
+        end
+      '';
+    });
   };
 
   statuscol = {

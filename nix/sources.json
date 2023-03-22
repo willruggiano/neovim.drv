@@ -317,6 +317,12 @@
         "rev": "80104ebd1e77d019f736bee46de2f1dbfe36f8af",
         "type": "git"
     },
+    "nvim-surround": {
+        "branch": "main",
+        "repo": "git@github.com:kylechui/nvim-surround",
+        "rev": "056f69ed494198ff6ea0070cfc66997cfe0a6c8b",
+        "type": "git"
+    },
     "nvim-treesitter": {
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter",

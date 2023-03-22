@@ -317,6 +317,11 @@ in rec {
     src = sources.nvim-nonicons;
   };
 
+  nvim-surround = {
+    src = sources.nvim-surround;
+    config = true;
+  };
+
   nvim-treesitter = {
     package = pkgs.callPackage ../pkgs/nvim-treesitter {};
     config = ./treesitter.lua;

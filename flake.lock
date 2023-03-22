@@ -303,11 +303,11 @@
         "pre-commit-nix": "pre-commit-nix"
       },
       "locked": {
-        "lastModified": 1679362402,
-        "narHash": "sha256-7JCFvCj/3ZNMqVabiDsSoQdQnGjURQF0/uoVXDCbmZ4=",
+        "lastModified": 1679508677,
+        "narHash": "sha256-FqjlrK/mmKCyVMKONcQaSiMVwIIcFMrxRMq1Y0N2Xyo=",
         "owner": "willruggiano",
         "repo": "neovim.nix",
-        "rev": "970882fbb9dd640f7deb2d8f42ef5fd264a9bbff",
+        "rev": "74648cf951711742dbdf8a5664fab4e52a9aa662",
         "type": "github"
       },
       "original": {

@@ -201,14 +201,14 @@ in rec {
     package = luajitPackages.luafilesystem;
   in {
     inherit package;
-    config = toString (pkgs.writeTextFile {
+    init = pkgs.writeTextFile {
       name = "lfs.lua";
       text = ''
         return function()
           package.cpath = package.cpath .. ";" .. "${package}/lib/lua/5.1/?.so"
         end
       '';
-    });
+    };
   };
 
   lir = {
@@ -269,14 +269,14 @@ in rec {
     package = luajitPackages.luautf8;
   in {
     inherit package;
-    config = toString (pkgs.writeTextFile {
+    init = pkgs.writeTextFile {
       name = "lfs.lua";
       text = ''
         return function()
           package.cpath = package.cpath .. ";" .. "${package}/lib/lua/5.1/?.so"
         end
       '';
-    });
+    };
   };
 
   lyaml = {
@@ -357,28 +357,28 @@ in rec {
     package = luajitPackages.rapidjson;
   in {
     inherit package;
-    config = toString (pkgs.writeTextFile {
+    init = pkgs.writeTextFile {
       name = "rapidjson.lua";
       text = ''
         return function()
           package.cpath = package.cpath .. ";" .. "${package}/lib/lua/5.1/?.so"
         end
       '';
-    });
+    };
   };
 
   sg = let
     package = inputs'.sg-nvim.packages.default;
   in {
     inherit package;
-    config = toString (pkgs.writeTextFile {
+    init = pkgs.writeTextFile {
       name = "sg.lua";
       text = ''
         return function()
           package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
         end
       '';
-    });
+    };
   };
 
   statuscol = {

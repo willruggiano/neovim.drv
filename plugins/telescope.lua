@@ -190,7 +190,7 @@ return function()
       function()
         require("telescope").extensions.docsets.query(vim.tbl_deep_extend("force", themes.ivy, { previewer = false }))
       end,
-      { desc = "Docsets CWORD" },
+      { desc = "Docsets" },
     },
     ["<leader>k"] = {
       function()

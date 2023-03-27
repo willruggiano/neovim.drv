@@ -83,6 +83,18 @@
         "rev": "6857f10272c3cfe930cece2afa2406e1385bfef8",
         "type": "git"
     },
+    "copilot-cmp": {
+        "branch": "master",
+        "repo": "git@github.com:zbirenbaum/copilot-cmp",
+        "rev": "92535dfd9c430b49ca7d9a7da336c5db65826b65",
+        "type": "git"
+    },
+    "copilot.lua": {
+        "branch": "master",
+        "repo": "git@github.com:zbirenbaum/copilot.lua",
+        "rev": "db62371b6eac73954c194f3c8faee36cffee8135",
+        "type": "git"
+    },
     "cpsm": {
         "branch": "master",
         "repo": "git@github.com:nixprime/cpsm",

@@ -3,7 +3,11 @@ return function()
   local lspconfig = require "lspconfig"
   local lspconfig_util = require "lspconfig.util"
 
-  lsp.kind.init()
+  lsp.kind.init {
+    symbol_map = {
+      Copilot = "",
+    },
+  }
 
   vim.diagnostic.config {
     float = {

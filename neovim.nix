@@ -36,6 +36,8 @@
           marksman
           # Nix
           nil
+          # Nodejs (e.g. for copilot)
+          nodejs
           # Python
           nodePackages.pyright
           # Rust

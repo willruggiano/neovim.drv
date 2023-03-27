@@ -17,6 +17,8 @@ return function()
   -- require("cmp_shell").setup()
   -- require("nix-flake-prefetch.cmp").setup()
 
+  vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+
   cmp.setup {
     snippet = {
       expand = function(args)
@@ -75,6 +77,7 @@ return function()
       { name = "nvim_lsp" },
       { name = "nvim_lsp_signature_help" },
       { name = "snippy" },
+      { name = "copilot" },
     }, {
       { name = "path" },
       { name = "buffer" },
@@ -82,6 +85,7 @@ return function()
     sorting = {
       priority_weight = 2,
       comparators = {
+        require("copilot_cmp.comparators").prioritize,
         cmp_buffer_locality_comparator,
         cmp_fuzzy_path_comparator,
         cmp.config.compare.offset,
@@ -101,6 +105,7 @@ return function()
         menu = {
           buffer = "[ buf]",
           cmp_git = "[ git]",
+          copilot = "[  gh]",
           nvim_lsp = "[ lsp]",
           nvim_lua = "[nvim]",
           path = "[path]",

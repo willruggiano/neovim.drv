@@ -6,4 +6,8 @@ return function()
   }
 
   require("telescope").load_extension "persisted"
+
+  vim.api.nvim_create_user_command("Sessions", function()
+    require("telescope").extensions.persisted.persisted()
+  end, { desc = "List sessions" })
 end

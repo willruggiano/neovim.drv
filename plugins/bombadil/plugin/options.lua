@@ -44,6 +44,7 @@ vim.opt.pumblend = 17
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 10
 vim.opt.secure = true
+vim.opt.sessionoptions = "buffers,curdir,folds,globals,tabpages,winpos,winsize"
 vim.opt.shada = { "!", "'1000", "<50", "s10", "h" }
 vim.opt.shortmess = vim.opt.shortmess + "a" + "F"
 vim.opt.showbreak = "   "

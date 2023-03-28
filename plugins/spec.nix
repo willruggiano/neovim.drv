@@ -362,6 +362,11 @@ in rec {
     };
   };
 
+  persisted = {
+    src = sources."persisted.nvim";
+    config = ./persisted.lua;
+  };
+
   plenary = {
     src = sources."plenary.nvim";
   };

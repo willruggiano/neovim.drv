@@ -359,6 +359,12 @@
         "rev": "bb6d4fd1e010300510172b173ab5205d37af084f",
         "type": "git"
     },
+    "persisted.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:olimorris/persisted.nvim",
+        "rev": "e053ff33488431dc5bf9239b08650e650ec67292",
+        "type": "git"
+    },
     "playground": {
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-treesitter/playground",

@@ -10,11 +10,13 @@ return function()
   end, { desc = "Mark file" })
 
   vim.filetype.add {
-    harpoon = function(_, bufnr)
-      for k, v in pairs { signcolumn = "no" } do
-        vim.api.nvim_buf_set_option(bufnr, k, v)
-      end
-      return "harpoon"
+    harpoon = function()
+      return "harpoon",
+        function(bufnr)
+          for k, v in pairs { signcolumn = "no" } do
+            vim.api.nvim_buf_set_option(bufnr, k, v)
+          end
+        end
     end,
   }
 

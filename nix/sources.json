@@ -251,6 +251,12 @@
         "rev": "039ff3212ec43cc4d3332956dfb54e263c8d5033",
         "type": "git"
     },
+    "nui.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:muniftanjim/nui.nvim",
+        "rev": "0dc148c6ec06577fcf06cbab3b7dac96d48ba6be",
+        "type": "git"
+    },
     "null-ls.nvim": {
         "branch": "main",
         "repo": "git@github.com:jose-elias-alvarez/null-ls.nvim",
@@ -357,6 +363,12 @@
         "branch": "master",
         "repo": "ssh://git@github.com/kyazdani42/nvim-web-devicons",
         "rev": "bb6d4fd1e010300510172b173ab5205d37af084f",
+        "type": "git"
+    },
+    "package-info.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:vuki656/package-info.nvim",
+        "rev": "4d98c8cc90d970d87c472c04bf7ca712336cc753",
         "type": "git"
     },
     "persisted.nvim": {

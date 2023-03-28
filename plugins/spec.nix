@@ -362,6 +362,16 @@ in rec {
     };
   };
 
+  package-info = {
+    src = sources."package-info.nvim";
+    config = true;
+    dependencies = {
+      nui = {
+        src = sources."nui.nvim";
+      };
+    };
+  };
+
   persisted = {
     src = sources."persisted.nvim";
     config = ./persisted.lua;

@@ -395,12 +395,6 @@
         "rev": "c37ce26f316a2df693140450b8def41e89c0f57e",
         "type": "git"
     },
-    "telescope-arecibo.nvim": {
-        "branch": "master",
-        "repo": "git@github.com:nvim-telescope/telescope-arecibo.nvim",
-        "rev": "b706322027e44894c30f1d0a9bd79b35eb3e451a",
-        "type": "git"
-    },
     "telescope-docsets.nvim": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/telescope-docsets.nvim",

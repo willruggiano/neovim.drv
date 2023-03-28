@@ -7,7 +7,7 @@ local with_opts = function(default, overrides)
 end
 
 local with_buffer = function(opts)
-  return with_opts({ buffer = vim.api.nvim_get_current_buf() }, opts)
+  return with_opts({ buffer = opts.buffer or vim.api.nvim_get_current_buf() }, opts)
 end
 
 local M = {}

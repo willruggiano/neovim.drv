@@ -2,7 +2,7 @@ return function()
   local telescope = require "telescope"
   local actions = require "telescope.actions"
   local action_state = require "telescope.actions.state"
-  local themes = require "bombadil.telescope.themes"
+  local themes = require "telescope.themes"
 
   local set_prompt_to_entry_value = function(prompt_bufnr)
     local entry = action_state.get_selected_entry()
@@ -27,47 +27,18 @@ return function()
     end
   end
 
+  local default_theme = themes.get_ivy {
+    color_devicons = true,
+    layout_config = { preview_cutoff = 150 },
+    prompt_prefix = "> ",
+    scroll_strategy = "cycle",
+    selection_caret = "* ",
+    selection_strategy = "reset",
+    winblend = 5,
+  }
+
   telescope.setup {
-    defaults = {
-      prompt_prefix = "> ",
-      selection_caret = "* ",
-
-      winblend = 0,
-
-      layout_strategy = "horizontal",
-      layout_config = {
-        width = 0.95,
-        height = 0.85,
-        prompt_position = "top",
-
-        horizontal = {
-          preview_width = function(_, cols, _)
-            if cols > 200 then
-              return math.floor(cols * 0.4)
-            else
-              return math.floor(cols * 0.6)
-            end
-          end,
-        },
-
-        vertical = {
-          width = 0.9,
-          height = 0.95,
-          preview_height = 0.5,
-        },
-
-        flex = {
-          horizontal = {
-            preview_width = 0.9,
-          },
-        },
-      },
-
-      selection_strategy = "reset",
-      sorting_strategy = "descending",
-      scroll_strategy = "cycle",
-      color_devicons = true,
-
+    defaults = vim.tbl_deep_extend("force", default_theme, {
       mappings = {
         i = {
           ["<C-s>"] = actions.select_horizontal,
@@ -79,14 +50,9 @@ return function()
       file_previewer = require("telescope.previewers").vim_buffer_cat.new,
       grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
       qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-    },
+    }),
 
     extensions = {
-      arecibo = {
-        selected_engine = "duckduckgo",
-        url_open_command = vim.env.BROWSER,
-      },
-
       docsets = {
         query_command = "dasht-query-line",
       },
@@ -101,10 +67,6 @@ return function()
       project = {
         base_dirs = project_dirs,
       },
-
-      ["ui-select"] = {
-        themes.ivy,
-      },
     },
 
     pickers = {
@@ -118,9 +80,7 @@ return function()
     },
   }
 
-  telescope.load_extension "arecibo"
   telescope.load_extension "docsets"
-  telescope.load_extension "dotfiles"
   telescope.load_extension "fzf"
   telescope.load_extension "git_worktree"
   telescope.load_extension "project"
@@ -129,10 +89,6 @@ return function()
   if vim.fn.executable "gh" == 1 then
     telescope.load_extension "gh"
   end
-
-  vim.api.nvim_create_user_command("Dotfiles", function()
-    require("telescope").extensions.dotfiles.dotfiles()
-  end, { desc = "Edit dotfiles" })
 
   local nnoremap = require("bombadil.lib.keymap").nnoremap
   local mappings = {
@@ -156,9 +112,7 @@ return function()
     },
     ["<space>w"] = {
       function()
-        require("telescope").extensions.arecibo.websearch(
-          vim.tbl_deep_extend("force", themes.ivy, { previewer = false })
-        )
+        require("telescope").extensions.arecibo.websearch { previewer = false }
       end,
       { desc = "Websearch" },
     },
@@ -188,15 +142,13 @@ return function()
     },
     ["<space>k"] = {
       function()
-        require("telescope").extensions.docsets.query(vim.tbl_deep_extend("force", themes.ivy, { previewer = false }))
+        require("telescope").extensions.docsets.query { previewer = false }
       end,
       { desc = "Docsets" },
     },
     ["<leader>k"] = {
       function()
-        require("telescope").extensions.docsets.find_word_under_cursor(
-          vim.tbl_deep_extend("force", themes.ivy, { previewer = false })
-        )
+        require("telescope").extensions.docsets.find_word_under_cursor { previewer = false }
       end,
       { desc = "Docsets CWORD" },
     },

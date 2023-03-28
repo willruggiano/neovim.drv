@@ -3,10 +3,9 @@ vim.opt_local.softtabstop = 2
 vim.opt_local.tabstop = 2
 vim.opt_local.textwidth = 100
 
-local nnoremap = require("bombadil.lib.keymap").nnoremap
-local vnoremap = require("bombadil.lib.keymap").vnoremap
+local buf_noremap = require("bombadil.lib.keymap").buf_noremap
 
-nnoremap("<leader><leader>rl", "<Plug>(Luadev-RunLine)", { buffer = bufnr, desc = "Exec line" })
-nnoremap("<leader><leader>ro", "<Plug>(Luadev-Run)", { buffer = bufnr, desc = "Exec file" })
-nnoremap("<leader><leader>rw", "<Plug>(Luadev-RunWord)", { buffer = bufnr, desc = "Exec word" })
-vnoremap("<leader><leader>r", "<Plug>(Luadev-Run)", { buffer = bufnr, desc = "Exec selection" })
+buf_noremap("n", "<leader><leader>rl", "<Plug>(Luadev-RunLine)", { desc = "Exec line" })
+buf_noremap("n", "<leader><leader>ro", "<Plug>(Luadev-Run)", { desc = "Exec file" })
+buf_noremap("n", "<leader><leader>rw", "<Plug>(Luadev-RunWord)", { desc = "Exec word" })
+buf_noremap("v", "<leader><leader>r", "<Plug>(Luadev-Run)", { desc = "Exec selection" })

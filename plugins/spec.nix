@@ -421,14 +421,8 @@ in rec {
     config = ./telescope.lua;
     dependencies = {
       inherit git-worktree nvim-web-devicons;
-      telescope-arecibo = {
-        src = sources."telescope-arecibo.nvim";
-      };
       telescope-docsets = {
         src = sources."telescope-docsets.nvim";
-      };
-      telescope-dotfiles = {
-        src = ./telescope-dotfiles;
       };
       telescope-fzf-native = {
         package = neovim-utils.mkPlugin {

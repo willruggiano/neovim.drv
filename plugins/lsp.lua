@@ -328,7 +328,10 @@ return function()
         },
         workspace = {
           library = (function()
-            local library = {}
+            local thirdparty = { "busted", "lfs", "luassert", "luv" }
+            local library = vim.tbl_map(function(v)
+              return "${3rd}/" .. v .. "/library"
+            end, thirdparty)
 
             local function add(dir)
               for _, p in ipairs(vim.fn.expand(dir .. "/lua", false, true)) do

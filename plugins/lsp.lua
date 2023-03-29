@@ -105,7 +105,7 @@ return function()
         { buffer = bufnr, desc = "Toggle inlay hints" },
       },
       ["<space>s"] = {
-        vim.lsp.buf.document_symbol,
+        require("telescope.builtin").lsp_document_symbols,
         { buffer = bufnr, desc = "Symbols" },
       },
       ["<leader>ww"] = {

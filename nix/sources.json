@@ -473,6 +473,24 @@
         "rev": "6cb7e65e03871d2567d2c44745d3de57d07ca1fd",
         "type": "git"
     },
+    "vim-dadbod": {
+        "branch": "master",
+        "repo": "git@github.com:tpope/vim-dadbod",
+        "rev": "389a2b0120f82b13d51ff7c07f5c13f9bc9f412f",
+        "type": "git"
+    },
+    "vim-dadbod-completion": {
+        "branch": "master",
+        "repo": "git@github.com:kristijanhusak/vim-dadbod-completion",
+        "rev": "e71eb6140556c5ced80de6299a1fdfe22bd3c1b1",
+        "type": "git"
+    },
+    "vim-dadbod-ui": {
+        "branch": "master",
+        "repo": "git@github.com:kristijanhusak/vim-dadbod-ui",
+        "rev": "986324fa6372170ec47b28a5558ae7f7185e1d71",
+        "type": "git"
+    },
     "vim-graphql": {
         "branch": "master",
         "repo": "git@github.com:jparise/vim-graphql",

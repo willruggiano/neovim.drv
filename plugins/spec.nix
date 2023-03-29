@@ -110,6 +110,20 @@ in rec {
     config = true;
   };
 
+  dadbod = {
+    src = sources.vim-dadbod;
+    config = ./dadbod.lua;
+    dependencies = {
+      inherit cmp;
+      dadbod-completion = {
+        src = sources.vim-dadbod-completion;
+      };
+      dadbod-ui = {
+        src = sources.vim-dadbod-ui;
+      };
+    };
+  };
+
   dap = {
     src = sources.nvim-dap;
     config = ./dap.lua;

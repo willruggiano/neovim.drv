@@ -27,6 +27,8 @@
           cppcheck
           # Git
           lazygit
+          # GraphQL
+          nodePackages.graphql-language-service-cli
           # Json
           nodePackages.jsonlint
           # Lua

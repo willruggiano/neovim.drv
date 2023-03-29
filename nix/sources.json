@@ -473,6 +473,12 @@
         "rev": "6cb7e65e03871d2567d2c44745d3de57d07ca1fd",
         "type": "git"
     },
+    "vim-graphql": {
+        "branch": "master",
+        "repo": "git@github.com:jparise/vim-graphql",
+        "rev": "996749a7d69a3709768fa8c4d259f79b5fd9bdb1",
+        "type": "git"
+    },
     "vim-markdown": {
         "branch": "master",
         "repo": "ssh://git@github.com/preservim/vim-markdown",

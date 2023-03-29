@@ -180,6 +180,10 @@ in rec {
     config = ./gitsigns.lua;
   };
 
+  graphql = {
+    src = sources.vim-graphql;
+  };
+
   harpoon = {
     src = sources.harpoon;
     config = ./harpoon.lua;

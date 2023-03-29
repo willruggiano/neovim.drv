@@ -194,7 +194,7 @@ return function()
     lineFoldingOnly = true,
   }
 
-  local simple_servers = { "cmake", "marksman", "nil_ls", "pyright", "tsserver", "zls" }
+  local simple_servers = { "cmake", "graphql", "marksman", "nil_ls", "pyright", "tsserver", "zls" }
   for _, name in ipairs(simple_servers) do
     lspconfig[name].setup {
       on_init = on_init,

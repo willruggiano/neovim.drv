@@ -32,7 +32,7 @@
 
         devShells.default = pkgs.mkShell {
           name = "neovim";
-          buildInputs = with pkgs; [niv];
+          buildInputs = with pkgs; with nodePackages; [niv nodejs];
           shellHook = ''
             ${config.pre-commit.installationScript}
           '';

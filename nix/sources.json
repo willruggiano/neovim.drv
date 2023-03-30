@@ -182,7 +182,7 @@
     "jobs.firvish": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/jobs.firvish",
-        "rev": "7bbae91ba66c858513724459c703621e3b4dbe08",
+        "rev": "384f8a61db9225ebd0840ef0a369fd2045f9204e",
         "type": "git"
     },
     "kommentary": {

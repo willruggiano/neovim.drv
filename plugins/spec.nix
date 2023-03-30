@@ -144,6 +144,10 @@ in rec {
     config = ./dial.lua;
   };
 
+  dot-nvim = {
+    src = sources.".nvim.nvim";
+  };
+
   fidget = {
     src = sources."fidget.nvim";
     config = {

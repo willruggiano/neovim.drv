@@ -1,4 +1,10 @@
 {
+    ".nvim.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:willruggiano/.nvim.nvim",
+        "rev": "f7a538e09bdd6020d7c4c31155fa16aeb631fe27",
+        "type": "git"
+    },
     "bufdelete.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/famiu/bufdelete.nvim",

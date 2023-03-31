@@ -107,7 +107,7 @@ in rec {
 
   colorizer = {
     src = sources."nvim-colorizer.lua";
-    config = true;
+    config = ./colorizer.lua;
   };
 
   dadbod = {
@@ -142,6 +142,14 @@ in rec {
   dial = {
     src = sources."dial.nvim";
     config = ./dial.lua;
+  };
+
+  diffview = {
+    src = sources."diffview.nvim";
+    config = ./diffview.lua;
+    dependencies = {
+      inherit nvim-nonicons nvim-web-devicons plenary;
+    };
   };
 
   dot-nvim = {

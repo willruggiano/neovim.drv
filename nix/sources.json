@@ -119,6 +119,12 @@
         "rev": "0fb00f58591e6d28a8e344984403b3e390df2458",
         "type": "git"
     },
+    "diffview.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:sindrets/diffview.nvim",
+        "rev": "58035354fc79c6ec42fa7b218dab90bd3968615f",
+        "type": "git"
+    },
     "fidget.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/j-hui/fidget.nvim",

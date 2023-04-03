@@ -11,11 +11,11 @@ return function()
     require("firvish").extensions.buffers:open()
   end, { desc = "Buffers" })
 
-  nnoremap("<space>h", function()
-    require("firvish").extensions.history:open()
-  end, { desc = "History" })
+  -- nnoremap("<space>h", function()
+  --   vim.cmd.edit "firvish://history"
+  -- end, { desc = "History" })
 
-  nnoremap("<space>j", function()
-    require("firvish").extensions.jobs:open()
-  end, { desc = "Jobs" })
+  -- nnoremap("<space>j", function()
+  --   vim.cmd.pedit "firvish://jobs"
+  -- end, { desc = "Jobs" })
 end

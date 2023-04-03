@@ -181,15 +181,15 @@ in rec {
       buffers-firvish = {
         src = sources."buffers.firvish";
       };
-      git-firvish = {
-        src = sources."git.firvish";
-      };
-      firvish-history = {
-        src = sources."history.firvish";
-      };
-      jobs-firvish = {
-        src = sources."jobs.firvish";
-      };
+      # git-firvish = {
+      #   src = sources."git.firvish";
+      # };
+      # firvish-history = {
+      #   src = sources."history.firvish";
+      # };
+      # jobs-firvish = {
+      #   src = sources."jobs.firvish";
+      # };
     };
   };
 

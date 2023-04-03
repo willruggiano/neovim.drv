@@ -12,9 +12,9 @@
         "type": "git"
     },
     "buffers.firvish": {
-        "branch": "wip/v2.0",
+        "branch": "main",
         "repo": "git@github.com:willruggiano/buffers.firvish",
-        "rev": "8d86fe669aa51f7a9d297d05c3fbc75f6f073fc2",
+        "rev": "e686dcc7de6b381536a8be713772492c40c780a2",
         "type": "git"
     },
     "cargo-expand.nvim": {
@@ -140,7 +140,7 @@
     "firvish.nvim": {
         "branch": "wip/v2.0",
         "repo": "git@github.com:willruggiano/firvish.nvim",
-        "rev": "4c06f8f5bac50117da3c99c7c220763ac83255a6",
+        "rev": "1ed7349a3106a2165738666bc1eda867d2720649",
         "type": "git"
     },
     "flit.nvim": {

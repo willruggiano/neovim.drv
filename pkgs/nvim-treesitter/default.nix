@@ -84,6 +84,9 @@
     nix = {
       owner = "cstrahan";
     };
+    prisma = {
+      owner = "victorhqc";
+    };
     python = {
       owner = "tree-sitter";
     };

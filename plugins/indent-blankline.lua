@@ -1,19 +1,20 @@
 return function()
   require("indent_blankline").setup {
     buftype_exclude = {
-      "quickfix",
       "help",
       "nofile",
       "prompt",
+      "quickfix",
       "terminal",
     },
     filetype_exclude = {
-      "man",
-      "packer",
-      "NeogitStatus",
       "NeogitCommitView",
       "NeogitLogView",
+      "NeogitStatus",
       "TelescopePrompt",
+      "firvish",
+      "man",
+      "packer",
       "vimcmake",
     },
   }

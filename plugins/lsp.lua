@@ -219,6 +219,7 @@ return function()
       null_ls.builtins.formatting.alejandra,
       null_ls.builtins.formatting.eslint_d,
       null_ls.builtins.formatting.prettier,
+      null_ls.builtins.formatting.prismaFmt,
       null_ls.builtins.formatting.rustfmt,
       null_ls.builtins.formatting.shfmt.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.formatting.stylua,

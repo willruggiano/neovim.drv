@@ -125,6 +125,12 @@
         "rev": "58035354fc79c6ec42fa7b218dab90bd3968615f",
         "type": "git"
     },
+    "editorconfig.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:gpanders/editorconfig.nvim",
+        "rev": "5b9e303e1d6f7abfe616ce4cc8d3fffc554790bf",
+        "type": "git"
+    },
     "fidget.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/j-hui/fidget.nvim",

@@ -490,6 +490,11 @@ in rec {
     config = ./toggleterm.lua;
   };
 
+  twilight = {
+    src = sources."twilight.nvim";
+    config = true;
+  };
+
   undotree = {
     src = sources.undotree;
     config = ./undotree.lua;

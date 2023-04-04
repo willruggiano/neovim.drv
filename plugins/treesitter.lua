@@ -28,8 +28,6 @@ return function()
   -- }
 
   require("nvim-treesitter.configs").setup {
-    autopairs = { enable = true },
-
     -- NOTE: Parsers are installed by nix.
     ensure_installed = {},
 

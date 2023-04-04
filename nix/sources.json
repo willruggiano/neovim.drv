@@ -281,12 +281,6 @@
         "rev": "0180603b6f3cee40f83c6fc226b9ac5f85e691c4",
         "type": "git"
     },
-    "nvim-autopairs": {
-        "branch": "master",
-        "repo": "ssh://git@github.com/windwp/nvim-autopairs",
-        "rev": "0fd6519d44eac3a6736aafdb3fe9da916c3701d4",
-        "type": "git"
-    },
     "nvim-bqf": {
         "branch": "main",
         "repo": "ssh://git@github.com/kevinhwang91/nvim-bqf",

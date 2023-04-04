@@ -350,11 +350,6 @@ in rec {
     config = ./neogit.lua;
   };
 
-  nvim-autopairs = {
-    config = true;
-    src = sources.nvim-autopairs;
-  };
-
   nvim-cheat = {
     src = sources."nvim-cheat.sh";
     config = ./cheat.lua;

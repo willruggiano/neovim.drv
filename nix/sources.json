@@ -14,7 +14,7 @@
     "buffers.firvish": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/buffers.firvish",
-        "rev": "77ff6add80630a30fb5dbccaa1c82dd6860a387f",
+        "rev": "37efc29b97f515c6cdd9dac821e026d2855463a7",
         "type": "git"
     },
     "cargo-expand.nvim": {

@@ -176,10 +176,12 @@ in rec {
 
   firvish = {
     src = sources."firvish.nvim";
+    # src = /home/bombadil/dev/firvish.nvim;
     config = ./firvish.lua;
     dependencies = {
       buffers-firvish = {
         src = sources."buffers.firvish";
+        # src = /home/bombadil/dev/buffers.firvish;
       };
       # git-firvish = {
       #   src = sources."git.firvish";
@@ -187,9 +189,10 @@ in rec {
       # firvish-history = {
       #   src = sources."history.firvish";
       # };
-      # jobs-firvish = {
-      #   src = sources."jobs.firvish";
-      # };
+      jobs-firvish = {
+        src = sources."jobs.firvish";
+        # src = /home/bombadil/dev/jobs.firvish;
+      };
     };
   };
 

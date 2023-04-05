@@ -138,9 +138,9 @@
         "type": "git"
     },
     "firvish.nvim": {
-        "branch": "wip/v2.0",
+        "branch": "main",
         "repo": "git@github.com:willruggiano/firvish.nvim",
-        "rev": "c633f19625d4db36ba1c7f425237153034ae5edd",
+        "rev": "5d0d5f9ba3df61c6891f11c95dd0904efd7096d3",
         "type": "git"
     },
     "flit.nvim": {

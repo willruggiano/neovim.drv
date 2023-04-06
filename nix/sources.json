@@ -401,6 +401,12 @@
         "rev": "253d34830709d690f013daf2853a9d21ad7accab",
         "type": "git"
     },
+    "rainbow_csv": {
+        "branch": "master",
+        "repo": "git@github.com:mechatroner/rainbow_csv",
+        "rev": "7453a3f9679f0c753ec9d77f9ea8588778f35aeb",
+        "type": "git"
+    },
     "refactoring.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/theprimeagen/refactoring.nvim",

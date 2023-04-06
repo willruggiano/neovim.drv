@@ -14,7 +14,7 @@
     "buffers.firvish": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/buffers.firvish",
-        "rev": "37efc29b97f515c6cdd9dac821e026d2855463a7",
+        "rev": "4d76d5273f2a27f486e0bc28267dc9fccb520b99",
         "type": "git"
     },
     "cargo-expand.nvim": {
@@ -140,7 +140,7 @@
     "firvish.nvim": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/firvish.nvim",
-        "rev": "5d0d5f9ba3df61c6891f11c95dd0904efd7096d3",
+        "rev": "2acca4a5edc5eed931544ca01d7dfe1e337e2e9c",
         "type": "git"
     },
     "flit.nvim": {
@@ -200,7 +200,7 @@
     "jobs.firvish": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/jobs.firvish",
-        "rev": "c3e0374a93dbc1cbe7be248fc12e770e4e4a89a1",
+        "rev": "7b214c02306200241e55132d402da42423b434f2",
         "type": "git"
     },
     "kommentary": {

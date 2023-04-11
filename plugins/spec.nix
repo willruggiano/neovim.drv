@@ -156,10 +156,6 @@ in rec {
     src = sources.".nvim.nvim";
   };
 
-  editorconfig = {
-    src = sources."editorconfig.nvim";
-  };
-
   fidget = {
     src = sources."fidget.nvim";
     config = {

@@ -1,9 +1,10 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    devenv.url = "github:cachix/devenv";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    neovim.url = "github:neovim/neovim?dir=contrib";
     neovim-nix.url = "github:willruggiano/neovim.nix";
+    neovim.url = "github:neovim/neovim?dir=contrib";
     pre-commit.url = "github:cachix/pre-commit-hooks.nix";
     sg-nvim.url = "github:sourcegraph/sg.nvim";
   };
@@ -11,6 +12,7 @@
   outputs = {flake-parts, ...} @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
+        inputs.devenv.flakeModule
         inputs.neovim-nix.flakeModule
         inputs.pre-commit.flakeModule
         ./neovim.nix
@@ -30,24 +32,19 @@
           update-grammars.program = nvim-treesitter.update-grammars;
         };
 
-        devShells.default = pkgs.mkShell {
+        devenv.shells.default = {
           name = "neovim";
-          buildInputs = with pkgs; with nodePackages; [niv nodejs];
-          shellHook = ''
-            ${config.pre-commit.installationScript}
-          '';
+          packages = with pkgs; [niv nodejs];
+
+          pre-commit.hooks = {
+            alejandra.enable = true;
+            stylua.enable = true;
+          };
         };
 
         packages = {
           default = config.neovim.final;
           inherit nvim-treesitter;
-        };
-
-        pre-commit = {
-          settings = {
-            hooks.alejandra.enable = true;
-            hooks.stylua.enable = true;
-          };
         };
       };
     };

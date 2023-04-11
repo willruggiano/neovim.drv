@@ -239,6 +239,12 @@
         "rev": "c68b3a003483cf382428a43035079f78474cd11e",
         "type": "git"
     },
+    "luafun": {
+        "branch": "master",
+        "repo": "git@github.com:luafun/luafun",
+        "rev": "cb6a7e25d4b55d9578fd371d1474b00e47bd29f3",
+        "type": "git"
+    },
     "lualine.nvim": {
         "branch": "master",
         "repo": "git@github.com:nvim-lualine/lualine.nvim",

@@ -5,12 +5,21 @@ return function()
     prefer_single_line_comments = true,
   })
 
+  config.configure_language("javascript", {
+    prefer_single_line_comments = true,
+  })
+
   config.configure_language("lua", {
     prefer_single_line_comments = true,
   })
 
   config.configure_language("nix", {
     single_line_comment_string = "#",
+    prefer_single_line_comments = true,
+  })
+
+  config.configure_language("prisma", {
+    single_line_comment_string = "//",
     prefer_single_line_comments = true,
   })
 

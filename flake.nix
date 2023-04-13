@@ -27,18 +27,24 @@
       }: let
         nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
       in {
-        apps = {
-          default.program = config.neovim.final;
-          update-grammars.program = nvim-treesitter.update-grammars;
-        };
+        apps.default.program = config.neovim.final;
 
         devenv.shells.default = {
           name = "neovim";
           packages = with pkgs; [niv nodejs];
-
           pre-commit.hooks = {
             alejandra.enable = true;
             stylua.enable = true;
+          };
+          scripts = {
+            update-grammars.exec = ''
+              nix run .#nvim-treesitter.update-grammars
+              git commit -am 'chore: update treesitter grammars'
+            '';
+            update-plugin.exec = ''
+              niv update $1
+              git commit -am "chore: update $1"
+            '';
           };
         };
 

@@ -2,7 +2,7 @@
     ".nvim.nvim": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/.nvim.nvim",
-        "rev": "f7a538e09bdd6020d7c4c31155fa16aeb631fe27",
+        "rev": "98c8fed572ffd9eaf4f8046435c7c63b38f438d4",
         "type": "git"
     },
     "bufdelete.nvim": {

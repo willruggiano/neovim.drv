@@ -38,7 +38,7 @@
           };
           scripts = {
             update-grammars.exec = ''
-              nix run .#nvim-treesitter.update-grammars
+              nix run .#nvim-treesitter.update-grammars -- ./pkgs/nvim-treesitter
               git commit -am 'chore: update treesitter grammars'
             '';
             update-plugin.exec = ''

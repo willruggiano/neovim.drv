@@ -1,1 +1,1 @@
-vim.opt_local.syntax = "on"
+vim.treesitter.start()

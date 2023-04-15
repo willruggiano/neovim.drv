@@ -1,9 +1,9 @@
 {
   "url": "https://github.com/vigoux/tree-sitter-viml",
-  "rev": "e39a7bbcfdcfc7900629962b785c7e14503ae590",
-  "date": "2023-02-06T05:55:47+01:00",
-  "path": "/nix/store/vmxgi77aglrd844bl91rzy2bys2vi2v8-tree-sitter-viml-e39a7bb",
-  "sha256": "0p9vkl4z0kvyl3mv71rq57zghddvl2ghxbir2amjgrwb00gh0xbz",
+  "rev": "cd63bd20644a419d209b625d21258617580273d2",
+  "date": "2023-04-06T10:16:18+02:00",
+  "path": "/nix/store/lk7l0mzmvcpp0giy8rs79wpj7k4vaka6-tree-sitter-viml-cd63bd2",
+  "sha256": "0hfgrvd4b4lk2fb9h3xcz8jykdh34bm4q5md2zibpb2824q6rvzn",
   "fetchLFS": false,
   "fetchSubmodules": false,
   "deepClone": false,

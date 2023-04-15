@@ -2,10 +2,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     devenv.url = "github:cachix/devenv";
-    flake-parts.url = "github:hercules-ci/flake-parts";
     neovim-nix.url = "github:willruggiano/neovim.nix";
     neovim.url = "github:neovim/neovim?dir=contrib";
-    pre-commit.url = "github:cachix/pre-commit-hooks.nix";
+    neovim.inputs.nixpkgs.follows = "nixpkgs";
     sg-nvim.url = "github:sourcegraph/sg.nvim";
   };
 
@@ -14,7 +13,6 @@
       imports = [
         inputs.devenv.flakeModule
         inputs.neovim-nix.flakeModule
-        inputs.pre-commit.flakeModule
         ./neovim.nix
       ];
 
@@ -37,13 +35,19 @@
             stylua.enable = true;
           };
           scripts = {
-            update-grammars.exec = ''
+            update-nvim-treesitter.exec = ''
+              niv update nvim-treesitter
               nix run .#nvim-treesitter.update-grammars -- ./pkgs/nvim-treesitter
-              git commit -am 'chore: update treesitter grammars'
+              git commit -am 'chore: update nvim-treesitter'
             '';
             update-plugin.exec = ''
-              niv update $1
-              git commit -am "chore: update $1"
+              [ $# -eq 0 ] && {
+                niv update
+                git commit -am "chore: update all plugins"
+              } || {
+                niv update $1
+                git commit -am "chore: update $1"
+              }
             '';
           };
         };

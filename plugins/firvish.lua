@@ -12,11 +12,11 @@ return function()
 
   local nnoremap = require("bombadil.lib.keymap").nnoremap
 
-  if has_netrw then
-    nnoremap("-", function()
-      require("firvish").extensions.netrw()
-    end, { desc = "Explore" })
-  end
+  -- if has_netrw then
+  --   nnoremap("-", function()
+  --     require("firvish").extensions.netrw()
+  --   end, { desc = "Explore" })
+  -- end
 
   nnoremap("<space>b", function()
     require("firvish").extensions.buffers()

@@ -189,6 +189,10 @@ in rec {
         src = sources."jobs.firvish";
         # src = /home/bombadil/dev/jobs.firvish;
       };
+      netrw-firvish = {
+        src = sources."netrw.firvish";
+        # src = /home/bombadil/dev/netrw.firvish;
+      };
     };
   };
 
@@ -257,16 +261,16 @@ in rec {
     };
   };
 
-  lir = {
-    config = ./lir.lua;
-    dependencies = {
-      inherit firvish nvim-web-devicons plenary;
-      git_status = {
-        src = sources."lir-git-status.nvim";
-      };
-    };
-    src = sources."lir.nvim";
-  };
+  # lir = {
+  #   config = ./lir.lua;
+  #   dependencies = {
+  #     inherit firvish nvim-web-devicons plenary;
+  #     git_status = {
+  #       src = sources."lir-git-status.nvim";
+  #     };
+  #   };
+  #   src = sources."lir.nvim";
+  # };
 
   lspconfig = {
     config = ./lsp.lua;
@@ -307,7 +311,7 @@ in rec {
     src = sources."lualine.nvim";
     config = ./lualine.lua;
     dependencies = {
-      inherit lir;
+      # inherit lir;
     };
   };
 

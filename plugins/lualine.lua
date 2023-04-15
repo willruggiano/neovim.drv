@@ -1,8 +1,6 @@
 return function()
   local extensions = {}
 
-  local lir = require "lir.vim"
-
   extensions.firvish = {
     filetypes = { "firvish" },
     sections = {
@@ -34,7 +32,7 @@ return function()
       lualine_b = { "branch" },
       lualine_c = {
         function()
-          return lir.get_context().dir
+          return require("lir.vim").get_context().dir
         end,
       },
       lualine_x = { "encoding", "fileformat", "filetype" },
@@ -44,7 +42,7 @@ return function()
     inactive_sections = {
       lualine_c = {
         function()
-          return lir.get_context().dir
+          return require("lir.vim").get_context().dir
         end,
       },
       lualine_x = { "location" },

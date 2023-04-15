@@ -14,7 +14,7 @@
     "buffers.firvish": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/buffers.firvish",
-        "rev": "4d76d5273f2a27f486e0bc28267dc9fccb520b99",
+        "rev": "36ca2a62efce5c4b9a711727b500d572ac1c31f8",
         "type": "git"
     },
     "cargo-expand.nvim": {
@@ -134,7 +134,7 @@
     "firvish.nvim": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/firvish.nvim",
-        "rev": "2acca4a5edc5eed931544ca01d7dfe1e337e2e9c",
+        "rev": "dcf50b62fea84c706980145cf235e6a3383205f3",
         "type": "git"
     },
     "flit.nvim": {
@@ -194,7 +194,7 @@
     "jobs.firvish": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/jobs.firvish",
-        "rev": "7b214c02306200241e55132d402da42423b434f2",
+        "rev": "bd28a779bd281b87e9e6c02aadd4313c0c737874",
         "type": "git"
     },
     "kommentary": {
@@ -267,6 +267,12 @@
         "branch": "master",
         "repo": "ssh://git@github.com/timuntersberger/neogit",
         "rev": "039ff3212ec43cc4d3332956dfb54e263c8d5033",
+        "type": "git"
+    },
+    "netrw.firvish": {
+        "branch": "main",
+        "repo": "git@github.com:willruggiano/netrw.firvish",
+        "rev": "522adec5d7006dd934ad9dff60a4e1e1aea21687",
         "type": "git"
     },
     "nui.nvim": {

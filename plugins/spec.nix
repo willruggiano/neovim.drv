@@ -190,8 +190,8 @@ in rec {
         # src = /home/bombadil/dev/jobs.firvish;
       };
       netrw-firvish = {
-        src = sources."netrw.firvish";
-        # src = /home/bombadil/dev/netrw.firvish;
+        # src = sources."netrw.firvish";
+        src = /home/bombadil/dev/netrw.firvish;
       };
     };
   };

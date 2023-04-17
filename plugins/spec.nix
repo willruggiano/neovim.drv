@@ -261,16 +261,16 @@ in rec {
     };
   };
 
-  lir = {
-    config = ./lir.lua;
-    dependencies = {
-      inherit firvish nvim-web-devicons plenary;
-      git_status = {
-        src = sources."lir-git-status.nvim";
-      };
-    };
-    src = sources."lir.nvim";
-  };
+  # lir = {
+  #   config = ./lir.lua;
+  #   dependencies = {
+  #     inherit firvish nvim-web-devicons plenary;
+  #     git_status = {
+  #       src = sources."lir-git-status.nvim";
+  #     };
+  #   };
+  #   src = sources."lir.nvim";
+  # };
 
   lspconfig = {
     config = ./lsp.lua;

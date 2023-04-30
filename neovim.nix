@@ -23,8 +23,11 @@
           (lib.optionals stdenv.isLinux elinks)
           # C++
           clang-tools
+          cmake-format
           cmake-language-server
           cppcheck
+          # General
+          nodePackages.prettier
           # Git
           lazygit
           # GraphQL
@@ -33,17 +36,26 @@
           nodePackages.jsonlint
           # Lua
           luajitPackages.luacheck
+          stylua
           (lib.optionals stdenv.isLinux sumneko-lua-language-server)
           # Markdown
           marksman
           # Nix
+          alejandra
           nil
+          statix
           # Nodejs (e.g. for copilot)
           nodejs
           # Python
           nodePackages.pyright
+          yapf
           # Rust
           rust-analyzer
+          # Shell
+          shellcheck
+          shfmt
+          # Spelling
+          codespell
           # Sourcegraph
           inputs'.sg-nvim.packages.default
           # Typescript
@@ -52,7 +64,6 @@
           zls
         ];
 
-        # TODO: Should this just be lazy? Instead of neovim.lazy?
         lazy = {
           plugins = import ./plugins/spec.nix {
             inherit inputs' pkgs;

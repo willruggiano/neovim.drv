@@ -17,7 +17,7 @@
         ./neovim.nix
       ];
 
-      systems = ["x86_64-linux"];
+      systems = ["aarch64-darwin" "x86_64-linux"];
       perSystem = {
         config,
         pkgs,

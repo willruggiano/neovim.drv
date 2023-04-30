@@ -17,52 +17,55 @@
         # a default version of some lsp (rust-analyzer), but a project might
         # provide it's own version via direnv; neovim will use the latter,
         # project-specific version of the tool.
-        paths = with pkgs; [
-          # Docsets
-          dasht
-          (lib.optionals stdenv.isLinux elinks)
-          # C++
-          clang-tools
-          cmake-format
-          cmake-language-server
-          cppcheck
-          # General
-          nodePackages.prettier
-          # Git
-          lazygit
-          # GraphQL
-          nodePackages.graphql-language-service-cli
-          # Json
-          nodePackages.jsonlint
-          # Lua
-          luajitPackages.luacheck
-          stylua
-          (lib.optionals stdenv.isLinux sumneko-lua-language-server)
-          # Markdown
-          marksman
-          # Nix
-          alejandra
-          nil
-          statix
-          # Nodejs (e.g. for copilot)
-          nodejs
-          # Python
-          nodePackages.pyright
-          yapf
-          # Rust
-          rust-analyzer
-          # Shell
-          shellcheck
-          shfmt
-          # Spelling
-          codespell
-          # Sourcegraph
-          inputs'.sg-nvim.packages.default
-          # Typescript
-          nodePackages.typescript-language-server
-          # Zig
-          zls
-        ];
+        paths = with pkgs;
+          [
+            # Docsets
+            dasht
+            # C++
+            clang-tools
+            cmake-format
+            cmake-language-server
+            cppcheck
+            # General
+            nodePackages.prettier
+            # Git
+            lazygit
+            # GraphQL
+            nodePackages.graphql-language-service-cli
+            # Json
+            nodePackages.jsonlint
+            # Lua
+            luajitPackages.luacheck
+            stylua
+            # Markdown
+            marksman
+            # Nix
+            alejandra
+            nil
+            statix
+            # Nodejs (e.g. for copilot)
+            nodejs
+            # Python
+            nodePackages.pyright
+            yapf
+            # Rust
+            rust-analyzer
+            # Shell
+            shellcheck
+            shfmt
+            # Spelling
+            codespell
+            # Sourcegraph
+            inputs'.sg-nvim.packages.default
+            # Typescript
+            nodePackages.typescript-language-server
+            # Zig
+            zls
+          ]
+          ++ (lib.optionals stdenv.isLinux [
+            elinks
+            sumneko-lua-language-server
+          ]);
 
         lazy = {
           plugins = import ./plugins/spec.nix {

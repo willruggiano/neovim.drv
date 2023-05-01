@@ -451,8 +451,8 @@
     },
     "telescope-github.nvim": {
         "branch": "master",
-        "repo": "git@github.com:nvim-telescope/telescope-github.nvim",
-        "rev": "ee95c509901c3357679e9f2f9eaac3561c811736",
+        "repo": "git@github.com:willruggiano/telescope-github.nvim",
+        "rev": "476952cf96e60efca4c230e86cf866835dfef236",
         "type": "git"
     },
     "telescope-project.nvim": {

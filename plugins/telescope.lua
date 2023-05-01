@@ -82,13 +82,10 @@ return function()
 
   telescope.load_extension "docsets"
   telescope.load_extension "fzf"
+  telescope.load_extension "gh"
   telescope.load_extension "git_worktree"
   telescope.load_extension "project"
   telescope.load_extension "ui-select"
-
-  if vim.fn.executable "gh" == 1 then
-    telescope.load_extension "gh"
-  end
 
   local nnoremap = require("bombadil.lib.keymap").nnoremap
   local mappings = {

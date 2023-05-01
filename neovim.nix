@@ -68,6 +68,22 @@
           ]);
 
         lazy = {
+          settings = {
+            performance.rtp = {
+              reset = true;
+              disabled_plugins = [
+                "gzip"
+                "matchit"
+                "matchparen"
+                "netrwPlugin"
+                "shada"
+                "spellfile"
+                "tarPlugin"
+                "tohtml"
+                "zipPlugin"
+              ];
+            };
+          };
           plugins = import ./plugins/spec.nix {
             inherit inputs' pkgs;
             neovim-utils = utils;

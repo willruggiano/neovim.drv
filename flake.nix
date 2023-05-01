@@ -2,6 +2,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     devenv.url = "github:cachix/devenv";
+    # FIXME: see https://github.com/cachix/devenv/issues/528
+    nix2container.url = "github:nlewo/nix2container";
+    mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
     flake-parts.url = "github:hercules-ci/flake-parts";
     neovim-nix.url = "github:willruggiano/neovim.nix";
     neovim.url = "github:neovim/neovim?dir=contrib";

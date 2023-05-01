@@ -35,7 +35,27 @@ return function()
           return require("lir.vim").get_context().dir
         end,
       },
-      lualine_x = { "encoding", "fileformat", "filetype" },
+      lualine_x = { "filetype" },
+      lualine_y = { "progress" },
+      lualine_z = { "location" },
+    },
+    inactive_sections = {
+      lualine_c = {
+        function()
+          return require("lir.vim").get_context().dir
+        end,
+      },
+      lualine_x = { "location" },
+    },
+  }
+
+  extensions.telescope = {
+    filetypes = { "TelescopePrompt" },
+    sections = {
+      lualine_a = { "mode" },
+      lualine_b = { "branch" },
+      lualine_c = {},
+      lualine_x = { "filetype" },
       lualine_y = { "progress" },
       lualine_z = { "location" },
     },
@@ -110,6 +130,7 @@ return function()
       "toggleterm",
       extensions.firvish,
       extensions.lir,
+      extensions.telescope,
     },
   }
 end

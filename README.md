@@ -14,7 +14,7 @@ nix run github:willruggiano/neovim.drv
 ```
 nix/         # contains niv sources for various packages
 pkgs/        # contains custom nix derivations for a few packages
-plugins/     # where all of the lua code is for various plugins
+plugins/     # where all the lua code is for various plugins
   bombadil/  # my personal "plugin", with my colorscheme, keymaps, options, et al
 ```
 

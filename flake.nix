@@ -26,9 +26,7 @@
         pkgs,
         inputs',
         ...
-      }: let
-        nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
-      in {
+      }: {
         apps.default.program = config.neovim.final;
 
         devenv.shells.default = {
@@ -56,10 +54,7 @@
           };
         };
 
-        packages = {
-          default = config.neovim.final;
-          inherit nvim-treesitter;
-        };
+        packages.default = config.neovim.final;
       };
     };
 }

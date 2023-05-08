@@ -27,8 +27,9 @@
             cmake-language-server
             cppcheck
             # General
-            nodePackages.cspell
+            actionlint
             nodePackages.prettier
+            (pkgs.callPackage ./pkgs/languagetool-rs {})
             # Git
             lazygit
             # GraphQL
@@ -53,9 +54,8 @@
             rust-analyzer
             # Shell
             shellcheck
+            shellharden
             shfmt
-            # Spelling
-            codespell
             # Sourcegraph
             inputs'.sg-nvim.packages.default
             # Typescript

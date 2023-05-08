@@ -302,9 +302,6 @@ in rec {
               };
             };
           };
-          cspell = {
-            src = sources."cspell.nvim";
-          };
           refactoring = {
             src = sources."refactoring.nvim";
           };

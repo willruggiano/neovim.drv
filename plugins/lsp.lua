@@ -206,7 +206,6 @@ return function()
   -- TODO: Move to separate file
   local null_ls = require "null-ls"
   local custom_sources = require "bombadil.lsp.null-ls"
-  local cspell = require "cspell"
   null_ls.setup {
     debug = true,
     on_attach = on_attach,
@@ -221,23 +220,25 @@ return function()
       null_ls.builtins.formatting.prettier,
       null_ls.builtins.formatting.prismaFmt,
       null_ls.builtins.formatting.rustfmt,
+      null_ls.builtins.formatting.shellharden.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.formatting.shfmt.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.formatting.stylua,
       custom_sources.jsonnet.formatting,
       -- Diagnostics
-      cspell.diagnostics,
+      null_ls.builtins.diagnostics.actionlint,
       null_ls.builtins.diagnostics.eslint_d,
       null_ls.builtins.diagnostics.jsonlint,
       null_ls.builtins.diagnostics.luacheck.with {
         extra_args = { "--globals", "vim", "--no-max-line-length" },
       },
+      null_ls.builtins.diagnostics.ltrs,
       null_ls.builtins.diagnostics.shellcheck.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.diagnostics.statix,
 
       -- Code actions
-      cspell.code_actions.with { config_file_preferred_name = ".cspell.config.json" },
       null_ls.builtins.code_actions.eslint_d,
       null_ls.builtins.code_actions.gitsigns,
+      null_ls.builtins.code_actions.ltrs,
       null_ls.builtins.code_actions.refactoring,
       null_ls.builtins.code_actions.shellcheck.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.code_actions.statix,

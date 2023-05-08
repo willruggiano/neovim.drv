@@ -206,6 +206,7 @@ return function()
   -- TODO: Move to separate file
   local null_ls = require "null-ls"
   local custom_sources = require "bombadil.lsp.null-ls"
+  local cspell = require "cspell"
   null_ls.setup {
     debug = true,
     on_attach = on_attach,
@@ -215,7 +216,6 @@ return function()
         extra_args = { "--style=file" },
       },
       null_ls.builtins.formatting.cmake_format,
-      -- null_ls.builtins.formatting.isort, -- via pylsp
       null_ls.builtins.formatting.alejandra,
       null_ls.builtins.formatting.eslint_d,
       null_ls.builtins.formatting.prettier,
@@ -223,10 +223,9 @@ return function()
       null_ls.builtins.formatting.rustfmt,
       null_ls.builtins.formatting.shfmt.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.formatting.stylua,
-      -- null_ls.builtins.formatting.yapf, -- via pylsp
       custom_sources.jsonnet.formatting,
       -- Diagnostics
-      null_ls.builtins.diagnostics.codespell.with { disabled_filetypes = { "log" } },
+      cspell.diagnostics,
       null_ls.builtins.diagnostics.eslint_d,
       null_ls.builtins.diagnostics.jsonlint,
       null_ls.builtins.diagnostics.luacheck.with {
@@ -234,20 +233,16 @@ return function()
       },
       null_ls.builtins.diagnostics.shellcheck.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.diagnostics.statix,
-      -- custom_sources.statix.diagnostics,
 
       -- Code actions
+      cspell.code_actions.with { config_file_preferred_name = ".cspell.config.json" },
       null_ls.builtins.code_actions.eslint_d,
       null_ls.builtins.code_actions.gitsigns,
       null_ls.builtins.code_actions.refactoring,
       null_ls.builtins.code_actions.shellcheck.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.code_actions.statix,
-      -- custom_sources.statix.code_actions,
       -- Hover
       null_ls.builtins.hover.dictionary,
-      -- custom_sources.man.hover,
-      -- Completion
-      -- null_ls.builtins.completion.spell,
     },
   }
 

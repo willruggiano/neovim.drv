@@ -27,6 +27,7 @@
             cmake-language-server
             cppcheck
             # General
+            nodePackages.cspell
             nodePackages.prettier
             # Git
             lazygit

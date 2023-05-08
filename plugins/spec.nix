@@ -203,6 +203,14 @@ in rec {
       neovim-utils.toLuarocksPlugin luafun;
   };
 
+  gh-actions = {
+    src = sources."gh-actions.nvim";
+    config = true;
+    dependencies = {
+      inherit plenary nui;
+    };
+  };
+
   git-worktree = {
     src = sources."git-worktree.nvim";
     config = ./git-worktree.lua;
@@ -294,6 +302,9 @@ in rec {
               };
             };
           };
+          cspell = {
+            src = sources."cspell.nvim";
+          };
           refactoring = {
             src = sources."refactoring.nvim";
           };
@@ -353,6 +364,10 @@ in rec {
     config = ./neogit.lua;
   };
 
+  nui = {
+    src = sources."nui.nvim";
+  };
+
   nvim-cheat = {
     src = sources."nvim-cheat.sh";
     config = ./cheat.lua;
@@ -401,9 +416,7 @@ in rec {
     src = sources."package-info.nvim";
     config = true;
     dependencies = {
-      nui = {
-        src = sources."nui.nvim";
-      };
+      inherit nui;
     };
   };
 

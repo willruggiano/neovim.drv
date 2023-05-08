@@ -113,6 +113,12 @@
         "rev": "1d4bb1e7a0fe8bae3f97061be5fbf6f9081a27e2",
         "type": "git"
     },
+    "cspell.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:davidmh/cspell.nvim",
+        "rev": "336034f5f0ac89075306e9f3d7aefecf6dce8a61",
+        "type": "git"
+    },
     "dial.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/monaqa/dial.nvim",
@@ -153,6 +159,12 @@
         "branch": "master",
         "repo": "git@github.com:romgrk/fzy-lua-native",
         "rev": "45148b3f70d244e8b8b5db60df447a2b7ac2de9d",
+        "type": "git"
+    },
+    "gh-actions.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:topaxi/gh-actions.nvim",
+        "rev": "ac86453f14c91928820205a0a4e3247c20621855",
         "type": "git"
     },
     "git-worktree.nvim": {

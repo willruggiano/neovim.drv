@@ -283,10 +283,10 @@ in rec {
   lspconfig = {
     config = ./lsp.lua;
     dependencies = {
+      inherit fun lspkind;
       clangd_extensions = {
         src = sources."clangd_extensions.nvim";
       };
-      inherit fun lspkind;
       neodev = {
         src = sources."neodev.nvim";
       };
@@ -306,6 +306,9 @@ in rec {
             src = sources."refactoring.nvim";
           };
         };
+      };
+      schemastore = {
+        src = sources."SchemaStore.nvim";
       };
     };
     src = sources.nvim-lspconfig;

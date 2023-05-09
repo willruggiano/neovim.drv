@@ -5,6 +5,12 @@
         "rev": "98c8fed572ffd9eaf4f8046435c7c63b38f438d4",
         "type": "git"
     },
+    "SchemaStore.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:b0o/SchemaStore.nvim",
+        "rev": "b8e6c7d966857e8ff14d9b6a23eec9214d99db32",
+        "type": "git"
+    },
     "bufdelete.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/famiu/bufdelete.nvim",

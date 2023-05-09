@@ -36,6 +36,7 @@
             nodePackages.graphql-language-service-cli
             # Json
             nodePackages.jsonlint
+            nodePackages.vscode-json-languageserver
             # Lua
             luajitPackages.luacheck
             stylua

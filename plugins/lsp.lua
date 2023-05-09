@@ -302,6 +302,19 @@ return function()
     },
   }
 
+  lspconfig.jsonls.setup {
+    cmd = { "vscode-json-languageserver", "--stdio" },
+    on_init = on_init,
+    on_attach = on_attach,
+    capabilities = updated_capabilities,
+    settings = {
+      json = {
+        schemas = require("schemastore").json.schemas(),
+        validate = { enable = true },
+      },
+    },
+  }
+
   lspconfig.lua_ls.setup {
     on_init = on_init,
     on_attach = on_attach,

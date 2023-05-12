@@ -2,8 +2,12 @@ return function()
   local telescope = require "telescope"
   telescope.load_extension "gh"
 
-  require("litee.lib").setup()
-  require("litee.gh").setup()
+  require("litee.lib").setup {
+    icon_set = "nerd",
+  }
+  require("litee.gh").setup {
+    icon_set = "nerd",
+  }
 
   local diff = require "litee.gh.pr.diff_view"
   local pr = require "litee.gh.pr"

@@ -173,6 +173,12 @@
         "rev": "ac86453f14c91928820205a0a4e3247c20621855",
         "type": "git"
     },
+    "gh.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:ldelossa/gh.nvim",
+        "rev": "2b5551656c1b896bf4ae06546eaaab00311f9a18",
+        "type": "git"
+    },
     "git-worktree.nvim": {
         "branch": "master",
         "repo": "git@github.com:ThePrimeagen/git-worktree.nvim",
@@ -243,6 +249,12 @@
         "branch": "master",
         "repo": "ssh://git@github.com/tamago324/lir.nvim",
         "rev": "1aa871f20637eccc4e1e26b0fbcf9aafc9b6caf7",
+        "type": "git"
+    },
+    "litee.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:ldelossa/litee.nvim",
+        "rev": "bf366a1414fd0f9401631ac8884f2f9fa4bf18d2",
         "type": "git"
     },
     "lspkind-nvim": {

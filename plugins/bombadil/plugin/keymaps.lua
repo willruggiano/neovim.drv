@@ -90,3 +90,12 @@ end, { desc = "Move line down" })
 vnoremap("<M-k>", function()
   vim.cmd [[m '<-2<CR>gv=gv]]
 end, { desc = "Move line up" })
+
+require("which-key").register({
+  g = { name = "+Git" },
+  h = { name = "+Hunk" },
+  m = { name = "+Mark" },
+  t = { name = "+Toggle" },
+  w = { name = "+Workspace" },
+  z = { name = "+Zk" },
+}, { prefix = "<leader>" })

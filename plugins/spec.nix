@@ -200,17 +200,33 @@ in rec {
       neovim-utils.toLuarocksPlugin luafun;
   };
 
-  gh-actions = {
-    src = sources."gh-actions.nvim";
-    config = true;
+  gh = {
+    src = sources."gh.nvim";
+    config = ./github.lua;
     dependencies = {
-      inherit plenary nui;
+      inherit telescope which-key;
+      gh-actions = {
+        src = sources."gh-actions.nvim";
+        config = true;
+        dependencies = {
+          inherit plenary nui;
+        };
+      };
+      litee = {
+        src = sources."litee.nvim";
+      };
+      telescope-github = {
+        src = sources."telescope-github.nvim";
+      };
     };
   };
 
   git-worktree = {
     src = sources."git-worktree.nvim";
     config = ./git-worktree.lua;
+    dependencies = {
+      inherit telescope which-key;
+    };
   };
 
   gitsigns = {
@@ -479,7 +495,7 @@ in rec {
     src = sources."telescope.nvim";
     config = ./telescope.lua;
     dependencies = {
-      inherit git-worktree nvim-web-devicons;
+      inherit nvim-web-devicons;
       telescope-docsets = {
         src = sources."telescope-docsets.nvim";
       };
@@ -489,9 +505,6 @@ in rec {
           src = sources."telescope-fzf-native.nvim";
           buildPhase = "";
         };
-      };
-      telescope-github = {
-        src = sources."telescope-github.nvim";
       };
       telescope-project = {
         src = sources."telescope-project.nvim";

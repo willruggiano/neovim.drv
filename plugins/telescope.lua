@@ -82,8 +82,6 @@ return function()
 
   telescope.load_extension "docsets"
   telescope.load_extension "fzf"
-  telescope.load_extension "gh"
-  telescope.load_extension "git_worktree"
   telescope.load_extension "project"
   telescope.load_extension "ui-select"
 
@@ -112,30 +110,6 @@ return function()
         require("telescope").extensions.arecibo.websearch { previewer = false }
       end,
       { desc = "Websearch" },
-    },
-    ["<leader>ghg"] = {
-      function()
-        require("telescope").extensions.gh.gist()
-      end,
-      { desc = "GitHub gists" },
-    },
-    ["<leader>ghi"] = {
-      function()
-        require("telescope").extensions.gh.issues()
-      end,
-      { desc = "GitHub issues" },
-    },
-    ["<leader>ghp"] = {
-      function()
-        require("telescope").extensions.gh.pull_request()
-      end,
-      { desc = "GitHub pull requests" },
-    },
-    ["<leader>ghw"] = {
-      function()
-        require("telescope").extensions.gh.run()
-      end,
-      { desc = "GitHub workflows" },
     },
     ["<space>k"] = {
       function()

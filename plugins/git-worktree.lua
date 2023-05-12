@@ -1,14 +1,23 @@
 return function()
   require("git-worktree").setup {}
 
-  local nnoremap = require("bombadil.lib.keymap").nnoremap
+  local telescope = require "telescope"
+  telescope.load_extension "git_worktree"
 
-  nnoremap("<leader>gwc", function()
-    -- TODO: I don't like having to manually specify the path to the worktree.
-    require("telescope").extensions.git_worktree.create_git_worktree()
-  end, { desc = "Create worktree" })
+  local prefix = "<leader>gw"
+  local mappings = {
+    [prefix .. "c"] = {
+      telescope.extensions.git_worktree.create_git_worktree,
+      { desc = "create" },
+    },
+    [prefix .. "l"] = {
+      telescope.extensions.git_worktree.git_worktrees,
+      { desc = "list" },
+    },
+  }
+  require("bombadil.lib.keymap").noremaps("n", mappings)
 
-  nnoremap("<leader>gwl", function()
-    require("telescope").extensions.git_worktree.git_worktrees()
-  end, { desc = "List worktrees" })
+  require("which-key").register({
+    name = "+Worktree",
+  }, { prefix = prefix })
 end

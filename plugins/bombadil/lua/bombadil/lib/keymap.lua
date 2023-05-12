@@ -36,14 +36,14 @@ end
 M.noremaps = function(modes, mappings, opts)
   opts = opts or {}
   for lhs, mapping in pairs(mappings) do
-    M.noremap(modes, lhs, mapping[1], with_opts(mapping[2], opts))
+    M.noremap(modes, lhs, mapping[1], with_opts(noremap, with_opts(mapping[2], opts)))
   end
 end
 
 ---Shorthand for `noremaps` but buffer local
 ---@see M.noremaps
 M.buf_noremaps = function(modes, mappings, opts)
-  M.noremaps(modes, mappings, with_buffer(opts))
+  M.noremaps(modes, mappings, with_opts(noremap, with_buffer(opts)))
 end
 
 local functions = {
@@ -53,7 +53,6 @@ local functions = {
   v = "vnoremap",
   x = "xnoremap",
 }
-local proto = {}
 
 for mode, name in pairs(functions) do
   M[name] = function(lhs, rhs, opts)

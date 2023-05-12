@@ -1,6 +1,7 @@
 return function()
   local telescope = require "telescope"
   telescope.load_extension "gh"
+  telescope.load_extension "ui-select"
 
   require("litee.lib").setup {
     icon_set = "nerd",
@@ -48,25 +49,17 @@ return function()
       end,
       { desc = "gists" },
     },
-    [prefix .. "i"] = {
-      function()
-        require("telescope").extensions.gh.issues()
-      end,
-      { desc = "issues" },
-    },
     [prefix .. "ip"] = {
       issues.preview_issue_under_cursor,
       { desc = "preview" },
     },
+    [prefix .. "is"] = {
+      issues.search_issues,
+      { desc = "search" },
+    },
     [prefix .. "lt"] = {
       "<cmd>LTPanel<cr>",
       { desc = "toggle panel" },
-    },
-    [prefix .. "p"] = {
-      function()
-        require("telescope").extensions.gh.pr()
-      end,
-      { desc = "pull requests" },
     },
     [prefix .. "pc"] = {
       pr.close_pull,
@@ -91,6 +84,10 @@ return function()
     [prefix .. "pr"] = {
       pr_handlers.on_refresh,
       { desc = "refresh" },
+    },
+    [prefix .. "ps"] = {
+      pr.search_pulls,
+      { desc = "search" },
     },
     [prefix .. "pt"] = {
       pr.open_to_pr,

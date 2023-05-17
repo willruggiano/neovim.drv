@@ -110,6 +110,11 @@ in rec {
     config = ./colorizer.lua;
   };
 
+  Comment = {
+    src = sources."Comment.nvim";
+    config = ./comment.lua;
+  };
+
   dadbod = {
     src = sources.vim-dadbod;
     config = ./dadbod.lua;
@@ -246,11 +251,6 @@ in rec {
   indent_blankline = {
     src = sources."indent-blankline.nvim";
     config = ./indent-blankline.lua;
-  };
-
-  kommentary = {
-    src = sources.kommentary;
-    config = ./kommentary.lua;
   };
 
   leap = {

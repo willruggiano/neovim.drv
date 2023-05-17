@@ -5,6 +5,12 @@
         "rev": "98c8fed572ffd9eaf4f8046435c7c63b38f438d4",
         "type": "git"
     },
+    "Comment.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:numToStr/Comment.nvim",
+        "rev": "e1fe53117aab24c378d5e6deaad786789c360123",
+        "type": "git"
+    },
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",

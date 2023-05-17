@@ -108,7 +108,7 @@ return function()
         require("telescope.builtin").lsp_document_symbols,
         { buffer = bufnr, desc = "Symbols" },
       },
-      ["<leader>ww"] = {
+      ["<space>w"] = {
         require("telescope.builtin").lsp_dynamic_workspace_symbols,
         { buffer = bufnr, desc = "Workspace symbols" },
       },

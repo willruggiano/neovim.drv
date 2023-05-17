@@ -72,7 +72,7 @@ return function()
     pickers = {
       buffers = {
         mappings = {
-          n = {
+          i = {
             ["<C-d>"] = actions.delete_buffer,
           },
         },
@@ -93,6 +93,12 @@ return function()
       end,
       { desc = "Help tags" },
     },
+    ["<space>b"] = {
+      function()
+        require("telescope.builtin").buffers()
+      end,
+      { desc = "Buffers" },
+    },
     ["<space>e"] = {
       function()
         require("telescope.builtin").git_files()
@@ -104,12 +110,6 @@ return function()
         require("telescope").extensions.project.project {}
       end,
       { desc = "Projects" },
-    },
-    ["<space>w"] = {
-      function()
-        require("telescope").extensions.arecibo.websearch { previewer = false }
-      end,
-      { desc = "Websearch" },
     },
     ["<space>k"] = {
       function()

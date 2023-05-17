@@ -34,9 +34,10 @@
             lazygit
             # GraphQL
             nodePackages.graphql-language-service-cli
-            # Json
+            # Json/Yaml
             nodePackages.jsonlint
             nodePackages.vscode-json-languageserver
+            nodePackages.yaml-language-server
             # Lua
             luajitPackages.luacheck
             stylua

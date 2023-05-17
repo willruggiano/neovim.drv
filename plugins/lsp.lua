@@ -384,6 +384,18 @@ return function()
     },
   }
 
+  lspconfig.yamlls.setup {
+    on_init = on_init,
+    on_attach = on_attach,
+    capabilities = updated_capabilities,
+    settings = {
+      yaml = {
+        schemas = require("schemastore").yaml.schemas(),
+        validate = { enable = true },
+      },
+    },
+  }
+
   if pcall(require, "sg") then
     require("sg").setup {
       on_attach = on_attach,

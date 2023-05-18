@@ -29,6 +29,8 @@ nnoremap("<C-l>", "<C-w><C-l>")
 -- Better window resize
 nnoremap("+", "<C-w>+")
 nnoremap("_", "<C-w>-")
+nnoremap(">", "<C-w>>")
+nnoremap("<", "<C-w><")
 
 -- Make ESC leave terminal mode
 tnoremap("<esc>", "<C-\\><C-n>")

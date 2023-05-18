@@ -9,7 +9,7 @@
     neovim-nix.url = "github:willruggiano/neovim.nix";
     neovim.url = "github:neovim/neovim?dir=contrib";
     neovim.inputs.nixpkgs.follows = "nixpkgs";
-    sg-nvim.url = "github:sourcegraph/sg.nvim";
+    sg-nvim.url = "github:willruggiano/sg.nvim";
   };
 
   outputs = {flake-parts, ...} @ inputs:

@@ -217,11 +217,13 @@ return function()
       null_ls.builtins.formatting.cmake_format,
       null_ls.builtins.formatting.alejandra,
       null_ls.builtins.formatting.eslint_d,
+      -- null_ls.builtins.formatting.pg_format,
       null_ls.builtins.formatting.prettier,
       null_ls.builtins.formatting.prismaFmt,
       null_ls.builtins.formatting.rustfmt,
       null_ls.builtins.formatting.shellharden.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.formatting.shfmt.with { filetypes = { "bash", "sh" } },
+      null_ls.builtins.formatting.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
       null_ls.builtins.formatting.stylua,
       custom_sources.jsonnet.formatting,
       -- Diagnostics
@@ -233,6 +235,7 @@ return function()
       },
       -- null_ls.builtins.diagnostics.ltrs,
       null_ls.builtins.diagnostics.shellcheck.with { filetypes = { "bash", "sh" } },
+      null_ls.builtins.diagnostics.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
       null_ls.builtins.diagnostics.statix,
 
       -- Code actions

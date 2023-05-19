@@ -60,6 +60,9 @@
             shfmt
             # Sourcegraph
             inputs'.sg-nvim.packages.default
+            # SQL
+            pgformatter
+            sqlfluff
             # Typescript
             nodePackages.typescript-language-server
             # Zig

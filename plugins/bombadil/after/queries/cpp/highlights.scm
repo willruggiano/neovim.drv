@@ -1,4 +1,4 @@
-; vim: ft=query
+;; extends
 (
     (alias_declaration
         name: (type_identifier) @alias.name

@@ -55,6 +55,7 @@
         };
 
         packages.default = config.neovim.final;
+        packages.nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
       };
     };
 }

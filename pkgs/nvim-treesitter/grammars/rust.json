@@ -1,9 +1,9 @@
 {
   "url": "https://github.com/tree-sitter/tree-sitter-rust",
-  "rev": "fbf9e507d09d8b3c0bb9dfc4d46c31039a47dc4a",
-  "date": "2023-02-22T10:25:29+01:00",
-  "path": "/nix/store/rmqxydc3178i1zs577awfd5lvg3bqkf7-tree-sitter-rust-fbf9e50",
-  "sha256": "1accbzkp6h4c9z7sakqnrjajx08ja5w8p6j17bgnbc9vy50jhsl5",
+  "rev": "0a70e15da977489d954c219af9b50b8a722630ee",
+  "date": "2023-04-25T13:09:18+02:00",
+  "path": "/nix/store/gakkwzi5saiaj32bz85cs64ygmhi7803-tree-sitter-rust-0a70e15",
+  "sha256": "0m979bkrb7r58dapnm5plarvk3x3mvn5yyslrnrh6qgci7xmicqa",
   "fetchLFS": false,
   "fetchSubmodules": false,
   "deepClone": false,

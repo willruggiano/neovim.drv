@@ -228,7 +228,6 @@
           runHook preInstall
           mkdir -p $out/parser
           mv parser $out/parser/${name}.so
-          ln -s queries $out/queries
           runHook postInstall
         '';
 

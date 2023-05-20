@@ -45,7 +45,7 @@
             marksman
             # Nix
             alejandra
-            nil
+            inputs'.nil.packages.default
             statix
             # Nodejs (e.g. for copilot)
             nodejs
@@ -63,7 +63,7 @@
             # Typescript
             nodePackages.typescript-language-server
             # Zig
-            zls
+            inputs'.zls.packages.default
           ]
           ++ (lib.optionals stdenv.isLinux [
             elinks

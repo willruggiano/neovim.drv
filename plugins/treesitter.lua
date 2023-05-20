@@ -156,6 +156,10 @@ return function()
     --   ["storageclass.lifetime"] = "String",
     --   ["type.qualifier"] = "Keyword",
     -- },
+    zig = {
+      ["attribute"] = "@keyword",
+      ["type.qualifier"] = "@keyword",
+    },
   }
 
   for lang, maps in pairs(highlights) do

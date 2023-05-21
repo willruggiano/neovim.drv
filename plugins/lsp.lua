@@ -210,12 +210,24 @@ return function()
     debug = true,
     on_attach = on_attach,
     sources = {
-      -- Formatting
-      null_ls.builtins.formatting.clang_format.with {
-        extra_args = { "--style=file" },
-      },
-      null_ls.builtins.formatting.cmake_format,
+      custom_sources.jsonnet.formatting,
+      null_ls.builtins.code_actions.eslint_d,
+      null_ls.builtins.code_actions.gitsigns,
+      -- null_ls.builtins.code_actions.ltrs,
+      null_ls.builtins.code_actions.refactoring,
+      null_ls.builtins.code_actions.shellcheck.with { filetypes = { "bash", "sh" } },
+      null_ls.builtins.code_actions.statix,
+      null_ls.builtins.diagnostics.actionlint,
+      null_ls.builtins.diagnostics.eslint_d,
+      null_ls.builtins.diagnostics.jsonlint,
+      null_ls.builtins.diagnostics.luacheck.with { extra_args = { "--globals", "vim", "--no-max-line-length" } },
+      -- null_ls.builtins.diagnostics.ltrs,
+      null_ls.builtins.diagnostics.shellcheck.with { filetypes = { "bash", "sh" } },
+      null_ls.builtins.diagnostics.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
+      null_ls.builtins.diagnostics.statix,
       null_ls.builtins.formatting.alejandra,
+      null_ls.builtins.formatting.clang_format.with { extra_args = { "--style=file" } },
+      null_ls.builtins.formatting.cmake_format,
       null_ls.builtins.formatting.eslint_d,
       -- null_ls.builtins.formatting.pg_format,
       null_ls.builtins.formatting.prettierd,
@@ -225,27 +237,6 @@ return function()
       null_ls.builtins.formatting.shfmt.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.formatting.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
       null_ls.builtins.formatting.stylua,
-      custom_sources.jsonnet.formatting,
-      -- Diagnostics
-      null_ls.builtins.diagnostics.actionlint,
-      null_ls.builtins.diagnostics.eslint_d,
-      null_ls.builtins.diagnostics.jsonlint,
-      null_ls.builtins.diagnostics.luacheck.with {
-        extra_args = { "--globals", "vim", "--no-max-line-length" },
-      },
-      -- null_ls.builtins.diagnostics.ltrs,
-      null_ls.builtins.diagnostics.shellcheck.with { filetypes = { "bash", "sh" } },
-      null_ls.builtins.diagnostics.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
-      null_ls.builtins.diagnostics.statix,
-
-      -- Code actions
-      null_ls.builtins.code_actions.eslint_d,
-      null_ls.builtins.code_actions.gitsigns,
-      -- null_ls.builtins.code_actions.ltrs,
-      null_ls.builtins.code_actions.refactoring,
-      null_ls.builtins.code_actions.shellcheck.with { filetypes = { "bash", "sh" } },
-      null_ls.builtins.code_actions.statix,
-      -- Hover
       null_ls.builtins.hover.dictionary,
     },
   }

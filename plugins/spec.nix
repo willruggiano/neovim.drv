@@ -30,6 +30,7 @@ in rec {
   cargo-expand = {
     src = sources."cargo-expand.nvim";
     ft = "rust";
+    paths = [pkgs.cargo-expand];
   };
 
   clang-format = {
@@ -224,6 +225,7 @@ in rec {
         src = sources."telescope-github.nvim";
       };
     };
+    paths = [pkgs.gh];
   };
 
   git-worktree = {
@@ -294,6 +296,7 @@ in rec {
   };
 
   lspconfig = {
+    src = sources.nvim-lspconfig;
     config = ./lsp.lua;
     dependencies = {
       inherit fun lspkind;
@@ -314,17 +317,54 @@ in rec {
                 name = "crates";
               };
             };
+            paths = [pkgs.cargo];
           };
           refactoring = {
             src = sources."refactoring.nvim";
           };
         };
+        paths = with pkgs; [
+          (pkgs.callPackage ../pkgs/languagetool-rs {})
+          actionlint
+          alejandra
+          cmake-format
+          cppcheck
+          luajitPackages.luacheck
+          nodePackages.eslint_d
+          nodePackages.jsonlint
+          nodePackages.prettier
+          # nodePackages.pretterd
+          nodePackages.prisma
+          pgformatter
+          rustfmt
+          shellcheck
+          shellharden
+          shfmt
+          sqlfluff
+          statix
+          stylua
+          yapf
+        ];
       };
       schemastore = {
         src = sources."SchemaStore.nvim";
       };
     };
-    src = sources.nvim-lspconfig;
+    paths = with pkgs; [
+      clang-tools
+      cmake-language-server
+      inputs'.nil.packages.default
+      inputs'.sg-nvim.packages.default
+      inputs'.zls.packages.default
+      marksman
+      nodePackages.graphql-language-service-cli
+      nodePackages.pyright
+      nodePackages.typescript-language-server
+      nodePackages.vscode-json-languageserver
+      nodePackages.yaml-language-server
+      rust-analyzer
+      sumneko-lua-language-server
+    ];
   };
 
   lspkind = {
@@ -498,6 +538,7 @@ in rec {
       inherit nvim-web-devicons;
       telescope-docsets = {
         src = sources."telescope-docsets.nvim";
+        paths = with pkgs; [dasht elinks];
       };
       telescope-fzf-native = {
         package = neovim-utils.mkPlugin {
@@ -565,5 +606,6 @@ in rec {
   zk = {
     src = sources.zk-nvim;
     config = ./zk.lua;
+    paths = [pkgs.zk];
   };
 }

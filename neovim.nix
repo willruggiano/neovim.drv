@@ -10,68 +10,28 @@
       inherit (inputs'.neovim-nix.packages) utils;
     in {
       neovim = {
+        # Environment variables to bake into the neovim environment.
+        # If an environment variable is already defined, the existing definition will take precedence.
+        env = {
+          PRISMA_MIGRATION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/migration-engine";
+          PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
+          PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
+          PRISMA_INTROSPECTION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/introspection-engine";
+          PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
+          DEVENV_PROFILE = "foobar";
+        };
+
         # Tools to bake into the neovim environment.
         # These tools are *appended* to neovim's PATH variable,
         # such that if a tool is available locally (i.e. on the system PATH)
         # then it will be used instead. For example, you might want to provide
-        # a default version of some lsp (rust-analyzer), but a project might
+        # a default version of some tool (e.g. rust-analyzer), but a project might
         # provide it's own version via direnv; neovim will use the latter,
         # project-specific version of the tool.
-        paths = with pkgs;
-          [
-            # Docsets
-            dasht
-            # C++
-            clang-tools
-            cmake-format
-            cmake-language-server
-            cppcheck
-            # General
-            actionlint
-            nodePackages.prettier
-            (pkgs.callPackage ./pkgs/languagetool-rs {})
-            # Git
-            lazygit
-            # GraphQL
-            nodePackages.graphql-language-service-cli
-            # Json/Yaml
-            nodePackages.jsonlint
-            nodePackages.vscode-json-languageserver
-            nodePackages.yaml-language-server
-            # Lua
-            luajitPackages.luacheck
-            stylua
-            # Markdown
-            marksman
-            # Nix
-            alejandra
-            inputs'.nil.packages.default
-            statix
-            # Nodejs (e.g. for copilot)
-            nodejs
-            # Python
-            nodePackages.pyright
-            yapf
-            # Rust
-            rust-analyzer
-            # Shell
-            shellcheck
-            shellharden
-            shfmt
-            # Sourcegraph
-            inputs'.sg-nvim.packages.default
-            # SQL
-            pgformatter
-            sqlfluff
-            # Typescript
-            nodePackages.typescript-language-server
-            # Zig
-            inputs'.zls.packages.default
-          ]
-          ++ (lib.optionals stdenv.isLinux [
-            elinks
-            sumneko-lua-language-server
-          ]);
+        paths = with pkgs; [
+          lazygit
+          nodejs
+        ];
 
         lazy = {
           settings = {

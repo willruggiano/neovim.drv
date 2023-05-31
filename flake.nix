@@ -10,7 +10,7 @@
     neovim.url = "github:neovim/neovim?dir=contrib";
     neovim.inputs.nixpkgs.follows = "nixpkgs";
     nil.url = "github:oxalica/nil";
-    sg-nvim.url = "github:willruggiano/sg.nvim";
+    sg-nvim.url = "github:sourcegraph/sg.nvim";
     zls.url = "github:willruggiano/zls";
   };
 

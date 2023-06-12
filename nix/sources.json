@@ -239,10 +239,16 @@
         "rev": "3a80117148c6798972bb69414423311ab151d368",
         "type": "git"
     },
+    "leap-ast.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:ggandor/leap-ast.nvim",
+        "rev": "1a21b70505ebb868a1e196c0d63797e1426b53a5",
+        "type": "git"
+    },
     "leap-spooky.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/ggandor/leap-spooky.nvim",
-        "rev": "79a7a3f28897d99e5da970e7121ac8ff738e1554",
+        "rev": "b9dcc30866e6b916b2d8f3e2f3d6a2c207fffd73",
         "type": "git"
     },
     "leap.nvim": {

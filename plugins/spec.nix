@@ -263,6 +263,9 @@ in rec {
         src = sources."flit.nvim";
         config = true;
       };
+      leap-ast = {
+        src = sources."leap-ast.nvim";
+      };
       leap-spooky = {
         src = sources."leap-spooky.nvim";
         config = true;

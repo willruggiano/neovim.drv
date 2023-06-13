@@ -488,7 +488,7 @@
     "telescope-docsets.nvim": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/telescope-docsets.nvim",
-        "rev": "5ed0ab092400bda093e84f615498e260d03af161",
+        "rev": "72ad1f5e04a8b4577a681fa12ca2a5d19777b400",
         "type": "git"
     },
     "telescope-fzf-native.nvim": {

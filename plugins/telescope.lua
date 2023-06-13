@@ -55,6 +55,9 @@ return function()
     extensions = {
       docsets = {
         query_command = "dasht-query-line",
+        related = {
+          typescript = { "javascript", "typescript" },
+        },
       },
 
       fzf = {

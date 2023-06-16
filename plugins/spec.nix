@@ -306,9 +306,6 @@ in rec {
       clangd_extensions = {
         src = sources."clangd_extensions.nvim";
       };
-      inc_rename = {
-        src = sources."inc-rename.nvim";
-      };
       neodev = {
         src = sources."neodev.nvim";
       };

@@ -2,8 +2,6 @@ return function()
   local lsp = require "bombadil.lsp"
   local lspconfig = require "lspconfig"
   local lspconfig_util = require "lspconfig.util"
-  local inc_rename = require "inc_rename"
-  inc_rename.setup()
 
   lsp.kind.init {
     symbol_map = {
@@ -92,10 +90,8 @@ return function()
         { buffer = bufnr, desc = "Workspace diagnostics" },
       },
       ["<leader>rn"] = {
-        function()
-          return ":IncRename " .. vim.fn.expand "<cword>"
-        end,
-        { buffer = bufnr, desc = "Rename", expr = true },
+        vim.lsp.buf.rename,
+        { buffer = bufnr, desc = "Rename" },
       },
       ["<leader>rr"] = {
         function()

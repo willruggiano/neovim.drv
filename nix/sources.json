@@ -215,12 +215,6 @@
         "rev": "2bd6d7d3074b034e4bbbfbece34553cdae1c5160",
         "type": "git"
     },
-    "inc-rename.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:smjonas/inc-rename.nvim",
-        "rev": "fb1b7468f27d874feb209eac46be5205e20b7fd3",
-        "type": "git"
-    },
     "indent-blankline.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/lukas-reineke/indent-blankline.nvim",

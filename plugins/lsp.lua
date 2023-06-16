@@ -24,6 +24,9 @@ return function()
       end,
       prefix = "",
       spacing = 4,
+      suffix = function(diagnostic)
+        return diagnostic.source and " [" .. diagnostic.source .. "]" or ""
+      end,
     },
   }
 

@@ -178,25 +178,6 @@ in rec {
 
   firvish = {
     src = sources."firvish.nvim";
-    config = ./firvish.lua;
-    dependencies = {
-      buffers-firvish = {
-        src = sources."buffers.firvish";
-      };
-      # git-firvish = {
-      #   src = sources."git.firvish";
-      # };
-      # firvish-history = {
-      #   src = sources."history.firvish";
-      # };
-      # jobs-firvish = {
-      #   src = sources."jobs.firvish";
-      # };
-      # netrw-firvish = {
-      #   # src = sources."netrw.firvish";
-      #   src = /home/bombadil/dev/netrw.firvish;
-      # };
-    };
   };
 
   fun = {
@@ -466,6 +447,11 @@ in rec {
     dependencies = {
       inherit nvim-nonicons;
     };
+  };
+
+  overseer = {
+    src = sources."overseer.nvim";
+    config = ./overseer.lua;
   };
 
   package-info = {

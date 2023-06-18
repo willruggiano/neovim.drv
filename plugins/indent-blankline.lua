@@ -12,7 +12,6 @@ return function()
       "NeogitLogView",
       "NeogitStatus",
       "TelescopePrompt",
-      "firvish",
       "man",
       "packer",
       "vimcmake",

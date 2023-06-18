@@ -23,12 +23,6 @@
         "rev": "8933abc09df6c381d47dc271b1ee5d266541448e",
         "type": "git"
     },
-    "buffers.firvish": {
-        "branch": "main",
-        "repo": "git@github.com:willruggiano/buffers.firvish",
-        "rev": "97657bae0bfacc5e67b46ed1e2979bd35841bcf4",
-        "type": "git"
-    },
     "cargo-expand.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/willruggiano/cargo-expand.nvim",
@@ -191,12 +185,6 @@
         "rev": "d7f4e2584e81670154f07ca9fa5dd791d9c1b458",
         "type": "git"
     },
-    "git.firvish": {
-        "branch": "main",
-        "repo": "git@github.com:willruggiano/git.firvish",
-        "rev": "3d6b638c11f6c453970c34a4537b627a1389942c",
-        "type": "git"
-    },
     "gitsigns.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/lewis6991/gitsigns.nvim",
@@ -209,22 +197,10 @@
         "rev": "f7040fd0c44e7a4010369136547de5604b9c22a1",
         "type": "git"
     },
-    "history.firvish": {
-        "branch": "main",
-        "repo": "git@github.com:willruggiano/history.firvish",
-        "rev": "2bd6d7d3074b034e4bbbfbece34553cdae1c5160",
-        "type": "git"
-    },
     "indent-blankline.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/lukas-reineke/indent-blankline.nvim",
         "rev": "018bd04d80c9a73d399c1061fa0c3b14a7614399",
-        "type": "git"
-    },
-    "jobs.firvish": {
-        "branch": "main",
-        "repo": "git@github.com:willruggiano/jobs.firvish",
-        "rev": "5ccf0c228a7b82832c6f0d5762ab8e2684df4c33",
         "type": "git"
     },
     "kommentary": {
@@ -309,12 +285,6 @@
         "branch": "master",
         "repo": "ssh://git@github.com/timuntersberger/neogit",
         "rev": "69a6ca7c41b023ebf9cad70778e227b3209b40c4",
-        "type": "git"
-    },
-    "netrw.firvish": {
-        "branch": "main",
-        "repo": "git@github.com:willruggiano/netrw.firvish",
-        "rev": "522adec5d7006dd934ad9dff60a4e1e1aea21687",
         "type": "git"
     },
     "nui.nvim": {
@@ -423,6 +393,12 @@
         "branch": "master",
         "repo": "ssh://git@github.com/kyazdani42/nvim-web-devicons",
         "rev": "4ec26d67d419c12a4abaea02f1b6c57b40c08d7e",
+        "type": "git"
+    },
+    "overseer.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:stevearc/overseer.nvim",
+        "rev": "0829e7c591b8b2ef87e83d85bdd5037156502e01",
         "type": "git"
     },
     "package-info.nvim": {

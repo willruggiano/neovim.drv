@@ -1,30 +1,6 @@
 return function()
   local extensions = {}
 
-  extensions.firvish = {
-    filetypes = { "firvish" },
-    sections = {
-      lualine_a = { "mode" },
-      lualine_c = {
-        {
-          "filename",
-          path = 2,
-        },
-      },
-      lualine_y = { "progress" },
-      lualine_z = { "location" },
-    },
-    inactive_sections = {
-      lualine_c = {
-        {
-          "filename",
-          path = 2,
-        },
-      },
-      lualine_x = { "location" },
-    },
-  }
-
   extensions.lir = {
     filetypes = { "lir" },
     sections = {
@@ -128,7 +104,6 @@ return function()
     extensions = {
       "quickfix",
       "toggleterm",
-      extensions.firvish,
       extensions.lir,
       extensions.telescope,
     },

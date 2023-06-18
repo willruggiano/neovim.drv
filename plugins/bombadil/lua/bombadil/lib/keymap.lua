@@ -58,9 +58,15 @@ for mode, name in pairs(functions) do
   M[name] = function(lhs, rhs, opts)
     M.noremap(mode, lhs, rhs, opts)
   end
+  M[name .. "s"] = function(mappings, opts)
+    M.noremaps(mode, mappings, opts)
+  end
 
   M["buf_" .. name] = function(lhs, rhs, opts)
     M.buf_noremap(mode, lhs, rhs, opts)
+  end
+  M["buf_" .. name .. "s"] = function(mappings, opts)
+    M.buf_noremaps(mode, mappings, opts)
   end
 end
 

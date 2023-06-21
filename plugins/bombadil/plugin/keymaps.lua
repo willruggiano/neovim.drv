@@ -32,11 +32,8 @@ nnoremap("_", "<C-w>-")
 nnoremap(">", "<C-w>>")
 nnoremap("<", "<C-w><")
 
--- Make ESC leave terminal mode
-tnoremap("<esc>", "<C-\\><C-n>")
-tnoremap("<esc><esc>", function()
-  require("bombadil.lib.terminal").close()
-end)
+-- Leave terminal mode more ergonomically than ctrl-\ + ctrl-n
+tnoremap("<esc><esc>", "<C-\\><C-n>")
 
 -- GOAT remaps?
 xnoremap("<leader>p", [["_dP]])

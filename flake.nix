@@ -7,6 +7,7 @@
     mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
     flake-parts.url = "github:hercules-ci/flake-parts";
     neovim-nix.url = "github:willruggiano/neovim.nix";
+    neovim-nix.inputs.neovim.follows = "neovim";
     neovim.url = "github:neovim/neovim?dir=contrib";
     neovim.inputs.nixpkgs.follows = "nixpkgs";
     nil.url = "github:oxalica/nil";

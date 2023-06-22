@@ -338,7 +338,7 @@ in rec {
       clang-tools
       cmake-language-server
       inputs'.nil.packages.default
-      inputs'.sg-nvim.packages.default
+      # inputs'.sg-nvim.packages.default
       inputs'.zls.packages.default
       marksman
       nodePackages.graphql-language-service-cli
@@ -494,19 +494,19 @@ in rec {
     };
   };
 
-  sg = let
-    package = inputs'.sg-nvim.packages.default;
-  in {
-    inherit package;
-    init = pkgs.writeTextFile {
-      name = "sg.lua";
-      text = ''
-        return function()
-          package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
-        end
-      '';
-    };
-  };
+  # sg = let
+  #   package = inputs'.sg-nvim.packages.default;
+  # in {
+  #   inherit package;
+  #   init = pkgs.writeTextFile {
+  #     name = "sg.lua";
+  #     text = ''
+  #       return function()
+  #         package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
+  #       end
+  #     '';
+  #   };
+  # };
 
   statuscol = {
     src = sources."statuscol.nvim";

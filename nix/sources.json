@@ -296,7 +296,7 @@
     "null-ls.nvim": {
         "branch": "main",
         "repo": "git@github.com:jose-elias-alvarez/null-ls.nvim",
-        "rev": "f8ffcd7cb8fb3325c711d459152ef132b5b65aed",
+        "rev": "bbaf5a96913aa92281f154b08732be2f57021c45",
         "type": "git"
     },
     "nvim-bqf": {
@@ -344,7 +344,7 @@
     "nvim-lspconfig": {
         "branch": "master",
         "repo": "git@github.com:neovim/nvim-lspconfig",
-        "rev": "e52efca5d4f5536533d447ec0d97e4d525b37ace",
+        "rev": "a51892484c2002c083a8b0a9dfcefb3a569be36d",
         "type": "git"
     },
     "nvim-nonicons": {

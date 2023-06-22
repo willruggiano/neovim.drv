@@ -398,7 +398,7 @@
     "overseer.nvim": {
         "branch": "master",
         "repo": "git@github.com:stevearc/overseer.nvim",
-        "rev": "0829e7c591b8b2ef87e83d85bdd5037156502e01",
+        "rev": "3047ede61cc1308069ad1184c0d447ebee92d749",
         "type": "git"
     },
     "package-info.nvim": {

@@ -116,7 +116,9 @@ return function()
     },
     ["<space>k"] = {
       function()
-        require("telescope").extensions.docsets.query { previewer = false }
+        vim.ui.input({ prompt = "Query > " }, function(pattern)
+          require("telescope").extensions.docsets.query(pattern, { previewer = false })
+        end)
       end,
       { desc = "Docsets" },
     },

@@ -113,7 +113,7 @@ return function()
       function()
         require("telescope").extensions.smart_open.smart_open()
       end,
-      { desc = "Open" },
+      { desc = "Open Anything™" },
     },
     ["<space>p"] = {
       function()

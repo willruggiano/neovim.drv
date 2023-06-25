@@ -443,6 +443,18 @@
         "rev": "e7c40818b2995016ede93c5620055206b1aba44f",
         "type": "git"
     },
+    "smart-open.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:danielfalk/smart-open.nvim",
+        "rev": "e67d3cc01cfa863f7d5e16b2b2f0bf2bf46f6283",
+        "type": "git"
+    },
+    "sqlite.lua": {
+        "branch": "master",
+        "repo": "git@github.com:kkharji/sqlite.lua",
+        "rev": "b7e28c8463254c46a8e61c52d27d6a2040492fc3",
+        "type": "git"
+    },
     "statuscol.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/luukvbaal/statuscol.nvim",
@@ -465,6 +477,13 @@
         "branch": "main",
         "repo": "git@github.com:nvim-telescope/telescope-fzf-native.nvim",
         "rev": "580b6c48651cabb63455e97d7e131ed557b8c7e2",
+        "type": "git"
+    },
+    "telescope-fzy-native.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:nvim-telescope/telescope-fzy-native.nvim",
+        "rev": "282f069504515eec762ab6d6c89903377252bf5b",
+        "submodules": true,
         "type": "git"
     },
     "telescope-github.nvim": {

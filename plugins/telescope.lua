@@ -86,6 +86,7 @@ return function()
   telescope.load_extension "docsets"
   telescope.load_extension "fzf"
   telescope.load_extension "project"
+  telescope.load_extension "smart_open"
   telescope.load_extension "ui-select"
 
   local nnoremap = require("bombadil.lib.keymap").nnoremap
@@ -107,6 +108,12 @@ return function()
         require("telescope.builtin").git_files()
       end,
       { desc = "Git files" },
+    },
+    ["<space>o"] = {
+      function()
+        require("telescope").extensions.smart_open.smart_open()
+      end,
+      { desc = "Open" },
     },
     ["<space>p"] = {
       function()

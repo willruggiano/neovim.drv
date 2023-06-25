@@ -71,9 +71,7 @@ in rec {
           fuzzy_nvim = {
             src = sources."fuzzy.nvim";
           };
-          fzy-lua-native = {
-            src = sources.fzy-lua-native;
-          };
+          inherit fzy-lua-native;
         };
       };
       cmp-git = {
@@ -185,6 +183,22 @@ in rec {
       luafun = luajitPackages.callPackage ../pkgs/luafun.nix {};
     in
       neovim-utils.toLuarocksPlugin luafun;
+  };
+
+  fzy-lua-native = let
+    package = pkgs.vimUtils.buildVimPluginFrom2Nix {
+      name = "fzy-lua-native";
+      version = sources.fzy-lua-native.rev;
+      src = sources.fzy-lua-native;
+    };
+  in {
+    inherit package;
+    init = pkgs.writeTextFile {
+      name = "fzy-lua-native.lua";
+      text = ''
+        package.cpath = package.cpath .. ";" .. "${package}/static/?.so";
+      '';
+    };
   };
 
   gh = {
@@ -525,6 +539,23 @@ in rec {
     config = ./telescope.lua;
     dependencies = {
       inherit nvim-web-devicons;
+      smart-open = {
+        src = sources."smart-open.nvim";
+        dependencies = {
+          sqlite = {
+            src = sources."sqlite.lua";
+            init = pkgs.writeTextFile {
+              name = "sqlite.lua";
+              text = ''
+                return function()
+                  vim.g.sqlite_clib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so"
+                end
+              '';
+            };
+          };
+        };
+        paths = with pkgs; [ripgrep];
+      };
       telescope-docsets = {
         src = sources."telescope-docsets.nvim";
         paths = with pkgs; [dasht elinks];
@@ -534,6 +565,12 @@ in rec {
           name = "telescope-fzf-native";
           src = sources."telescope-fzf-native.nvim";
           buildPhase = "";
+        };
+      };
+      telescope-fzy-native = {
+        src = sources."telescope-fzy-native.nvim";
+        dependencies = {
+          inherit fzy-lua-native;
         };
       };
       telescope-project = {

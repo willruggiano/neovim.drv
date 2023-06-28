@@ -139,6 +139,9 @@ in rec {
         src = sources.nvim-dap-virtual-text;
         config = true;
       };
+      nvim-dap-vscode-js = {
+        src = sources.nvim-dap-vscode-js;
+      };
       inherit rapidjson;
     };
   };

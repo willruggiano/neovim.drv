@@ -341,6 +341,12 @@
         "rev": "9dc45a6eb33871f4c5cb2ba08fa307467657471e",
         "type": "git"
     },
+    "nvim-dap-vscode-js": {
+        "branch": "main",
+        "repo": "git@github.com:mxsdev/nvim-dap-vscode-js",
+        "rev": "03bd29672d7fab5e515fc8469b7d07cc5994bbf6",
+        "type": "git"
+    },
     "nvim-lspconfig": {
         "branch": "master",
         "repo": "git@github.com:neovim/nvim-lspconfig",

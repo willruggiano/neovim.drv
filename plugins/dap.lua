@@ -1,25 +1,13 @@
 return function()
   local dap = require "dap"
-  local json = require "rapidjson"
   local utils = require "dap.utils"
 
-  dap.set_log_level "TRACE"
-
-  dap.configurations.lua = {
-    {
-      type = "nlua",
-      request = "attach",
-      name = "Attach to running Neovim instance",
-      host = function()
-        return "127.0.0.1"
-      end,
-      port = function()
-        local val = tonumber(vim.fn.input "Port: ")
-        assert(val, "Please provide a port number")
-        return val
-      end,
-    },
+  require("dap-vscode-js").setup {
+    adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
+    debugger_path = vim.fn.expand "~/dev/vscode-js-debug",
   }
+
+  dap.set_log_level "TRACE"
 
   dap.configurations.cpp = {
     {
@@ -43,6 +31,55 @@ return function()
     },
   }
 
+  dap.configurations.lua = {
+    {
+      type = "nlua",
+      request = "attach",
+      name = "Attach to running Neovim instance",
+      host = function()
+        return "127.0.0.1"
+      end,
+      port = function()
+        local val = tonumber(vim.fn.input "Port: ")
+        assert(val, "Please provide a port number")
+        return val
+      end,
+    },
+  }
+
+  for _, lang in ipairs { "javascript", "typescript" } do
+    dap.configurations[lang] = {
+      {
+        type = "pwa-node",
+        request = "launch",
+        name = "Launch file",
+        program = "${file}",
+        cwd = "${workspaceFolder}",
+      },
+      {
+        type = "pwa-node",
+        request = "attach",
+        name = "Attach",
+        processId = utils.pick_process,
+        cwd = "${workspaceFolder}",
+      },
+      {
+        type = "pwa-node",
+        request = "launch",
+        name = "Debug Jest Tests",
+        runtimeExecutable = "node",
+        runtimeArgs = {
+          "./node_modules/jest/bin/jest.js",
+          "--runInBand",
+        },
+        rootPath = "${workspaceFolder}",
+        cwd = "${workspaceFolder}",
+        console = "integratedTerminal",
+        internalConsoleOptions = "neverOpen",
+      },
+    }
+  end
+
   dap.adapters.cppdbg = {
     type = "executable",
     command = "lldb-vscode",
@@ -53,27 +90,13 @@ return function()
     callback { type = "server", host = config.host, port = config.port }
   end
 
-  local loaded_launch_json = {}
-  local launch_json = ".vscode/launch.json"
+  require("dap.ext.vscode").load_launchjs(nil, {
+    ["pwa-node"] = { "javascript", "typescript" },
+  })
 
   vim.api.nvim_create_user_command("Debug", function()
-    if vim.fn.filereadable(launch_json) == 1 and loaded_launch_json[launch_json] == nil then
-      local config = json.load(launch_json)
-      for _, c in ipairs(config.configurations) do
-        if c.type == "cppdbg" then
-          table.insert(dap.configurations.cpp, c)
-        end
-      end
-      loaded_launch_json[launch_json] = true
-    end
     dap.continue()
   end, { desc = "Start debugger" })
-
-  vim.api.nvim_create_user_command("DebugConfig", function()
-    if vim.fn.exists(launch_json) then
-      vim.cmd(string.format("edit %s", launch_json))
-    end
-  end, { desc = "Edit debuffer config" })
 
   vim.g.dap_virtual_text = true
 

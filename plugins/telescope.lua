@@ -1,31 +1,7 @@
 return function()
   local telescope = require "telescope"
   local actions = require "telescope.actions"
-  local action_state = require "telescope.actions.state"
   local themes = require "telescope.themes"
-
-  local set_prompt_to_entry_value = function(prompt_bufnr)
-    local entry = action_state.get_selected_entry()
-    if not entry or not type(entry) == "table" then
-      return
-    end
-
-    action_state.get_current_picker(prompt_bufnr):reset_prompt(entry.ordinal)
-  end
-
-  local common_dirs = {
-    ["~/dev"] = "dev",
-    ["~/notes"] = "notes",
-    ["~/src"] = "src",
-  }
-  local project_dirs = {}
-  for dir, _ in pairs(common_dirs) do
-    ---@diagnostic disable-next-line: missing-parameter
-    dir = vim.fn.expand(dir)
-    if vim.fn.isdirectory(dir) == 1 then
-      table.insert(project_dirs, dir)
-    end
-  end
 
   local default_theme = themes.get_ivy {
     color_devicons = true,
@@ -41,9 +17,13 @@ return function()
     defaults = vim.tbl_deep_extend("force", default_theme, {
       mappings = {
         i = {
+          ["<C-c>"] = actions.close,
+          ["<C-j>"] = actions.move_selection_next,
+          ["<C-k>"] = actions.move_selection_previous,
+          ["<C-n>"] = false,
+          ["<C-p>"] = false,
           ["<C-s>"] = actions.select_horizontal,
           ["<C-x>"] = false,
-          ["<C-y>"] = set_prompt_to_entry_value,
         },
       },
 
@@ -59,16 +39,14 @@ return function()
           typescript = { "javascript", "typescript" },
         },
       },
-
       fzf = {
         fuzzy = true,
         override_generic_sorter = true,
         override_file_sorter = true,
         case_mode = "smart_case",
       },
-
-      project = {
-        base_dirs = project_dirs,
+      smart_open = {
+        match_algorithm = "fzf",
       },
     },
 
@@ -85,7 +63,6 @@ return function()
 
   telescope.load_extension "docsets"
   telescope.load_extension "fzf"
-  telescope.load_extension "project"
   telescope.load_extension "smart_open"
   telescope.load_extension "ui-select"
 
@@ -103,23 +80,11 @@ return function()
       end,
       { desc = "Buffers" },
     },
-    ["<space>e"] = {
-      function()
-        require("telescope.builtin").git_files()
-      end,
-      { desc = "Git files" },
-    },
     ["<space>o"] = {
       function()
         require("telescope").extensions.smart_open.smart_open()
       end,
       { desc = "Open Anything™" },
-    },
-    ["<space>p"] = {
-      function()
-        require("telescope").extensions.project.project {}
-      end,
-      { desc = "Projects" },
     },
     ["<space>k"] = {
       function()

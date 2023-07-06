@@ -570,15 +570,6 @@ in rec {
           buildPhase = "";
         };
       };
-      telescope-fzy-native = {
-        src = sources."telescope-fzy-native.nvim";
-        dependencies = {
-          inherit fzy-lua-native;
-        };
-      };
-      telescope-project = {
-        src = sources."telescope-project.nvim";
-      };
       telescope-symbols = {
         src = sources."telescope-symbols.nvim";
       };

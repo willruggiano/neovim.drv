@@ -485,23 +485,10 @@
         "rev": "580b6c48651cabb63455e97d7e131ed557b8c7e2",
         "type": "git"
     },
-    "telescope-fzy-native.nvim": {
-        "branch": "master",
-        "repo": "git@github.com:nvim-telescope/telescope-fzy-native.nvim",
-        "rev": "282f069504515eec762ab6d6c89903377252bf5b",
-        "submodules": true,
-        "type": "git"
-    },
     "telescope-github.nvim": {
         "branch": "master",
         "repo": "git@github.com:willruggiano/telescope-github.nvim",
         "rev": "476952cf96e60efca4c230e86cf866835dfef236",
-        "type": "git"
-    },
-    "telescope-project.nvim": {
-        "branch": "master",
-        "repo": "git@github.com:nvim-telescope/telescope-project.nvim",
-        "rev": "fa081e35ba7397e5147a51ece693aa3afda167fc",
         "type": "git"
     },
     "telescope-symbols.nvim": {

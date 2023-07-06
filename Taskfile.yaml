@@ -6,12 +6,12 @@ tasks:
       - install
   build:
     cmds:
-      - nix build
+      - nix build |& nom
     aliases:
       - b
   install:
     cmds:
-      - nix profile upgrade --impure 0
+      - nix profile upgrade --impure 0 |& nom
     aliases:
       - i
   run:

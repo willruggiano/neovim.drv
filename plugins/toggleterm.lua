@@ -8,6 +8,6 @@ return function()
   local nnoremap = require("bombadil.lib.keymap").nnoremap
 
   nnoremap("<space><space>", function()
-    toggleterm.toggle_command("size=20", vim.api.nvim_get_current_tabpage())
+    toggleterm.toggle_command("size=20", vim.v.count)
   end, { desc = "Toggle terminal" })
 end

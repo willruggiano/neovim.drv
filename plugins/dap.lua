@@ -47,39 +47,6 @@ return function()
     },
   }
 
-  for _, lang in ipairs { "javascript", "typescript" } do
-    dap.configurations[lang] = {
-      {
-        type = "pwa-node",
-        request = "launch",
-        name = "Launch file",
-        program = "${file}",
-        cwd = "${workspaceFolder}",
-      },
-      {
-        type = "pwa-node",
-        request = "attach",
-        name = "Attach",
-        processId = utils.pick_process,
-        cwd = "${workspaceFolder}",
-      },
-      {
-        type = "pwa-node",
-        request = "launch",
-        name = "Debug Jest Tests",
-        runtimeExecutable = "node",
-        runtimeArgs = {
-          "./node_modules/jest/bin/jest.js",
-          "--runInBand",
-        },
-        rootPath = "${workspaceFolder}",
-        cwd = "${workspaceFolder}",
-        console = "integratedTerminal",
-        internalConsoleOptions = "neverOpen",
-      },
-    }
-  end
-
   dap.adapters.cppdbg = {
     type = "executable",
     command = "lldb-vscode",

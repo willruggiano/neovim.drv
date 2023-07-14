@@ -4,6 +4,7 @@ local M = {}
 
 function M.setup(palette)
   -- See: |group-name|
+  hi.Comment = { fg = palette.base04, italic = true }
   hi.Constant = { fg = palette.base09 }
   hi.String = { fg = palette.base0B }
   -- hi.Character = "Constant"

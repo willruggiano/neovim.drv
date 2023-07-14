@@ -19,8 +19,7 @@ return function()
   }
 
   local hi = require("flavours").highlight
-  local palette = require "flavours.palette"
 
-  hi.IndentBlanklineChar = { fg = palette.base02, nocombine = true }
-  hi.IndentBlanklineContextChar = { fg = palette.base04, nocombine = true }
+  hi.IndentBlanklineChar = "base02_fg"
+  hi.IndentBlanklineContextChar = "base04_fg"
 end

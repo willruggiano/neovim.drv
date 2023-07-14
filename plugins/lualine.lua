@@ -45,7 +45,7 @@ return function()
     },
   }
 
-  local palette = require "flavours.palette"
+  local palette = require("flavours").palette()
   local theme = {
     normal = {
       a = { fg = palette.base01, bg = palette.base0D },

@@ -16,6 +16,7 @@ tasks:
       - i
   run:
     cmds:
+      - task: build
       - nix run
     aliases:
       - r

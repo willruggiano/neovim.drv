@@ -335,7 +335,6 @@ in rec {
           nodePackages.jsonlint
           nodePackages.prettier
           # nodePackages.pretterd
-          nodePackages.prisma
           pgformatter
           rustfmt
           shellcheck

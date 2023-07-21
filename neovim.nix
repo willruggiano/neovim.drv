@@ -13,12 +13,7 @@
         # Environment variables to bake into the neovim environment.
         # If an environment variable is already defined, the existing definition will take precedence.
         env = {
-          PRISMA_MIGRATION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/migration-engine";
-          PRISMA_QUERY_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/query-engine";
-          PRISMA_QUERY_ENGINE_LIBRARY = "${pkgs.prisma-engines}/lib/libquery_engine.node";
-          PRISMA_INTROSPECTION_ENGINE_BINARY = "${pkgs.prisma-engines}/bin/introspection-engine";
-          PRISMA_FMT_BINARY = "${pkgs.prisma-engines}/bin/prisma-fmt";
-          DEVENV_PROFILE = "foobar";
+          # Nothing to see here.
         };
 
         # Tools to bake into the neovim environment.

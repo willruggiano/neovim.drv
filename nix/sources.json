@@ -380,7 +380,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter",
-        "rev": "a02a06a068f92ec0e4cc0490afdc76bf4fcc407b",
+        "rev": "7c1e944311a0d4eb2c8a346661ee4ed207aca514",
         "type": "git"
     },
     "nvim-treesitter-refactor": {
@@ -489,6 +489,12 @@
         "branch": "master",
         "repo": "git@github.com:willruggiano/telescope-github.nvim",
         "rev": "476952cf96e60efca4c230e86cf866835dfef236",
+        "type": "git"
+    },
+    "telescope-hoogle.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:psiska/telescope-hoogle.nvim",
+        "rev": "e138b719bbf29935108eb602f179daa18f0d938b",
         "type": "git"
     },
     "telescope-symbols.nvim": {

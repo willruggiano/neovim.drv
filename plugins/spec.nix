@@ -144,6 +144,10 @@ in rec {
       };
       inherit rapidjson;
     };
+    paths = with pkgs;
+    with haskellPackages; [
+      haskell-debug-adapter
+    ];
   };
 
   dial = {
@@ -221,6 +225,10 @@ in rec {
       };
       telescope-github = {
         src = sources."telescope-github.nvim";
+      };
+      telescope-hoogle = {
+        src = sources."telescope-hoogle.nvim";
+        paths = with pkgs.haskellPackages; [hoogle];
       };
     };
     paths = [pkgs.gh];
@@ -324,12 +332,14 @@ in rec {
             src = sources."refactoring.nvim";
           };
         };
-        paths = with pkgs; [
+        paths = with pkgs;
+        with haskellPackages; [
           (pkgs.callPackage ../pkgs/languagetool-rs {})
           actionlint
           alejandra
           cmake-format
           cppcheck
+          haskell-language-server
           luajitPackages.luacheck
           nodePackages.eslint_d
           nodePackages.jsonlint

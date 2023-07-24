@@ -44,6 +44,9 @@
     go = {
       owner = "tree-sitter";
     };
+    haskell = {
+      owner = "tree-sitter";
+    };
     html = {
       owner = "tree-sitter";
     };

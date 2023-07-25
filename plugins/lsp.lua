@@ -46,7 +46,7 @@ return function()
   local nnoremap = require("bombadil.lib.keymap").nnoremap
   local vnoremap = require("bombadil.lib.keymap").vnoremap
 
-  local enable_lsp_formatting = { "null-ls" }
+  local enable_lsp_formatting = { "hls", "null-ls" }
 
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
@@ -70,6 +70,10 @@ return function()
       ["<leader>ca"] = {
         vim.lsp.buf.code_action,
         { buffer = bufnr, desc = "Code actions" },
+      },
+      ["<leader>cl"] = {
+        vim.lsp.codelens.run,
+        { buffer = bufnr, desc = "Code lens" },
       },
       ["<leader>f"] = {
         function()

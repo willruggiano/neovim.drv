@@ -337,6 +337,7 @@ in rec {
           (pkgs.callPackage ../pkgs/languagetool-rs {})
           actionlint
           alejandra
+          cabal-fmt
           cmake-format
           cppcheck
           haskell-language-server
@@ -344,8 +345,9 @@ in rec {
           nodePackages.eslint_d
           nodePackages.jsonlint
           nodePackages.prettier
-          # nodePackages.pretterd
+          ormolu
           pgformatter
+          prettierd
           rustfmt
           shellcheck
           shellharden

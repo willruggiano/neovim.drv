@@ -1,16 +1,16 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     devenv.url = "github:cachix/devenv";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
+    neovim-nix.inputs.neovim.follows = "neovim";
+    neovim-nix.url = "github:willruggiano/neovim.nix";
+    neovim.inputs.nixpkgs.follows = "nixpkgs";
+    neovim.url = "github:neovim/neovim?dir=contrib";
+    nil.url = "github:oxalica/nil";
     # FIXME: see https://github.com/cachix/devenv/issues/528
     nix2container.url = "github:nlewo/nix2container";
-    mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    neovim-nix.url = "github:willruggiano/neovim.nix";
-    neovim-nix.inputs.neovim.follows = "neovim";
-    neovim.url = "github:neovim/neovim?dir=contrib";
-    neovim.inputs.nixpkgs.follows = "nixpkgs";
-    nil.url = "github:oxalica/nil";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     sg-nvim.url = "github:sourcegraph/sg.nvim";
     zls.url = "github:willruggiano/zls";
   };

@@ -226,10 +226,6 @@ in rec {
       telescope-github = {
         src = sources."telescope-github.nvim";
       };
-      telescope-hoogle = {
-        src = sources."telescope-hoogle.nvim";
-        paths = with pkgs.haskellPackages; [hoogle];
-      };
     };
     paths = [pkgs.gh];
   };
@@ -332,20 +328,16 @@ in rec {
             src = sources."refactoring.nvim";
           };
         };
-        paths = with pkgs;
-        with haskellPackages; [
+        paths = with pkgs; [
           (pkgs.callPackage ../pkgs/languagetool-rs {})
           actionlint
           alejandra
-          cabal-fmt
           cmake-format
           cppcheck
-          haskell-language-server
           luajitPackages.luacheck
           nodePackages.eslint_d
           nodePackages.jsonlint
           nodePackages.prettier
-          ormolu
           pgformatter
           prettierd
           rustfmt
@@ -365,8 +357,11 @@ in rec {
     paths = with pkgs; [
       clang-tools
       cmake-language-server
+      haskellPackages.cabal-fmt
+      haskellPackages.haskell-language-server
+      haskellPackages.ormolu
       inputs'.nil.packages.default
-      # inputs'.sg-nvim.packages.default
+      inputs'.sg-nvim.packages.default
       inputs'.zls.packages.default
       marksman
       nodePackages.graphql-language-service-cli
@@ -580,6 +575,10 @@ in rec {
           src = sources."telescope-fzf-native.nvim";
           buildPhase = "";
         };
+      };
+      telescope-manix = {
+        src = sources.telescope-manix;
+        paths = with pkgs; [manix];
       };
       telescope-symbols = {
         src = sources."telescope-symbols.nvim";

@@ -491,10 +491,10 @@
         "rev": "476952cf96e60efca4c230e86cf866835dfef236",
         "type": "git"
     },
-    "telescope-hoogle.nvim": {
+    "telescope-manix": {
         "branch": "master",
-        "repo": "git@github.com:psiska/telescope-hoogle.nvim",
-        "rev": "e138b719bbf29935108eb602f179daa18f0d938b",
+        "repo": "git@github.com:mrcjkb/telescope-manix",
+        "rev": "3930d658899dff2c796d8a5b488f7cc77a08d966",
         "type": "git"
     },
     "telescope-symbols.nvim": {

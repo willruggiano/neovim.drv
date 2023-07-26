@@ -45,9 +45,6 @@ return function()
         override_file_sorter = true,
         case_mode = "smart_case",
       },
-      hoogle = {
-        render = "treesitter",
-      },
       smart_open = {
         match_algorithm = "fzf",
       },
@@ -66,7 +63,7 @@ return function()
 
   telescope.load_extension "docsets"
   telescope.load_extension "fzf"
-  telescope.load_extension "hoogle"
+  telescope.load_extension "manix"
   telescope.load_extension "smart_open"
   telescope.load_extension "ui-select"
 

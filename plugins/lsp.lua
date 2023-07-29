@@ -48,6 +48,8 @@ return function()
 
   local enable_lsp_formatting = { "hls", "null-ls" }
 
+  local lsp_codelens = vim.api.nvim_create_augroup("LspCodelens", {})
+
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
   local on_attach = function(client, bufnr)
@@ -67,6 +69,7 @@ return function()
         vim.diagnostic.goto_prev,
         { buffer = bufnr, desc = "Previous diagnostic" },
       },
+      -- TODO: Could we combine code actions and lenses?
       ["<leader>ca"] = {
         vim.lsp.buf.code_action,
         { buffer = bufnr, desc = "Code actions" },
@@ -106,10 +109,6 @@ return function()
           vim.cmd.edit()
         end,
         { buffer = bufnr, desc = "Restart lsp clients" },
-      },
-      ["<leader>th"] = {
-        require("clangd_extensions.inlay_hints").toggle_inlay_hints,
-        { buffer = bufnr, desc = "Toggle inlay hints" },
       },
       ["<space>s"] = {
         require("telescope.builtin").lsp_document_symbols,
@@ -171,22 +170,30 @@ return function()
     for key, opts in pairs(range_mappings) do
       vnoremap(key, opts[1], opts[2])
     end
+
+    if client.supports_method "textDocument/codeLens" then
+      vim.api.nvim_create_autocmd("BufEnter", {
+        group = lsp_codelens,
+        buffer = bufnr,
+        once = true,
+        callback = function()
+          vim.lsp.codelens.refresh()
+        end,
+      })
+      vim.api.nvim_create_autocmd({ "BufWritePost", "CursorHold" }, {
+        group = lsp_codelens,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.codelens.refresh()
+        end,
+      })
+    end
   end
 
-  local updated_capabilities = vim.lsp.protocol.make_client_capabilities()
-  local has_cmp, cmp = pcall(require, "cmp_nvim_lsp")
-  if has_cmp then
-    updated_capabilities = cmp.default_capabilities()
-  end
-  local has_coq, coq = pcall(require, "coq")
-  if has_coq then
-    ---@diagnostic disable-next-line: cast-local-type
-    updated_capabilities = coq.lsp_ensure_capabilities(updated_capabilities)
-  end
-  assert(updated_capabilities)
+  local updated_capabilities = require("cmp_nvim_lsp").default_capabilities()
 
   updated_capabilities.textDocument.codeLens = {
-    dynamicRegistration = false,
+    dynamicRegistration = true,
   }
   updated_capabilities.textDocument.completion.completionItem.snippetSupport = true
   updated_capabilities.textDocument.completion.completionItem.resolveSupport = {
@@ -201,7 +208,7 @@ return function()
     lineFoldingOnly = true,
   }
 
-  local simple_servers = { "cmake", "graphql", "hls", "marksman", "nil_ls", "prismals", "pyright", "tsserver", "zls" }
+  local simple_servers = { "cmake", "graphql", "hls", "marksman", "nil_ls", "prismals", "pyright", "zls" }
   for _, name in ipairs(simple_servers) do
     lspconfig[name].setup {
       on_init = on_init,
@@ -290,6 +297,9 @@ return function()
         nnoremap("<leader>a", function()
           require("bombadil.lib.clangd").switch_source_header(bufnr, true)
         end, { buffer = bufnr, desc = "Switch source/header" })
+        nnoremap("<leader>th", function()
+          require("clangd_extensions.inlay_hints").toggle_inlay_hints()
+        end, { buffer = bufnr, desc = "Toggle inlay hints" })
         require("clang-format").on_attach(client, bufnr)
       end,
       init_options = {
@@ -380,6 +390,36 @@ return function()
         },
         procMacro = {
           enable = true,
+        },
+      },
+    },
+  }
+
+  lspconfig.tsserver.setup {
+    on_init = on_init,
+    on_attach = on_attach,
+    capabilities = updated_capabilities,
+    settings = {
+      javascript = {
+        inlayHints = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
+        },
+      },
+      typescript = {
+        inlayHints = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
         },
       },
     },

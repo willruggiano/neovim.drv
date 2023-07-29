@@ -27,6 +27,7 @@ return function()
   --   filetype = "help",
   -- }
 
+  ---@diagnostic disable-next-line: missing-fields
   require("nvim-treesitter.configs").setup {
     -- NOTE: Parsers are installed by nix.
     ensure_installed = {},

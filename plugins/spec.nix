@@ -113,6 +113,9 @@ in rec {
   Comment = {
     src = sources."Comment.nvim";
     config = ./comment.lua;
+    dependencies = {
+      inherit nvim-ts-context-commentstring;
+    };
   };
 
   dadbod = {
@@ -450,6 +453,7 @@ in rec {
     package = pkgs.callPackage ../pkgs/nvim-treesitter {};
     config = ./treesitter.lua;
     dependencies = {
+      inherit nvim-ts-context-commentstring;
       nvim-treesitter-playground = {
         src = sources.playground;
       };
@@ -463,6 +467,10 @@ in rec {
         src = sources.treesitter-unit;
       };
     };
+  };
+
+  nvim-ts-context-commentstring = {
+    src = sources.nvim-ts-context-commentstring;
   };
 
   nvim-web-devicons = {

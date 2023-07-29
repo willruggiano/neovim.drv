@@ -395,6 +395,12 @@
         "rev": "8673926519ea61069f9c1366d1ad1949316d250e",
         "type": "git"
     },
+    "nvim-ts-context-commentstring": {
+        "branch": "main",
+        "repo": "git@github.com:JoosepAlviste/nvim-ts-context-commentstring",
+        "rev": "e9062e2dfb9854e6a927370f2d720de354c88524",
+        "type": "git"
+    },
     "nvim-web-devicons": {
         "branch": "master",
         "repo": "ssh://git@github.com/kyazdani42/nvim-web-devicons",

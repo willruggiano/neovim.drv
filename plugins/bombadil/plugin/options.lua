@@ -1,7 +1,7 @@
-vim.opt.autoindent = true
+vim.opt.autoindent = false
 vim.opt.belloff = "all"
 vim.opt.breakindent = true
-vim.opt.cindent = true
+vim.opt.cindent = false
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 1
 vim.opt.conceallevel = 3
@@ -57,10 +57,9 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.swapfile = false
 
-local tabstop = 4
-vim.opt.shiftwidth = tabstop
-vim.opt.softtabstop = tabstop
-vim.opt.tabstop = 4
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = -1 -- use shiftwidth
+vim.opt.tabstop = 2
 
 vim.opt.termguicolors = true
 vim.opt.timeoutlen = 500

@@ -13,6 +13,7 @@ tasks:
     cmds:
       - task: build
       - nix profile upgrade --impure 0
+      - notify-send --transient 'neovim be ready'
     aliases:
       - i
   run:

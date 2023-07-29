@@ -348,20 +348,14 @@ return function()
           pathStrict = true,
         },
         workspace = {
+          checkThirdParty = false,
           library = (function()
-            local thirdparty = { "busted", "lfs", "luassert", "luv" }
-            local library = vim.tbl_map(function(v)
-              return "${3rd}/" .. v .. "/library"
-            end, thirdparty)
+            local library = {}
 
             local function add(dir)
               for _, p in ipairs(vim.fn.expand(dir .. "/lua", false, true)) do
                 table.insert(library, p)
               end
-            end
-
-            for _, plugin in ipairs(require("lazy").plugins()) do
-              add(plugin.dir)
             end
 
             table.insert(library, require("neodev.config").types())

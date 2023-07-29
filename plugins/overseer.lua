@@ -1,4 +1,5 @@
 return function()
+  ---@diagnostic disable-next-line: missing-fields
   require("overseer").setup {
     component_aliases = {
       default = {

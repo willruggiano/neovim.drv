@@ -17,7 +17,6 @@ return function()
   local lir_utils = require "lir.utils"
   local Path = require "plenary.path"
   local f = require "bombadil.lib.functional"
-  local buffers = require "bombadil.lib.buffers"
 
   local get_context = function(absolute)
     local ctx = require("lir.vim").get_context()
@@ -164,28 +163,15 @@ return function()
     actions.reload()
   end
 
-  -- BUG: This could delete multiple buffers if there are multiple buffers open for the same
-  -- filename.
-  custom_actions.delete = function()
-    local _, path = get_context()
-    for _, b in ipairs(vim.api.nvim_list_bufs()) do
-      local bname = vim.fn.bufname(b)
-      if bname:sub(-#path) == fname then
-        require("bombadil.lib.buffers").delete(b)
-      end
-    end
-    custom_actions.trash()
-  end
-
-  local firvish = require "firvish"
+  local overseer = require "overseer"
   local function git(...)
-    firvish.start_job {
-      command = "git",
-      args = { ... },
-      filetype = "log",
-      title = "git",
-      bopen = false,
+    local cmd = overseer.new_task {
+      cmd = vim.list_extend({ "git" }, { ... }),
+      components = {
+        { "on_complete_dispose", timeout = 5 },
+      },
     }
+    cmd:start()
   end
 
   custom_actions.git = {
@@ -252,6 +238,7 @@ return function()
     actions.reload()
   end
 
+  ---@diagnostic disable-next-line: missing-fields
   lir.setup {
     devicons = { enable = true },
     float = { winblend = 15 },
@@ -274,7 +261,7 @@ return function()
       y = custom_actions.yank_path,
       Y = custom_actions.yank_basename,
 
-      d = custom_actions.delete,
+      d = custom_actions.trash,
       c = clipboard_actions.copy,
       x = clipboard_actions.cut,
       p = clipboard_actions.paste,
@@ -294,7 +281,7 @@ return function()
   }
 
   local explore = function()
-    if buffers.nameless(vim.api.nvim_get_current_buf()) then
+    if vim.api.nvim_buf_get_name(vim.api.nvim_get_current_buf()) == "" then
       vim.cmd "e ."
     else
       vim.cmd "e %:h"

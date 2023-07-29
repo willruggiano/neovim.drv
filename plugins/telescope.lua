@@ -81,6 +81,12 @@ return function()
       end,
       { desc = "Buffers" },
     },
+    ["<space>f"] = {
+      function()
+        require("telescope.builtin").live_grep()
+      end,
+      { desc = "Find" },
+    },
     ["<space>o"] = {
       function()
         require("telescope").extensions.smart_open.smart_open()

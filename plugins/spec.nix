@@ -23,10 +23,6 @@ in rec {
     config = true;
   };
 
-  bufdelete = {
-    src = sources."bufdelete.nvim";
-  };
-
   cargo-expand = {
     src = sources."cargo-expand.nvim";
     ft = "rust";
@@ -39,10 +35,6 @@ in rec {
       inherit lyaml;
     };
     ft = ["c" "cpp"];
-  };
-
-  close-buffers = {
-    src = sources."close-buffers.nvim";
   };
 
   cmp = {
@@ -101,7 +93,6 @@ in rec {
       cmp-under-comparator = {
         src = sources.cmp-under-comparator;
       };
-      inherit neogen;
     };
   };
 
@@ -159,14 +150,6 @@ in rec {
     config = ./dial.lua;
   };
 
-  diffview = {
-    src = sources."diffview.nvim";
-    config = ./diffview.lua;
-    dependencies = {
-      inherit nvim-nonicons nvim-web-devicons plenary;
-    };
-  };
-
   dot-nvim = {
     src = sources.".nvim.nvim";
   };
@@ -183,10 +166,6 @@ in rec {
         };
       };
     };
-  };
-
-  firvish = {
-    src = sources."firvish.nvim";
   };
 
   fun = {
@@ -212,36 +191,6 @@ in rec {
     };
   };
 
-  gh = {
-    src = sources."gh.nvim";
-    config = ./github.lua;
-    dependencies = {
-      inherit telescope which-key;
-      gh-actions = {
-        src = sources."gh-actions.nvim";
-        config = true;
-        dependencies = {
-          inherit plenary nui;
-        };
-      };
-      litee = {
-        src = sources."litee.nvim";
-      };
-      telescope-github = {
-        src = sources."telescope-github.nvim";
-      };
-    };
-    paths = [pkgs.gh];
-  };
-
-  git-worktree = {
-    src = sources."git-worktree.nvim";
-    config = ./git-worktree.lua;
-    dependencies = {
-      inherit telescope which-key;
-    };
-  };
-
   gitsigns = {
     src = sources."gitsigns.nvim";
     config = ./gitsigns.lua;
@@ -249,11 +198,6 @@ in rec {
 
   graphql = {
     src = sources.vim-graphql;
-  };
-
-  harpoon = {
-    src = sources.harpoon;
-    config = ./harpoon.lua;
   };
 
   indent_blankline = {
@@ -296,7 +240,7 @@ in rec {
   lir = {
     config = ./lir.lua;
     dependencies = {
-      inherit firvish nvim-web-devicons plenary;
+      inherit nvim-web-devicons overseer plenary;
       git_status = {
         src = sources."lir-git-status.nvim";
       };
@@ -413,31 +357,8 @@ in rec {
     config = ./markdown.lua;
   };
 
-  marks = {
-    src = sources."marks.nvim";
-    config = ./marks.lua;
-  };
-
-  neogen = {
-    src = sources.neogen;
-    config = ./neogen.lua;
-  };
-
-  neogit = {
-    src = sources.neogit;
-    config = ./neogit.lua;
-  };
-
   nui = {
     src = sources."nui.nvim";
-  };
-
-  nvim-cheat = {
-    src = sources."nvim-cheat.sh";
-    config = ./cheat.lua;
-    dependencies = {
-      popfix.src = sources.popfix;
-    };
   };
 
   nvim-nonicons = {
@@ -492,11 +413,6 @@ in rec {
     dependencies = {
       inherit nui;
     };
-  };
-
-  persisted = {
-    src = sources."persisted.nvim";
-    config = ./persisted.lua;
   };
 
   plenary = {
@@ -603,16 +519,6 @@ in rec {
     config = ./toggleterm.lua;
   };
 
-  twilight = {
-    src = sources."twilight.nvim";
-    config = true;
-  };
-
-  undotree = {
-    src = sources.undotree;
-    config = ./undotree.lua;
-  };
-
   which-key = {
     src = sources."which-key.nvim";
     config = true;
@@ -635,16 +541,5 @@ in rec {
         };
       };
     };
-  };
-
-  xit = {
-    src = sources."xit.nvim";
-    config = true;
-  };
-
-  zk = {
-    src = sources.zk-nvim;
-    config = ./zk.lua;
-    paths = [pkgs.zk];
   };
 }

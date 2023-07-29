@@ -1,7 +1,6 @@
 return function()
   local cmp = require "cmp"
   local snippy = require "snippy"
-  local neogen = require "neogen"
 
   local cmp_buffer_locality_comparator = function(...)
     return require("cmp_buffer"):compare_locality(...)
@@ -47,8 +46,6 @@ return function()
         i = function(fallback)
           if snippy.can_expand_or_advance() then
             snippy.expand_or_advance()
-          elseif neogen.jumpable() then
-            neogen.jump_next()
           elseif cmp.visible() then
             return cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert }(fallback)
           else
@@ -60,8 +57,6 @@ return function()
         i = function(fallback)
           if snippy.can_jump(-1) then
             snippy.previous()
-          elseif neogen.jumpable(-1) then
-            neogen.jump_prev()
           elseif cmp.visible() then
             return cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert }(fallback)
           else

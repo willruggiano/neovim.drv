@@ -9,6 +9,7 @@ function M.setup(palette)
   hi.DiagnosticWarn = { fg = palette.base0E }
   hi.DiagnosticInfo = { fg = palette.base05 }
   hi.DiagnosticHint = { fg = palette.base0C }
+  hi.DiagnosticUnnecessary = "DiagnosticWarn"
 
   -- hi.DiagnosticVirtualTextOk = "DiagnosticOk"
   -- hi.DiagnosticVirtualTextError = "DiagnosticError"

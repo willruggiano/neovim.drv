@@ -62,6 +62,7 @@ in rec {
               suggestion.enabled = false;
               panel.enabled = false;
             };
+            event = "InsertEnter";
           };
         };
       };

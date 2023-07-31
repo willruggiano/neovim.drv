@@ -205,6 +205,11 @@ in rec {
     config = ./indent-blankline.lua;
   };
 
+  iron = {
+    src = sources."iron.nvim";
+    config = ./iron.lua;
+  };
+
   leap = {
     src = sources."leap.nvim";
     config = ./leap.lua;
@@ -439,6 +444,14 @@ in rec {
           package.cpath = package.cpath .. ";" .. "${package}/lib/lua/5.1/?.so"
         end
       '';
+    };
+  };
+
+  regexplainer = {
+    src = sources.nvim-regexplainer;
+    config = true;
+    dependencies = {
+      inherit nui nvim-treesitter;
     };
   };
 

@@ -149,6 +149,12 @@
         "rev": "018bd04d80c9a73d399c1061fa0c3b14a7614399",
         "type": "git"
     },
+    "iron.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:vigemus/iron.nvim",
+        "rev": "7f876ee3e1f4ea1e5284b1b697cdad5b256e8046",
+        "type": "git"
+    },
     "leap-ast.nvim": {
         "branch": "main",
         "repo": "git@github.com:ggandor/leap-ast.nvim",
@@ -273,6 +279,12 @@
         "branch": "main",
         "repo": "ssh://git@github.com/yorickpeterse/nvim-pqf",
         "rev": "d15582d3d0c09280f371fa5f21537cf4530ed330",
+        "type": "git"
+    },
+    "nvim-regexplainer": {
+        "branch": "main",
+        "repo": "git@github.com:bennypowers/nvim-regexplainer",
+        "rev": "ae651b187bdaa0fc6cbf60e660da5ebf74013d72",
         "type": "git"
     },
     "nvim-snippy": {

@@ -542,4 +542,10 @@ in rec {
       };
     };
   };
+
+  zk = {
+    src = sources.zk-nvim;
+    config = ./zk.lua;
+    paths = [pkgs.zk];
+  };
 }

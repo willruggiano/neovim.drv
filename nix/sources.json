@@ -478,5 +478,11 @@
         "repo": "ssh://git@github.com/gelguy/wilder.nvim",
         "rev": "679f348dc90d80ff9ba0e7c470c40a4d038dcecf",
         "type": "git"
+    },
+    "zk-nvim": {
+        "branch": "main",
+        "repo": "git@github.com:mickael-menu/zk-nvim",
+        "rev": "797618aa07f58ceba6f79fb6e777e8e45c51e1ce",
+        "type": "git"
     }
 }

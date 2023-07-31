@@ -69,12 +69,6 @@ return function()
 
   local nnoremap = require("bombadil.lib.keymap").nnoremap
   local mappings = {
-    ["<space>/"] = {
-      function()
-        require("telescope.builtin").help_tags()
-      end,
-      { desc = "Help tags" },
-    },
     ["<space>b"] = {
       function()
         require("telescope.builtin").buffers()

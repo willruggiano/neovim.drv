@@ -16,6 +16,15 @@
           # Nothing to see here.
         };
 
+        # package = inputs'.neovim.packages.default.overrideAttrs (old: {
+        #   patches = with pkgs; [
+        #     (fetchpatch {
+        #       url = "https://patch-diff.githubusercontent.com/raw/neovim/neovim/pull/20536.patch";
+        #       hash = "sha256-9HqRpOByb+I6Rw5hmuZO1iwwrulkkNTEWv1bEczKTBM=";
+        #     })
+        #   ];
+        # });
+
         # Tools to bake into the neovim environment.
         # These tools are *appended* to neovim's PATH variable,
         # such that if a tool is available locally (i.e. on the system PATH)

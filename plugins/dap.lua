@@ -57,9 +57,15 @@ return function()
     callback { type = "server", host = config.host, port = config.port }
   end
 
-  require("dap.ext.vscode").load_launchjs(nil, {
-    ["pwa-node"] = { "javascript", "typescript" },
-  })
+  if
+    not pcall(function()
+      require("dap.ext.vscode").load_launchjs(nil, {
+        ["pwa-node"] = { "javascript", "typescript" },
+      })
+    end)
+  then
+    vim.notify("Failed to load .vscode/launch.json", vim.log.levels.DEBUG)
+  end
 
   vim.api.nvim_create_user_command("Debug", function()
     dap.continue()

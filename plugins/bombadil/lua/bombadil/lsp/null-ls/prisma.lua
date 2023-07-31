@@ -5,7 +5,7 @@ local FORMATTING = methods.internal.FORMATTING
 local sources = {}
 
 sources.formatting = h.make_builtin {
-  name = "prismaFmt",
+  name = "prisma-fmt",
   meta = {
     url = "https://github.com/prisma/prisma-engines",
     description = "Formatter for the prisma filetype.",

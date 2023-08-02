@@ -47,6 +47,42 @@ return function()
     },
   }
 
+  dap.configurations.typescript = {
+    {
+      type = "pwa-node",
+      request = "launch",
+      name = "Debug Jest test",
+      runtimeExecutable = "node",
+      runtimeArgs = function()
+        local args = {
+          "./node_modules/.bin/jest",
+          "--runInBand",
+        }
+
+        local file = vim.api.nvim_buf_get_name(0)
+        local configs = vim.fs.find(function(name, _)
+          return name:match "jest%.config%.[%a]+$"
+        end, {
+          upward = true,
+          stop = vim.fn.getcwd(),
+          path = vim.fs.dirname(file),
+        })
+
+        if #configs == 0 then
+          error "No jest config file found"
+        end
+
+        local config = configs[1]
+        if #configs > 1 then
+          error "More than one jest config file found"
+        end
+
+        return vim.list_extend(args, { "--config", config, file })
+      end,
+      rootPath = "${workspaceFolder}",
+    },
+  }
+
   dap.adapters.cppdbg = {
     type = "executable",
     command = "lldb-vscode",
@@ -99,12 +135,12 @@ return function()
   dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
   end
-  dap.listeners.before.event_terminated["dapui_config"] = function()
-    dapui.close()
-  end
-  dap.listeners.before.event_exited["dapui_config"] = function()
-    dapui.close()
-  end
+  -- dap.listeners.before.event_terminated["dapui_config"] = function()
+  --   dapui.close()
+  -- end
+  -- dap.listeners.before.event_exited["dapui_config"] = function()
+  --   dapui.close()
+  -- end
 
   local nnoremaps = require("bombadil.lib.keymap").nnoremaps
   local prefix = "<space>d"

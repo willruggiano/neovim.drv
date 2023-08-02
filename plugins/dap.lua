@@ -67,10 +67,6 @@ return function()
     vim.notify("Failed to load .vscode/launch.json", vim.log.levels.DEBUG)
   end
 
-  vim.api.nvim_create_user_command("Debug", function()
-    dap.continue()
-  end, { desc = "Start debugger" })
-
   vim.g.dap_virtual_text = true
 
   local dapui = require "dapui"
@@ -109,4 +105,29 @@ return function()
   dap.listeners.before.event_exited["dapui_config"] = function()
     dapui.close()
   end
+
+  local nnoremaps = require("bombadil.lib.keymap").nnoremaps
+  local prefix = "<space>d"
+  nnoremaps {
+    [prefix .. "bt"] = {
+      dap.toggle_breakpoint,
+      { desc = "[dap] Toggle breakpoint" },
+    },
+    [prefix .. "c"] = {
+      dap.continue,
+      { desc = "[dap] Continue" },
+    },
+    [prefix .. "e"] = {
+      dapui.eval,
+      { desc = "[dap] Evaluate expression" },
+    },
+    [prefix .. "so"] = {
+      dap.step_over,
+      { desc = "[dap] Step over" },
+    },
+    [prefix .. "si"] = {
+      dap.step_into,
+      { desc = "[dap] Step into" },
+    },
+  }
 end

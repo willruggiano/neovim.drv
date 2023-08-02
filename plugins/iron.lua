@@ -9,7 +9,7 @@ return function()
           command = { "ts-node" },
         },
       },
-      repl_open_cmd = view.split.vertical "40%",
+      repl_open_cmd = view.split "30%",
     },
   }
 end

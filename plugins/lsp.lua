@@ -84,10 +84,6 @@ return function()
         end,
         { buffer = bufnr, desc = "Format" },
       },
-      ["<space>d"] = {
-        vim.diagnostic.setloclist,
-        { buffer = bufnr, desc = "Diagnostics" },
-      },
       ["<leader><leader>l"] = {
         vim.diagnostic.open_float,
         { buffer = bufnr, desc = "Line diagnostics" },

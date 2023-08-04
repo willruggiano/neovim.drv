@@ -35,7 +35,7 @@ vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
 vim.opt.incsearch = true
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 vim.opt.linebreak = false
 vim.opt.listchars = { space = "." }
 vim.opt.modelines = 1

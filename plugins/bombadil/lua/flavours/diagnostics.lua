@@ -29,7 +29,7 @@ function M.setup(palette)
   hi.DiagnosticUnderlineWarn = { sp = d.warn, undercurl = true }
   hi.DiagnosticUnderlineInfo = { sp = d.info, undercurl = true }
   hi.DiagnosticUnderlineHint = { sp = d.hint, undercurl = true }
-  hi.DiagnosticUnnecessary = { sp = d.hint, undercurl = true }
+  -- hi.DiagnosticUnnecessary = "Comment"
 end
 
 return M

@@ -57,6 +57,7 @@ return function()
         local args = {
           "./node_modules/.bin/jest",
           "--runInBand",
+          "--runTestsByPath",
         }
 
         local file = vim.api.nvim_buf_get_name(0)

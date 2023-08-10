@@ -455,6 +455,12 @@
         "rev": "89968a1f8c72427691088e6d09d26a52c2ddc6f4",
         "type": "git"
     },
+    "twilight.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:folke/twilight.nvim",
+        "rev": "a4843e6e67092a1e6fa9666f02bf0ab59174c1df",
+        "type": "git"
+    },
     "vim-dadbod": {
         "branch": "master",
         "repo": "git@github.com:tpope/vim-dadbod",

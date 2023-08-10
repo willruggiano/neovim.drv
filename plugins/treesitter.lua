@@ -16,6 +16,12 @@ return function()
     return n, p
   end)()
 
+  local use_ts_indent = false
+  if use_ts_indent then
+    vim.opt.autoindent = false
+    vim.opt.cindent = false
+  end
+
   ---@diagnostic disable-next-line: missing-fields
   require("nvim-treesitter.configs").setup {
     -- NOTE: Parsers are installed by nix.
@@ -26,7 +32,7 @@ return function()
     },
 
     indent = {
-      enable = true,
+      enable = use_ts_indent,
     },
 
     query_linter = {

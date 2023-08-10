@@ -1,7 +1,7 @@
-vim.opt.autoindent = false
+vim.opt.autoindent = true
 vim.opt.belloff = "all"
 vim.opt.breakindent = true
-vim.opt.cindent = false
+vim.opt.cindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 0
 vim.opt.conceallevel = 3

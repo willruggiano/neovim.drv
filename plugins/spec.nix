@@ -44,20 +44,20 @@ in rec {
       cmp-buffer = {
         src = sources.cmp-buffer;
       };
-      cmp_copilot = {
-        src = sources.copilot-cmp;
-        config = true;
-        dependencies = {
-          copilot = {
-            src = sources."copilot.lua";
-            config = {
-              suggestion.enabled = false;
-              panel.enabled = false;
-            };
-            event = "InsertEnter";
-          };
-        };
-      };
+      # cmp_copilot = {
+      #   src = sources.copilot-cmp;
+      #   config = true;
+      #   dependencies = {
+      #     copilot = {
+      #       src = sources."copilot.lua";
+      #       config = {
+      #         suggestion.enabled = false;
+      #         panel.enabled = false;
+      #       };
+      #       event = "InsertEnter";
+      #     };
+      #   };
+      # };
       cmp-fuzzy-path = {
         src = sources.cmp-fuzzy-path;
         dependencies = {
@@ -283,6 +283,7 @@ in rec {
         };
         paths = with pkgs; [
           (pkgs.callPackage ../pkgs/languagetool-rs {})
+          # (pkgs.callPackage ../pkgs/sql-language-server {})
           actionlint
           alejandra
           cmake-format
@@ -533,6 +534,11 @@ in rec {
   toggleterm = {
     src = sources."toggleterm.nvim";
     config = ./toggleterm.lua;
+  };
+
+  twilight = {
+    src = sources."twilight.nvim";
+    config = true;
   };
 
   which-key = {

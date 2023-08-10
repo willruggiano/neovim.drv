@@ -72,7 +72,7 @@ return function()
       { name = "nvim_lsp" },
       { name = "nvim_lsp_signature_help" },
       { name = "snippy" },
-      { name = "copilot" },
+      -- { name = "copilot" },
     }, {
       { name = "path" },
       { name = "buffer" },
@@ -80,7 +80,7 @@ return function()
     sorting = {
       priority_weight = 2,
       comparators = {
-        require("copilot_cmp.comparators").prioritize,
+        -- require("copilot_cmp.comparators").prioritize,
         cmp_buffer_locality_comparator,
         cmp_fuzzy_path_comparator,
         cmp.config.compare.offset,

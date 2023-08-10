@@ -303,6 +303,9 @@ in rec {
           yapf
         ];
       };
+      rust-tools = {
+        src = sources."rust-tools.nvim";
+      };
       schemastore = {
         src = sources."SchemaStore.nvim";
       };

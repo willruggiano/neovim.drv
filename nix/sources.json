@@ -371,6 +371,12 @@
         "rev": "e7c40818b2995016ede93c5620055206b1aba44f",
         "type": "git"
     },
+    "rust-tools.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:simrat39/rust-tools.nvim",
+        "rev": "0cc8adab23117783a0292a0c8a2fbed1005dc645",
+        "type": "git"
+    },
     "smart-open.nvim": {
         "branch": "main",
         "repo": "git@github.com:danielfalk/smart-open.nvim",

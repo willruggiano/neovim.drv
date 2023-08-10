@@ -1,13 +1,24 @@
+-- TODO: Break this out into separate files per lsp
 return function()
   local lsp = require "bombadil.lsp"
   local lspconfig = require "lspconfig"
   local lspconfig_util = require "lspconfig.util"
+
+  --
+  -- Styling
+  --
 
   lsp.kind.init {
     symbol_map = {
       Copilot = "",
     },
   }
+
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
+
+  --
+  -- Diagnostics
+  --
 
   vim.diagnostic.config {
     float = {
@@ -30,13 +41,15 @@ return function()
     },
   }
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-
   ---@diagnostic disable-next-line: missing-parameter
   for type, icon in pairs(lsp.signs.get()) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
   end
+
+  --
+  -- Generic lsp configuration
+  --
 
   local on_init = function(client)
     client.config.flags = client.config.flags or {}
@@ -101,7 +114,7 @@ return function()
       },
       ["<leader>rr"] = {
         function()
-          vim.lsp.stop_client(vim.lsp.get_active_clients(), true)
+          vim.lsp.stop_client(vim.lsp.get_active_clients { bufnr = bufnr }, true)
           vim.cmd.edit()
         end,
         { buffer = bufnr, desc = "Restart lsp clients" },
@@ -138,10 +151,10 @@ return function()
         vim.lsp.buf.type_definition,
         { buffer = bufnr, desc = "Type definition" },
       },
-      K = {
-        vim.lsp.buf.hover,
-        { buffer = bufnr, desc = "Hover" },
-      },
+      -- K = {
+      --   vim.lsp.buf.hover,
+      --   { buffer = bufnr, desc = "Hover" },
+      -- },
     }
     for key, opts in pairs(mappings) do
       nnoremap(key, opts[1], opts[2])
@@ -212,65 +225,6 @@ return function()
       capabilities = updated_capabilities,
     }
   end
-
-  -- TODO: Move to separate file
-  local null_ls = require "null-ls"
-  local custom_sources = require "bombadil.lsp.null-ls"
-  null_ls.setup {
-    debug = true,
-    on_attach = on_attach,
-    sources = {
-      null_ls.builtins.code_actions.eslint_d,
-      null_ls.builtins.code_actions.gitsigns,
-      -- null_ls.builtins.code_actions.ltrs,
-      null_ls.builtins.code_actions.refactoring,
-      null_ls.builtins.code_actions.shellcheck.with { filetypes = { "bash", "sh" } },
-      null_ls.builtins.code_actions.statix,
-      null_ls.builtins.diagnostics.actionlint,
-      null_ls.builtins.diagnostics.eslint_d,
-      null_ls.builtins.diagnostics.jsonlint,
-      null_ls.builtins.diagnostics.luacheck.with { extra_args = { "--globals", "vim", "--no-max-line-length" } },
-      -- null_ls.builtins.diagnostics.ltrs,
-      null_ls.builtins.diagnostics.shellcheck.with { filetypes = { "bash", "sh" } },
-      null_ls.builtins.diagnostics.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
-      null_ls.builtins.diagnostics.statix,
-      null_ls.builtins.formatting.alejandra,
-      null_ls.builtins.formatting.clang_format.with { extra_args = { "--style=file" } },
-      null_ls.builtins.formatting.cmake_format,
-      null_ls.builtins.formatting.eslint_d,
-      custom_sources.formatting.jsonnet,
-      -- null_ls.builtins.formatting.pg_format,
-      null_ls.builtins.formatting.prettierd,
-      custom_sources.formatting.prisma,
-      null_ls.builtins.formatting.rustfmt,
-      null_ls.builtins.formatting.shellharden.with { filetypes = { "bash", "sh" } },
-      null_ls.builtins.formatting.shfmt.with { filetypes = { "bash", "sh" } },
-      null_ls.builtins.formatting.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
-      null_ls.builtins.formatting.stylua,
-      null_ls.builtins.hover.dictionary,
-    },
-  }
-
-  null_ls.register {
-    null_ls.builtins.diagnostics.cppcheck.with {
-      filetypes = { "cpp" },
-      args = {
-        "--enable=warning,style,performance,portability",
-        "--language=cpp",
-        "--template=gcc",
-        "$FILENAME",
-      },
-    },
-    null_ls.builtins.diagnostics.cppcheck.with {
-      filetypes = { "c" },
-      args = {
-        "--enable=warning,style,performance,portability",
-        "--language=c",
-        "--template=gcc",
-        "$FILENAME",
-      },
-    },
-  }
 
   require("clangd_extensions").setup {
     server = {
@@ -365,25 +319,27 @@ return function()
     },
   }
 
-  lspconfig.rust_analyzer.setup {
-    on_init = on_init,
-    on_attach = on_attach,
-    capabilities = updated_capabilities,
-    settings = {
-      ["rust-analyzer"] = {
-        assist = {
-          importGranularity = "module",
-          importPrefix = "by_self",
-        },
-        cargo = {
-          loadOutDirsFromCheck = true,
-        },
-        procMacro = {
-          enable = true,
+  if not pcall(require, "rust-tools") then
+    lspconfig.rust_analyzer.setup {
+      on_init = on_init,
+      on_attach = on_attach,
+      capabilities = updated_capabilities,
+      settings = {
+        ["rust-analyzer"] = {
+          assist = {
+            importGranularity = "module",
+            importPrefix = "by_self",
+          },
+          cargo = {
+            loadOutDirsFromCheck = true,
+          },
+          procMacro = {
+            enable = true,
+          },
         },
       },
-    },
-  }
+    }
+  end
 
   lspconfig.tsserver.setup {
     on_init = on_init,
@@ -427,6 +383,26 @@ return function()
     },
   }
 
+  if pcall(require, "rust-tools") then
+    local rt = require "rust-tools"
+    rt.setup {
+      server = {
+        -- on_init = on_init,
+        on_attach = function(client, bufnr)
+          on_attach(client, bufnr)
+          nnoremap("K", rt.hover_actions.hover_actions, { buffer = bufnr, desc = "Hover actions" })
+          vim.api.nvim_buf_set_option(bufnr, "errorformat", " --> %f:%l:%c")
+        end,
+      },
+      tools = {
+        executor = require("rust-tools.executors").quickfix,
+        hover_actions = {
+          border = "single",
+        },
+      },
+    }
+  end
+
   if pcall(require, "sg") then
     require("sg").setup {
       on_attach = on_attach,
@@ -436,4 +412,67 @@ return function()
       require("sg.telescope").fuzzy_search_results()
     end, { desc = "Sourcegraph search" })
   end
+
+  --
+  -- null-ls :(
+  --
+
+  -- TODO: Move to separate file
+  local null_ls = require "null-ls"
+  local custom_sources = require "bombadil.lsp.null-ls"
+  null_ls.setup {
+    debug = true,
+    on_attach = on_attach,
+    sources = {
+      null_ls.builtins.code_actions.eslint_d,
+      null_ls.builtins.code_actions.gitsigns,
+      -- null_ls.builtins.code_actions.ltrs,
+      null_ls.builtins.code_actions.refactoring,
+      null_ls.builtins.code_actions.shellcheck.with { filetypes = { "bash", "sh" } },
+      null_ls.builtins.code_actions.statix,
+      null_ls.builtins.diagnostics.actionlint,
+      null_ls.builtins.diagnostics.eslint_d,
+      null_ls.builtins.diagnostics.jsonlint,
+      null_ls.builtins.diagnostics.luacheck.with { extra_args = { "--globals", "vim", "--no-max-line-length" } },
+      -- null_ls.builtins.diagnostics.ltrs,
+      null_ls.builtins.diagnostics.shellcheck.with { filetypes = { "bash", "sh" } },
+      null_ls.builtins.diagnostics.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
+      null_ls.builtins.diagnostics.statix,
+      null_ls.builtins.formatting.alejandra,
+      null_ls.builtins.formatting.clang_format.with { extra_args = { "--style=file" } },
+      null_ls.builtins.formatting.cmake_format,
+      null_ls.builtins.formatting.eslint_d,
+      custom_sources.formatting.jsonnet,
+      -- null_ls.builtins.formatting.pg_format,
+      null_ls.builtins.formatting.prettierd,
+      custom_sources.formatting.prisma,
+      null_ls.builtins.formatting.rustfmt,
+      null_ls.builtins.formatting.shellharden.with { filetypes = { "bash", "sh" } },
+      null_ls.builtins.formatting.shfmt.with { filetypes = { "bash", "sh" } },
+      null_ls.builtins.formatting.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
+      null_ls.builtins.formatting.stylua,
+      null_ls.builtins.hover.dictionary,
+    },
+  }
+
+  null_ls.register {
+    null_ls.builtins.diagnostics.cppcheck.with {
+      filetypes = { "cpp" },
+      args = {
+        "--enable=warning,style,performance,portability",
+        "--language=cpp",
+        "--template=gcc",
+        "$FILENAME",
+      },
+    },
+    null_ls.builtins.diagnostics.cppcheck.with {
+      filetypes = { "c" },
+      args = {
+        "--enable=warning,style,performance,portability",
+        "--language=c",
+        "--template=gcc",
+        "$FILENAME",
+      },
+    },
+  }
 end

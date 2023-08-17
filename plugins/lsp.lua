@@ -151,10 +151,10 @@ return function()
         vim.lsp.buf.type_definition,
         { buffer = bufnr, desc = "Type definition" },
       },
-      -- K = {
-      --   vim.lsp.buf.hover,
-      --   { buffer = bufnr, desc = "Hover" },
-      -- },
+      K = {
+        vim.lsp.buf.hover,
+        { buffer = bufnr, desc = "Hover" },
+      },
     }
     for key, opts in pairs(mappings) do
       nnoremap(key, opts[1], opts[2])
@@ -162,9 +162,7 @@ return function()
 
     local range_mappings = {
       -- ["<leader>ca"] = {
-      --   function()
-      --     require("telescope.builtin").lsp_range_code_actions(telescope_themes.cursor)
-      --   end,
+      --   vim.lsp.buf.range_code_action,
       --   { buffer = bufnr, desc = "Code actions" },
       -- },
       ["<leader>f"] = {

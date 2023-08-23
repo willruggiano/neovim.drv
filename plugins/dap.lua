@@ -12,22 +12,10 @@ return function()
   dap.configurations.cpp = {
     {
       name = "Attach",
-      type = "cppdbg",
+      type = "lldb",
       request = "attach",
       pid = utils.pick_process,
       args = {},
-    },
-    {
-      name = "Launch",
-      type = "cppdbg",
-      request = "launch",
-      program = function()
-        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-      end,
-      cwd = "${workspaceFolder}",
-      stopOnEntry = false,
-      args = {},
-      runInTerminal = false,
     },
   }
 
@@ -40,9 +28,7 @@ return function()
         return "127.0.0.1"
       end,
       port = function()
-        local val = tonumber(vim.fn.input "Port: ")
-        assert(val, "Please provide a port number")
-        return val
+        return tonumber(vim.fn.input "Port: ")
       end,
     },
   }
@@ -84,7 +70,7 @@ return function()
     },
   }
 
-  dap.adapters.cppdbg = {
+  dap.adapters.lldb = {
     type = "executable",
     command = "lldb-vscode",
     name = "lldb",
@@ -137,10 +123,6 @@ return function()
       },
       {
         elements = {
-          -- {
-          --   id = "repl",
-          --   size = 0.5,
-          -- },
           {
             id = "console",
             size = 1,
@@ -163,27 +145,52 @@ return function()
   -- end
 
   local nnoremaps = require("bombadil.lib.keymap").nnoremaps
-  local prefix = "<space>d"
   nnoremaps {
-    [prefix .. "bt"] = {
-      dap.toggle_breakpoint,
-      { desc = "[dap] Toggle breakpoint" },
-    },
-    [prefix .. "c"] = {
+    -- ["]b"] = {
+    --   function()
+    --     --
+    --   end,
+    --   { desc = "[dap] Next breakpoint" }
+    -- },
+    -- ["[b"] = {
+    --   function()
+    --     --
+    --   end,
+    --   { desc = "[dap] Previous breakpoint" }
+    -- },
+    ["<F5>"] = {
       dap.continue,
       { desc = "[dap] Continue" },
     },
-    [prefix .. "e"] = {
-      dapui.eval,
-      { desc = "[dap] Evaluate expression" },
+    ["<F8>"] = {
+      dap.run_to_cursor,
+      { desc = "[dap] Run to cursor" },
     },
-    [prefix .. "so"] = {
+    ["<F9>"] = {
+      dap.toggle_breakpoint,
+      { desc = "[dap] Toggle breakpoint" },
+    },
+    ["<F10>"] = {
       dap.step_over,
       { desc = "[dap] Step over" },
     },
-    [prefix .. "si"] = {
+    ["<F11>"] = {
       dap.step_into,
       { desc = "[dap] Step into" },
+    },
+    ["<F12>"] = {
+      dap.step_out,
+      { desc = "[dap] Step out" },
+    },
+    ["<space>db"] = {
+      function()
+        dap.list_breakpoints(true) -- open quickfix
+      end,
+      { desc = "[dap] Breakpoints (quickfix)" },
+    },
+    ["<space>de"] = {
+      dapui.eval,
+      { desc = "[dap] Evaluate expression" },
     },
   }
 end

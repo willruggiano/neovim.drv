@@ -12,6 +12,7 @@
     nix2container.url = "github:nlewo/nix2container";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     sg-nvim.url = "github:sourcegraph/sg.nvim";
+    vscode-js-debug.url = "github:willruggiano/vscode-js-debug.nix";
     zls.url = "github:willruggiano/zls";
   };
 

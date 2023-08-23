@@ -204,6 +204,24 @@
       }
     },
     "flake-utils_10": {
+      "inputs": {
+        "systems": "systems_6"
+      },
+      "locked": {
+        "lastModified": 1681202837,
+        "narHash": "sha256-H+Rh19JDwRtpVPAWp64F+rlEtxUWBAQW28eAi3SRSzg=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "cfacdce06f30d2b68473a46042957675eebb3401",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_11": {
       "locked": {
         "lastModified": 1659877975,
         "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
@@ -340,11 +358,11 @@
         "systems": "systems_5"
       },
       "locked": {
-        "lastModified": 1681202837,
-        "narHash": "sha256-H+Rh19JDwRtpVPAWp64F+rlEtxUWBAQW28eAi3SRSzg=",
+        "lastModified": 1692799911,
+        "narHash": "sha256-3eihraek4qL744EvQXsK1Ha6C3CR7nnT8X2qWap4RNk=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "cfacdce06f30d2b68473a46042957675eebb3401",
+        "rev": "f9e7cf818399d17d347f847525c5a5a8032e4e44",
         "type": "github"
       },
       "original": {
@@ -761,6 +779,22 @@
     },
     "nixpkgs_11": {
       "locked": {
+        "lastModified": 1692684269,
+        "narHash": "sha256-zJk2pyF4Cuhtor0khtPlf+hfJIh22rzAUC+KU3Ob31Q=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "9d757ec498666cc1dcc6f2be26db4fd3e1e9ab37",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_12": {
+      "locked": {
         "lastModified": 1683594133,
         "narHash": "sha256-iUhLhEAgOCnexSGDsYT2ouydis09uDoNzM7UC685XGE=",
         "owner": "NixOS",
@@ -985,6 +1019,7 @@
         "nix2container": "nix2container",
         "nixpkgs": "nixpkgs_6",
         "sg-nvim": "sg-nvim",
+        "vscode-js-debug": "vscode-js-debug",
         "zls": "zls"
       }
     },
@@ -1156,6 +1191,21 @@
         "type": "github"
       }
     },
+    "systems_6": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "tres": {
       "flake": false,
       "locked": {
@@ -1168,10 +1218,47 @@
         "url": "https://github.com/ziglibs/tres/archive/220d01f3931595e3a2e2a6a0693363c0bfaf47e9.tar.gz"
       }
     },
+    "vscode-js-debug": {
+      "inputs": {
+        "flake-utils": "flake-utils_9",
+        "nixpkgs": "nixpkgs_11",
+        "vscode-js-debug": "vscode-js-debug_2"
+      },
+      "locked": {
+        "lastModified": 1692804146,
+        "narHash": "sha256-32FBPFAd3RDJVZ3X2m7J6vIlN75BZk0gwqj9mBS4EYQ=",
+        "owner": "willruggiano",
+        "repo": "vscode-js-debug.nix",
+        "rev": "8d299b27ce6412989719282d1104d34f5c2149eb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "willruggiano",
+        "repo": "vscode-js-debug.nix",
+        "type": "github"
+      }
+    },
+    "vscode-js-debug_2": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1690242329,
+        "narHash": "sha256-L7MFECy0KKJUsnObqLepPnrkDHwm28iQhjm5D9a0BV0=",
+        "owner": "microsoft",
+        "repo": "vscode-js-debug",
+        "rev": "df0247e2df0dc816e0b2b8a38a37867673a75815",
+        "type": "github"
+      },
+      "original": {
+        "owner": "microsoft",
+        "ref": "v1.81.0",
+        "repo": "vscode-js-debug",
+        "type": "github"
+      }
+    },
     "zig-overlay": {
       "inputs": {
         "flake-compat": "flake-compat_5",
-        "flake-utils": "flake-utils_10",
+        "flake-utils": "flake-utils_11",
         "nixpkgs": [
           "zls",
           "nixpkgs"
@@ -1194,10 +1281,10 @@
     "zls": {
       "inputs": {
         "diffz": "diffz",
-        "flake-utils": "flake-utils_9",
+        "flake-utils": "flake-utils_10",
         "gitignore": "gitignore_4",
         "known_folders": "known_folders",
-        "nixpkgs": "nixpkgs_11",
+        "nixpkgs": "nixpkgs_12",
         "tres": "tres",
         "zig-overlay": "zig-overlay"
       },

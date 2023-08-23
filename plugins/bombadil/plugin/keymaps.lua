@@ -90,8 +90,26 @@ vnoremap("<M-k>", function()
   vim.cmd [[m '<-2<CR>gv=gv]]
 end, { desc = "Move line up" })
 
+-- Toggle the quickfix list
+nnoremap("<space>q", function()
+  local open = (function()
+    for _, win in ipairs(vim.fn.getwininfo()) do
+      if win["quickfix"] == 1 then
+        return true
+      end
+    end
+    return false
+  end)()
+  if open then
+    vim.cmd.cclose()
+  else
+    if not vim.tbl_isempty(vim.fn.getqflist()) then
+      vim.cmd.copen()
+    end
+  end
+end, { desc = "Toggle quickfix" })
+
 require("which-key").register({
-  g = { name = "+Git" },
   h = { name = "+Hunk" },
   m = { name = "+Mark" },
   t = { name = "+Toggle" },

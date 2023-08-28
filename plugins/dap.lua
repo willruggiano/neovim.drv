@@ -134,15 +134,9 @@ return function()
     },
   }
 
-  -- dap.listeners.after.event_initialized["dapui_config"] = function()
-  --   dapui.open()
-  -- end
-  -- dap.listeners.before.event_terminated["dapui_config"] = function()
-  --   dapui.close()
-  -- end
-  -- dap.listeners.before.event_exited["dapui_config"] = function()
-  --   dapui.close()
-  -- end
+  vim.api.nvim_create_user_command("DapToggleUI", function()
+    dapui.toggle()
+  end, { desc = "[dap] Toggle UI" })
 
   local nnoremaps = require("bombadil.lib.keymap").nnoremaps
   nnoremaps {
@@ -182,15 +176,14 @@ return function()
       dap.step_out,
       { desc = "[dap] Step out" },
     },
-    ["<space>db"] = {
-      function()
-        dap.list_breakpoints(true) -- open quickfix
-      end,
-      { desc = "[dap] Breakpoints (quickfix)" },
-    },
-    ["<space>de"] = {
+    -- TODO: It'd be nice for this to be part of hover?
+    ["<leader>e"] = {
       dapui.eval,
       { desc = "[dap] Evaluate expression" },
     },
   }
+
+  vim.api.nvim_create_user_command("DapBreakpoints", function()
+    dap.list_breakpoints(true)
+  end, { desc = "[dap] Breakpoints (quickfix)" })
 end

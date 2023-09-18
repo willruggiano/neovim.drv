@@ -185,10 +185,10 @@
         "rev": "1aa871f20637eccc4e1e26b0fbcf9aafc9b6caf7",
         "type": "git"
     },
-    "lspkind-nvim": {
+    "lspkind.nvim": {
         "branch": "master",
-        "repo": "git@github.com:onsails/lspkind-nvim",
-        "rev": "c68b3a003483cf382428a43035079f78474cd11e",
+        "repo": "git@github.com:onsails/lspkind.nvim",
+        "rev": "57610d5ab560c073c465d6faf0c19f200cb67e6e",
         "type": "git"
     },
     "luafun": {

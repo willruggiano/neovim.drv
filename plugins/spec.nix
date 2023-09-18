@@ -336,7 +336,7 @@ in rec {
   };
 
   lspkind = {
-    src = sources.lspkind-nvim;
+    src = sources."lspkind.nvim";
   };
 
   lualine = {

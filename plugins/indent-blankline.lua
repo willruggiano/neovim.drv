@@ -11,6 +11,7 @@ return function()
       "NeogitCommitView",
       "NeogitLogView",
       "NeogitStatus",
+      "OverseerForm",
       "TelescopePrompt",
       "man",
       "packer",

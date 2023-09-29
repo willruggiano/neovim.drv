@@ -1,7 +1,5 @@
 {
-  fetchFromGitHub,
   fetchgit,
-  fetchpatch,
   lib,
   nix-prefetch-git,
   stdenv,

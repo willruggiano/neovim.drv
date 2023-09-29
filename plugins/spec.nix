@@ -120,6 +120,9 @@ in rec {
       dadbod-ui = {
         src = sources.vim-dadbod-ui;
       };
+      vim-dispatch = {
+        src = sources.vim-dispatch;
+      };
     };
   };
 
@@ -190,7 +193,9 @@ in rec {
     init = pkgs.writeTextFile {
       name = "fzy-lua-native.lua";
       text = ''
-        package.cpath = package.cpath .. ";" .. "${package}/static/?.so";
+        return function()
+          package.cpath = package.cpath .. ";" .. "${package}/static/?.so";
+        end
       '';
     };
   };
@@ -376,6 +381,13 @@ in rec {
 
   nvim-nonicons = {
     src = sources.nvim-nonicons;
+  };
+
+  nvim-notify = {
+    src = sources.nvim-notify;
+    config = ./notify.lua;
+    lazy = false;
+    priority = 1000;
   };
 
   nvim-surround = {

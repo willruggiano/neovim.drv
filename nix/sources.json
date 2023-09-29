@@ -275,6 +275,12 @@
         "rev": "ceda07dc7339f35444b5f4c4016f76a9eb42ac16",
         "type": "git"
     },
+    "nvim-notify": {
+        "branch": "master",
+        "repo": "git@github.com:rcarriga/nvim-notify",
+        "rev": "e4a2022f4fec2d5ebc79afa612f96d8b11c627b3",
+        "type": "git"
+    },
     "nvim-pqf": {
         "branch": "main",
         "repo": "ssh://git@github.com/yorickpeterse/nvim-pqf",
@@ -464,7 +470,7 @@
     "vim-dadbod": {
         "branch": "master",
         "repo": "git@github.com:tpope/vim-dadbod",
-        "rev": "3f57c0cd41523423fd781422dfc833820095a3e8",
+        "rev": "7d80bbd11c407a09e0f7b869c38f3dec3902805f",
         "type": "git"
     },
     "vim-dadbod-completion": {
@@ -475,8 +481,14 @@
     },
     "vim-dadbod-ui": {
         "branch": "master",
-        "repo": "git@github.com:kristijanhusak/vim-dadbod-ui",
-        "rev": "986324fa6372170ec47b28a5558ae7f7185e1d71",
+        "repo": "git@github.com:willruggiano/vim-dadbod-ui",
+        "rev": "5e829791a060c06b9aa6c20863e1236697a035bc",
+        "type": "git"
+    },
+    "vim-dispatch": {
+        "branch": "master",
+        "repo": "git@github.com:tpope/vim-dispatch",
+        "rev": "6cc2691576f97d43f8751664d1a1a908b99927e5",
         "type": "git"
     },
     "vim-graphql": {

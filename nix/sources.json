@@ -481,8 +481,8 @@
     },
     "vim-dadbod-ui": {
         "branch": "master",
-        "repo": "git@github.com:willruggiano/vim-dadbod-ui",
-        "rev": "5e829791a060c06b9aa6c20863e1236697a035bc",
+        "repo": "git@github.com:kristijanhusak/vim-dadbod-ui",
+        "rev": "95fd22469507e86b78aa55d868c14108adee2881",
         "type": "git"
     },
     "vim-dispatch": {

@@ -39,6 +39,33 @@ return function()
     },
   }
 
+  o.register_template {
+    name = "Run File (jest)",
+    builder = function()
+      local file = vim.fn.expand "%"
+      return {
+        cwd = vim.fn.expand "%:p:h",
+        cmd = { "jest" },
+        args = { file },
+        strategy = {
+          "toggleterm",
+          open_on_start = true,
+          direction = "horizontal",
+          on_create = function()
+            vim.cmd.stopinsert()
+          end,
+        },
+      }
+    end,
+    condition = {
+      filetype = { "typescript" },
+      callback = function()
+        local file = vim.fn.expand "%"
+        return vim.endswith(file, ".test.ts")
+      end,
+    },
+  }
+
   local nnoremaps = require("bombadil.lib.keymap").nnoremaps
 
   nnoremaps {

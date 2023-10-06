@@ -327,7 +327,6 @@ in rec {
       haskellPackages.haskell-language-server
       haskellPackages.ormolu
       inputs'.nil.packages.default
-      inputs'.sg-nvim.packages.default
       inputs'.zls.packages.default
       marksman
       nodePackages.graphql-language-service-cli
@@ -476,7 +475,7 @@ in rec {
   };
 
   # sg = let
-  #   package = inputs'.sg-nvim.packages.default;
+  #   package = inputs'.sg-nvim.packages.sg-nvim;
   # in {
   #   inherit package;
   #   init = pkgs.writeTextFile {
@@ -487,6 +486,7 @@ in rec {
   #       end
   #     '';
   #   };
+  #   paths = [inputs'.sg-nvim.packages.default];
   # };
 
   statuscol = {

@@ -41,6 +41,7 @@ in rec {
     src = sources.nvim-cmp;
     config = ./cmp.lua;
     dependencies = {
+      inherit sg;
       cmp-buffer = {
         src = sources.cmp-buffer;
       };
@@ -266,7 +267,7 @@ in rec {
     src = sources.nvim-lspconfig;
     config = ./lsp.lua;
     dependencies = {
-      inherit fun lspkind;
+      inherit fun lspkind sg;
       clangd_extensions = {
         src = sources."clangd_extensions.nvim";
       };
@@ -474,20 +475,20 @@ in rec {
     };
   };
 
-  # sg = let
-  #   package = inputs'.sg-nvim.packages.sg-nvim;
-  # in {
-  #   inherit package;
-  #   init = pkgs.writeTextFile {
-  #     name = "sg.lua";
-  #     text = ''
-  #       return function()
-  #         package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
-  #       end
-  #     '';
-  #   };
-  #   paths = [inputs'.sg-nvim.packages.default];
-  # };
+  sg = let
+    package = inputs'.sg-nvim.packages.sg-nvim;
+  in {
+    inherit package;
+    init = pkgs.writeTextFile {
+      name = "sg.lua";
+      text = ''
+        return function()
+          package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
+        end
+      '';
+    };
+    paths = [inputs'.sg-nvim.packages.default];
+  };
 
   statuscol = {
     src = sources."statuscol.nvim";

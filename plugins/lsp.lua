@@ -413,6 +413,7 @@ return function()
 
   if pcall(require, "sg") then
     require("sg").setup {
+      accept_tos = true,
       on_attach = on_attach,
     }
 

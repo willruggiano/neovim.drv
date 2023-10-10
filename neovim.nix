@@ -13,7 +13,7 @@
         # Environment variables to bake into the neovim environment.
         # If an environment variable is already defined, the existing definition will take precedence.
         env = {
-          # Nothing to see here.
+          SRC_ENDPOINT = "https://sourcegraph.com";
         };
 
         # package = inputs'.neovim.packages.default.overrideAttrs (old: {

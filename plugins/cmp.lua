@@ -73,6 +73,7 @@ return function()
       { name = "nvim_lsp_signature_help" },
       { name = "snippy" },
       -- { name = "copilot" },
+      { name = "cody" },
     }, {
       { name = "path" },
       { name = "buffer" },
@@ -100,6 +101,7 @@ return function()
         menu = {
           buffer = "[ buf]",
           cmp_git = "[ git]",
+          cody = "[cody]",
           copilot = "[  gh]",
           nvim_lsp = "[ lsp]",
           nvim_lua = "[nvim]",

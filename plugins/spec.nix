@@ -45,20 +45,6 @@ in rec {
       cmp-buffer = {
         src = sources.cmp-buffer;
       };
-      # cmp_copilot = {
-      #   src = sources.copilot-cmp;
-      #   config = true;
-      #   dependencies = {
-      #     copilot = {
-      #       src = sources."copilot.lua";
-      #       config = {
-      #         suggestion.enabled = false;
-      #         panel.enabled = false;
-      #       };
-      #       event = "InsertEnter";
-      #     };
-      #   };
-      # };
       cmp-fuzzy-path = {
         src = sources.cmp-fuzzy-path;
         dependencies = {
@@ -210,7 +196,7 @@ in rec {
     src = sources.vim-graphql;
   };
 
-  indent_blankline = {
+  ibl = {
     src = sources."indent-blankline.nvim";
     config = ./indent-blankline.lua;
   };

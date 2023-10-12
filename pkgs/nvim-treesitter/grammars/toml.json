@@ -4,6 +4,7 @@
   "date": "2021-05-11T12:47:32+08:00",
   "path": "/nix/store/l6n3spvikap76j70k049i91i9yzlq8yi-tree-sitter-toml-8bd2056",
   "sha256": "0yasw5fp4mq6vzrdwlc3dxlss8a94bsffv4mzrfp0b3iw0s1dlyg",
+  "hash": "sha256-z9MWNOBxLHBd/pVs5/QiSSGtaW+DUd7y3wZXcl3hWnk=",
   "fetchLFS": false,
   "fetchSubmodules": false,
   "deepClone": false,

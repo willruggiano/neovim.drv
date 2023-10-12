@@ -4,6 +4,7 @@
   "date": "2023-07-19T17:58:43-04:00",
   "path": "/nix/store/di9w62zj6517vj79b8wrd5l7kma848ki-tree-sitter-regex-2354482",
   "sha256": "1b5sbjzdhkvpqaq2jsb347mrspjzmif9sqmvs82mp2g08bmr122z",
+  "hash": "sha256-X4iQ60LgiVsF0rtinVysX16d6yFjaSmwwndP2L5cuqw=",
   "fetchLFS": false,
   "fetchSubmodules": false,
   "deepClone": false,

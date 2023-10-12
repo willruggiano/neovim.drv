@@ -4,6 +4,7 @@
   "date": "2023-07-13T16:23:24+12:00",
   "path": "/nix/store/dnsbx90jq0xd018hhsi3byy875p4ily7-tree-sitter-nix-66e3e9c",
   "sha256": "06671j6kx0b5z35mkmyygvxmjd8af9ac7kbl0w1bfwk177arz3zs",
+  "hash": "sha256-+o+f1TlhcrcCB3TNw1RyCjVZ+37e11nL+GWBPo0Mxxg=",
   "fetchLFS": false,
   "fetchSubmodules": false,
   "deepClone": false,

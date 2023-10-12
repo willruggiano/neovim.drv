@@ -1,26 +1,28 @@
 return function()
-  require("indent_blankline").setup {
-    buftype_exclude = {
-      "help",
-      "nofile",
-      "prompt",
-      "quickfix",
-      "terminal",
+  require("ibl").setup {
+    exclude = {
+      buftypes = {
+        "help",
+        "nofile",
+        "prompt",
+        "quickfix",
+        "terminal",
+      },
+      filetypes = {
+        "NeogitCommitView",
+        "NeogitLogView",
+        "NeogitStatus",
+        "OverseerForm",
+        "TelescopePrompt",
+        "man",
+        "packer",
+        "vimcmake",
+      },
     },
-    filetype_exclude = {
-      "NeogitCommitView",
-      "NeogitLogView",
-      "NeogitStatus",
-      "OverseerForm",
-      "TelescopePrompt",
-      "man",
-      "packer",
-      "vimcmake",
+    indent = {
+      highlight = "base02_fg",
+      char = "|",
     },
+    scope = { enabled = false },
   }
-
-  local hi = require("flavours").highlight
-
-  hi.IndentBlanklineChar = "base02_fg"
-  hi.IndentBlanklineContextChar = "base04_fg"
 end

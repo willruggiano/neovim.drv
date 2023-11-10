@@ -59,6 +59,7 @@
         };
 
         packages.default = config.neovim.final;
+        packages.nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
         packages.nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
       };
     };

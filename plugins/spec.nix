@@ -96,22 +96,22 @@ in rec {
     };
   };
 
-  dadbod = {
-    src = sources.vim-dadbod;
-    config = ./dadbod.lua;
-    dependencies = {
-      inherit cmp;
-      dadbod-completion = {
-        src = sources.vim-dadbod-completion;
-      };
-      dadbod-ui = {
-        src = sources.vim-dadbod-ui;
-      };
-      vim-dispatch = {
-        src = sources.vim-dispatch;
-      };
-    };
-  };
+  # dadbod = {
+  #   src = sources.vim-dadbod;
+  #   config = ./dadbod.lua;
+  #   dependencies = {
+  #     inherit cmp;
+  #     dadbod-completion = {
+  #       src = sources.vim-dadbod-completion;
+  #     };
+  #     dadbod-ui = {
+  #       src = sources.vim-dadbod-ui;
+  #     };
+  #     vim-dispatch = {
+  #       src = sources.vim-dispatch;
+  #     };
+  #   };
+  # };
 
   dap = {
     src = sources.nvim-dap;
@@ -137,6 +137,14 @@ in rec {
     with haskellPackages; [
       haskell-debug-adapter
     ];
+  };
+
+  dbee = let
+    nvim-dbee = pkgs.callPackage ../pkgs/nvim-dbee.nix {};
+  in {
+    src = nvim-dbee;
+    config = ./dbee.lua;
+    paths = [nvim-dbee.dbee];
   };
 
   dial = {

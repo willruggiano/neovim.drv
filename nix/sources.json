@@ -251,6 +251,12 @@
         "rev": "03bd29672d7fab5e515fc8469b7d07cc5994bbf6",
         "type": "git"
     },
+    "nvim-dbee": {
+        "branch": "master",
+        "repo": "git@github.com:willruggiano/nvim-dbee",
+        "rev": "9caa89f41dbc136910cc0b39c39fff9714120b48",
+        "type": "git"
+    },
     "nvim-lspconfig": {
         "branch": "master",
         "repo": "git@github.com:neovim/nvim-lspconfig",

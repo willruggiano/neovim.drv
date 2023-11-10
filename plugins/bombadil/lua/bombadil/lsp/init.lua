@@ -23,8 +23,6 @@ M.kind = {
   init = require("lspkind").init,
 }
 
-M.peek_definition = require "bombadil.lsp.peek"
-
 M.signs = require "bombadil.lsp.signs"
 
 return M

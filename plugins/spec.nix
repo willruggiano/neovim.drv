@@ -394,9 +394,6 @@ in rec {
     config = ./treesitter.lua;
     dependencies = {
       inherit nvim-ts-context-commentstring;
-      nvim-treesitter-playground = {
-        src = sources.playground;
-      };
       nvim-treesitter-refactor = {
         src = sources.nvim-treesitter-refactor;
       };

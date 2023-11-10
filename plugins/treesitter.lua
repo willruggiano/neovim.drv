@@ -22,6 +22,10 @@ return function()
     vim.opt.cindent = false
   end
 
+  local function make_textobject_query(query)
+    return query
+  end
+
   ---@diagnostic disable-next-line: missing-fields
   require("nvim-treesitter.configs").setup {
     -- NOTE: Parsers are installed by nix.
@@ -65,68 +69,55 @@ return function()
     },
 
     textobjects = {
+      lsp_interop = {
+        enable = true,
+        border = "single",
+        peek_definition_code = {
+          ["<leader>K"] = "@*",
+        },
+      },
       move = {
         enable = true,
         set_jumps = true,
 
         goto_next_start = {
-          ["]m"] = "@function.outer",
-          ["]]"] = "@class.outer",
-          ["]x"] = "@comment",
+          ["]]"] = make_textobject_query "@block.outer",
+          ["]c"] = make_textobject_query "@class.outer",
+          ["]f"] = make_textobject_query "@function.outer",
+          ["]x"] = make_textobject_query "@comment",
         },
         goto_next_end = {
-          ["]M"] = "@function.outer",
-          ["]["] = "@class.outer",
+          ["]["] = make_textobject_query "@block.outer",
+          ["]C"] = make_textobject_query "@class.outer",
+          ["]F"] = make_textobject_query "@function.outer",
         },
         goto_previous_start = {
-          ["[m"] = "@function.outer",
-          ["[["] = "@class.outer",
-          ["[x"] = "@comment",
+          ["[]"] = make_textobject_query "@block.outer",
+          ["[c"] = make_textobject_query "@class.outer",
+          ["[f"] = make_textobject_query "@function.outer",
+          ["[x"] = make_textobject_query "@comment",
         },
         goto_previous_end = {
-          ["[M"] = "@function.outer",
-          ["[]"] = "@class.outer",
+          ["[["] = make_textobject_query "@block.outer",
+          ["[C"] = make_textobject_query "@class.outer",
+          ["[F"] = make_textobject_query "@function.outer",
         },
       },
-
       select = {
         enable = true,
         keymaps = {
-          ["af"] = "@function.outer",
-          ["if"] = "@function.inner",
-
-          ["ac"] = "@conditional.outer",
-          ["ic"] = "@conditional.inner",
-
-          ["aa"] = "@parameter.outer",
-          ["ia"] = "@parameter.inner",
+          ["ab"] = make_textobject_query "@block.outer",
+          ["ib"] = make_textobject_query "@block.inner",
+          ["af"] = make_textobject_query "@function.outer",
+          ["if"] = make_textobject_query "@function.inner",
+          ["ap"] = make_textobject_query "@parameter.outer",
+          ["ip"] = make_textobject_query "@parameter.inner",
         },
       },
-
       swap = {
         enable = true,
         swap_next = swap_next,
         swap_previous = swap_prev,
-      },
-    },
-
-    playground = {
-      enable = true,
-      updatetime = 25,
-      persist_queries = true,
-      keybindings = {
-        toggle_query_editor = "o",
-        toggle_hl_groups = "i",
-        toggle_injected_languages = "t",
-
-        -- This shows stuff like literal strings, commas, etc.
-        toggle_anonymous_nodes = "a",
-        toggle_language_display = "I",
-        focus_language = "f",
-        unfocus_language = "F",
-        update = "R",
-        goto_node = "<cr>",
-        show_help = "?",
       },
     },
   }
@@ -173,7 +164,6 @@ return function()
   local noremap = require("bombadil.lib.keymap").noremap
 
   nnoremap("<leader>tu", unit.toggle_highlighting, { desc = "Toggle unit highlighting" })
-  nnoremap("<leader>tp", "<cmd>TSPlaygroundToggle<cr>", { desc = "Toggle treesitter playground" })
 
   noremap({ "o", "x" }, "iu", [[:lua require("treesitter-unit").select()<cr>]], { desc = "inner unit" })
   noremap({ "o", "x" }, "au", [[:lua require("treesitter-unit").select(true)<cr>]], { desc = "outer unit" })

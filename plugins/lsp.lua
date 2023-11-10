@@ -127,10 +127,6 @@ return function()
         require("telescope.builtin").lsp_dynamic_workspace_symbols,
         { buffer = bufnr, desc = "Workspace symbols" },
       },
-      ["<leader>K"] = {
-        lsp.peek_definition,
-        { buffer = bufnr, desc = "Peek definition" },
-      },
       gd = {
         vim.lsp.buf.definition,
         { buffer = bufnr, desc = "Definition" },

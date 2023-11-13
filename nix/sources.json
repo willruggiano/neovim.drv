@@ -302,7 +302,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter",
-        "rev": "783e5fc3079680b307e8ac518935317907e71a59",
+        "rev": "075a64addc33390028ea124a1046a43497f05cd1",
         "type": "git"
     },
     "nvim-treesitter-refactor": {

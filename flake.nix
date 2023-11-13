@@ -41,18 +41,23 @@
             stylua.enable = true;
           };
           scripts = {
-            update-nvim-treesitter.exec = ''
-              niv update nvim-treesitter
-              nix run .#nvim-treesitter.update-grammars -- ./pkgs/nvim-treesitter
-              git commit -am 'chore: update nvim-treesitter'
+            bump-neovim.exec = ''
+              nix flake lock --update-input neovim &&
+                nom build &&
+                git commit -am 'bump: neovim'
             '';
-            update-plugin.exec = ''
+            bump-nvim-treesitter.exec = ''
+              niv update nvim-treesitter &&
+                nix run .#nvim-treesitter.update-grammars -- ./pkgs/nvim-treesitter &&
+                git commit -am 'bump: nvim-treesitter'
+            '';
+            bump-plugin.exec = ''
               [ $# -eq 0 ] && {
-                niv update
-                git commit -am "chore: update all plugins"
+                niv update &&
+                  git commit -am "bump: all plugins"
               } || {
-                niv update $1
-                git commit -am "chore: update $1"
+                niv update $1 &&
+                  git commit -am "bump: $1"
               }
             '';
           };

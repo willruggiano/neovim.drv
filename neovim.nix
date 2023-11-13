@@ -16,14 +16,15 @@
           SRC_ENDPOINT = "https://sourcegraph.com";
         };
 
-        # package = inputs'.neovim.packages.default.overrideAttrs (old: {
-        #   patches = with pkgs; [
-        #     (fetchpatch {
-        #       url = "https://patch-diff.githubusercontent.com/raw/neovim/neovim/pull/20536.patch";
-        #       hash = "sha256-9HqRpOByb+I6Rw5hmuZO1iwwrulkkNTEWv1bEczKTBM=";
-        #     })
-        #   ];
-        # });
+        package = inputs'.neovim.packages.default.override {
+          libvterm-neovim = pkgs.libvterm-neovim.overrideAttrs rec {
+            version = "0.3.3";
+            src = pkgs.fetchurl {
+              url = "https://github.com/neovim/libvterm/archive/v${version}.tar.gz";
+              hash = "sha256-C6vjq0LDVJJdre3pDTUvBUqpxK5oQuqAOiDJdB4XLlY=";
+            };
+          };
+        };
 
         # Tools to bake into the neovim environment.
         # These tools are *appended* to neovim's PATH variable,

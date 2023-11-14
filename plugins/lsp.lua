@@ -336,14 +336,14 @@ return function()
   end
 
   -- Shits broke :(
-  -- lspconfig.sqlls.setup {
-  --   root_dir = function()
-  --     return vim.fn.getcwd()
-  --   end,
-  --   on_init = on_init,
-  --   on_attach = on_attach,
-  --   capabilities = updated_capabilities,
-  -- }
+  lspconfig.sqlls.setup {
+    -- root_dir = function()
+    --   return vim.fn.getcwd()
+    -- end,
+    on_init = on_init,
+    on_attach = on_attach,
+    capabilities = updated_capabilities,
+  }
 
   lspconfig.tsserver.setup {
     on_init = on_init,

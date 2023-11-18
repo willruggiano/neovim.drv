@@ -126,10 +126,19 @@ in rec {
       };
       nvim-dap-vscode-js = {
         src = sources.nvim-dap-vscode-js;
-        # config = {
-        #   adapters = ["pwa-node" "pwa-chrome" "pwa-extensionHost" "pwa-msedge" "node-terminal"];
-        #   debugger_cmd = ["node" "${inputs'.vscode-js-debug.packages.default}/src/dapDebugServer.js"];
-        # };
+        config = {
+          adapters = [
+            "node-terminal"
+            "pwa-chrome"
+            "pwa-extensionHost"
+            "pwa-msedge"
+            "pwa-node"
+          ];
+          debugger_cmd = [
+            "node"
+            "${inputs'.vscode-js-debug.packages.latest}/lib/node_modules/vscode-js-debug/dist/src/vsDebugServer.js"
+          ];
+        };
       };
       inherit rapidjson;
     };

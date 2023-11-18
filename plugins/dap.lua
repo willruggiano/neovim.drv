@@ -2,11 +2,6 @@ return function()
   local dap = require "dap"
   local utils = require "dap.utils"
 
-  require("dap-vscode-js").setup {
-    adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
-    debugger_path = vim.fn.expand "~/dev/vscode-js-debug",
-  }
-
   dap.set_log_level "TRACE"
 
   dap.configurations.cpp = {

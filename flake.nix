@@ -13,7 +13,16 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     sg-nvim.url = "github:sourcegraph/sg.nvim";
     vscode-js-debug.url = "github:willruggiano/vscode-js-debug.nix";
-    zls.url = "github:willruggiano/zls";
+    zls.url = "github:zigtools/zls";
+  };
+
+  nixConfig = {
+    extra-substituters = [
+      "https://willruggiano.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "willruggiano.cachix.org-1:rz00ME8/uQfWe+tN3njwK5vc7P8GLWu9qbAjjJbLoSw="
+    ];
   };
 
   outputs = {flake-parts, ...} @ inputs:

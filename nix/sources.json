@@ -169,8 +169,8 @@
     },
     "lir.nvim": {
         "branch": "master",
-        "repo": "ssh://git@github.com/tamago324/lir.nvim",
-        "rev": "969e95bd07ec315b5efc53af69c881278c2b74fa",
+        "repo": "git@github.com:willruggiano/lir.nvim",
+        "rev": "cb9ddf303b63966e101fb86d15c93f75aa5163de",
         "type": "git"
     },
     "lspkind.nvim": {

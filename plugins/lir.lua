@@ -240,7 +240,9 @@ return function()
 
   ---@diagnostic disable-next-line: missing-fields
   lir.setup {
-    devicons = { enable = true },
+    devicons = {
+      enable = true,
+    },
     float = { winblend = 15 },
     hide_cursor = true,
     show_hidden_files = true,

@@ -218,7 +218,7 @@
     "nvim-cmp": {
         "branch": "main",
         "repo": "git@github.com:hrsh7th/nvim-cmp",
-        "rev": "5dce1b778b85c717f6614e3f4da45e9f19f54435",
+        "rev": "0b751f6beef40fd47375eaf53d3057e0bfa317e4",
         "type": "git"
     },
     "nvim-colorizer.lua": {
@@ -290,7 +290,7 @@
     "nvim-snippy": {
         "branch": "master",
         "repo": "git@github.com:dcampos/nvim-snippy",
-        "rev": "5787f088c99c04309a8aa6363fd3ac9a5a26b780",
+        "rev": "7c8f18e90cad4f56c4e22a49101668735639f286",
         "type": "git"
     },
     "nvim-surround": {
@@ -326,7 +326,7 @@
     "nvim-web-devicons": {
         "branch": "master",
         "repo": "ssh://git@github.com/kyazdani42/nvim-web-devicons",
-        "rev": "a1e6268779411048a87f767a27380089362a0ce2",
+        "rev": "cdbcca210cf3655aa9b31ebf2422763ecd85ee5c",
         "type": "git"
     },
     "overseer.nvim": {

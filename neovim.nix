@@ -14,6 +14,8 @@
         # If an environment variable is already defined, the existing definition will take precedence.
         env = {
           SRC_ENDPOINT = "https://sourcegraph.com";
+          # https://github.com/wez/wezterm/issues/415#issuecomment-755849623
+          TERM = "wezterm";
         };
 
         package = inputs'.neovim.packages.default.override {

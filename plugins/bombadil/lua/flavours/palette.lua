@@ -1,3 +1,4 @@
+-- https://github.com/tinted-theming/base16-schemes/blob/main/tomorrow-night-eighties.yaml
 local dark = {
   base00 = "#2d2d2d",
   base01 = "#393939",
@@ -17,6 +18,7 @@ local dark = {
   base0F = "#a3685a",
 }
 
+-- https://github.com/tinted-theming/base16-schemes/blob/main/tomorrow.yaml
 local light = {
   base00 = "#ffffff",
   base01 = "#e0e0e0",

@@ -32,7 +32,7 @@
     "clangd_extensions.nvim": {
         "branch": "main",
         "repo": "git@github.com:p00f/clangd_extensions.nvim",
-        "rev": "bafed83f79b5779f5b43e8e015e13ca99dcd8b3a",
+        "rev": "34c8eaa12be192e83cd4865ce2375e9f53e728f2",
         "type": "git"
     },
     "cmp-buffer": {

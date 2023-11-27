@@ -220,42 +220,47 @@ return function()
     }
   end
 
-  require("clangd_extensions").setup {
-    server = {
-      cmd = vim.list_extend({ "clangd" }, {
-        "--background-index",
-        "--header-insertion=iwyu",
-        "--suggest-missing-includes",
-      }),
-      on_init = function(client)
-        on_init(client)
-        require("clang-format").setup {
-          on_attach = function(config)
-            vim.bo.shiftwidth = config.IndentWidth
-            vim.bo.textwidth = config.ColumnLimit
-          end,
-        }
-      end,
-      on_attach = function(client, bufnr)
-        on_attach(client, bufnr)
-        nnoremap("<leader>a", function()
-          require("bombadil.lib.clangd").switch_source_header(bufnr, true)
-        end, { buffer = bufnr, desc = "Switch source/header" })
-        nnoremap("<leader>th", function()
-          require("clangd_extensions.inlay_hints").toggle_inlay_hints()
-        end, { buffer = bufnr, desc = "Toggle inlay hints" })
-        require("clang-format").on_attach(client, bufnr)
-      end,
-      init_options = {
-        clangdFileStatus = true,
-        completeUnimported = true,
-        semanticHighlighting = true,
-        usePlaceholders = true,
-      },
-      -- HACK: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428
-      capabilities = vim.tbl_deep_extend("force", updated_capabilities, { offsetEncoding = { "utf-16" } }),
-    },
+  lspconfig.clangd.setup {
+    on_init = on_init,
+    on_attach = on_attach,
+    -- HACK: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428
+    capabilities = vim.tbl_deep_extend("force", updated_capabilities, { offsetEncoding = { "utf-16" } }),
   }
+  -- require("clangd_extensions").setup {
+  --   server = {
+  --     cmd = vim.list_extend({ "clangd" }, {
+  --       "--background-index",
+  --       "--header-insertion=iwyu",
+  --     }),
+  --     on_init = function(client)
+  --       on_init(client)
+  --       require("clang-format").setup {
+  --         on_attach = function(config)
+  --           vim.bo.shiftwidth = config.IndentWidth
+  --           vim.bo.textwidth = config.ColumnLimit
+  --         end,
+  --       }
+  --     end,
+  --     on_attach = function(client, bufnr)
+  --       on_attach(client, bufnr)
+  --       nnoremap("<leader>a", function()
+  --         require("bombadil.lib.clangd").switch_source_header(bufnr, true)
+  --       end, { buffer = bufnr, desc = "Switch source/header" })
+  --       nnoremap("<leader>th", function()
+  --         require("clangd_extensions.inlay_hints").toggle_inlay_hints()
+  --       end, { buffer = bufnr, desc = "Toggle inlay hints" })
+  --       require("clang-format").on_attach(client, bufnr)
+  --     end,
+  --     init_options = {
+  --       clangdFileStatus = true,
+  --       completeUnimported = true,
+  --       semanticHighlighting = true,
+  --       usePlaceholders = true,
+  --     },
+  --     -- HACK: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428
+  --     capabilities = vim.tbl_deep_extend("force", updated_capabilities, { offsetEncoding = { "utf-16" } }),
+  --   },
+  -- }
 
   lspconfig.jsonls.setup {
     cmd = { "vscode-json-languageserver", "--stdio" },
@@ -426,17 +431,17 @@ return function()
   local null_ls = require "null-ls"
   local custom_sources = require "bombadil.lsp.null-ls"
   null_ls.setup {
-    debug = true,
+    -- debug = true,
     on_attach = on_attach,
     sources = {
-      null_ls.builtins.code_actions.eslint_d,
+      -- null_ls.builtins.code_actions.eslint_d,
       null_ls.builtins.code_actions.gitsigns,
       -- null_ls.builtins.code_actions.ltrs,
       null_ls.builtins.code_actions.refactoring,
       null_ls.builtins.code_actions.shellcheck.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.code_actions.statix,
       null_ls.builtins.diagnostics.actionlint,
-      null_ls.builtins.diagnostics.eslint_d,
+      -- null_ls.builtins.diagnostics.eslint_d,
       null_ls.builtins.diagnostics.jsonlint,
       null_ls.builtins.diagnostics.luacheck.with { extra_args = { "--globals", "vim", "--no-max-line-length" } },
       -- null_ls.builtins.diagnostics.ltrs,
@@ -444,12 +449,12 @@ return function()
       null_ls.builtins.diagnostics.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
       null_ls.builtins.diagnostics.statix,
       null_ls.builtins.formatting.alejandra,
-      null_ls.builtins.formatting.clang_format.with { extra_args = { "--style=file" } },
-      null_ls.builtins.formatting.cmake_format,
-      null_ls.builtins.formatting.eslint_d,
+      -- null_ls.builtins.formatting.clang_format.with { extra_args = { "--style=file" } },
+      -- null_ls.builtins.formatting.cmake_format,
+      -- null_ls.builtins.formatting.eslint_d,
       custom_sources.formatting.jsonnet,
       -- null_ls.builtins.formatting.pg_format,
-      null_ls.builtins.formatting.prettierd,
+      -- null_ls.builtins.formatting.prettierd,
       custom_sources.formatting.prisma,
       null_ls.builtins.formatting.rustfmt,
       null_ls.builtins.formatting.shellharden.with { filetypes = { "bash", "sh" } },

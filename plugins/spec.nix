@@ -446,10 +446,6 @@ in rec {
     config = ./pqf.lua;
   };
 
-  rainbow-csv = {
-    src = sources.rainbow_csv;
-  };
-
   rapidjson = let
     package = luajitPackages.rapidjson;
   in {

@@ -59,8 +59,6 @@ return function()
   local nnoremap = require("bombadil.lib.keymap").nnoremap
   local vnoremap = require("bombadil.lib.keymap").vnoremap
 
-  local enable_lsp_formatting = { "hls", "null-ls" }
-
   local lsp_codelens = vim.api.nvim_create_augroup("LspCodelens", {})
 
   -- Use an on_attach function to only map the following keys
@@ -68,10 +66,6 @@ return function()
   local on_attach = function(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-
-    local enable_formatting = vim.tbl_contains(enable_lsp_formatting, client.name)
-    client.server_capabilities.documentFormattingProvider = enable_formatting
-    client.server_capabilities.documentRangeFormattingProvider = enable_formatting
 
     local mappings = {
       ["]d"] = {
@@ -114,7 +108,7 @@ return function()
       },
       ["<leader>rr"] = {
         function()
-          vim.lsp.stop_client(vim.lsp.get_active_clients { bufnr = bufnr }, true)
+          vim.lsp.stop_client(vim.lsp.get_clients { bufnr = bufnr }, true)
           vim.cmd.edit()
         end,
         { buffer = bufnr, desc = "Restart lsp clients" },
@@ -211,12 +205,22 @@ return function()
     lineFoldingOnly = true,
   }
 
+  local server_settings = {
+    nil_ls = {
+      ["nil"] = {
+        formatting = {
+          command = { "alejandra", "-qq" },
+        },
+      },
+    },
+  }
   local simple_servers = { "biome", "cmake", "graphql", "hls", "marksman", "nil_ls", "prismals", "pyright", "zls" }
   for _, name in ipairs(simple_servers) do
     lspconfig[name].setup {
       on_init = on_init,
       on_attach = on_attach,
       capabilities = updated_capabilities,
+      settings = server_settings[name] or {},
     }
   end
 
@@ -302,7 +306,9 @@ return function()
             local library = {}
 
             local function add(dir)
-              for _, p in ipairs(vim.fn.expand(dir .. "/lua", false, true)) do
+              for _, p in
+                ipairs(vim.fn.expand(dir .. "/lua", false, true) --[=[@as string[]]=])
+              do
                 table.insert(library, p)
               end
             end
@@ -400,7 +406,7 @@ return function()
         on_attach = function(client, bufnr)
           on_attach(client, bufnr)
           nnoremap("K", rt.hover_actions.hover_actions, { buffer = bufnr, desc = "Hover actions" })
-          vim.api.nvim_buf_set_option(bufnr, "errorformat", " --> %f:%l:%c")
+          vim.api.nvim_set_option_value("errorformat", " --> %f:%l:%c", { buf = bufnr })
         end,
       },
       tools = {
@@ -434,29 +440,16 @@ return function()
     -- debug = true,
     on_attach = on_attach,
     sources = {
-      -- null_ls.builtins.code_actions.eslint_d,
+      custom_sources.formatting.jsonnet,
       null_ls.builtins.code_actions.gitsigns,
-      -- null_ls.builtins.code_actions.ltrs,
-      null_ls.builtins.code_actions.refactoring,
       null_ls.builtins.code_actions.shellcheck.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.code_actions.statix,
       null_ls.builtins.diagnostics.actionlint,
-      -- null_ls.builtins.diagnostics.eslint_d,
       null_ls.builtins.diagnostics.jsonlint,
       null_ls.builtins.diagnostics.luacheck.with { extra_args = { "--globals", "vim", "--no-max-line-length" } },
-      -- null_ls.builtins.diagnostics.ltrs,
       null_ls.builtins.diagnostics.shellcheck.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.diagnostics.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
       null_ls.builtins.diagnostics.statix,
-      null_ls.builtins.formatting.alejandra,
-      -- null_ls.builtins.formatting.clang_format.with { extra_args = { "--style=file" } },
-      -- null_ls.builtins.formatting.cmake_format,
-      -- null_ls.builtins.formatting.eslint_d,
-      custom_sources.formatting.jsonnet,
-      -- null_ls.builtins.formatting.pg_format,
-      -- null_ls.builtins.formatting.prettierd,
-      custom_sources.formatting.prisma,
-      null_ls.builtins.formatting.rustfmt,
       null_ls.builtins.formatting.shellharden.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.formatting.shfmt.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.formatting.sqlfluff.with { extra_args = { "--dialect", "postgres" } },

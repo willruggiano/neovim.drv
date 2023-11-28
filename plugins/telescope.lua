@@ -81,6 +81,12 @@ return function()
       end,
       { desc = "Find" },
     },
+    ["<space>h"] = {
+      function()
+        require("telescope.builtin").help_tags()
+      end,
+      { desc = "Help" },
+    },
     ["<space>o"] = {
       function()
         require("telescope").extensions.smart_open.smart_open()

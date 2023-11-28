@@ -60,7 +60,7 @@ return function()
     condition = {
       filetype = { "typescript" },
       callback = function()
-        local file = vim.fn.expand "%"
+        local file = vim.fn.expand "%" --[[@as string]]
         return vim.endswith(file, ".test.ts")
       end,
     },

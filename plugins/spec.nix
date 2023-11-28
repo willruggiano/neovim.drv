@@ -302,11 +302,8 @@ in rec {
           cmake-format
           cppcheck
           luajitPackages.luacheck
-          nodePackages.eslint_d
           nodePackages.jsonlint
-          nodePackages.prettier
           pgformatter
-          prettierd
           rustfmt
           shellcheck
           shellharden

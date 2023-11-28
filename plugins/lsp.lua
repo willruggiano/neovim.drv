@@ -61,6 +61,15 @@ return function()
 
   local lsp_codelens = vim.api.nvim_create_augroup("LspCodelens", {})
 
+  local function format()
+    vim.lsp.buf.format {
+      async = true,
+      filter = function(client)
+        return client.name ~= "tsserver"
+      end,
+    }
+  end
+
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
   local on_attach = function(client, bufnr)
@@ -86,9 +95,7 @@ return function()
         { buffer = bufnr, desc = "Code lens" },
       },
       ["<leader>f"] = {
-        function()
-          vim.lsp.buf.format { async = true }
-        end,
+        format,
         { buffer = bufnr, desc = "Format" },
       },
       ["<leader><leader>l"] = {
@@ -156,14 +163,10 @@ return function()
       --   { buffer = bufnr, desc = "Code actions" },
       -- },
       ["<leader>f"] = {
-        function()
-          ---@diagnostic disable-next-line: missing-parameter
-          vim.lsp.buf.range_formatting()
-        end,
+        format,
         { buffer = bufnr, desc = "Format" },
       },
     }
-
     for key, opts in pairs(range_mappings) do
       vnoremap(key, opts[1], opts[2])
     end

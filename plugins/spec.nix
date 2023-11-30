@@ -18,6 +18,10 @@ in rec {
     };
   };
 
+  abolish = {
+    src = sources.vim-abolish;
+  };
+
   bqf = {
     src = sources.nvim-bqf;
     config = true;

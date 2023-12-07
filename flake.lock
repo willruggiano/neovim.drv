@@ -239,11 +239,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1685518550,
-        "narHash": "sha256-o2d0KcvaXzTrPRIo0kOLV0/QXHhDQ5DTi+OxcjO8xqY=",
+        "lastModified": 1694529238,
+        "narHash": "sha256-zsNZZGTGnMOf9YpHKJqMSsa0dXbfmxeoJ7xHlrt+xmY=",
         "owner": "numtide",
         "repo": "flake-utils",
-        "rev": "a1720a10a6cfe8234c0e93907ffe81be440f4cef",
+        "rev": "ff7b65b44d01cf9ba6a71320833626af21126384",
         "type": "github"
       },
       "original": {
@@ -564,16 +564,17 @@
       },
       "locked": {
         "dir": "contrib",
-        "lastModified": 1699873333,
-        "narHash": "sha256-fF33d30p0bO9/eE5kW8PupFtHFJGop0OJR0Pfy30zp0=",
+        "lastModified": 1701921842,
+        "narHash": "sha256-zGWVuXP4xCXeVm7e9ydI8jBCU2a6lWdLBDX6cqW2YWE=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "d718a3e27aa3a13b7a712c4a4f97ea5580b93d15",
+        "rev": "1dba570e63edcc69d6661bdcb9857def8bb18039",
         "type": "github"
       },
       "original": {
         "dir": "contrib",
         "owner": "neovim",
+        "ref": "nightly",
         "repo": "neovim",
         "type": "github"
       }

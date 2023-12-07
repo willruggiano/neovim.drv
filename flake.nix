@@ -6,7 +6,7 @@
     neovim-nix.inputs.neovim.follows = "neovim";
     neovim-nix.url = "github:willruggiano/neovim.nix";
     neovim.inputs.nixpkgs.follows = "nixpkgs";
-    neovim.url = "github:neovim/neovim?dir=contrib";
+    neovim.url = "github:neovim/neovim/nightly?dir=contrib";
     nil.url = "github:oxalica/nil";
     # FIXME: see https://github.com/cachix/devenv/issues/528
     nix2container.url = "github:nlewo/nix2container";

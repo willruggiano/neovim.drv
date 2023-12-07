@@ -322,6 +322,7 @@ in rec {
       nodePackages.typescript-language-server
       nodePackages.vscode-json-languageserver
       nodePackages.yaml-language-server
+      ruff-lsp
       rust-analyzer
       sumneko-lua-language-server
     ];

@@ -563,6 +563,23 @@ in rec {
     };
   };
 
+  zen-mode = {
+    src = sources."zen-mode.nvim";
+    config = {
+      plugins = {
+        gitsigns.enabled = true;
+        twilight.enabled = false;
+      };
+      window = {
+        options = {
+          number = false;
+          relativenumber = false;
+          signcolumn = "yes";
+        };
+      };
+    };
+  };
+
   zk = {
     src = sources.zk-nvim;
     config = ./zk.lua;

@@ -503,6 +503,12 @@
         "rev": "679f348dc90d80ff9ba0e7c470c40a4d038dcecf",
         "type": "git"
     },
+    "zen-mode.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:folke/zen-mode.nvim",
+        "rev": "50e2e2a36cc97847d9ab3b1a3555ba2ef6839b50",
+        "type": "git"
+    },
     "zk-nvim": {
         "branch": "main",
         "repo": "git@github.com:mickael-menu/zk-nvim",

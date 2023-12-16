@@ -148,10 +148,10 @@ return function()
         vim.lsp.buf.type_definition,
         { buffer = bufnr, desc = "Type definition" },
       },
-      K = {
-        vim.lsp.buf.hover,
-        { buffer = bufnr, desc = "Hover" },
-      },
+      -- K = {
+      --   vim.lsp.buf.hover,
+      --   { buffer = bufnr, desc = "Hover" },
+      -- },
     }
     for key, opts in pairs(mappings) do
       nnoremap(key, opts[1], opts[2])

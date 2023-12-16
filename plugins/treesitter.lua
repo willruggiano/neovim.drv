@@ -73,7 +73,7 @@ return function()
         enable = true,
         border = "single",
         peek_definition_code = {
-          ["<leader>K"] = "@*",
+          ["gK"] = "@*",
         },
       },
       move = {

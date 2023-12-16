@@ -34,7 +34,7 @@ function M.setup(palette)
   hi.MoreMsg = { fg = palette.base0B }
   hi.NonText = { fg = palette.base03 }
   hi.Normal = { fg = palette.base05, bg = palette.base00 }
-  -- hi.NormalFloat = "Pmenu"
+  hi.NormalFloat = "Normal"
   hi.PMenu = { fg = palette.base05, bg = palette.base01 }
   hi.PMenuSel = { fg = palette.base01, bg = palette.base05 }
   hi.Question = { fg = palette.base0D }

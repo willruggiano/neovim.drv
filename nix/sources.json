@@ -131,6 +131,12 @@
         "rev": "ff01d34daaed72f271a8ffa088a7e839a60c640f",
         "type": "git"
     },
+    "hover.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:lewis6991/hover.nvim",
+        "rev": "0a0dd1baf1bb9415e3358207b6ab35747fb5f3ba",
+        "type": "git"
+    },
     "indent-blankline.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/lukas-reineke/indent-blankline.nvim",

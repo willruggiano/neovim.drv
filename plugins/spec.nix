@@ -200,6 +200,11 @@ in rec {
     src = sources.vim-graphql;
   };
 
+  hover = {
+    src = sources."hover.nvim";
+    config = ./hover.lua;
+  };
+
   ibl = {
     src = sources."indent-blankline.nvim";
     config = ./indent-blankline.lua;

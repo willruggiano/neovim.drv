@@ -18,6 +18,12 @@ function M.setup(palette)
   hi.DiagnosticInfo = { fg = d.info }
   hi.DiagnosticHint = { fg = d.hint }
 
+  hi.DiagnosticFloatingOk = "DiagnosticOk"
+  hi.DiagnosticFloatingError = "DiagnosticError"
+  hi.DiagnosticFloatingWarn = "DiagnosticWarn"
+  hi.DiagnosticFloatingInfo = "DiagnosticInfo"
+  hi.DiagnosticFloatingHint = "DiagnosticHint"
+
   -- hi.DiagnosticVirtualTextOk = "DiagnosticOk"
   -- hi.DiagnosticVirtualTextError = "DiagnosticError"
   -- hi.DiagnosticVirtualTextWarn = "DiagnosticWarn"

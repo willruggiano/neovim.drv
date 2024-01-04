@@ -174,7 +174,7 @@ in rec {
   };
 
   fzy-lua-native = let
-    package = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    package = pkgs.vimUtils.buildVimPlugin {
       name = "fzy-lua-native";
       version = sources.fzy-lua-native.rev;
       src = sources.fzy-lua-native;
@@ -553,18 +553,7 @@ in rec {
     src = sources."wilder.nvim";
     config = ./wilder.lua;
     dependencies = {
-      cpsm = {
-        package = neovim-utils.mkPlugin {
-          name = "cpsm";
-          src = sources.cpsm;
-          nativeBuildInputs = [pkgs.cmake];
-          buildInputs = with pkgs; [boost ncurses python3];
-          buildPhase = ''
-            cmake -S . -B build -DPY3:BOOL=ON
-            cmake --build build --target install
-          '';
-        };
-      };
+      cpsm.package = pkgs.vimPlugins.cpsm;
     };
   };
 

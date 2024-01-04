@@ -608,11 +608,11 @@
         "pre-commit-nix": "pre-commit-nix"
       },
       "locked": {
-        "lastModified": 1690613475,
-        "narHash": "sha256-DyhvApZb/NBZ92dBgr0deJi4XQZ6lppIc92aDGrj8OY=",
+        "lastModified": 1704406608,
+        "narHash": "sha256-ii9pszIleOqhT/9CcGm2a2t7MXcSNbGOTD8zqLHCtog=",
         "owner": "willruggiano",
         "repo": "neovim.nix",
-        "rev": "b9ba181c5e20287aeeda4203e02c73f2cff370c4",
+        "rev": "de1a8409c697259bf785a2731cad17f0ba5c264e",
         "type": "github"
       },
       "original": {
@@ -931,11 +931,11 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1690235791,
-        "narHash": "sha256-QkPVQ859F0wXyd74A7UPYbmi4B5xYN4Ns7AQ0pvM0Wo=",
+        "lastModified": 1704161960,
+        "narHash": "sha256-QGua89Pmq+FBAro8NriTuoO/wNaUtugt29/qqA8zeeM=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "dfcffbd74fd6f0419370d8240e445252a39f4d10",
+        "rev": "63143ac2c9186be6d9da6035fa22620018c85932",
         "type": "github"
       },
       "original": {

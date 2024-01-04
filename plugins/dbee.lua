@@ -5,38 +5,44 @@ return function()
     },
     editor = {
       mappings = {
-        run_selection = {
+        {
+          action = "run_selection",
           key = "<C-M>",
           mode = "x",
-          opts = {
-            expr = true,
-          },
+          opts = { noremap = true, nowait = true, expr = true },
         },
       },
     },
     result = {
       mappings = {
-        page_next = { key = "<C-n>", mode = "" },
-        page_prev = { key = "<C-p>", mode = "" },
+        { action = "cancel_call", key = "<C-c>", mode = "" },
+        { action = "page_next", key = "<C-n>", mode = "" },
+        { action = "page_prev", key = "<C-p>", mode = "" },
+        { action = "yank_current_json", key = "yaj", mode = "n" },
+        { action = "yank_selection_json", key = "yaj", mode = "v" },
+        { action = "yank_all_json", key = "yaJ", mode = "" },
+        { action = "yank_current_csv", key = "yac", mode = "n" },
+        { action = "yank_selection_csv", key = "yac", mode = "v" },
+        { action = "yank_all_csv", key = "yaC", mode = "" },
       },
     },
     sources = {
       require("dbee.sources").FileSource:new(vim.fn.getcwd() .. "/.db.json"),
     },
-    ui = {
-      -- I can manage my own window layouts thank you very much
-      pre_open_hook = function() end,
-      post_close_hook = function() end,
-      window_commands = {
-        drawer = function()
-          vim.cmd "topleft 40vsplit"
-          vim.api.nvim_set_option_value("relativenumber", false, {})
-          vim.api.nvim_set_option_value("number", false, {})
-          vim.api.nvim_set_option_value("signcolumn", "no", {})
-          return vim.api.nvim_get_current_win()
-        end,
-      },
-    },
+    -- window_layout = {
+    --   -- I can manage my own window layouts thank you very much
+    --   pre_open_hook = function() end,
+    --   post_close_hook = function() end,
+    --   window_commands = {
+    --     drawer = function()
+    --       vim.cmd "topleft 40vsplit"
+    --       vim.api.nvim_set_option_value("relativenumber", false, {})
+    --       vim.api.nvim_set_option_value("number", false, {})
+    --       vim.api.nvim_set_option_value("signcolumn", "no", {})
+    --       return vim.api.nvim_get_current_win()
+    --     end,
+    --   },
+    -- },
   }
 
   local nnoremap = require("bombadil.lib.keymap").nnoremap

@@ -122,11 +122,9 @@
       owner = "vigoux";
       repo = "tree-sitter-viml";
     };
-    # Built into neovim.
-    # vimdoc = {
-    #   owner = "neovim";
-    #   inherit (sources.tree-sitter-vimdoc) rev;
-    # };
+    vimdoc = {
+      owner = "neovim";
+    };
     xit = {
       owner = "synaptiko";
       rev = "7d79024";

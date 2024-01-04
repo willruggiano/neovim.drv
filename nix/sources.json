@@ -308,7 +308,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter",
-        "rev": "7d0b4756aba3b220d38ec0443c6cc10944060dd7",
+        "rev": "8ae4080c5ba59d81b4e49525d4168807bc098e73",
         "type": "git"
     },
     "nvim-treesitter-refactor": {
@@ -435,12 +435,6 @@
         "branch": "main",
         "repo": "git@github.com:akinsho/toggleterm.nvim",
         "rev": "c80844fd52ba76f48fabf83e2b9f9b93273f418d",
-        "type": "git"
-    },
-    "tree-sitter-vimdoc": {
-        "branch": "master",
-        "repo": "git@github.com:neovim/tree-sitter-vimdoc",
-        "rev": "60045f7d717eba85fa8abd996e0bb50eed5a3d8e",
         "type": "git"
     },
     "treesitter-unit": {

@@ -260,7 +260,7 @@
     "nvim-dbee": {
         "branch": "master",
         "repo": "git@github.com:kndndrj/nvim-dbee",
-        "rev": "6d074e5472b44f1b8e6e647b1e177996f442e0d2",
+        "rev": "5590e995040c5663af97eb4e61cc88791b675ef1",
         "type": "git"
     },
     "nvim-lspconfig": {

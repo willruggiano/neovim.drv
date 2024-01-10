@@ -4,7 +4,7 @@ return function()
       return vim.env.BG
     end
     local t = os.date "*t"
-    if t.hour < 8 or t.hour > 17 then
+    if t.hour < 8 or t.hour >= 17 then
       return "dark"
     else
       return "light"

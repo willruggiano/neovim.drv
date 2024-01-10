@@ -13,6 +13,12 @@ return function()
         },
       },
     },
+    extra_helpers = {
+      postgres = {
+        -- Not really table-specific, see https://github.com/kndndrj/nvim-dbee/issues/66
+        ["Active Queries"] = "SELECT pid, usename, age(clock_timestamp(), query_start) AS started_at, query FROM pg_stat_activity WHERE state = 'active' AND query NOT ILIKE '%pg_stat_activity%' ORDER BY query_start DESC;",
+      },
+    },
     result = {
       mappings = {
         { action = "cancel_call", key = "<C-c>", mode = "" },

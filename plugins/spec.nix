@@ -314,6 +314,7 @@ in rec {
       };
     };
     paths = with pkgs; [
+      biome
       clang-tools
       cmake-language-server
       haskellPackages.cabal-fmt

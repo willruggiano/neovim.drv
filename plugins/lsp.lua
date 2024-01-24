@@ -129,7 +129,11 @@ return function()
         { buffer = bufnr, desc = "Workspace symbols" },
       },
       gd = {
-        vim.lsp.buf.definition,
+        function()
+          vim.lsp.buf.definition {
+            reuse_win = true,
+          }
+        end,
         { buffer = bufnr, desc = "Definition" },
       },
       gi = {
@@ -141,11 +145,19 @@ return function()
         { buffer = bufnr, desc = "References" },
       },
       gD = {
-        vim.lsp.buf.declaration,
+        function()
+          vim.lsp.buf.declaration {
+            reuse_win = true,
+          }
+        end,
         { buffer = bufnr, desc = "Declaration" },
       },
       gT = {
-        vim.lsp.buf.type_definition,
+        function()
+          vim.lsp.buf.type_definition {
+            reuse_win = true,
+          }
+        end,
         { buffer = bufnr, desc = "Type definition" },
       },
       -- K = {

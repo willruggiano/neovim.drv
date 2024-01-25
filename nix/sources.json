@@ -125,6 +125,12 @@
         "rev": "67a42ad2fa6d5ff41f0ef3cf69bb247410da5d7a",
         "type": "git"
     },
+    "fzf": {
+        "branch": "master",
+        "repo": "git@github.com:junegunn/fzf",
+        "rev": "da752fc9a4b3cb9dd08cc80614a491f980436b46",
+        "type": "git"
+    },
     "fzy-lua-native": {
         "branch": "master",
         "repo": "git@github.com:romgrk/fzy-lua-native",

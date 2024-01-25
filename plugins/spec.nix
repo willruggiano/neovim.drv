@@ -25,6 +25,11 @@ in rec {
   bqf = {
     src = sources.nvim-bqf;
     config = true;
+    dependencies = {
+      fzf = {
+        src = sources.fzf;
+      };
+    };
   };
 
   cargo-expand = {

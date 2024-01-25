@@ -295,8 +295,8 @@
     },
     "nvim-pqf": {
         "branch": "main",
-        "repo": "ssh://git@github.com/yorickpeterse/nvim-pqf",
-        "rev": "f0ab5ea8388af8e6c1a7f7cdc07292b07c02662d",
+        "repo": "git@github.com:yorickpeterse/nvim-pqf",
+        "rev": "ba0e291cb5c0249838132e197dac082777bdc7d6",
         "type": "git"
     },
     "nvim-regexplainer": {

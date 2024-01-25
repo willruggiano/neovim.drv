@@ -398,7 +398,7 @@
     "statuscol.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/luukvbaal/statuscol.nvim",
-        "rev": "98d02fc90ebd7c4674ec935074d1d09443d49318",
+        "rev": "3b629754420919575a9e5758027d6e1831dbf2aa",
         "type": "git"
     },
     "tabout.nvim": {

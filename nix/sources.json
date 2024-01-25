@@ -83,6 +83,12 @@
         "rev": "6857f10272c3cfe930cece2afa2406e1385bfef8",
         "type": "git"
     },
+    "conform.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:stevearc/conform.nvim",
+        "rev": "d99b75b4aedf0e912f41c5740a7267de739cddac",
+        "type": "git"
+    },
     "cpsm": {
         "branch": "master",
         "repo": "git@github.com:nixprime/cpsm",

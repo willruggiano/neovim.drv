@@ -69,6 +69,9 @@
                   git commit -am "bump: $1"
               }
             '';
+            plug-add.exec = ''
+              niv add git git@github.com:$1 && git add nix/ && git commit -am "feat(plug): $1"
+            '';
           };
         };
 

@@ -100,6 +100,19 @@ in rec {
     };
   };
 
+  conform = {
+    src = sources."conform.nvim";
+    config = ./conform.lua;
+    paths = with pkgs; [
+      nodePackages.prettier # for markdown
+      shellcheck
+      shellharden
+      shfmt
+      sqlfluff
+      stylua
+    ];
+  };
+
   dap = {
     src = sources.nvim-dap;
     config = ./dap.lua;
@@ -262,7 +275,7 @@ in rec {
     src = sources.nvim-lspconfig;
     config = ./lsp.lua;
     dependencies = {
-      inherit fun lspkind sg;
+      inherit conform fun lspkind sg;
       clangd_extensions = {
         src = sources."clangd_extensions.nvim";
       };
@@ -287,23 +300,16 @@ in rec {
           };
         };
         paths = with pkgs; [
-          (pkgs.callPackage ../pkgs/languagetool-rs {})
+          # (pkgs.callPackage ../pkgs/languagetool-rs {})
           # (pkgs.callPackage ../pkgs/sql-language-server {})
           actionlint
-          alejandra
-          cmake-format
           cppcheck
           luajitPackages.luacheck
           nodePackages.jsonlint
-          pgformatter
-          rustfmt
           shellcheck
           shellharden
-          shfmt
           sqlfluff
           statix
-          stylua
-          yapf
         ];
       };
       rust-tools = {

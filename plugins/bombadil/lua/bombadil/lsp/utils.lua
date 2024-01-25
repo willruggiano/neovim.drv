@@ -32,7 +32,7 @@ M.buf_request_all = function(bufnr, method, params_fn, handler)
   local exp_reponses = 0
   local reponses = 0
 
-  for _, client in pairs(vim.lsp.get_clients { bufnr = bufnr }) do
+  for _, client in pairs(vim.lsp.get_active_clients { bufnr = bufnr }) do
     if client.supports_method(method, { bufnr = bufnr }) then
       exp_reponses = exp_reponses + 1
       client.request(method, params_fn(client), function(_, result)

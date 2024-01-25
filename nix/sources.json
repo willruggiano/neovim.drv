@@ -146,7 +146,7 @@
     "hover.nvim": {
         "branch": "main",
         "repo": "git@github.com:lewis6991/hover.nvim",
-        "rev": "0a0dd1baf1bb9415e3358207b6ab35747fb5f3ba",
+        "rev": "060ea7f5a7b28be87689e2b3d940baf6efc2da04",
         "type": "git"
     },
     "indent-blankline.nvim": {

@@ -7,7 +7,7 @@ return function()
     name = "Definition",
     priority = 500,
     enabled = function(bufnr)
-      local clients = vim.lsp.get_clients { bufnr = bufnr, method = utils.methods.definition }
+      local clients = vim.lsp.get_active_clients { bufnr = bufnr, method = utils.methods.definition }
       return #clients > 0
     end,
     execute = function(opts, done)

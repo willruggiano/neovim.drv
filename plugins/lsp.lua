@@ -112,7 +112,7 @@ return function()
       },
       ["<leader>rr"] = {
         function()
-          vim.lsp.stop_client(vim.lsp.get_clients { bufnr = bufnr }, true)
+          vim.lsp.stop_client(vim.lsp.get_active_clients { bufnr = bufnr }, true)
           vim.cmd.edit()
         end,
         { buffer = bufnr, desc = "Restart lsp clients" },

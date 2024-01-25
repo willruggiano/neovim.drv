@@ -35,12 +35,6 @@ nnoremap("<", "<C-w><")
 -- Leave terminal mode more ergonomically than ctrl-\ + ctrl-n
 tnoremap("<esc><esc>", "<C-\\><C-n>")
 
--- GOAT remaps?
-xnoremap("<leader>p", [["_dP]])
-noremap({ "n", "v" }, "<leader>y", [["+y]])
-nnoremap("<leader>Y", [["+Y]])
-noremap({ "n", "v" }, "<leader>d", [["_d]])
-
 -- Jumplist as quickfix list
 nnoremap("<leader>j", function()
   local jumplist = vim.fn.getjumplist()[1]

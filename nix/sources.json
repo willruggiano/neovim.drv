@@ -155,6 +155,12 @@
         "rev": "7f876ee3e1f4ea1e5284b1b697cdad5b256e8046",
         "type": "git"
     },
+    "karen-yank.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:tenxsoydev/karen-yank.nvim",
+        "rev": "817f50c9464ce557c8f7f8f4d4c8d2f7b81fc40c",
+        "type": "git"
+    },
     "leap-ast.nvim": {
         "branch": "main",
         "repo": "git@github.com:ggandor/leap-ast.nvim",

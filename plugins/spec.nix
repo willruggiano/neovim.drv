@@ -228,6 +228,11 @@ in rec {
     config = ./iron.lua;
   };
 
+  karen-yank = {
+    src = sources."karen-yank.nvim";
+    config = true;
+  };
+
   leap = {
     src = sources."leap.nvim";
     config = ./leap.lua;

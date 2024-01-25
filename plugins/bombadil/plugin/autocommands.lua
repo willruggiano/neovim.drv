@@ -7,8 +7,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     vim.fn.mkdir(vim.fn.expand "%:p:h", "p")
   end,
 })
-
-vim.api.nvim_create_autocmd("TextYankPost", {
-  group = group,
-  callback = vim.highlight.on_yank,
-})

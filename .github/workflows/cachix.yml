@@ -1,7 +1,13 @@
 name: Push to cachix
+
 on:
   push:
-    branches: main
+    branches:
+      - main
+
+concurrency:
+  group: default
+  cancel-in-progress: true
 
 jobs:
   cachix:

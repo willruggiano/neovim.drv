@@ -14,19 +14,17 @@
         # If an environment variable is already defined, the existing definition will take precedence.
         env = {
           SRC_ENDPOINT = "https://sourcegraph.com";
-          # https://github.com/wez/wezterm/issues/415#issuecomment-755849623
-          TERM = "wezterm";
         };
 
-        package = inputs'.neovim.packages.default.override {
-          libvterm-neovim = pkgs.libvterm-neovim.overrideAttrs rec {
-            version = "0.3.3";
-            src = pkgs.fetchurl {
-              url = "https://github.com/neovim/libvterm/archive/v${version}.tar.gz";
-              hash = "sha256-C6vjq0LDVJJdre3pDTUvBUqpxK5oQuqAOiDJdB4XLlY=";
-            };
-          };
-        };
+        # package = inputs'.neovim.packages.default.override {
+        #   libvterm-neovim = pkgs.libvterm-neovim.overrideAttrs rec {
+        #     version = "0.3.3";
+        #     src = pkgs.fetchurl {
+        #       url = "https://github.com/neovim/libvterm/archive/v${version}.tar.gz";
+        #       hash = "sha256-C6vjq0LDVJJdre3pDTUvBUqpxK5oQuqAOiDJdB4XLlY=";
+        #     };
+        #   };
+        # };
 
         # Tools to bake into the neovim environment.
         # These tools are *appended* to neovim's PATH variable,

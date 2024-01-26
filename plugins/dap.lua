@@ -28,6 +28,13 @@ return function()
     },
   }
 
+  -- TODO: CodeLens to debug/run specific tests.
+  -- This is more in the lsp.lua realm of things, but will want to be able to debug
+  -- a specific test as well.
+  -- I'm thinking two things:
+  -- 1. CodeLens for all/each test in a test suite.
+  -- 2. "Run current test", meaning under the cursor, which will require identifying which test is
+  --    "current"
   dap.configurations.typescript = {
     {
       type = "pwa-node",

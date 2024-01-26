@@ -233,6 +233,12 @@ in rec {
     config = ./iron.lua;
   };
 
+  jqx = {
+    src = sources.nvim-jqx;
+    ft = ["json" "yaml"];
+    paths = with pkgs; [jq yq];
+  };
+
   karen-yank = {
     src = sources."karen-yank.nvim";
     config = true;

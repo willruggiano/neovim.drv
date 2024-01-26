@@ -7,6 +7,7 @@ return function()
       bash = sh,
       javascript = js,
       javascriptreact = js,
+      json = { "prettier" },
       lua = { "stylua", "luacheck" },
       markdown = { "prettier", "injected" },
       sh = sh,

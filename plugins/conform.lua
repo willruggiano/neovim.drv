@@ -20,7 +20,7 @@ return function()
         command = "biome", -- not necessarily from node_modules/.bin
       },
       sqlfluff = {
-        prepend_args = { "--dialect", "postgres" },
+        args = { "fix", "--force", "--dialect", "postgres", "-" },
       },
       stylua = {
         require_cwd = true, -- only when it finds the root marker

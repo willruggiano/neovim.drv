@@ -343,6 +343,18 @@ return function()
     },
   }
 
+  if os.getenv "ENABLE_POSTGRES_LSP" then
+    lspconfig.postgres_lsp.setup {
+      cmd = { "./target/debug/postgres_lsp" },
+      on_init = on_init,
+      on_attach = on_attach,
+      capabilities = updated_capabilities,
+      root_dir = function()
+        return vim.fn.getcwd()
+      end,
+    }
+  end
+
   if not pcall(require, "rust-tools") then
     lspconfig.rust_analyzer.setup {
       on_init = on_init,
@@ -364,16 +376,6 @@ return function()
       },
     }
   end
-
-  -- Shits broke :(
-  lspconfig.sqlls.setup {
-    -- root_dir = function()
-    --   return vim.fn.getcwd()
-    -- end,
-    on_init = on_init,
-    on_attach = on_attach,
-    capabilities = updated_capabilities,
-  }
 
   lspconfig.tsserver.setup {
     on_init = on_init,

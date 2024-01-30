@@ -317,7 +317,6 @@ in rec {
         };
         paths = with pkgs; [
           # (pkgs.callPackage ../pkgs/languagetool-rs {})
-          # (pkgs.callPackage ../pkgs/sql-language-server {})
           actionlint
           cppcheck
           luajitPackages.luacheck

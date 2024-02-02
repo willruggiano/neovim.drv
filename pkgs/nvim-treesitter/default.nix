@@ -2,7 +2,6 @@
   fetchgit,
   lib,
   nix-prefetch-git,
-  stdenv,
   symlinkJoin,
   tree-sitter,
   writeShellApplication,
@@ -188,56 +187,18 @@
     '';
   };
 
-  treesitterGrammars = lib.mapAttrsToList (name: attrs:
-    stdenv.mkDerivation ({
-        name = "tree-sitter-${name}-grammar";
-        src = let
-          src' = lib.importJSON "${./.}/grammars/${name}.json";
-        in
-          fetchgit {
-            inherit (src') url rev sha256 fetchLFS fetchSubmodules deepClone leaveDotGit;
-          };
-
-        buildInputs = [tree-sitter];
-
-        CFLAGS = ["-Isrc" "-O2"];
-        CXXFLAGS = ["-Isrc" "-O2"];
-
-        dontConfigure = true;
-
-        buildPhase = lib.concatStringsSep "\n" [
-          "runHook preBuild"
-          (
-            if attrs ? "sourceRoot"
-            then "cd ${attrs.sourceRoot}"
-            else ""
-          )
-          ''
-            if [[ -e "src/scanner.cc" ]]; then
-                  $CXX -c "src/scanner.cc" -o scanner.o $CXXFLAGS
-            elif [[ -e "src/scanner.c" ]]; then
-              $CC -c "src/scanner.c" -o scanner.o $CFLAGS
-            fi
-            $CC -c "src/parser.c" -o parser.o $CFLAGS
-            $CXX -shared -o parser *.o
-            runHook postBuild
-          ''
-        ];
-
-        installPhase = ''
-          runHook preInstall
-          mkdir -p $out/parser
-          mv parser $out/parser/${name}.so
-          runHook postInstall
-        '';
-
-        fixupPhase = lib.optionalString stdenv.isLinux ''
-          runHook preFixup
-          $STRIP $out/parser/${name}.so
-          runHook postFixup
-        '';
-      }
-      // attrs.override or {}))
+  treesitterGrammars = lib.mapAttrsToList (language: attrs: let
+    src' = lib.importJSON "${./.}/grammars/${language}.json";
+  in
+    tree-sitter.buildGrammar
+    {
+      inherit language;
+      location = attrs.sourceRoot or null;
+      src = fetchgit {
+        inherit (src') url rev sha256 fetchLFS fetchSubmodules deepClone leaveDotGit;
+      };
+      version = lib.substring 0 8 src'.rev;
+    })
   grammars;
 in
   symlinkJoin {

@@ -40,6 +40,7 @@ return function()
         ---@diagnostic disable-next-line: missing-parameter
         i = cmp.mapping.complete(),
       },
+      -- TODO: vim.snippet?
       ["<C-n>"] = cmp.mapping {
         i = function(fallback)
           if snippy.can_expand_or_advance() then

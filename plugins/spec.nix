@@ -277,16 +277,16 @@ in rec {
     };
   };
 
-  lir = {
-    config = ./lir.lua;
-    dependencies = {
-      inherit nvim-web-devicons overseer plenary;
-      git_status = {
-        src = sources."lir-git-status.nvim";
-      };
-    };
-    src = sources."lir.nvim";
-  };
+  # lir = {
+  #   config = ./lir.lua;
+  #   dependencies = {
+  #     inherit nvim-web-devicons overseer plenary;
+  #     git_status = {
+  #       src = sources."lir-git-status.nvim";
+  #     };
+  #   };
+  #   src = sources."lir.nvim";
+  # };
 
   lspconfig = {
     src = sources.nvim-lspconfig;
@@ -390,6 +390,11 @@ in rec {
   markdown = {
     src = sources.vim-markdown;
     config = ./markdown.lua;
+  };
+
+  neo-tree = {
+    src = sources."neo-tree.nvim";
+    config = ./neo-tree.lua;
   };
 
   nui = {

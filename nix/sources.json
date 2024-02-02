@@ -215,6 +215,12 @@
         "rev": "45e27ca739c7be6c49e5496d14fcf45a303c3a63",
         "type": "git"
     },
+    "neo-tree.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:nvim-neo-tree/neo-tree.nvim",
+        "rev": "c2a9e81699021f4ccaac7c574cc42ca4211a499a",
+        "type": "git"
+    },
     "neodev.nvim": {
         "branch": "main",
         "repo": "git@github.com:folke/neodev.nvim",

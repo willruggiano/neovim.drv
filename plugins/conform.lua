@@ -7,7 +7,7 @@ return function()
       bash = sh,
       javascript = js,
       javascriptreact = js,
-      json = { "prettier" },
+      json = { { "biome", "prettier" } },
       lua = { "stylua", "luacheck" },
       markdown = { "prettier", "injected" },
       sh = sh,
@@ -21,7 +21,7 @@ return function()
         command = "biome", -- not necessarily from node_modules/.bin
       },
       sqlfluff = {
-        args = { "fix", "--force", "--dialect", "postgres", "-" },
+        args = { "fix", "--dialect", "postgres", "--disable-progress-bar", "--force", "-" },
       },
       stylua = {
         require_cwd = true, -- only when it finds the root marker

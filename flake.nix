@@ -44,7 +44,7 @@
 
         devenv.shells.default = {
           name = "neovim";
-          packages = with pkgs; [niv nodejs];
+          packages = with pkgs; [alejandra niv nodejs];
           pre-commit.hooks = {
             alejandra.enable = true;
             stylua.enable = true;
@@ -74,6 +74,8 @@
             '';
           };
         };
+
+        formatter = pkgs.alejandra;
 
         packages = {
           default = config.neovim.final;

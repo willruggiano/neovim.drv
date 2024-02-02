@@ -109,6 +109,7 @@ in rec {
     src = sources."conform.nvim";
     config = ./conform.lua;
     paths = with pkgs; [
+      biome
       nodePackages.prettier # for markdown
       shellcheck
       shellharden
@@ -335,6 +336,7 @@ in rec {
       };
     };
     paths = with pkgs; [
+      alejandra # used by nil for formatting
       biome
       clang-tools
       cmake-language-server

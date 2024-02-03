@@ -395,6 +395,9 @@ in rec {
   neo-tree = {
     src = sources."neo-tree.nvim";
     config = ./neo-tree.lua;
+    dependencies = {
+      inherit nvim-nonicons;
+    };
   };
 
   nui = {

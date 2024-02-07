@@ -338,7 +338,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter",
-        "rev": "1cda98132abfde758c1778096960f9b2c0bd78c1",
+        "rev": "5973b617a9a48212e40c5c0a0727ad7c91b27484",
         "type": "git"
     },
     "nvim-treesitter-refactor": {
@@ -350,7 +350,7 @@
     "nvim-treesitter-textobjects": {
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter-textobjects",
-        "rev": "dbcd9388e3b119a87c785e10a00d62876077d23d",
+        "rev": "8edd5a6d96936bdff23333d3bc177481388839e5",
         "type": "git"
     },
     "nvim-ts-context-commentstring": {

@@ -190,14 +190,24 @@
   treesitterGrammars = lib.mapAttrsToList (language: attrs: let
     src' = lib.importJSON "${./.}/grammars/${language}.json";
   in
-    tree-sitter.buildGrammar
-    {
+    tree-sitter.buildGrammar {
       inherit language;
-      location = attrs.sourceRoot or null;
       src = fetchgit {
         inherit (src') url rev sha256 fetchLFS fetchSubmodules deepClone leaveDotGit;
       };
+      location = attrs.sourceRoot or null;
       version = lib.substring 0 8 src'.rev;
+
+      installPhase = ''
+        runHook preInstall
+        mkdir $out
+        mkdir -p $out/parser
+        mv parser $out/parser/${language}.so
+        if [[ -d queries ]]; then
+          cp -r queries $out
+        fi
+        runHook postInstall
+      '';
     })
   grammars;
 in

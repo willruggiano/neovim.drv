@@ -13,6 +13,12 @@ return function()
         },
       },
     },
+    extra_helpers = {
+      postgres = {
+        -- https://github.com/lacanoid/pgddl
+        ["DDL (CREATE)"] = "select ddlx_create('{{ .Table }}'::regclass, '{ine}')",
+      },
+    },
     result = {
       mappings = {
         { action = "cancel_call", key = "<C-c>", mode = "" },

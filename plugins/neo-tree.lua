@@ -43,9 +43,12 @@ return function()
     default_component_configs = {
       icon = {
         folder_closed = icons.get "file-directory",
-        folder_open = " ",
+        folder_open = icons.get "chevron-down",
         folder_empty = icons.get "file-directory",
-        folder_empty_open = " ",
+        folder_empty_open = icons.get "chevron-down",
+      },
+      indent = {
+        with_markers = false,
       },
       modified = {
         align = "left",

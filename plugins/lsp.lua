@@ -56,8 +56,6 @@ return function()
     client.config.flags.allow_incremental_sync = true
   end
 
-  local lsp_codelens = vim.api.nvim_create_augroup("LspCodelens", {})
-
   local keymap = require "bombadil.lib.keymap"
 
   -- Use an on_attach function to only map the following keys
@@ -185,16 +183,19 @@ return function()
       },
     }
 
-    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-      callback = vim.lsp.buf.document_highlight,
-    })
-    vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-      callback = vim.lsp.buf.clear_references,
-    })
+    if client.supports_method "textDocument/documentHighlight" then
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        buffer = bufnr,
+        callback = vim.lsp.buf.document_highlight,
+      })
+      vim.api.nvim_create_autocmd({ "BufLeave", "CursorMoved", "CursorMovedI" }, {
+        buffer = bufnr,
+        callback = vim.lsp.buf.clear_references,
+      })
+    end
 
     if client.supports_method "textDocument/codeLens" then
       vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-        group = lsp_codelens,
         buffer = bufnr,
         callback = function()
           vim.lsp.codelens.refresh()

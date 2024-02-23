@@ -56,10 +56,9 @@ return function()
     client.config.flags.allow_incremental_sync = true
   end
 
-  local nnoremap = require("bombadil.lib.keymap").nnoremap
-  local vnoremap = require("bombadil.lib.keymap").vnoremap
-
   local lsp_codelens = vim.api.nvim_create_augroup("LspCodelens", {})
+
+  local keymap = require "bombadil.lib.keymap"
 
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
@@ -67,7 +66,7 @@ return function()
     -- Enable completion triggered by <c-x><c-o>
     vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    local mappings = {
+    keymap.nnoremaps {
       ["]d"] = {
         vim.diagnostic.goto_next,
         { buffer = bufnr, desc = "Next diagnostic" },
@@ -168,11 +167,8 @@ return function()
       --   { buffer = bufnr, desc = "Hover" },
       -- },
     }
-    for key, opts in pairs(mappings) do
-      nnoremap(key, opts[1], opts[2])
-    end
 
-    local range_mappings = {
+    keymap.vnoremaps {
       -- ["<leader>ca"] = {
       --   vim.lsp.buf.range_code_action,
       --   { buffer = bufnr, desc = "Code actions" },
@@ -188,20 +184,16 @@ return function()
         { buffer = bufnr, desc = "Format" },
       },
     }
-    for key, opts in pairs(range_mappings) do
-      vnoremap(key, opts[1], opts[2])
-    end
+
+    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+      callback = vim.lsp.buf.clear_references,
+    })
 
     if client.supports_method "textDocument/codeLens" then
-      vim.api.nvim_create_autocmd("BufEnter", {
-        group = lsp_codelens,
-        buffer = bufnr,
-        once = true,
-        callback = function()
-          vim.lsp.codelens.refresh()
-        end,
-      })
-      vim.api.nvim_create_autocmd({ "BufWritePost", "CursorHold" }, {
+      vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
         group = lsp_codelens,
         buffer = bufnr,
         callback = function()
@@ -432,7 +424,7 @@ return function()
         -- on_init = on_init,
         on_attach = function(client, bufnr)
           on_attach(client, bufnr)
-          nnoremap("K", rt.hover_actions.hover_actions, { buffer = bufnr, desc = "Hover actions" })
+          keymap.nnoremap("K", rt.hover_actions.hover_actions, { buffer = bufnr, desc = "Hover actions" })
           vim.api.nvim_set_option_value("errorformat", " --> %f:%l:%c", { buf = bufnr })
         end,
       },
@@ -451,7 +443,7 @@ return function()
       on_attach = on_attach,
     }
 
-    nnoremap("<leader>s", function()
+    keymap.nnoremap("<leader>s", function()
       require("sg.telescope").fuzzy_search_results()
     end, { desc = "Sourcegraph search" })
   end

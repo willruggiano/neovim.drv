@@ -21,7 +21,7 @@ return function()
         command = "biome", -- not necessarily from node_modules/.bin
       },
       sqlfluff = {
-        args = { "fix", "--dialect", "postgres", "--disable-progress-bar", "--force", "-" },
+        args = { "fix", "--disable-progress-bar", "--force", "-" },
       },
       stylua = {
         require_cwd = true, -- only when it finds the root marker

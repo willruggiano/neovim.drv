@@ -312,9 +312,6 @@ in rec {
             };
             paths = [pkgs.cargo];
           };
-          refactoring = {
-            src = sources."refactoring.nvim";
-          };
         };
         paths = with pkgs; [
           # (pkgs.callPackage ../pkgs/languagetool-rs {})
@@ -425,9 +422,6 @@ in rec {
     config = ./treesitter.lua;
     dependencies = {
       inherit nvim-ts-context-commentstring;
-      nvim-treesitter-refactor = {
-        src = sources.nvim-treesitter-refactor;
-      };
       nvim-treesitter-textobjects = {
         src = sources.nvim-treesitter-textobjects;
       };

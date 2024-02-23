@@ -341,12 +341,6 @@
         "rev": "5973b617a9a48212e40c5c0a0727ad7c91b27484",
         "type": "git"
     },
-    "nvim-treesitter-refactor": {
-        "branch": "master",
-        "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter-refactor",
-        "rev": "65ad2eca822dfaec2a3603119ec3cc8826a7859e",
-        "type": "git"
-    },
     "nvim-treesitter-textobjects": {
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter-textobjects",
@@ -387,12 +381,6 @@
         "branch": "master",
         "repo": "git@github.com:rishabhrd/popfix",
         "rev": "bf3cc436df63cd535350d5ef1b951c91554d4b01",
-        "type": "git"
-    },
-    "refactoring.nvim": {
-        "branch": "master",
-        "repo": "ssh://git@github.com/theprimeagen/refactoring.nvim",
-        "rev": "bebfcfcc4b604d3647fcce2f4aeb02a95d139c49",
         "type": "git"
     },
     "rust-tools.nvim": {

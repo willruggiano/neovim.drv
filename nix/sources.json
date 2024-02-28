@@ -293,6 +293,12 @@
         "rev": "24fc62f0dee1e388e522795a9a8e9eac60b047e3",
         "type": "git"
     },
+    "nvim-lsp-file-operations": {
+        "branch": "master",
+        "repo": "git@github.com:antosha417/nvim-lsp-file-operations",
+        "rev": "223aca86b737dc66e9c51ebcda8788a8d9cc6cf2",
+        "type": "git"
+    },
     "nvim-lspconfig": {
         "branch": "master",
         "repo": "git@github.com:neovim/nvim-lspconfig",

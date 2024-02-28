@@ -277,22 +277,19 @@ in rec {
     };
   };
 
-  # lir = {
-  #   config = ./lir.lua;
-  #   dependencies = {
-  #     inherit nvim-web-devicons overseer plenary;
-  #     git_status = {
-  #       src = sources."lir-git-status.nvim";
-  #     };
-  #   };
-  #   src = sources."lir.nvim";
-  # };
+  lsp-file-operations = {
+    src = sources.nvim-lsp-file-operations;
+    config = true;
+    dependencies = {
+      inherit neo-tree;
+    };
+  };
 
   lspconfig = {
     src = sources.nvim-lspconfig;
     config = ./lsp.lua;
     dependencies = {
-      inherit conform fun lspkind sg;
+      inherit conform fun lsp-file-operations lspkind sg;
       clangd_extensions = {
         src = sources."clangd_extensions.nvim";
       };

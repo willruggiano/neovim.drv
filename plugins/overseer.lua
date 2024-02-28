@@ -6,9 +6,8 @@ return function()
     component_aliases = {
       default = {
         { "display_duration", detail_level = 2 },
-        -- "on_output_summarize",
         "on_exit_set_status",
-        "on_complete_notify",
+        { "on_complete_notify", system = "unfocused" },
       },
       default_vscode = {
         "default",
@@ -18,12 +17,54 @@ return function()
   }
 
   o.register_template {
-    name = "Run File (ts-node)",
+    name = "build project",
+    builder = function()
+      local project = vim.fs.find("tsconfig.json", {
+        path = vim.fs.dirname(vim.api.nvim_buf_get_name(0)),
+        stop = vim.loop.cwd(),
+        type = "file",
+        upward = true,
+      })[1]
+
+      return {
+        cmd = { "tsc" },
+        args = { "-p", project },
+        components = {
+          "on_exit_set_status",
+          { "on_output_parse", problem_matcher = "$tsc" },
+          { "on_result_diagnostics_quickfix", open = true },
+        },
+        strategy = {
+          "toggleterm",
+          open_on_start = false,
+        },
+      }
+    end,
+    condition = {
+      filetype = { "typescript" },
+      callback = function()
+        return #vim.fs.find("tsconfig.json", {
+          path = vim.fs.dirname(vim.api.nvim_buf_get_name(0)),
+          stop = vim.loop.cwd(),
+          type = "file",
+          upward = true,
+        }) > 0
+      end,
+    },
+    tags = { o.TAG.BUILD },
+  }
+
+  o.register_template {
+    name = "bun run",
     builder = function()
       local file = vim.fn.expand "%"
       return {
-        cmd = { "ts-node" },
-        args = { "-T", file },
+        cmd = { "bun" },
+        args = { file },
+        components = {
+          { "display_duration", detail_level = 2 },
+          "on_exit_set_status",
+        },
         strategy = {
           "toggleterm",
           open_on_start = true,
@@ -37,16 +78,20 @@ return function()
     condition = {
       filetype = { "typescript" },
     },
+    tags = { o.TAG.RUN },
   }
 
   o.register_template {
-    name = "Run File (jest)",
+    name = "bun test",
     builder = function()
       local file = vim.fn.expand "%"
       return {
-        cwd = vim.fn.expand "%:p:h",
-        cmd = { "jest" },
-        args = { file },
+        cmd = { "bun" },
+        args = { "test", file },
+        components = {
+          { "display_duration", detail_level = 2 },
+          "on_exit_set_status",
+        },
         strategy = {
           "toggleterm",
           open_on_start = true,
@@ -60,18 +105,27 @@ return function()
     condition = {
       filetype = { "typescript" },
       callback = function()
-        local file = vim.fn.expand "%" --[[@as string]]
+        local file = vim.fn.expand "%"
         return vim.endswith(file, ".test.ts")
       end,
     },
+    priority = 10,
+    tags = { o.TAG.TEST },
   }
 
   local nnoremaps = require("bombadil.lib.keymap").nnoremaps
 
   nnoremaps {
     ["<space><cr>"] = {
-      "<cmd>OverseerRunCmd<cr>",
-      { desc = "RunCmd" },
+      function()
+        local tasks = o.list_tasks { recent_first = true }
+        if vim.tbl_isempty(tasks) then
+          vim.notify("No tasks found", vim.log.levels.WARN)
+        else
+          o.run_action(tasks[1], "restart")
+        end
+      end,
+      { desc = "RunLast" },
     },
     ["<space>r"] = {
       "<cmd>OverseerRun<cr>",

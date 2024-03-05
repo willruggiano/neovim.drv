@@ -51,7 +51,7 @@ return function()
   -- Generic lsp configuration
   --
 
-  local on_init = function(client)
+  local function on_init(client)
     client.config.flags = client.config.flags or {}
     client.config.flags.allow_incremental_sync = true
   end
@@ -60,7 +60,7 @@ return function()
 
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
-  local on_attach = function(client, bufnr)
+  local function on_attach(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
@@ -98,7 +98,7 @@ return function()
         end,
         { buffer = bufnr, desc = "Format" },
       },
-      ["<leader><leader>l"] = {
+      ["<leader><leader>d"] = {
         vim.diagnostic.open_float,
         { buffer = bufnr, desc = "Line diagnostics" },
       },
@@ -331,7 +331,7 @@ return function()
               end
             end
 
-            table.insert(library, require("neodev.config").types())
+            -- table.insert(library, require("neodev.config").types())
 
             add "$VIMRUNTIME"
 
@@ -376,34 +376,39 @@ return function()
     }
   end
 
-  lspconfig.tsserver.setup {
+  -- lspconfig.tsserver.setup {
+  --   on_init = on_init,
+  --   on_attach = on_attach,
+  --   capabilities = updated_capabilities,
+  --   settings = {
+  --     javascript = {
+  --       inlayHints = {
+  --         includeInlayEnumMemberValueHints = true,
+  --         includeInlayFunctionLikeReturnTypeHints = true,
+  --         includeInlayFunctionParameterTypeHints = true,
+  --         includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+  --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+  --         includeInlayPropertyDeclarationTypeHints = true,
+  --         includeInlayVariableTypeHints = true,
+  --       },
+  --     },
+  --     typescript = {
+  --       inlayHints = {
+  --         includeInlayEnumMemberValueHints = true,
+  --         includeInlayFunctionLikeReturnTypeHints = true,
+  --         includeInlayFunctionParameterTypeHints = true,
+  --         includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+  --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+  --         includeInlayPropertyDeclarationTypeHints = true,
+  --         includeInlayVariableTypeHints = true,
+  --       },
+  --     },
+  --   },
+  -- }
+  require("typescript-tools").setup {
     on_init = on_init,
     on_attach = on_attach,
     capabilities = updated_capabilities,
-    settings = {
-      javascript = {
-        inlayHints = {
-          includeInlayEnumMemberValueHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayVariableTypeHints = true,
-        },
-      },
-      typescript = {
-        inlayHints = {
-          includeInlayEnumMemberValueHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-          includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayVariableTypeHints = true,
-        },
-      },
-    },
   }
 
   lspconfig.yamlls.setup {

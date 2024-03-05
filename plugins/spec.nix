@@ -293,9 +293,6 @@ in rec {
       clangd_extensions = {
         src = sources."clangd_extensions.nvim";
       };
-      neodev = {
-        src = sources."neodev.nvim";
-      };
       null-ls = {
         src = sources."null-ls.nvim";
         dependencies = {
@@ -328,6 +325,9 @@ in rec {
       schemastore = {
         src = sources."SchemaStore.nvim";
       };
+      typescript-tools = {
+        src = sources."typescript-tools.nvim";
+      };
     };
     paths = with pkgs; [
       alejandra # used by nil for formatting
@@ -342,7 +342,6 @@ in rec {
       marksman
       nodePackages.graphql-language-service-cli
       nodePackages.pyright
-      nodePackages.typescript-language-server
       nodePackages.vscode-json-languageserver
       nodePackages.yaml-language-server
       ruff-lsp

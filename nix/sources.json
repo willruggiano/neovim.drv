@@ -221,12 +221,6 @@
         "rev": "c2a9e81699021f4ccaac7c574cc42ca4211a499a",
         "type": "git"
     },
-    "neodev.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:folke/neodev.nvim",
-        "rev": "a4b6e7ca11ff5be2264d5c169fcedd97d8699ec4",
-        "type": "git"
-    },
     "nui.nvim": {
         "branch": "main",
         "repo": "git@github.com:muniftanjim/nui.nvim",
@@ -471,6 +465,12 @@
         "branch": "main",
         "repo": "git@github.com:folke/twilight.nvim",
         "rev": "8b7b50c0cb2dc781b2f4262a5ddd57571556d1e4",
+        "type": "git"
+    },
+    "typescript-tools.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:pmizio/typescript-tools.nvim",
+        "rev": "c43d9580c3ff5999a1eabca849f807ab33787ea7",
         "type": "git"
     },
     "vim-abolish": {

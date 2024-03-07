@@ -24,6 +24,8 @@ return function()
           ["<C-p>"] = false,
           ["<C-s>"] = actions.select_horizontal,
           ["<C-x>"] = false,
+          ["<D-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+          ["<M-q>"] = false,
         },
       },
 

@@ -62,11 +62,11 @@ nnoremap("<leader>J", function()
 end, { desc = "Jumplist (local)" })
 
 -- Move lines
-nnoremap("<M-j>", function()
+nnoremap("<D-j>", function()
   vim.cmd [[m .+1<CR>==]]
 end, { desc = "Move line down" })
 
-nnoremap("<M-k>", function()
+nnoremap("<D-k>", function()
   vim.cmd [[m .-2<CR>==]]
 end, { desc = "Move line up" })
 
@@ -76,11 +76,11 @@ nnoremap("<C-s>", function()
 end, { desc = "save" })
 
 -- Move lines
-vnoremap("<M-j>", function()
+vnoremap("<D-j>", function()
   vim.cmd [[m '>+1<CR>gv=gv]]
 end, { desc = "Move line down" })
 
-vnoremap("<M-k>", function()
+vnoremap("<D-k>", function()
   vim.cmd [[m '<-2<CR>gv=gv]]
 end, { desc = "Move line up" })
 

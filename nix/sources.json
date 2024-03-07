@@ -113,6 +113,12 @@
         "rev": "90c22e47be057562ee9566bad313ad42d622c1d3",
         "type": "git"
     },
+    "flatten.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:willothy/flatten.nvim",
+        "rev": "92c59ae6200e6b04aff167577ebb8a9035a6d2b3",
+        "type": "git"
+    },
     "flit.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/ggandor/flit.nvim",

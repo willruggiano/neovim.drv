@@ -185,6 +185,17 @@ in rec {
     };
   };
 
+  flatten = {
+    src = sources."flatten.nvim";
+    config = {
+      window = {
+        open = "alternate";
+      };
+    };
+    lazy = false;
+    priority = 1001;
+  };
+
   fun = {
     package = let
       luafun = luajitPackages.callPackage ../pkgs/luafun.nix {};
@@ -405,7 +416,7 @@ in rec {
     src = sources.nvim-notify;
     config = ./notify.lua;
     lazy = false;
-    priority = 1000;
+    priority = 1001;
   };
 
   nvim-surround = {

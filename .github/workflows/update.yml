@@ -1,0 +1,36 @@
+name: Update plugins + flake inputs.
+
+on:
+  schedule:
+    # Every Monday at 8am
+    - cron: "0 8 * * 1"
+
+concurrency:
+  group: default
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: cachix/install-nix-action@v25
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: cachix/cachix-action@v14
+        with:
+          name: willruggiano
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - run: nix flake update && niv update
+      - run: nix build --accept-flake-config
+      - run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'willruggiano@users.noreply.github.com'
+          git commit -am 'chore: update plugins + flake inputs' || exit 0
+          git push

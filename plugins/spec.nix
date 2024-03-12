@@ -506,6 +506,11 @@ in rec {
         end
       '';
     };
+    config = {
+      accept_tos = true;
+      download_binaries = false;
+    };
+    # lazy = false;
     paths = [inputs'.sg-nvim.packages.default];
   };
 

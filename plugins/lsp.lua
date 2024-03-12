@@ -443,17 +443,6 @@ return function()
     }
   end
 
-  if pcall(require, "sg") then
-    require("sg").setup {
-      accept_tos = true,
-      on_attach = on_attach,
-    }
-
-    keymap.nnoremap("<leader>s", function()
-      require("sg.telescope").fuzzy_search_results()
-    end, { desc = "Sourcegraph search" })
-  end
-
   --
   -- null-ls :(
   --

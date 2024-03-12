@@ -3,8 +3,11 @@
     devenv.url = "github:cachix/devenv";
     flake-parts.url = "github:hercules-ci/flake-parts";
     mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
-    neovim-nix.url = "github:willruggiano/neovim.nix";
-    neovim-nix.inputs.nixpkgs.follows = "nixpkgs";
+    neovim-nix = {
+      url = "github:willruggiano/neovim.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
     neovim.url = "github:neovim/neovim/nightly?dir=contrib";
     nil.url = "github:oxalica/nil";
     # FIXME: see https://github.com/cachix/devenv/issues/528
@@ -76,13 +79,10 @@
 
         formatter = pkgs.alejandra;
 
-        packages = let
-          tree-sitter = pkgs.callPackage ./pkgs/tree-sitter.nix {};
-        in {
-          inherit tree-sitter;
+        packages = {
           default = config.neovim.final;
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
-          nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {inherit tree-sitter;};
+          nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
         };
       };
     };

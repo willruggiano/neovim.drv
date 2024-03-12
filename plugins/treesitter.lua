@@ -29,7 +29,7 @@ return function()
   ---@diagnostic disable-next-line: missing-fields
   require("nvim-treesitter.configs").setup {
     -- NOTE: Parsers are installed by nix.
-    ensure_installed = {},
+    auto_install = false,
 
     highlight = {
       enable = true,
@@ -55,11 +55,6 @@ return function()
         node_decremental = "<c-p>", -- Decrement to the previous node
         scope_incremental = "<c-s>", -- Increment to the upper scope (as defined in locals.scm)
       },
-    },
-
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
     },
 
     textobjects = {

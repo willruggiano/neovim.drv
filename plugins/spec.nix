@@ -155,11 +155,11 @@ in rec {
   };
 
   dbee = let
-    nvim-dbee = pkgs.callPackage ../pkgs/nvim-dbee.nix {};
+    package = pkgs.callPackage ../pkgs/nvim-dbee.nix {};
   in {
-    src = nvim-dbee;
+    inherit package;
     config = ./dbee.lua;
-    paths = [nvim-dbee.dbee];
+    paths = [package.dbee];
   };
 
   dial = {
@@ -440,6 +440,17 @@ in rec {
 
   nvim-ts-context-commentstring = {
     src = sources.nvim-ts-context-commentstring;
+    init = pkgs.writeTextFile {
+      name = "ts-context-commentstring.lua";
+      text = ''
+        return function()
+          vim.g.skip_ts_context_commentstring_module = true
+        end
+      '';
+    };
+    config = {
+      enable_autocmd = false;
+    };
   };
 
   nvim-web-devicons = {

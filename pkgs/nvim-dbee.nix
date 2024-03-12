@@ -2,6 +2,7 @@
   buildGoModule,
   vimUtils,
   duckdb,
+  fetchpatch,
   ...
 }: let
   sources = import ../nix/sources.nix {};
@@ -16,6 +17,13 @@ in
   vimUtils.buildVimPlugin {
     name = "nvim-dbee";
     src = sources.nvim-dbee;
+    patches = [
+      (fetchpatch {
+        name = "fix-docs-remove-duplicate-tags.patch";
+        url = "https://patch-diff.githubusercontent.com/raw/kndndrj/nvim-dbee/pull/78.patch";
+        hash = "sha256-SM1Hu77rO4KlfYat6Xj9AIGG7ui35zhejRE5Wa/L2V0=";
+      })
+    ];
     propagatedBuildInputs = [bin];
     passthru.dbee = bin;
   }

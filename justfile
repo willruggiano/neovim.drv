@@ -6,7 +6,7 @@ build:
   nom build --accept-flake-config
 
 install: build
-  nix profile update --accept-flake-config --impure 0
+  nix profile upgrade --accept-flake-config --impure 0
   notify-send --transient 'neovim be ready'
 
 run:

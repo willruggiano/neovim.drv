@@ -27,7 +27,7 @@ jobs:
         with:
           name: willruggiano
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - run: nix flake update && niv update
+      - run: nix flake update && niv update && nix run .#nvim-treesitter.update-grammars -- ./pkgs/nvim-treesitter
       - run: nix build --accept-flake-config
       - run: |
           git config --global user.name 'github-actions[bot]'

@@ -113,6 +113,38 @@ return function()
     tags = { o.TAG.TEST },
   }
 
+  o.register_template {
+    name = "bun test --only",
+    builder = function()
+      local file = vim.fn.expand "%"
+      return {
+        cmd = { "bun" },
+        args = { "test", "--only", file },
+        components = {
+          { "display_duration", detail_level = 2 },
+          "on_exit_set_status",
+        },
+        strategy = {
+          "toggleterm",
+          open_on_start = true,
+          direction = "horizontal",
+          on_create = function()
+            vim.cmd.stopinsert()
+          end,
+        },
+      }
+    end,
+    condition = {
+      filetype = { "typescript" },
+      callback = function()
+        local file = vim.fn.expand "%"
+        return vim.endswith(file, ".test.ts")
+      end,
+    },
+    priority = 11,
+    tags = { o.TAG.TEST },
+  }
+
   local nnoremaps = require("bombadil.lib.keymap").nnoremaps
 
   nnoremaps {

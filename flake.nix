@@ -43,7 +43,32 @@
         inputs',
         ...
       }: {
-        apps.default.program = config.neovim.final;
+        apps = {
+          default.program = config.neovim.final;
+          push.program = pkgs.writeShellApplication {
+            name = "push.sh";
+            runtimeInputs = with pkgs; [cachix jq];
+            text = ''
+              nix flake archive --json \
+              | jq -r '.path,(.inputs|to_entries[].value.path)' \
+              | cachix push willruggiano;
+
+              nix build --json \
+              | jq -r '.[].outputs | to_entries[].value' \
+              | cachix push willruggiano;
+
+              cachix pin willruggiano nvim-drv "$(nix build --accept-flake-config --print-out-paths)"
+            '';
+          };
+          update.program = pkgs.writeShellApplication {
+            name = "update.sh";
+            text = ''
+              nix flake update &&
+              niv update &&
+              nix run .#nvim-treesitter.update-grammars -- ./pkgs/nvim-treesitter
+            '';
+          };
+        };
 
         devenv.shells.default = {
           name = "neovim";
@@ -53,27 +78,8 @@
             stylua.enable = true;
           };
           scripts = {
-            bump-neovim.exec = ''
-              nix flake lock --update-input neovim &&
-                nom build &&
-                git commit -am 'bump: neovim'
-            '';
-            bump-nvim-treesitter.exec = ''
-              niv update nvim-treesitter &&
-                nix run .#nvim-treesitter.update-grammars -- ./pkgs/nvim-treesitter &&
-                git commit -am 'bump: nvim-treesitter'
-            '';
-            bump-plugin.exec = ''
-              [ $# -eq 0 ] && {
-                niv update &&
-                  git commit -am "bump: all plugins"
-              } || {
-                niv update $1 &&
-                  git commit -am "bump: $1"
-              }
-            '';
             plug-add.exec = ''
-              niv add git git@github.com:$1 && git add nix/ && git commit -am "feat(plug): $1"
+              niv add git git@github.com:$1 && git add -A && git commit -am "feat(plug): $1"
             '';
           };
         };

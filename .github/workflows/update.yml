@@ -27,10 +27,10 @@ jobs:
         with:
           name: willruggiano
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - run: nix flake update && niv update && nix run .#nvim-treesitter.update-grammars -- ./pkgs/nvim-treesitter
+      - run: nix run .#update
       - run: nix build --accept-flake-config
       - run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'willruggiano@users.noreply.github.com'
-          git commit -am 'chore: update plugins + flake inputs' || exit 0
+          git commit -am 'chore: 🌶️🌶️🌶️' || exit 0
           git push

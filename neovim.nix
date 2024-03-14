@@ -28,6 +28,7 @@
         # provide it's own version via direnv; neovim will use the latter,
         # project-specific version of the tool.
         paths = with pkgs; [
+          fswatch
           git
           lazygit
           nodejs

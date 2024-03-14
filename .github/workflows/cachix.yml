@@ -25,4 +25,5 @@ jobs:
           name: willruggiano
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - run: nix build --accept-flake-config
-      - run: nix flake check --accept-flake-config
+      - run: nix flake check --accept-flake-config --impure
+      - run: cachix pin willruggiano nvim-drv "$(nix build --accept-flake-config --print-out-paths)"

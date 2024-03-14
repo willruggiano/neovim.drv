@@ -148,8 +148,7 @@ in rec {
       };
       inherit rapidjson;
     };
-    paths = with pkgs;
-    with haskellPackages; [
+    paths = with pkgs.haskellPackages; [
       haskell-debug-adapter
     ];
   };
@@ -211,14 +210,7 @@ in rec {
     };
   in {
     inherit package;
-    init = pkgs.writeTextFile {
-      name = "fzy-lua-native.lua";
-      text = ''
-        return function()
-          package.cpath = package.cpath .. ";" .. "${package}/static/?.so";
-        end
-      '';
-    };
+    cpath = "${package}/static/?.so";
   };
 
   gitsigns = {
@@ -278,14 +270,7 @@ in rec {
     package = luajitPackages.luafilesystem;
   in {
     inherit package;
-    init = pkgs.writeTextFile {
-      name = "lfs.lua";
-      text = ''
-        return function()
-          package.cpath = package.cpath .. ";" .. "${package}/lib/lua/5.1/?.so"
-        end
-      '';
-    };
+    cpath = "${package}/lib/lua/5.1/?.so";
   };
 
   lsp-file-operations = {
@@ -377,14 +362,7 @@ in rec {
     package = luajitPackages.luautf8;
   in {
     inherit package;
-    init = pkgs.writeTextFile {
-      name = "lfs.lua";
-      text = ''
-        return function()
-          package.cpath = package.cpath .. ";" .. "${package}/lib/lua/5.1/?.so"
-        end
-      '';
-    };
+    cpath = "${package}/lib/lua/5.1/?.so";
   };
 
   lyaml = {
@@ -487,14 +465,7 @@ in rec {
     package = luajitPackages.rapidjson;
   in {
     inherit package;
-    init = pkgs.writeTextFile {
-      name = "rapidjson.lua";
-      text = ''
-        return function()
-          package.cpath = package.cpath .. ";" .. "${package}/lib/lua/5.1/?.so"
-        end
-      '';
-    };
+    cpath = "${package}/lib/lua/5.1/?.so";
   };
 
   regexplainer = {
@@ -509,19 +480,11 @@ in rec {
     package = inputs'.sg-nvim.packages.sg-nvim;
   in {
     inherit package;
-    init = pkgs.writeTextFile {
-      name = "sg.lua";
-      text = ''
-        return function()
-          package.cpath = package.cpath .. ";" .. "${package}/lib/?.so"
-        end
-      '';
-    };
     config = {
       accept_tos = true;
       download_binaries = false;
     };
-    # lazy = false;
+    cpath = "${package}/lib/?.so";
     paths = [inputs'.sg-nvim.packages.default];
   };
 

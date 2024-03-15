@@ -13,8 +13,7 @@
     # FIXME: see https://github.com/cachix/devenv/issues/528
     nix2container.url = "github:nlewo/nix2container";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    # https://github.com/sourcegraph/sg.nvim/pull/218
-    sg-nvim.url = "github:willruggiano/sg.nvim";
+    sg-nvim.url = "github:sourcegraph/sg.nvim";
     vscode-js-debug.url = "github:willruggiano/vscode-js-debug.nix";
     zls.url = "github:zigtools/zls";
   };

@@ -1180,15 +1180,15 @@
         "rust-overlay": "rust-overlay_3"
       },
       "locked": {
-        "lastModified": 1710264633,
-        "narHash": "sha256-psdBp0ZYWSD3242vra/JFi5PS7aealfw4snmRpe0B/c=",
-        "owner": "willruggiano",
+        "lastModified": 1710420856,
+        "narHash": "sha256-SRJ/zCesRyD9dGCYxG8lEZrNk6ez9LSNFqqX6f+YZvE=",
+        "owner": "sourcegraph",
         "repo": "sg.nvim",
-        "rev": "74018e437f68cc0cfb538f0a764aca6309d9d713",
+        "rev": "8d7735bfb810d919806da1e1c4f839fbc6ecccfe",
         "type": "github"
       },
       "original": {
-        "owner": "willruggiano",
+        "owner": "sourcegraph",
         "repo": "sg.nvim",
         "type": "github"
       }

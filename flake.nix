@@ -43,7 +43,6 @@
         ...
       }: {
         apps = {
-          default.program = config.neovim.final;
           push.program = pkgs.writeShellApplication {
             name = "push.sh";
             runtimeInputs = with pkgs; [cachix jq];
@@ -86,7 +85,15 @@
         formatter = pkgs.alejandra;
 
         packages = {
-          default = config.neovim.final;
+          default = pkgs.symlinkJoin {
+            name = "nvim-bin";
+            paths = [
+              config.neovim.final # `nvim`
+              (pkgs.writeShellScriptBin "fvim" ''
+                nvim +'Telescope smart_open'
+              '')
+            ];
+          };
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
           nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
         };

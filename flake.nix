@@ -60,7 +60,7 @@
           };
           update.program = pkgs.writeShellApplication {
             name = "update.sh";
-            runtimeIputs = with pkgs; [niv];
+            runtimeInputs = with pkgs; [niv];
             text = ''
               nix flake update &&
               niv update &&

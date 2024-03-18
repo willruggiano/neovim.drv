@@ -305,6 +305,12 @@
         "rev": "8c1831817d40925d22cd8a555296c44c02fdaaf5",
         "type": "git"
     },
+    "nvim-nio": {
+        "branch": "master",
+        "repo": "git@github.com:nvim-neotest/nvim-nio",
+        "rev": "ed70af8ad9d4dafdb55539ed2b4454aac2a2a0c3",
+        "type": "git"
+    },
     "nvim-nonicons": {
         "branch": "main",
         "repo": "ssh://git@github.com/yamatsum/nvim-nonicons",

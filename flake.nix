@@ -94,6 +94,7 @@
                 nvim +'Telescope smart_open'
               '')
             ];
+            meta.mainProgram = "nvim";
           };
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
           nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};

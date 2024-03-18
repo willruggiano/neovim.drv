@@ -126,6 +126,9 @@ in rec {
       dapui = {
         src = sources.nvim-dap-ui;
       };
+      nio = {
+        src = sources.nvim-nio;
+      };
       nvim-dap-virtual-text = {
         src = sources.nvim-dap-virtual-text;
         config = true;

@@ -232,7 +232,7 @@ return function()
     },
   }
   local simple_servers =
-    { "biome", "cmake", "graphql", "hls", "marksman", "nil_ls", "prismals", "pyright", "ruff_lsp", "zls" }
+    { "biome", "cmake", "graphql", "hls", "marksman", "nil_ls", "prismals", "pyright", "ruff_lsp", "tsserver", "zls" }
   for _, name in ipairs(simple_servers) do
     lspconfig[name].setup {
       on_init = on_init,
@@ -375,41 +375,6 @@ return function()
       },
     }
   end
-
-  -- lspconfig.tsserver.setup {
-  --   on_init = on_init,
-  --   on_attach = on_attach,
-  --   capabilities = updated_capabilities,
-  --   settings = {
-  --     javascript = {
-  --       inlayHints = {
-  --         includeInlayEnumMemberValueHints = true,
-  --         includeInlayFunctionLikeReturnTypeHints = true,
-  --         includeInlayFunctionParameterTypeHints = true,
-  --         includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-  --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-  --         includeInlayPropertyDeclarationTypeHints = true,
-  --         includeInlayVariableTypeHints = true,
-  --       },
-  --     },
-  --     typescript = {
-  --       inlayHints = {
-  --         includeInlayEnumMemberValueHints = true,
-  --         includeInlayFunctionLikeReturnTypeHints = true,
-  --         includeInlayFunctionParameterTypeHints = true,
-  --         includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-  --         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-  --         includeInlayPropertyDeclarationTypeHints = true,
-  --         includeInlayVariableTypeHints = true,
-  --       },
-  --     },
-  --   },
-  -- }
-  require("typescript-tools").setup {
-    on_init = on_init,
-    on_attach = on_attach,
-    capabilities = updated_capabilities,
-  }
 
   lspconfig.yamlls.setup {
     on_init = on_init,

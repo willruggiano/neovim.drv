@@ -321,9 +321,6 @@ in rec {
       schemastore = {
         src = sources."SchemaStore.nvim";
       };
-      typescript-tools = {
-        src = sources."typescript-tools.nvim";
-      };
     };
     paths = with pkgs; [
       alejandra # used by nil for formatting

@@ -95,14 +95,6 @@ return function()
       end,
       { desc = "Open Anything™" },
     },
-    ["<space>k"] = {
-      function()
-        vim.ui.input({ prompt = "Query > " }, function(pattern)
-          require("telescope").extensions.docsets.query(pattern, { previewer = false })
-        end)
-      end,
-      { desc = "Docsets" },
-    },
     ["<leader>k"] = {
       function()
         require("telescope").extensions.docsets.find_word_under_cursor { previewer = false }
@@ -114,4 +106,11 @@ return function()
   for key, opts in pairs(mappings) do
     nnoremap(key, opts[1], opts[2])
   end
+
+  vim.api.nvim_create_user_command("K", function(args)
+    require("telescope").extensions.docsets.query(args.fargs or {}, { previewer = false })
+  end, {
+    desc = "Query docsets",
+    nargs = "*",
+  })
 end

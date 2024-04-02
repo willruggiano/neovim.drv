@@ -20,10 +20,11 @@ jobs:
       - uses: cachix/install-nix-action@v25
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: DeterminateSystems/magic-nix-cache-action@v4
       - uses: cachix/cachix-action@v14
         with:
           name: willruggiano
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - run: nix build --accept-flake-config
       - run: nix flake check --accept-flake-config --impure
+      - run: nix build --accept-flake-config
       - run: cachix pin willruggiano nvim-drv "$(nix build --accept-flake-config --print-out-paths)"

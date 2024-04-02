@@ -47,11 +47,11 @@
             name = "push.sh";
             runtimeInputs = with pkgs; [cachix jq];
             text = ''
-              nix flake archive --json \
+              nix flake archive --accept-flake-config --json \
               | jq -r '.path,(.inputs|to_entries[].value.path)' \
               | cachix push willruggiano;
 
-              nix build --json \
+              nix build --accept-flake-config --json \
               | jq -r '.[].outputs | to_entries[].value' \
               | cachix push willruggiano;
 
@@ -62,9 +62,11 @@
             name = "update.sh";
             runtimeInputs = with pkgs; [niv];
             text = ''
-              nix flake update &&
+              nix flake update --accept-flake-config &&
               niv update &&
-              nix run .#nvim-treesitter.update-grammars -- ./pkgs/nvim-treesitter
+              nix run .#nvim-treesitter.update-grammars -- ./pkgs/nvim-treesitter &&
+              git commit -am 'chore: 🌶️🌶️🌶️' &&
+              git push
             '';
           };
         };

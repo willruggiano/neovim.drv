@@ -17,21 +17,30 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
+      - uses: easimon/maximize-build-space@v10
+        with:
+          overprovision-lvm: true
+          remove-android: true
+          remove-codeql: true
+          remove-docker-images: true
+          remove-dotnet: true
+          remove-haskell: true
       - uses: actions/checkout@v4
       - uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - uses: cachix/install-nix-action@v25
+      - uses: cachix/install-nix-action@v26
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          extra_nix_config: |
+            accept-flake-config = true
+      - uses: DeterminateSystems/magic-nix-cache-action@v4
       - uses: cachix/cachix-action@v14
         with:
           name: willruggiano
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - run: nix run .#update
-      - run: nix build --accept-flake-config
-      - run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'willruggiano@users.noreply.github.com'
-          git commit -am 'chore: 🌶️🌶️🌶️' || exit 0
-          git push
+      - name: nix run .#ci
+        run: |
+          git config --global user.name 'github-actions[bot]' &&
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com' &&
+          nix run .#update

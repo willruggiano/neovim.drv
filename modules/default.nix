@@ -1,4 +1,8 @@
 {
+  imports = [
+    ./colorscheme
+  ];
+
   perSystem = {
     config,
     lib,
@@ -17,7 +21,7 @@
       };
 
       package = inputs'.neovim.packages.default.override {
-        tree-sitter = pkgs.callPackage ./pkgs/tree-sitter.nix {};
+        tree-sitter = pkgs.callPackage ../pkgs/tree-sitter.nix {};
       };
 
       # Tools to bake into the neovim environment.
@@ -51,12 +55,10 @@
             ];
           };
         };
-        plugins = import ./plugins/spec.nix {
+        plugins = import ../plugins/spec.nix {
           inherit config inputs' pkgs;
           neovim-utils = utils;
         };
-        # plugins = import ./plugins {inherit lib pkgs utils;};
-        # plugins = neovim-lib.importPluginsFromSpec ./plugins args;
       };
     };
   };

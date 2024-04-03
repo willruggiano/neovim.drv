@@ -1,4 +1,5 @@
 {
+  config,
   inputs',
   neovim-utils,
   pkgs,
@@ -8,7 +9,7 @@
   inherit (pkgs) luajitPackages;
 in rec {
   bombadil = {
-    src = ./bombadil;
+    src = pkgs.callPackage ./bombadil {inherit (config.neovim) colorscheme;};
     config = ./bombadil.lua;
     lazy = false;
     priority = 1000;

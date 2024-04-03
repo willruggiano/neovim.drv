@@ -2,16 +2,13 @@
   inputs = {
     devenv.url = "github:cachix/devenv";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    mk-shell-bin.url = "github:rrbutani/nix-mk-shell-bin";
     neovim-nix = {
       url = "github:willruggiano/neovim.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
     };
     neovim.url = "github:neovim/neovim/nightly?dir=contrib";
     nil.url = "github:oxalica/nil";
-    # FIXME: see https://github.com/cachix/devenv/issues/528
-    nix2container.url = "github:nlewo/nix2container";
+    nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     sg-nvim.url = "github:sourcegraph/sg.nvim";
     vscode-js-debug.url = "github:willruggiano/vscode-js-debug.nix";
@@ -32,16 +29,24 @@
       imports = [
         inputs.devenv.flakeModule
         inputs.neovim-nix.flakeModule
-        ./neovim.nix
+        ./modules
       ];
 
       systems = ["aarch64-darwin" "x86_64-linux"];
       perSystem = {
         config,
+        lib,
         pkgs,
         inputs',
         ...
       }: {
+        _module.args.nix-colors =
+          inputs.nix-colors.lib
+          // {
+            contrib = inputs.nix-colors.lib-contrib {inherit pkgs;};
+            schemes = inputs.nix-colors.colorSchemes;
+          };
+
         apps = {
           push.program = pkgs.writeShellApplication {
             name = "push.sh";
@@ -73,6 +78,8 @@
 
         devenv.shells.default = {
           name = "neovim";
+          # https://github.com/cachix/devenv/issues/528
+          containers = lib.mkForce {};
           packages = with pkgs; [alejandra just niv nodejs];
           pre-commit.hooks = {
             alejandra.enable = true;
@@ -98,6 +105,7 @@
             ];
             meta.mainProgram = "nvim";
           };
+          nvim = config.neovim.final;
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
           nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
         };

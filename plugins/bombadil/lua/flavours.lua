@@ -1,15 +1,21 @@
 local M = {}
 
+M.variant = vim.opt.background:get() or "dark"
+
 local function hi(higroup, val)
-  vim.api.nvim_set_hl(0, higroup, val)
+  vim.api.nvim_set_hl(0, higroup, vim.tbl_extend("keep", val, { force = true }))
 end
 
 local function link(higroup, link_to)
-  hi(higroup, { link = link_to })
+  hi(higroup, { link = link_to, force = true })
 end
 
-function M.setup()
+function M.setup(mode)
   vim.opt.termguicolors = true
+
+  if mode then
+    M.variant = mode
+  end
 
   local palette = M.palette()
 
@@ -24,8 +30,7 @@ function M.setup()
 end
 
 function M.palette()
-  local mode = vim.opt.background:get() or "dark"
-  return require("flavours.palette")[mode]
+  return require("flavours.palette")[M.variant]
 end
 
 M.highlight = setmetatable({}, {

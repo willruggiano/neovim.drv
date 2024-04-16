@@ -425,7 +425,7 @@ return function()
       null_ls.builtins.diagnostics.jsonlint,
       null_ls.builtins.diagnostics.luacheck.with { extra_args = { "--globals", "vim", "--no-max-line-length" } },
       null_ls.builtins.diagnostics.shellcheck.with { filetypes = { "bash", "sh" } },
-      null_ls.builtins.diagnostics.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
+      -- null_ls.builtins.diagnostics.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
       null_ls.builtins.diagnostics.statix,
     },
   }

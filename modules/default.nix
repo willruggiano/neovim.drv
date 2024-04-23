@@ -20,9 +20,10 @@
         SRC_ENDPOINT = "https://sourcegraph.com";
       };
 
-      package = inputs'.neovim.packages.default.override {
-        tree-sitter = pkgs.callPackage ../pkgs/tree-sitter.nix {};
-      };
+      package = inputs'.neovim.packages.default;
+      # package = inputs'.neovim.packages.default.override {
+      #   tree-sitter = pkgs.callPackage ../pkgs/tree-sitter.nix {};
+      # };
 
       # Tools to bake into the neovim environment.
       # These tools are *appended* to neovim's PATH variable,

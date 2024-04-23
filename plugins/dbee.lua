@@ -1,7 +1,19 @@
 return function()
   require("dbee").setup {
+    call_log = {
+      window_options = {
+        number = false,
+        relativenumber = false,
+        signcolumn = "no",
+      },
+    },
     drawer = {
       disable_help = true,
+      window_options = {
+        number = false,
+        relativenumber = false,
+        signcolumn = "no",
+      },
     },
     editor = {
       mappings = {
@@ -11,6 +23,11 @@ return function()
           mode = "x",
           opts = { noremap = true, nowait = true, expr = true },
         },
+      },
+      window_options = {
+        number = false,
+        relativenumber = false,
+        signcolumn = "no",
       },
     },
     extra_helpers = {
@@ -30,6 +47,11 @@ return function()
         { action = "yank_current_csv", key = "yac", mode = "n" },
         { action = "yank_selection_csv", key = "yac", mode = "v" },
         { action = "yank_all_csv", key = "yaC", mode = "" },
+      },
+      window_options = {
+        number = false,
+        relativenumber = false,
+        signcolumn = "no",
       },
     },
     sources = {

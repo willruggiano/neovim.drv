@@ -6,7 +6,11 @@
       url = "github:willruggiano/neovim.nix";
       inputs.flake-parts.follows = "flake-parts";
     };
-    neovim.url = "github:neovim/neovim/nightly?dir=contrib";
+    neovim = {
+      # https://github.com/nix-community/neovim-nightly-overlay/pull/483
+      url = "github:neovim/neovim/nightly?dir=contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nil.url = "github:oxalica/nil";
     nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -81,7 +85,7 @@
           name = "neovim";
           # https://github.com/cachix/devenv/issues/528
           containers = lib.mkForce {};
-          packages = with pkgs; [alejandra just niv nodejs];
+          packages = with pkgs; [alejandra just niv nodejs tree-sitter];
           pre-commit.hooks = {
             alejandra.enable = true;
             stylua.enable = true;

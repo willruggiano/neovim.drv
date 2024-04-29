@@ -41,6 +41,9 @@
     go = {
       owner = "tree-sitter";
     };
+    graphql = {
+      owner = "bkegley";
+    };
     haskell = {
       owner = "tree-sitter";
     };

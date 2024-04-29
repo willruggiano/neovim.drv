@@ -71,7 +71,7 @@ return function()
       { name = "nvim_lsp" },
       { name = "nvim_lsp_signature_help" },
       { name = "snippy" },
-      { name = "cody" },
+      -- { name = "cody" },
     }, {
       { name = "path" },
       { name = "buffer" },

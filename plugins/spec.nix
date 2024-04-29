@@ -51,7 +51,7 @@ in rec {
     src = sources.nvim-cmp;
     config = ./cmp.lua;
     dependencies = {
-      inherit sg;
+      # inherit sg;
       cmp-buffer = {
         src = sources.cmp-buffer;
       };
@@ -289,7 +289,7 @@ in rec {
     src = sources.nvim-lspconfig;
     config = ./lsp.lua;
     dependencies = {
-      inherit conform fun lsp-file-operations lspkind sg;
+      inherit conform fun lsp-file-operations lspkind;
       clangd_extensions = {
         src = sources."clangd_extensions.nvim";
       };
@@ -477,17 +477,17 @@ in rec {
     };
   };
 
-  sg = let
-    package = inputs'.sg-nvim.packages.sg-nvim;
-  in {
-    inherit package;
-    config = {
-      accept_tos = true;
-      download_binaries = false;
-    };
-    cpath = "${package}/lib/?.so";
-    paths = [inputs'.sg-nvim.packages.default];
-  };
+  # sg = let
+  #   package = inputs'.sg-nvim.packages.sg-nvim;
+  # in {
+  #   inherit package;
+  #   config = {
+  #     accept_tos = true;
+  #     download_binaries = false;
+  #   };
+  #   cpath = "${package}/lib/?.so";
+  #   paths = [inputs'.sg-nvim.packages.default];
+  # };
 
   statuscol = {
     src = sources."statuscol.nvim";

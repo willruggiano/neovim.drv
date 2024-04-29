@@ -24,11 +24,6 @@ return function()
           opts = { noremap = true, nowait = true, expr = true },
         },
       },
-      window_options = {
-        number = false,
-        relativenumber = false,
-        signcolumn = "no",
-      },
     },
     extra_helpers = {
       postgres = {

@@ -1,7 +1,7 @@
 {
   inputs = {
     devenv.url = "github:cachix/devenv";
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    git-hooks.url = "github:cachix/git-hooks.nix";
     neovim-nix = {
       url = "github:willruggiano/neovim.nix";
       inputs.flake-parts.follows = "flake-parts";
@@ -17,13 +17,17 @@
     sg-nvim.url = "github:sourcegraph/sg.nvim";
     vscode-js-debug.url = "github:willruggiano/vscode-js-debug.nix";
     zls.url = "github:zigtools/zls";
+
+    devenv.inputs.pre-commit-hooks.follows = "git-hooks";
   };
 
   nixConfig = {
     extra-substituters = [
+      "https://devenv.cachix.org"
       "https://willruggiano.cachix.org"
     ];
     extra-trusted-public-keys = [
+      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "willruggiano.cachix.org-1:rz00ME8/uQfWe+tN3njwK5vc7P8GLWu9qbAjjJbLoSw="
     ];
   };

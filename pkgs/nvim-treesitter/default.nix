@@ -72,6 +72,9 @@
     jsonnet = {
       owner = "sourcegraph";
     };
+    just = {
+      owner = "IndianBoy42";
+    };
     lua = {
       owner = "MunifTanjim";
     };

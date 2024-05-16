@@ -2,6 +2,9 @@ return function()
   local toggleterm = require "toggleterm"
 
   toggleterm.setup {
+    float_opts = {
+      border = "single",
+    },
     shade_terminals = false,
     size = function(args)
       if args.direction == "horizontal" then

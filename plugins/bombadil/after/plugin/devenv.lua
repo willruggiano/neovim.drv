@@ -1,6 +1,6 @@
 local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new {
-  cmd = "lazygit",
+local devenv = Terminal:new {
+  cmd = "devenv up",
   direction = "float",
   float_opts = {
     border = "none",
@@ -9,7 +9,7 @@ local lazygit = Terminal:new {
 }
 
 local nnoremap = require("bombadil.lib.keymap").nnoremap
-nnoremap("<space>g", function()
+nnoremap("<space>v", function()
   ---@diagnostic disable-next-line: missing-parameter
-  lazygit:toggle()
-end, { desc = "Lazygit" })
+  devenv:toggle()
+end, { desc = "Devenv" })

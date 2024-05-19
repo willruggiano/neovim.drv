@@ -47,6 +47,9 @@
     haskell = {
       owner = "tree-sitter";
     };
+    hcl = {
+      owner = "tree-sitter-grammars";
+    };
     html = {
       owner = "tree-sitter";
     };
@@ -167,8 +170,8 @@
     name = "update-grammars.sh";
     runtimeInputs = [nix-prefetch-git];
     text = ''
-      out="''${1}/grammars"
-      grammars="''${2:-all}"
+      out="./pkgs/nvim-treesitter/grammars"
+      grammars="''${1:-all}"
       mkdir -p "$out"
       ${
         foreachSh grammars' ({

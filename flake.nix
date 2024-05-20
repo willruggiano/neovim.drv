@@ -2,6 +2,7 @@
   inputs = {
     devenv.url = "github:cachix/devenv";
     git-hooks.url = "github:cachix/git-hooks.nix";
+    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     neovim-nix = {
       url = "github:willruggiano/neovim.nix";
       inputs.flake-parts.follows = "flake-parts";
@@ -36,6 +37,7 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         inputs.devenv.flakeModule
+        inputs.hercules-ci-effects.flakeModule
         inputs.neovim-nix.flakeModule
         ./modules
       ];
@@ -117,6 +119,14 @@
           nvim = config.neovim.final;
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
           nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
+        };
+      };
+
+      hercules-ci.flake-update = {
+        enable = true;
+        when = {
+          hour = [08];
+          dayOfWeek = ["Mon"];
         };
       };
     };

@@ -343,6 +343,7 @@ in rec {
       nodePackages.yaml-language-server
       ruff-lsp
       rust-analyzer
+      tailwindcss-language-server
       sumneko-lua-language-server
     ];
   };

@@ -91,7 +91,7 @@
           name = "neovim";
           # https://github.com/cachix/devenv/issues/528
           containers = lib.mkForce {};
-          packages = with pkgs; [alejandra just niv nodejs tree-sitter];
+          packages = with pkgs; [alejandra hci just niv nodejs tree-sitter];
           pre-commit.hooks = {
             alejandra.enable = true;
             stylua.enable = true;

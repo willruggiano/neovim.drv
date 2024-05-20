@@ -11,12 +11,12 @@
 
   # The grammars we care about:
   grammars = {
-    bash = {
-      owner = "tree-sitter";
-    };
-    c = {
-      owner = "tree-sitter";
-    };
+    # bash = {
+    #   owner = "tree-sitter";
+    # };
+    # c = {
+    #   owner = "tree-sitter";
+    # };
     cmake = {
       owner = "uyha";
     };
@@ -75,33 +75,33 @@
     just = {
       owner = "IndianBoy42";
     };
-    lua = {
-      owner = "MunifTanjim";
-    };
+    # lua = {
+    #   owner = "MunifTanjim";
+    # };
     make = {
       owner = "alemuller";
     };
-    markdown = {
-      owner = "MDeiml";
-      sourceRoot = "tree-sitter-markdown";
-    };
-    markdown_inline = {
-      owner = "MDeiml";
-      repo = "tree-sitter-markdown";
-      sourceRoot = "tree-sitter-markdown-inline";
-    };
+    # markdown = {
+    #   owner = "MDeiml";
+    #   sourceRoot = "tree-sitter-markdown";
+    # };
+    # markdown_inline = {
+    #   owner = "MDeiml";
+    #   repo = "tree-sitter-markdown";
+    #   sourceRoot = "tree-sitter-markdown-inline";
+    # };
     nix = {
       owner = "cstrahan";
     };
     prisma = {
       owner = "victorhqc";
     };
-    python = {
-      owner = "tree-sitter";
-    };
-    query = {
-      owner = "nvim-treesitter";
-    };
+    # python = {
+    #   owner = "tree-sitter";
+    # };
+    # query = {
+    #   owner = "nvim-treesitter";
+    # };
     regex = {
       owner = "tree-sitter";
     };
@@ -126,13 +126,13 @@
       owner = "tree-sitter";
       sourceRoot = "typescript";
     };
-    vim = {
-      owner = "vigoux";
-      repo = "tree-sitter-viml";
-    };
-    vimdoc = {
-      owner = "neovim";
-    };
+    # vim = {
+    #   owner = "vigoux";
+    #   repo = "tree-sitter-viml";
+    # };
+    # vimdoc = {
+    #   owner = "neovim";
+    # };
     xit = {
       owner = "synaptiko";
       rev = "7d79024";

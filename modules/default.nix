@@ -1,4 +1,4 @@
-{
+{inputs, ...}: {
   imports = [
     ./colorscheme
   ];
@@ -20,10 +20,7 @@
         SRC_ENDPOINT = "https://sourcegraph.com";
       };
 
-      package = inputs'.neovim.packages.default;
-      # package = inputs'.neovim.packages.default.override {
-      #   tree-sitter = pkgs.callPackage ../pkgs/tree-sitter.nix {};
-      # };
+      package = config.packages.neovim-nightly;
 
       # Tools to bake into the neovim environment.
       # These tools are *appended* to neovim's PATH variable,
@@ -37,6 +34,7 @@
         git
         lazygit
         nodejs
+        xdg-utils # gx
       ];
 
       lazy = {

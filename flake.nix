@@ -2,15 +2,14 @@
   inputs = {
     devenv.url = "github:cachix/devenv";
     git-hooks.url = "github:cachix/git-hooks.nix";
-    hercules-ci-effects.url = "github:hercules-ci/hercules-ci-effects";
     neovim-nix = {
       url = "github:willruggiano/neovim.nix";
       inputs.flake-parts.follows = "flake-parts";
     };
     neovim = {
       # https://github.com/nix-community/neovim-nightly-overlay/pull/483
-      url = "github:neovim/neovim/nightly?dir=contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:neovim/neovim/nightly";
+      flake = false;
     };
     nil.url = "github:oxalica/nil";
     nix-colors.url = "github:misterio77/nix-colors";
@@ -37,7 +36,6 @@
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
         inputs.devenv.flakeModule
-        inputs.hercules-ci-effects.flakeModule
         inputs.neovim-nix.flakeModule
         ./modules
       ];
@@ -79,7 +77,7 @@
             text = ''
               nix flake update &&
               niv update &&
-              nix run .#nvim-treesitter.update-grammars -- ./pkgs/nvim-treesitter &&
+              nix run .#nvim-treesitter.update-grammars &&
               nix flake check --impure &&
               git commit -am 'chore: 🌶️🌶️🌶️' &&
               git push
@@ -91,7 +89,7 @@
           name = "neovim";
           # https://github.com/cachix/devenv/issues/528
           containers = lib.mkForce {};
-          packages = with pkgs; [alejandra hci just niv nodejs tree-sitter];
+          packages = with pkgs; [alejandra just niv nodejs tree-sitter];
           pre-commit.hooks = {
             alejandra.enable = true;
             stylua.enable = true;
@@ -116,17 +114,11 @@
             ];
             meta.mainProgram = "nvim";
           };
+          luafun = pkgs.luajit.pkgs.callPackage ./pkgs/luafun.nix {};
+          neovim-nightly = pkgs.callPackage ./pkgs/neovim {inherit inputs;};
           nvim = config.neovim.final;
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
           nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
-        };
-      };
-
-      hercules-ci.flake-update = {
-        enable = true;
-        when = {
-          hour = [08];
-          dayOfWeek = ["Mon"];
         };
       };
     };

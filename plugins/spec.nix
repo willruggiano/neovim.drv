@@ -158,7 +158,7 @@ in rec {
   };
 
   dbee = let
-    package = pkgs.callPackage ../pkgs/nvim-dbee.nix {};
+    package = config.packages.nvim-dbee;
   in {
     inherit package;
     config = ./dbee.lua;
@@ -200,10 +200,7 @@ in rec {
   };
 
   fun = {
-    package = let
-      luafun = luajitPackages.callPackage ../pkgs/luafun.nix {};
-    in
-      neovim-utils.toLuarocksPlugin luafun;
+    package = neovim-utils.toLuarocksPlugin config.packages.luafun;
   };
 
   fzy-lua-native = let
@@ -294,7 +291,7 @@ in rec {
         src = sources."clangd_extensions.nvim";
       };
       null-ls = {
-        src = sources."null-ls.nvim";
+        src = sources."none-ls.nvim";
         dependencies = {
           crates = {
             src = sources."crates.nvim";
@@ -308,14 +305,8 @@ in rec {
           };
         };
         paths = with pkgs; [
-          # (pkgs.callPackage ../pkgs/languagetool-rs {})
           actionlint
           cppcheck
-          luajitPackages.luacheck
-          nodePackages.jsonlint
-          shellcheck
-          shellharden
-          sqlfluff
           statix
         ];
       };
@@ -337,6 +328,7 @@ in rec {
       inputs'.nil.packages.default
       inputs'.zls.packages.default
       marksman
+      nodePackages.bash-language-server
       nodePackages.graphql-language-service-cli
       nodePackages.pyright
       nodePackages.vscode-json-languageserver
@@ -405,7 +397,7 @@ in rec {
   };
 
   nvim-treesitter = {
-    package = pkgs.callPackage ../pkgs/nvim-treesitter {};
+    package = config.packages.nvim-treesitter;
     config = ./treesitter.lua;
     dependencies = {
       inherit nvim-ts-context-commentstring;

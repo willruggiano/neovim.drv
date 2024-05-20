@@ -1,9 +1,5 @@
 local M = {}
 
-M.methods = {
-  definition = "textDocument/definition",
-}
-
 local function str_utfindex(line, index, encoding)
   if not line or #line < index then
     return index
@@ -25,14 +21,14 @@ end
 
 --- @param bufnr integer
 --- @param method string
---- @param params_fn fun(client: lsp.Client): table
+--- @param params_fn fun(client: vim.lsp.Client): table
 --- @param handler fun(results: any[])
 M.buf_request_all = function(bufnr, method, params_fn, handler)
   local results = {}
   local exp_reponses = 0
   local reponses = 0
 
-  for _, client in pairs(vim.lsp.get_active_clients { bufnr = bufnr }) do
+  for _, client in pairs(vim.lsp.get_clients { bufnr = bufnr }) do
     if client.supports_method(method, { bufnr = bufnr }) then
       exp_reponses = exp_reponses + 1
       client.request(method, params_fn(client), function(_, result)
@@ -49,7 +45,7 @@ end
 --- @param bufnr integer
 --- @param row integer
 --- @param col integer
---- @return fun(client: lsp.Client): table
+--- @return fun(client: vim.lsp.Client): table
 M.create_params = function(bufnr, row, col)
   return function(client)
     local offset_encoding = client.offset_encoding

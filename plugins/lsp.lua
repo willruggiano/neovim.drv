@@ -65,14 +65,6 @@ return function()
     vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
     keymap.nnoremaps {
-      ["]d"] = {
-        vim.diagnostic.goto_next,
-        { buffer = bufnr, desc = "Next diagnostic" },
-      },
-      ["[d"] = {
-        vim.diagnostic.goto_prev,
-        { buffer = bufnr, desc = "Previous diagnostic" },
-      },
       -- TODO: Could we combine code actions and lenses?
       ["<leader>ca"] = {
         vim.lsp.buf.code_action,
@@ -232,6 +224,7 @@ return function()
     },
   }
   local simple_servers = {
+    "bashls",
     "biome",
     "cmake",
     "graphql",
@@ -343,8 +336,6 @@ return function()
               end
             end
 
-            -- table.insert(library, require("neodev.config").types())
-
             add "$VIMRUNTIME"
 
             return library
@@ -431,13 +422,8 @@ return function()
     on_attach = on_attach,
     sources = {
       null_ls.builtins.code_actions.gitsigns,
-      null_ls.builtins.code_actions.shellcheck.with { filetypes = { "bash", "sh" } },
       null_ls.builtins.code_actions.statix,
       null_ls.builtins.diagnostics.actionlint,
-      null_ls.builtins.diagnostics.jsonlint,
-      null_ls.builtins.diagnostics.luacheck.with { extra_args = { "--globals", "vim", "--no-max-line-length" } },
-      null_ls.builtins.diagnostics.shellcheck.with { filetypes = { "bash", "sh" } },
-      -- null_ls.builtins.diagnostics.sqlfluff.with { extra_args = { "--dialect", "postgres" } },
       null_ls.builtins.diagnostics.statix,
     },
   }

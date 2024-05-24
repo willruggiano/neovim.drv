@@ -6,11 +6,7 @@
       url = "github:willruggiano/neovim.nix";
       inputs.flake-parts.follows = "flake-parts";
     };
-    neovim = {
-      # https://github.com/nix-community/neovim-nightly-overlay/pull/483
-      url = "github:neovim/neovim/nightly";
-      flake = false;
-    };
+    neovim.url = "github:nix-community/neovim-nightly-overlay";
     nil.url = "github:oxalica/nil";
     nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
@@ -24,10 +20,12 @@
   nixConfig = {
     extra-substituters = [
       "https://devenv.cachix.org"
+      "https://nix-community.cachix.org"
       "https://willruggiano.cachix.org"
     ];
     extra-trusted-public-keys = [
       "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "willruggiano.cachix.org-1:rz00ME8/uQfWe+tN3njwK5vc7P8GLWu9qbAjjJbLoSw="
     ];
   };
@@ -115,7 +113,7 @@
             meta.mainProgram = "nvim";
           };
           luafun = pkgs.luajit.pkgs.callPackage ./pkgs/luafun.nix {};
-          neovim-nightly = pkgs.callPackage ./pkgs/neovim {inherit inputs;};
+          neovim-nightly = inputs'.neovim.packages.default;
           nvim = config.neovim.final;
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
           nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};

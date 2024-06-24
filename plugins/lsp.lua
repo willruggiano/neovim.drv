@@ -232,7 +232,7 @@ return function()
     "marksman",
     "nil_ls",
     "prismals",
-    "pyright",
+    "basedpyright",
     "ruff_lsp",
     "tailwindcss",
     "tsserver",

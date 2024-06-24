@@ -319,6 +319,7 @@ in rec {
     };
     paths = with pkgs; [
       alejandra # used by nil for formatting
+      basedpyright
       biome
       clang-tools
       cmake-language-server
@@ -330,7 +331,6 @@ in rec {
       marksman
       nodePackages.bash-language-server
       nodePackages.graphql-language-service-cli
-      nodePackages.pyright
       nodePackages.vscode-json-languageserver
       nodePackages.yaml-language-server
       ruff-lsp

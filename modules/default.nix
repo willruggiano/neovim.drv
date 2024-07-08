@@ -53,6 +53,7 @@
               "zipPlugin"
             ];
           };
+          pkg.enabled = false;
         };
         plugins = import ../plugins/spec.nix {
           inherit config inputs' pkgs;

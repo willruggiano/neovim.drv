@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{
   imports = [
     ./colorscheme
   ];
@@ -7,12 +7,9 @@
     config,
     lib,
     pkgs,
-    neovim-lib,
     inputs',
     ...
-  }: let
-    inherit (inputs'.neovim-nix.packages) utils;
-  in {
+  }: {
     neovim = {
       # Environment variables to bake into the neovim environment.
       # If an environment variable is already defined, the existing definition will take precedence.
@@ -57,7 +54,6 @@
         };
         plugins = import ../plugins/spec.nix {
           inherit config inputs' pkgs;
-          neovim-utils = utils;
         };
       };
     };

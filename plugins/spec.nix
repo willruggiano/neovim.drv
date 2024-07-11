@@ -1,7 +1,6 @@
 {
   config,
   inputs',
-  neovim-utils,
   pkgs,
   ...
 }: let
@@ -200,7 +199,7 @@ in rec {
   };
 
   fun = {
-    package = neovim-utils.toLuarocksPlugin config.packages.luafun;
+    package = config.packages.luafun;
   };
 
   fzy-lua-native = let
@@ -360,7 +359,9 @@ in rec {
   };
 
   lyaml = {
-    package = neovim-utils.toLuarocksPlugin luajitPackages.lyaml;
+    package = pkgs.neovimUtils.buildNeovimPlugin {
+      inherit (luajitPackages.lyaml) pname;
+    };
   };
 
   markdown = {
@@ -521,7 +522,7 @@ in rec {
         paths = with pkgs; [dasht elinks];
       };
       telescope-fzf-native = {
-        package = neovim-utils.mkPlugin {
+        package = pkgs.vimUtils.buildVimPlugin {
           name = "telescope-fzf-native";
           src = sources."telescope-fzf-native.nvim";
           buildPhase = "";

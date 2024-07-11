@@ -1,10 +1,14 @@
 {
   inputs = {
-    devenv.url = "github:cachix/devenv";
+    devenv = {
+      url = "github:cachix/devenv";
+      inputs.pre-commit-hooks.follows = "git-hooks";
+    };
     git-hooks.url = "github:cachix/git-hooks.nix";
     neovim-nix = {
       url = "github:willruggiano/neovim.nix";
       inputs.flake-parts.follows = "flake-parts";
+      # inputs.git-hooks.follows = ""; FIXME: SO :(
     };
     neovim.url = "github:nix-community/neovim-nightly-overlay";
     nil.url = "github:oxalica/nil";
@@ -13,8 +17,6 @@
     sg-nvim.url = "github:sourcegraph/sg.nvim";
     vscode-js-debug.url = "github:willruggiano/vscode-js-debug.nix";
     zls.url = "github:zigtools/zls";
-
-    devenv.inputs.pre-commit-hooks.follows = "git-hooks";
   };
 
   nixConfig = {

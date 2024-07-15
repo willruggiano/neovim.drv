@@ -103,10 +103,10 @@ nnoremap("<space>q", function()
   end
 end, { desc = "Toggle quickfix" })
 
-require("which-key").register({
-  h = { name = "+Hunk" },
-  m = { name = "+Mark" },
-  t = { name = "+Toggle" },
-  w = { name = "+Workspace" },
-  z = { name = "+Zk" },
-}, { prefix = "<leader>" })
+require("which-key").add {
+  { "<leader>h", group = "Hunk" },
+  { "<leader>m", group = "Mark" },
+  { "<leader>t", group = "Toggle" },
+  { "<leader>w", group = "Workspace" },
+  { "<leader>z", group = "Zk" },
+}

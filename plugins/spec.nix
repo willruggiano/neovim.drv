@@ -553,7 +553,10 @@ in rec {
 
   which-key = {
     src = sources."which-key.nvim";
-    config = true;
+    config = {
+      icons.rules = false;
+      notify = false;
+    };
   };
 
   wilder = {

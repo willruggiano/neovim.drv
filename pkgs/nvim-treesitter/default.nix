@@ -1,6 +1,7 @@
 {
   fetchgit,
   lib,
+  jq,
   nix-prefetch-git,
   symlinkJoin,
   tree-sitter,
@@ -52,6 +53,9 @@
     };
     html = {
       owner = "tree-sitter";
+    };
+    hyprlang = {
+      owner = "tree-sitter-grammars";
     };
     java = {
       owner = "tree-sitter";
@@ -174,7 +178,7 @@
 
   update-grammars = writeShellApplication {
     name = "update-grammars.sh";
-    runtimeInputs = [nix-prefetch-git];
+    runtimeInputs = [jq nix-prefetch-git];
     text = ''
       out="./pkgs/nvim-treesitter/grammars"
       grammars="''${1:-all}"
@@ -192,7 +196,7 @@
               --quiet \
               --no-deepClone \
               --url "${url}" \
-              --rev "${rev}" > "$out"/${name}.json
+              --rev "${rev}" | jq 'del(.path)' > "$out"/${name}.json
           }
         '')
       }

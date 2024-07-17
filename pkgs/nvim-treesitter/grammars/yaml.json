@@ -2,7 +2,6 @@
   "url": "https://github.com/ikatyang/tree-sitter-yaml",
   "rev": "7b03feefd36b5f155465ca736c6304aca983b267",
   "date": "2024-05-08T11:44:24-04:00",
-  "path": "/nix/store/favwnd61rfah23xmhkd4gghgs6xna2sw-tree-sitter-yaml-7b03fee",
   "sha256": "0d6kxdj6w0i1j77m2gsnafn78kvgf100hyhrymv359hcr6zm0dl6",
   "hash": "sha256-hjZQv8kMpjJ29Rl6CEBwb090rFNWP1HPkSECbmTr0zQ=",
   "fetchLFS": false,

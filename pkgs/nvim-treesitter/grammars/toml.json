@@ -2,7 +2,6 @@
   "url": "https://github.com/ikatyang/tree-sitter-toml",
   "rev": "16a30c83ce427385b8d14939c45c137fcfca6c42",
   "date": "2024-05-03T14:09:29+03:00",
-  "path": "/nix/store/svfij6y53gz24v6rsij3ikywacpyrz9k-tree-sitter-toml-16a30c8",
   "sha256": "1jb9ws82dv3acnis945i9pkwjk4h2alnhnkmd8gyiiam8crhz2sm",
   "hash": "sha256-VYsPM0NVxegfanVaaKkSkEzJ502xkKSjZWrsJpDmack=",
   "fetchLFS": false,

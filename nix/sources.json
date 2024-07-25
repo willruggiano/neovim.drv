@@ -173,6 +173,12 @@
         "rev": "817f50c9464ce557c8f7f8f4d4c8d2f7b81fc40c",
         "type": "git"
     },
+    "kulala.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:mistweaverco/kulala.nvim",
+        "rev": "0bcfb897c691fb84841758bbb6e00046e97ee238",
+        "type": "git"
+    },
     "leap-ast.nvim": {
         "branch": "main",
         "repo": "git@github.com:ggandor/leap-ast.nvim",

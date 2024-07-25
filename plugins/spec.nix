@@ -248,6 +248,14 @@ in rec {
     config = true;
   };
 
+  kulala = {
+    src = sources."kulala.nvim";
+    config = ./kulala.lua;
+    paths = [
+      config.packages.kulala-fmt
+    ];
+  };
+
   leap = {
     src = sources."leap.nvim";
     config = ./leap.lua;

@@ -114,6 +114,7 @@
             ];
             meta.mainProgram = "nvim";
           };
+          kulala-fmt = pkgs.callPackage ./pkgs/kulala-fmt {};
           luafun = pkgs.luajit.pkgs.callPackage ./pkgs/luafun.nix {};
           neovim-nightly = inputs'.neovim.packages.default;
           nvim = config.neovim.final;

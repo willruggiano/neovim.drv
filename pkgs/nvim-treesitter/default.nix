@@ -54,6 +54,9 @@
     html = {
       owner = "tree-sitter";
     };
+    http = {
+      owner = "rest-nvim";
+    };
     hyprlang = {
       owner = "tree-sitter-grammars";
     };

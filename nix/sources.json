@@ -17,12 +17,6 @@
         "rev": "623df28bf9a2661d9d5a0f391bf30bdd8f8de62b",
         "type": "git"
     },
-    "cargo-expand.nvim": {
-        "branch": "main",
-        "repo": "ssh://git@github.com/willruggiano/cargo-expand.nvim",
-        "rev": "1eabd52902e1fdd5abad523e8b2a33d163fcd9af",
-        "type": "git"
-    },
     "clang-format.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/willruggiano/clang-format.nvim",
@@ -335,12 +329,6 @@
         "rev": "148ee2ca8b06d83fd9bf6f9b9497724ad39a07d6",
         "type": "git"
     },
-    "nvim-regexplainer": {
-        "branch": "main",
-        "repo": "git@github.com:bennypowers/nvim-regexplainer",
-        "rev": "2ec38892e7ce36f0c58b478f3570936fa5bd11f1",
-        "type": "git"
-    },
     "nvim-snippy": {
         "branch": "master",
         "repo": "git@github.com:dcampos/nvim-snippy",
@@ -381,12 +369,6 @@
         "branch": "master",
         "repo": "git@github.com:stevearc/overseer.nvim",
         "rev": "87526babdb563b9e2f0646b420359389732326dc",
-        "type": "git"
-    },
-    "package-info.nvim": {
-        "branch": "master",
-        "repo": "git@github.com:vuki656/package-info.nvim",
-        "rev": "018bc10e28b00e28e239b1fff7c497304f8b1bf5",
         "type": "git"
     },
     "plenary.nvim": {
@@ -515,12 +497,6 @@
         "rev": "4c695bc052cad2ae6b980aebbe48d046466e27ae",
         "type": "git"
     },
-    "vim-graphql": {
-        "branch": "master",
-        "repo": "git@github.com:jparise/vim-graphql",
-        "rev": "e1576c481d3102d7d30e131c73d15c4baac2cfa2",
-        "type": "git"
-    },
     "vim-markdown": {
         "branch": "master",
         "repo": "ssh://git@github.com/preservim/vim-markdown",
@@ -543,12 +519,6 @@
         "branch": "main",
         "repo": "git@github.com:folke/zen-mode.nvim",
         "rev": "a31cf7113db34646ca320f8c2df22cf1fbfc6f2a",
-        "type": "git"
-    },
-    "zk-nvim": {
-        "branch": "main",
-        "repo": "git@github.com:mickael-menu/zk-nvim",
-        "rev": "15e24e96cb90889ebd12b5dbe800a958c716f520",
         "type": "git"
     }
 }

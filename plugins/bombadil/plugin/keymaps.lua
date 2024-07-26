@@ -108,5 +108,4 @@ require("which-key").add {
   { "<leader>m", group = "Mark" },
   { "<leader>t", group = "Toggle" },
   { "<leader>w", group = "Workspace" },
-  { "<leader>z", group = "Zk" },
 }

@@ -32,12 +32,7 @@ in rec {
     };
   };
 
-  cargo-expand = {
-    src = sources."cargo-expand.nvim";
-    ft = "rust";
-    paths = [pkgs.cargo-expand];
-  };
-
+  # haven't written c++ in awhile... :sad sigh:
   clang-format = {
     src = sources."clang-format.nvim";
     dependencies = {
@@ -216,10 +211,6 @@ in rec {
   gitsigns = {
     src = sources."gitsigns.nvim";
     config = ./gitsigns.lua;
-  };
-
-  graphql = {
-    src = sources.vim-graphql;
   };
 
   hover = {
@@ -448,14 +439,6 @@ in rec {
     config = ./overseer.lua;
   };
 
-  package-info = {
-    src = sources."package-info.nvim";
-    config = true;
-    dependencies = {
-      inherit nui;
-    };
-  };
-
   plenary = {
     src = sources."plenary.nvim";
   };
@@ -470,14 +453,6 @@ in rec {
   in {
     inherit package;
     cpath = "${package}/lib/lua/5.1/?.so";
-  };
-
-  regexplainer = {
-    src = sources.nvim-regexplainer;
-    config = true;
-    dependencies = {
-      inherit nui nvim-treesitter;
-    };
   };
 
   # sg = let
@@ -591,11 +566,5 @@ in rec {
         };
       };
     };
-  };
-
-  zk = {
-    src = sources.zk-nvim;
-    config = ./zk.lua;
-    paths = [pkgs.zk];
   };
 }

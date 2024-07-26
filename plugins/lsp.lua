@@ -233,6 +233,7 @@ return function()
     "nil_ls",
     "prismals",
     "basedpyright",
+    "relay_lsp",
     "ruff_lsp",
     "tailwindcss",
     "tsserver",

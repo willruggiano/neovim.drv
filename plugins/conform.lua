@@ -24,7 +24,7 @@ return function()
       http = { "kulala" },
       javascript = js,
       javascriptreact = js,
-      json = { { "biome", "prettier" } },
+      json = { "biome", "prettier", stop_after_first = true },
       lua = { "stylua", "luacheck" },
       markdown = { "prettier", "injected" },
       sh = sh,

@@ -1629,11 +1629,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1719447593,
-        "narHash": "sha256-1Zk5UJ0zPJpZvwOwm7JMOau96P9HG7AQ5puB1Jjup38=",
+        "lastModified": 1721866826,
+        "narHash": "sha256-0CqSZKEJBjWHL2YPWr7GSUZfHTS2BASUAWN91t/MPs4=",
         "owner": "willruggiano",
         "repo": "vscode-js-debug.nix",
-        "rev": "503d550388a3553ccb01220934ac1ac9d4f57da9",
+        "rev": "2144bcb1dedcd1cc28c3cdcd9962a99aa7f2ee83",
         "type": "github"
       },
       "original": {

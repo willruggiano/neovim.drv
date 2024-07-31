@@ -1,6 +1,7 @@
 {
   buildGoModule,
   vimUtils,
+  arrow-cpp,
   duckdb,
   ...
 }: let
@@ -9,8 +10,8 @@
     name = "dbee";
     src = sources.nvim-dbee;
     sourceRoot = "source/dbee";
-    vendorHash = "sha256-AItvgOehVskGLARJWDnJLtWM5YHKN/zn/FnZQ0evAtI=";
-    buildInputs = [duckdb];
+    vendorHash = "sha256-U/3WZJ/+Bm0ghjeNUILsnlZnjIwk3ySaX3Rd4L9Z62A=";
+    buildInputs = [arrow-cpp duckdb];
   };
 in
   vimUtils.buildVimPlugin {

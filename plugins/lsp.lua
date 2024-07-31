@@ -214,21 +214,90 @@ return function()
     lineFoldingOnly = true,
   }
 
-  local server_settings = {
+  local server_overrides = {
+    clangd = {
+      capabilities = {
+        offsetEncoding = { "utf-16" },
+      },
+    },
+    jsonls = {
+      cmd = { "vscode-json-languageserver", "--stdio" },
+      settings = {
+        json = {
+          schemas = require("schemastore").json.schemas(),
+          validate = { enable = true },
+        },
+      },
+    },
+    lua_ls = {
+      root_dir = function(fname)
+        return lspconfig_util.find_git_ancestor(fname) or lspconfig_util.path.dirname(fname)
+      end,
+      settings = {
+        Lua = {
+          completion = {
+            callSnippet = "Replace",
+            keywordSnippet = "Replace",
+          },
+          format = {
+            enable = false,
+          },
+          runtime = {
+            version = "LuaJIT",
+            path = { "?.lua", "?/init.lua" },
+            pathStrict = true,
+          },
+          workspace = {
+            checkThirdParty = false,
+            library = (function()
+              local library = {}
+
+              local function add(dir)
+                for _, p in
+                  ipairs(vim.fn.expand(dir .. "/lua", false, true) --[=[@as string[]]=])
+                do
+                  table.insert(library, p)
+                end
+              end
+
+              add "$VIMRUNTIME"
+
+              return library
+            end)(),
+          },
+        },
+      },
+    },
     nil_ls = {
-      ["nil"] = {
-        formatting = {
-          command = { "alejandra", "-qq" },
+      settings = {
+        ["nil"] = {
+          formatting = {
+            command = { "alejandra", "-qq" },
+          },
+        },
+      },
+    },
+    relay_lsp = {
+      root_dir = lspconfig_util.root_pattern "relay.config.*",
+    },
+    yamlls = {
+      settings = {
+        yaml = {
+          schemas = require("schemastore").yaml.schemas(),
+          validate = { enable = true },
         },
       },
     },
   }
-  local simple_servers = {
+
+  local servers = {
     "bashls",
     "biome",
+    "clangd",
     "cmake",
     "graphql",
     "hls",
+    "jsonls",
     "marksman",
     "nil_ls",
     "prismals",
@@ -237,114 +306,16 @@ return function()
     "ruff_lsp",
     "tailwindcss",
     "tsserver",
+    "yamlls",
     "zls",
   }
-  for _, name in ipairs(simple_servers) do
-    lspconfig[name].setup {
+  for _, name in ipairs(servers) do
+    lspconfig[name].setup(vim.tbl_deep_extend("force", {
       on_init = on_init,
       on_attach = on_attach,
       capabilities = updated_capabilities,
-      settings = server_settings[name] or {},
-    }
+    }, server_overrides[name] or {}))
   end
-
-  lspconfig.clangd.setup {
-    on_init = on_init,
-    on_attach = on_attach,
-    -- HACK: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428
-    capabilities = vim.tbl_deep_extend("force", updated_capabilities, { offsetEncoding = { "utf-16" } }),
-  }
-  -- require("clangd_extensions").setup {
-  --   server = {
-  --     cmd = vim.list_extend({ "clangd" }, {
-  --       "--background-index",
-  --       "--header-insertion=iwyu",
-  --     }),
-  --     on_init = function(client)
-  --       on_init(client)
-  --       require("clang-format").setup {
-  --         on_attach = function(config)
-  --           vim.bo.shiftwidth = config.IndentWidth
-  --           vim.bo.textwidth = config.ColumnLimit
-  --         end,
-  --       }
-  --     end,
-  --     on_attach = function(client, bufnr)
-  --       on_attach(client, bufnr)
-  --       nnoremap("<leader>a", function()
-  --         require("bombadil.lib.clangd").switch_source_header(bufnr, true)
-  --       end, { buffer = bufnr, desc = "Switch source/header" })
-  --       nnoremap("<leader>th", function()
-  --         require("clangd_extensions.inlay_hints").toggle_inlay_hints()
-  --       end, { buffer = bufnr, desc = "Toggle inlay hints" })
-  --       require("clang-format").on_attach(client, bufnr)
-  --     end,
-  --     init_options = {
-  --       clangdFileStatus = true,
-  --       completeUnimported = true,
-  --       semanticHighlighting = true,
-  --       usePlaceholders = true,
-  --     },
-  --     -- HACK: https://github.com/jose-elias-alvarez/null-ls.nvim/issues/428
-  --     capabilities = vim.tbl_deep_extend("force", updated_capabilities, { offsetEncoding = { "utf-16" } }),
-  --   },
-  -- }
-
-  lspconfig.jsonls.setup {
-    cmd = { "vscode-json-languageserver", "--stdio" },
-    on_init = on_init,
-    on_attach = on_attach,
-    capabilities = updated_capabilities,
-    settings = {
-      json = {
-        schemas = require("schemastore").json.schemas(),
-        validate = { enable = true },
-      },
-    },
-  }
-
-  lspconfig.lua_ls.setup {
-    on_init = on_init,
-    on_attach = on_attach,
-    capabilities = updated_capabilities,
-    root_dir = function(fname)
-      return lspconfig_util.find_git_ancestor(fname) or lspconfig_util.path.dirname(fname)
-    end,
-    settings = {
-      Lua = {
-        completion = {
-          callSnippet = "Replace",
-          keywordSnippet = "Replace",
-        },
-        format = {
-          enable = false,
-        },
-        runtime = {
-          version = "LuaJIT",
-          path = { "?.lua", "?/init.lua" },
-          pathStrict = true,
-        },
-        workspace = {
-          checkThirdParty = false,
-          library = (function()
-            local library = {}
-
-            local function add(dir)
-              for _, p in
-                ipairs(vim.fn.expand(dir .. "/lua", false, true) --[=[@as string[]]=])
-              do
-                table.insert(library, p)
-              end
-            end
-
-            add "$VIMRUNTIME"
-
-            return library
-          end)(),
-        },
-      },
-    },
-  }
 
   if os.getenv "ENABLE_POSTGRES_LSP" then
     lspconfig.postgres_lsp.setup {
@@ -378,21 +349,7 @@ return function()
         },
       },
     }
-  end
-
-  lspconfig.yamlls.setup {
-    on_init = on_init,
-    on_attach = on_attach,
-    capabilities = updated_capabilities,
-    settings = {
-      yaml = {
-        schemas = require("schemastore").yaml.schemas(),
-        validate = { enable = true },
-      },
-    },
-  }
-
-  if pcall(require, "rust-tools") then
+  else
     local rt = require "rust-tools"
     rt.setup {
       server = {

@@ -503,6 +503,12 @@
         "rev": "a657e697376909c41475a686eeef7fc7a4972d94",
         "type": "git"
     },
+    "vim-matchup": {
+        "branch": "master",
+        "repo": "git@github.com:andymass/vim-matchup",
+        "rev": "1535a769d5dca851fe7d41b0be95f7c7203a4bef",
+        "type": "git"
+    },
     "which-key.nvim": {
         "branch": "main",
         "repo": "git@github.com:folke/which-key.nvim",

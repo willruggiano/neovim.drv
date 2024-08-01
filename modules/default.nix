@@ -9,7 +9,7 @@
     pkgs,
     inputs',
     ...
-  }: {
+  } @ args: {
     neovim = {
       # Environment variables to bake into the neovim environment.
       # If an environment variable is already defined, the existing definition will take precedence.
@@ -52,9 +52,7 @@
           };
           pkg.enabled = false;
         };
-        plugins = import ../plugins/spec.nix {
-          inherit config inputs' pkgs;
-        };
+        plugins = import ../plugins/spec.nix args;
       };
     };
   };

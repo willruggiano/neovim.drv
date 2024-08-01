@@ -96,7 +96,7 @@
           };
           scripts = {
             plug-add.exec = ''
-              niv add git git@github.com:$1 && git add -A && git commit -am "feat(plug): $1"
+              niv add git git@github.com:$1 && git add -A
             '';
           };
         };

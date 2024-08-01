@@ -1,6 +1,7 @@
 {
   config,
   inputs',
+  lib,
   pkgs,
   ...
 }: let
@@ -369,6 +370,20 @@ in rec {
     config = ./markdown.lua;
   };
 
+  matchup = {
+    src = sources.vim-matchup;
+    init = ''
+      function()
+        vim.g.matchup_matchparen_offscreen = { method = "popup" }
+      end
+    '';
+    config = ''
+      function()
+        require("flavours").highlight.MatchParen = "LspReferenceText"
+      end
+    '';
+  };
+
   neo-tree = {
     src = sources."neo-tree.nvim";
     config = ./neo-tree.lua;
@@ -401,7 +416,7 @@ in rec {
     package = config.packages.nvim-treesitter;
     config = ./treesitter.lua;
     dependencies = {
-      inherit nvim-ts-context-commentstring;
+      inherit matchup nvim-ts-context-commentstring;
       nvim-treesitter-textobjects = {
         src = sources.nvim-treesitter-textobjects;
       };

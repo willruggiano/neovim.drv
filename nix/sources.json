@@ -35,10 +35,10 @@
         "rev": "3022dbc9166796b644a841a02de8dd1cc1d311fa",
         "type": "git"
     },
-    "cmp-fuzzy-path": {
-        "branch": "master",
-        "repo": "git@github.com:tzachar/cmp-fuzzy-path",
-        "rev": "9953c11a2510a04111b7b152cf50ae1e83f00798",
+    "cmp-cmdline": {
+        "branch": "main",
+        "repo": "git@github.com:hrsh7th/cmp-cmdline",
+        "rev": "d250c63aa13ead745e3a40f61fdd3470efde3923",
         "type": "git"
     },
     "cmp-git": {
@@ -53,28 +53,10 @@
         "rev": "39e2eda76828d88b773cc27a3f61d2ad782c922d",
         "type": "git"
     },
-    "cmp-nvim-lsp-signature-help": {
-        "branch": "main",
-        "repo": "git@github.com:hrsh7th/cmp-nvim-lsp-signature-help",
-        "rev": "031e6ba70b0ad5eee49fd2120ff7a2e325b17fa7",
-        "type": "git"
-    },
     "cmp-path": {
         "branch": "main",
         "repo": "git@github.com:hrsh7th/cmp-path",
         "rev": "91ff86cd9c29299a64f968ebb45846c485725f23",
-        "type": "git"
-    },
-    "cmp-snippy": {
-        "branch": "master",
-        "repo": "git@github.com:dcampos/cmp-snippy",
-        "rev": "6e39210aa3a74e2bf6462f492eaf0d436cd2b7d3",
-        "type": "git"
-    },
-    "cmp-under-comparator": {
-        "branch": "master",
-        "repo": "git@github.com:lukas-reineke/cmp-under-comparator",
-        "rev": "6857f10272c3cfe930cece2afa2406e1385bfef8",
         "type": "git"
     },
     "conform.nvim": {
@@ -117,12 +99,6 @@
         "branch": "main",
         "repo": "ssh://git@github.com/ggandor/flit.nvim",
         "rev": "a9be4e76c30a128f1e51af448c8321bf8366bcd4",
-        "type": "git"
-    },
-    "fuzzy.nvim": {
-        "branch": "master",
-        "repo": "git@github.com:tzachar/fuzzy.nvim",
-        "rev": "68608f6a232f7e73ccf81437bf12108128f15bd4",
         "type": "git"
     },
     "fzf": {
@@ -513,12 +489,6 @@
         "branch": "main",
         "repo": "git@github.com:folke/which-key.nvim",
         "rev": "6c1584eb76b55629702716995cca4ae2798a9cca",
-        "type": "git"
-    },
-    "wilder.nvim": {
-        "branch": "master",
-        "repo": "ssh://git@github.com/gelguy/wilder.nvim",
-        "rev": "679f348dc90d80ff9ba0e7c470c40a4d038dcecf",
         "type": "git"
     },
     "zen-mode.nvim": {

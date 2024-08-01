@@ -95,6 +95,12 @@ return function()
       end,
       { desc = "Open Anything™" },
     },
+    ["<leader>f"] = {
+      function()
+        require("telescope.builtin").grep_string()
+      end,
+      { desc = "Grep CWORD" },
+    },
     ["<leader>k"] = {
       function()
         require("telescope").extensions.docsets.find_word_under_cursor { previewer = false }

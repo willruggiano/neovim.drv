@@ -1,7 +1,6 @@
 {
   config,
   inputs',
-  lib,
   pkgs,
   ...
 }: let
@@ -47,20 +46,11 @@ in rec {
     config = ./cmp.lua;
     dependencies = {
       # inherit sg;
-      cmp-buffer = {
-        src = sources.cmp-buffer;
-      };
-      cmp-fuzzy-path = {
-        src = sources.cmp-fuzzy-path;
-        dependencies = {
-          fuzzy_nvim = {
-            src = sources."fuzzy.nvim";
-          };
-          inherit fzy-lua-native;
-        };
-      };
+      cmp-buffer.src = sources.cmp-buffer;
+      cmp-cmdline.src = sources.cmp-cmdline;
       cmp-git = {
         src = sources.cmp-git;
+        config = true;
       };
       cmp-nvim-lsp = {
         src = sources.cmp-nvim-lsp;
@@ -68,23 +58,7 @@ in rec {
           inherit lspkind;
         };
       };
-      cmp-nvim-lsp-signature-help = {
-        src = sources.cmp-nvim-lsp-signature-help;
-      };
-      cmp-path = {
-        src = sources.cmp-path;
-      };
-      cmp-snippy = {
-        src = sources.cmp-snippy;
-        dependencies = {
-          snippy = {
-            src = sources.nvim-snippy;
-          };
-        };
-      };
-      cmp-under-comparator = {
-        src = sources.cmp-under-comparator;
-      };
+      cmp-path.src = sources.cmp-path;
     };
   };
 
@@ -119,6 +93,7 @@ in rec {
     src = sources.nvim-dap;
     config = ./dap.lua;
     dependencies = {
+      inherit rapidjson;
       dapui = {
         src = sources.nvim-dap-ui;
       };
@@ -145,7 +120,6 @@ in rec {
           ];
         };
       };
-      inherit rapidjson;
     };
     paths = with pkgs.haskellPackages; [
       haskell-debug-adapter
@@ -196,17 +170,6 @@ in rec {
 
   fun = {
     package = config.packages.luafun;
-  };
-
-  fzy-lua-native = let
-    package = pkgs.vimUtils.buildVimPlugin {
-      name = "fzy-lua-native";
-      version = sources.fzy-lua-native.rev;
-      src = sources.fzy-lua-native;
-    };
-  in {
-    inherit package;
-    cpath = "${package}/static/?.so";
   };
 
   gitsigns = {
@@ -552,13 +515,24 @@ in rec {
     };
   };
 
-  wilder = {
-    src = sources."wilder.nvim";
-    config = ./wilder.lua;
-    dependencies = {
-      cpsm.package = pkgs.vimPlugins.cpsm;
-    };
-  };
+  # Gonna give cmp-cmdline another try lol
+  # wilder = {
+  #   src = sources."wilder.nvim";
+  #   config = ./wilder.lua;
+  #   dependencies = {
+  #     cpsm.package = pkgs.vimPlugins.cpsm;
+  #     fzy-lua-native = let
+  #       package = pkgs.vimUtils.buildVimPlugin {
+  #         name = "fzy-lua-native";
+  #         version = sources.fzy-lua-native.rev;
+  #         src = sources.fzy-lua-native;
+  #       };
+  #     in {
+  #       inherit package;
+  #       cpath = "${package}/static/?.so";
+  #     };
+  #   };
+  # };
 
   zen-mode = {
     src = sources."zen-mode.nvim";

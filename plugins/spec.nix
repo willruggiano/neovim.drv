@@ -428,14 +428,11 @@ in rec {
 
   nvim-ts-context-commentstring = {
     src = sources.nvim-ts-context-commentstring;
-    init = pkgs.writeTextFile {
-      name = "ts-context-commentstring.lua";
-      text = ''
-        return function()
-          vim.g.skip_ts_context_commentstring_module = true
-        end
-      '';
-    };
+    init = ''
+      function()
+        vim.g.skip_ts_context_commentstring_module = true
+      end
+    '';
     config = {
       enable_autocmd = false;
     };
@@ -504,14 +501,11 @@ in rec {
         dependencies = {
           sqlite = {
             src = sources."sqlite.lua";
-            init = pkgs.writeTextFile {
-              name = "sqlite.lua";
-              text = ''
-                return function()
-                  vim.g.sqlite_clib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so"
-                end
-              '';
-            };
+            init = ''
+              function()
+                vim.g.sqlite_clib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so"
+              end
+            '';
           };
         };
         paths = with pkgs; [ripgrep];

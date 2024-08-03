@@ -224,7 +224,16 @@ return function()
       cmd = { "vscode-json-languageserver", "--stdio" },
       settings = {
         json = {
-          schemas = require("schemastore").json.schemas(),
+          schemas = require("schemastore").json.schemas {
+            extra = {
+              {
+                description = "Configuration file for relay-compiler",
+                fileMatch = { "relay.config.json" },
+                name = "relay.config.json",
+                url = "https://raw.githubusercontent.com/facebook/relay/main/compiler/relay-compiler-config-schema.json",
+              },
+            },
+          },
           validate = { enable = true },
         },
       },

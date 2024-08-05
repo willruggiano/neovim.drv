@@ -181,31 +181,6 @@
         "type": "github"
       }
     },
-    "example": {
-      "inputs": {
-        "flake-parts": [
-          "neovim-nix",
-          "flake-parts"
-        ],
-        "neovim-nix": [
-          "neovim-nix"
-        ],
-        "nixpkgs": [
-          "neovim-nix",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-Pqlo2+42dWMZke7Be5qZ2Q+X6hsX1AmfeDv3Qtsho74=",
-        "path": "./example",
-        "type": "path"
-      },
-      "original": {
-        "path": "./example",
-        "type": "path"
-      }
-    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -818,7 +793,7 @@
     },
     "neovim-nix": {
       "inputs": {
-        "example": "example",
+        "example": [],
         "flake-parts": [
           "flake-parts"
         ],

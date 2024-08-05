@@ -7,6 +7,7 @@
     git-hooks.url = "github:cachix/git-hooks.nix";
     neovim-nix = {
       url = "github:willruggiano/neovim.nix";
+      inputs.example.follows = "";
       inputs.flake-parts.follows = "flake-parts";
       # inputs.git-hooks.follows = ""; FIXME: SO :(
     };

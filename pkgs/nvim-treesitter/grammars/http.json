@@ -1,9 +1,9 @@
 {
   "url": "https://github.com/rest-nvim/tree-sitter-http",
-  "rev": "e061995f0caf2fa30f68fa1fdf2c08bcbd4629a8",
-  "date": "2024-07-11T11:26:10-04:00",
-  "sha256": "0aicy74pbznfbrvwljidjna6x9h39lb01xb5p5kf1p35pqxwh0yg",
-  "hash": "sha256-zwPIO75l3OBmuWX1ABZNA6ZulJUtSsp3Xs7+dcnxLCo=",
+  "rev": "5ae6c7cfa62a7d7325c26171a1de4f6b866702b5",
+  "date": "2024-07-30T05:37:49-04:00",
+  "sha256": "1hsfp715fi99a4l89f4ba0d6ql7wzg4n2kg1y70vbpxn4nzk8m8b",
+  "hash": "sha256-C1U0vyW237XB8eFNYcn7/FBsGlCLuIQoUSlFV8K5TsM=",
   "fetchLFS": false,
   "fetchSubmodules": false,
   "deepClone": false,

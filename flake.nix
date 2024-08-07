@@ -5,6 +5,10 @@
       inputs.pre-commit-hooks.follows = "git-hooks";
     };
     git-hooks.url = "github:cachix/git-hooks.nix";
+    naersk = {
+      url = "github:nix-community/naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     neovim-nix = {
       url = "github:willruggiano/neovim.nix";
       inputs.example.follows = "";
@@ -15,6 +19,10 @@
     nil.url = "github:oxalica/nil";
     nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    rust-overlay = {
+      url = "github:oxalica/rust-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     sg-nvim.url = "github:sourcegraph/sg.nvim";
     vscode-js-debug.url = "github:willruggiano/vscode-js-debug.nix";
     zls.url = "github:zigtools/zls";
@@ -45,16 +53,26 @@
       perSystem = {
         config,
         lib,
-        pkgs,
         inputs',
+        system,
         ...
-      }: {
-        _module.args.nix-colors =
-          inputs.nix-colors.lib
-          // {
-            contrib = inputs.nix-colors.lib-contrib {inherit pkgs;};
-            schemes = inputs.nix-colors.colorSchemes;
-          };
+      }: let
+        pkgs = import inputs.nixpkgs {
+          inherit system;
+          overlays = [
+            inputs.rust-overlay.overlays.default
+          ];
+        };
+      in {
+        _module.args = {
+          inherit pkgs;
+          nix-colors =
+            inputs.nix-colors.lib
+            // {
+              contrib = inputs.nix-colors.lib-contrib {inherit pkgs;};
+              schemes = inputs.nix-colors.colorSchemes;
+            };
+        };
 
         apps = {
           push.program = pkgs.writeShellApplication {
@@ -121,6 +139,7 @@
           nvim = config.neovim.final;
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
           nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
+          sqruff = pkgs.callPackage ./pkgs/sqruff.nix {inherit inputs;};
         };
       };
     };

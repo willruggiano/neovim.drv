@@ -279,7 +279,8 @@ in rec {
         src = sources."SchemaStore.nvim";
       };
     };
-    paths = with pkgs; [
+    paths = with pkgs;
+    with config.packages; [
       alejandra # used by nil for formatting
       basedpyright
       biome
@@ -299,6 +300,7 @@ in rec {
       ruff-lsp
       rust-analyzer
       tailwindcss-language-server
+      sqruff
       sumneko-lua-language-server
     ];
   };

@@ -5,7 +5,7 @@
 }:
 buildGoModule rec {
   name = "kulala-fmt";
-  version = "1.1.0";
+  version = "1.2.0";
 
   src = fetchFromGitHub {
     owner = "mistweaverco";

@@ -50,6 +50,15 @@ return function()
       smart_open = {
         match_algorithm = "fzf",
       },
+      undo = {
+        mappings = {
+          i = {
+            ["<C-y>"] = false,
+            ["<C-r>"] = false,
+          },
+        },
+        side_by_side = true,
+      },
     },
 
     pickers = {
@@ -68,6 +77,7 @@ return function()
   telescope.load_extension "manix"
   telescope.load_extension "smart_open"
   telescope.load_extension "ui-select"
+  telescope.load_extension "undo"
 
   local nnoremap = require("bombadil.lib.keymap").nnoremap
   local mappings = {
@@ -92,6 +102,12 @@ return function()
     ["<space>o"] = {
       function()
         require("telescope").extensions.smart_open.smart_open()
+      end,
+      { desc = "Open Anything™" },
+    },
+    ["<space>u"] = {
+      function()
+        require("telescope").extensions.undo.undo()
       end,
       { desc = "Open Anything™" },
     },

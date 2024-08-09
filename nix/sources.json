@@ -119,6 +119,12 @@
         "rev": "562dc47189ad3c8696dbf460d38603a74d544849",
         "type": "git"
     },
+    "hardtime.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:m4xshen/hardtime.nvim",
+        "rev": "91c6be1a54fa057002e21ae209a49436bd215355",
+        "type": "git"
+    },
     "hover.nvim": {
         "branch": "main",
         "repo": "git@github.com:lewis6991/hover.nvim",
@@ -417,6 +423,12 @@
         "branch": "master",
         "repo": "git@github.com:nvim-telescope/telescope-ui-select.nvim",
         "rev": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2",
+        "type": "git"
+    },
+    "telescope-undo.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:debugloop/telescope-undo.nvim",
+        "rev": "51be9ae7c42fc27c0b05505e3a0162e0f05fbb6a",
         "type": "git"
     },
     "telescope.nvim": {

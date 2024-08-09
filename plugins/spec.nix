@@ -177,6 +177,14 @@ in rec {
     config = ./gitsigns.lua;
   };
 
+  hardtime = {
+    src = sources."hardtime.nvim";
+    config = true;
+    dependencies = {
+      inherit nui plenary;
+    };
+  };
+
   hover = {
     src = sources."hover.nvim";
     config = ./hover.lua;
@@ -495,6 +503,13 @@ in rec {
       };
       telescope-ui-select = {
         src = sources."telescope-ui-select.nvim";
+      };
+      telescope-undo = {
+        src = sources."telescope-undo.nvim";
+        dependencies = {
+          inherit plenary;
+        };
+        paths = with pkgs; [delta];
       };
     };
   };

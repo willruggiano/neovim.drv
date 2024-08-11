@@ -159,10 +159,10 @@ return function()
     }
 
     keymap.vnoremaps {
-      -- ["<leader>ca"] = {
-      --   vim.lsp.buf.range_code_action,
-      --   { buffer = bufnr, desc = "Code actions" },
-      -- },
+      ["<leader>ca"] = {
+        vim.lsp.buf.code_action,
+        { buffer = bufnr, desc = "Code actions" },
+      },
       ["<leader>f"] = {
         function()
           require("conform").format {

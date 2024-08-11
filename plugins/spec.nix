@@ -177,13 +177,13 @@ in rec {
     config = ./gitsigns.lua;
   };
 
-  hardtime = {
-    src = sources."hardtime.nvim";
-    config = true;
-    dependencies = {
-      inherit nui plenary;
-    };
-  };
+  # hardtime = {
+  #   src = sources."hardtime.nvim";
+  #   config = true;
+  #   dependencies = {
+  #     inherit nui plenary;
+  #   };
+  # };
 
   hover = {
     src = sources."hover.nvim";

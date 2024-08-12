@@ -365,6 +365,12 @@
         "rev": "bf3cc436df63cd535350d5ef1b951c91554d4b01",
         "type": "git"
     },
+    "quicker.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:stevearc/quicker.nvim",
+        "rev": "514817dfb0a2828fe2c6183f996a31847c8aa789",
+        "type": "git"
+    },
     "rust-tools.nvim": {
         "branch": "master",
         "repo": "git@github.com:simrat39/rust-tools.nvim",

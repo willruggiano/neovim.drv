@@ -433,9 +433,14 @@ in rec {
     src = sources."plenary.nvim";
   };
 
-  pqf = {
-    src = sources.nvim-pqf;
-    config = ./pqf.lua;
+  # pqf = {
+  #   src = sources.nvim-pqf;
+  #   config = ./pqf.lua;
+  # };
+
+  quicker = {
+    src = sources."quicker.nvim";
+    config = ./quicker.lua;
   };
 
   rapidjson = let

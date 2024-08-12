@@ -485,6 +485,12 @@
         "rev": "4c695bc052cad2ae6b980aebbe48d046466e27ae",
         "type": "git"
     },
+    "vim-fugitive": {
+        "branch": "master",
+        "repo": "git@github.com:tpope/vim-fugitive",
+        "rev": "0444df68cd1cdabc7453d6bd84099458327e5513",
+        "type": "git"
+    },
     "vim-markdown": {
         "branch": "master",
         "repo": "ssh://git@github.com/preservim/vim-markdown",

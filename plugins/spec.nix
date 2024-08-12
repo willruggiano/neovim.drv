@@ -168,6 +168,11 @@ in rec {
     priority = 1001;
   };
 
+  fugitive = {
+    src = sources.vim-fugitive;
+    config = ./fugitive.lua;
+  };
+
   fun = {
     package = config.packages.luafun;
   };

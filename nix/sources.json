@@ -152,7 +152,7 @@
     "kulala.nvim": {
         "branch": "main",
         "repo": "git@github.com:mistweaverco/kulala.nvim",
-        "rev": "dff80c7bff6b390e86171cc01cd869fc4ec7331b",
+        "rev": "8f17195de93e5b457d46761d80e5162ba07fdbdc",
         "type": "git"
     },
     "leap-ast.nvim": {

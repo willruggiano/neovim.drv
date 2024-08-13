@@ -38,7 +38,7 @@ function M.setup(palette)
   -- hi.SpecialComment = "Special"
   -- hi.SpecialChar = "Special"
   -- hi.Tag = "Special"
-  -- hi.Delimiter = "Special"
+  hi.Delimiter = "Special"
   -- hi.Debug = "Special"
 
   hi.Underlined = { underline = true }

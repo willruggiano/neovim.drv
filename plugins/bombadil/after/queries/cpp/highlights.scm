@@ -3,13 +3,13 @@
     (alias_declaration
         name: (type_identifier) @alias.name
         type: (type_descriptor) @alias.type)
-    (set! priority 105)
+    (#set! priority 105)
 )
 
 (
     (function_declarator
         declarator: (operator_name) @keyword.operator)
-    (set! priority 105)
+    (#set! priority 105)
 )
 (function_definition
     declarator: (function_declarator

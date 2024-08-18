@@ -80,16 +80,6 @@ return function()
         end,
         { buffer = bufnr, desc = "Diagnostics" },
       },
-      ["<leader>f"] = {
-        function()
-          require("conform").format {
-            async = true,
-            bufnr = bufnr,
-            lsp_fallback = true,
-          }
-        end,
-        { buffer = bufnr, desc = "Format" },
-      },
       ["<leader><leader>d"] = {
         vim.diagnostic.open_float,
         { buffer = bufnr, desc = "Line diagnostics" },

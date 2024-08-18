@@ -155,18 +155,6 @@
         "rev": "8f17195de93e5b457d46761d80e5162ba07fdbdc",
         "type": "git"
     },
-    "leap-ast.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:ggandor/leap-ast.nvim",
-        "rev": "1a21b70505ebb868a1e196c0d63797e1426b53a5",
-        "type": "git"
-    },
-    "leap-spooky.nvim": {
-        "branch": "main",
-        "repo": "ssh://git@github.com/ggandor/leap-spooky.nvim",
-        "rev": "5f44a1f63dc1c4ce50244e92da5bc0d8d1f6eb47",
-        "type": "git"
-    },
     "leap.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/ggandor/leap.nvim",
@@ -507,6 +495,12 @@
         "branch": "master",
         "repo": "git@github.com:andymass/vim-matchup",
         "rev": "1535a769d5dca851fe7d41b0be95f7c7203a4bef",
+        "type": "git"
+    },
+    "vim-repeat": {
+        "branch": "master",
+        "repo": "git@github.com:tpope/vim-repeat",
+        "rev": "65846025c15494983dafe5e3b46c8f88ab2e9635",
         "type": "git"
     },
     "which-key.nvim": {

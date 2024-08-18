@@ -211,10 +211,10 @@ in rec {
     paths = with pkgs; [jq yq];
   };
 
-  karen-yank = {
-    src = sources."karen-yank.nvim";
-    config = true;
-  };
+  # karen-yank = {
+  #   src = sources."karen-yank.nvim";
+  #   config = true;
+  # };
 
   kulala = {
     src = sources."kulala.nvim";
@@ -232,13 +232,7 @@ in rec {
         src = sources."flit.nvim";
         config = true;
       };
-      leap-ast = {
-        src = sources."leap-ast.nvim";
-      };
-      leap-spooky = {
-        src = sources."leap-spooky.nvim";
-        config = true;
-      };
+      vim-repeat.src = sources."vim-repeat";
     };
   };
 
@@ -352,7 +346,7 @@ in rec {
     src = sources.vim-matchup;
     init = ''
       function()
-        vim.g.matchup_matchparen_offscreen = { method = "popup" }
+        vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
       end
     '';
     config = ''
@@ -397,9 +391,6 @@ in rec {
       inherit matchup nvim-ts-context-commentstring;
       nvim-treesitter-textobjects = {
         src = sources.nvim-treesitter-textobjects;
-      };
-      treesitter-unit = {
-        src = sources.treesitter-unit;
       };
     };
   };

@@ -21,6 +21,7 @@ return function()
     },
     formatters_by_ft = {
       bash = sh,
+      graphql = { "prettier" },
       http = { "kulala" },
       javascript = js,
       javascriptreact = js,
@@ -35,5 +36,12 @@ return function()
     },
   }
 
-  vim.o.formatexpr = [[v:lua.require("conform").formatexpr()]]
+  vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = "*",
+    callback = function(args)
+      require("conform").format { bufnr = args.buf }
+    end,
+  })
 end

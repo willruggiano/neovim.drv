@@ -220,7 +220,7 @@ return function()
                 description = "Configuration file for relay-compiler",
                 fileMatch = { "relay.config.json" },
                 name = "relay.config.json",
-                url = "https://raw.githubusercontent.com/facebook/relay/main/compiler/relay-compiler-config-schema.json",
+                url = "https://raw.githubusercontent.com/facebook/relay/main/compiler/crates/relay-compiler/relay-compiler-config-schema.json",
               },
             },
           },

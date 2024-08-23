@@ -2,7 +2,7 @@
 return function()
   local lsp = require "bombadil.lsp"
   local lspconfig = require "lspconfig"
-  local lspconfig_util = require "lspconfig.util"
+  local util = require "lspconfig.util"
 
   --
   -- Styling
@@ -230,7 +230,7 @@ return function()
     },
     lua_ls = {
       root_dir = function(fname)
-        return lspconfig_util.find_git_ancestor(fname) or lspconfig_util.path.dirname(fname)
+        return util.find_git_ancestor(fname) or util.path.dirname(fname)
       end,
       settings = {
         Lua = {
@@ -277,7 +277,10 @@ return function()
       },
     },
     relay_lsp = {
-      root_dir = lspconfig_util.root_pattern "relay.config.*",
+      root_dir = util.root_pattern "relay.config.*",
+    },
+    tailwindcss = {
+      root_dir = util.root_pattern "tailwind.config.*",
     },
     yamlls = {
       settings = {

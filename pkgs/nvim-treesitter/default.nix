@@ -151,7 +151,7 @@
       owner = "ikatyang";
     };
     zig = {
-      owner = "maxxnino";
+      owner = "tree-sitter-grammars";
     };
   };
 

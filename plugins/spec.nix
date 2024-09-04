@@ -219,6 +219,9 @@ in rec {
   kulala = {
     src = sources."kulala.nvim";
     config = ./kulala.lua;
+    dependencies = {
+      inherit nvim-treesitter;
+    };
     paths = [
       config.packages.kulala-fmt
     ];
@@ -343,7 +346,12 @@ in rec {
   };
 
   matchup = {
-    src = sources.vim-matchup;
+    src = pkgs.fetchFromGitHub {
+      owner = "andymass";
+      repo = "vim-matchup";
+      rev = "pull/358/head";
+      hash = "sha256-8ooI0vSsaHzKY5pmM9hczd1L6cWPCVQ/wvudHduxAkw=";
+    };
     init = ''
       function()
         vim.g.matchup_matchparen_offscreen = { method = "status_manual" }

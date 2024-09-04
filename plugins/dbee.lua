@@ -50,7 +50,15 @@ return function()
       },
     },
     sources = {
-      require("dbee.sources").FileSource:new(vim.fn.getcwd() .. "/.db.json"),
+      require("dbee.sources").MemorySource:new {
+        {
+          name = "DATABASE_URL",
+          type = "postgres",
+          url = vim.env.DATABASE_URL,
+        },
+      },
+      require("dbee.sources").EnvSource:new "DBEE_CONNECTIONS",
+      require("dbee.sources").FileSource:new(vim.fn.stdpath "cache" .. "/dbee/persistence.json"),
     },
     -- window_layout = {
     --   -- I can manage my own window layouts thank you very much

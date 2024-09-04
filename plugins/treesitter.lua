@@ -35,6 +35,13 @@ return function()
           ["gK"] = "@*",
         },
       },
+      select = {
+        enable = true,
+        keymaps = {
+          ["ab"] = "@block.outer",
+          ["ib"] = "@block.inner",
+        },
+      },
     },
   }
 

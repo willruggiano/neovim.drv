@@ -1,4 +1,8 @@
-(statement) @block.outer
+[
+ (statement)
+ (subquery)
+] @block.outer
+
 [
  (select)
  (from)

@@ -35,6 +35,14 @@ return function()
         cyclic = true,
       },
     }),
+    sql = vim.list_extend(default, {
+      augend.constant.new {
+        elements = { "COMMIT", "ROLLBACK" },
+        word = true,
+        cyclic = true,
+        preserve_case = true,
+      },
+    }),
   }
 
   local nnoremap = require("bombadil.lib.keymap").nnoremap

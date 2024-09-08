@@ -1,8 +1,11 @@
 return function()
-  local js = { "biome", "prettier", stop_after_first = true }
+  local js = { "biome", "injected" }
   local sh = { "shfmt", "shellcheck", "shellharden" }
 
   require("conform").setup {
+    default_format_opts = {
+      lsp_format = "fallback",
+    },
     formatters = {
       biome = {
         command = "biome", -- not necessarily from node_modules/.bin
@@ -11,9 +14,6 @@ return function()
         command = "kulala-fmt",
         args = { "$FILENAME" },
         stdin = false,
-      },
-      sqlfluff = {
-        args = { "fix", "--disable-progress-bar", "-" },
       },
       stylua = {
         require_cwd = true, -- only when it finds the root marker
@@ -29,7 +29,6 @@ return function()
       lua = { "stylua", "luacheck" },
       markdown = { "prettier", "injected" },
       sh = sh,
-      sql = { "sqlfluff" },
       typescript = js,
       typescriptreact = js,
       yaml = { "prettier" },

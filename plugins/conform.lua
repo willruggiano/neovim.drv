@@ -10,6 +10,9 @@ return function()
       biome = {
         command = "biome", -- not necessarily from node_modules/.bin
       },
+      -- ["biome-check"] = {
+      --   command = "biome", -- ditto.
+      -- },
       kulala = {
         command = "kulala-fmt",
         args = { "$FILENAME" },

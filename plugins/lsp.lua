@@ -309,7 +309,7 @@ return function()
     "ruff_lsp",
     "sqruff",
     "tailwindcss",
-    "tsserver",
+    "ts_ls",
     "yamlls",
     "zls",
   }

@@ -809,11 +809,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1722489038,
-        "narHash": "sha256-FmhI0ZHGFXizaQ/NftZ3xkY0yQ0wNHYywPeWb284JHY=",
+        "lastModified": 1726122135,
+        "narHash": "sha256-go26fmPdyBgwzHMostxKFAg23HekfD/L/U2Fnl00JN8=",
         "owner": "willruggiano",
         "repo": "neovim.nix",
-        "rev": "b522ae1fd54362df8ee6224f821cc19161915c94",
+        "rev": "867d08bf296925a35a217f1d90975d0522142b9c",
         "type": "github"
       },
       "original": {

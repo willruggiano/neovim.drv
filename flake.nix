@@ -140,6 +140,7 @@
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
           nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
           sqruff = pkgs.callPackage ./pkgs/sqruff.nix {inherit inputs;};
+          # vtsls = pkgs.callPackage ./pkgs/vtsls {};
         };
       };
     };

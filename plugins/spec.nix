@@ -182,6 +182,16 @@ in rec {
     config = ./gitsigns.lua;
   };
 
+  grug-far = {
+    src = sources."grug-far.nvim";
+    keys = ''
+      {
+        { "<leader>f", "<cmd>GrugFar<cr>", desc = "Grug" }
+      }
+    '';
+    paths = with pkgs; [ast-grep ripgrep];
+  };
+
   # hardtime = {
   #   src = sources."hardtime.nvim";
   #   config = true;
@@ -288,9 +298,14 @@ in rec {
       schemastore = {
         src = sources."SchemaStore.nvim";
       };
-      typescript-tools = {
-        src = sources."typescript-tools.nvim";
+      vtsls = {
+        src = sources.nvim-vtsls;
+        # FIXME: uses pnpm
+        # paths = [config.packages.vtsls];
       };
+      # typescript-tools = {
+      #   src = sources."typescript-tools.nvim";
+      # };
     };
     paths = with pkgs;
     with config.packages; [

@@ -390,7 +390,14 @@ return function()
     }
   end
 
-  if pcall(require, "typescript-tools") then
+  if pcall(require, "vtsls") then
+    require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+    lspconfig.vtsls.setup {
+      on_init = on_init,
+      on_attach = on_attach,
+      capabilities = updated_capabilities,
+    }
+  elseif pcall(require, "typescript-tools") then
     require("typescript-tools").setup {
       on_attach = on_attach,
       settings = {

@@ -45,7 +45,7 @@ in rec {
     src = sources.nvim-cmp;
     config = ./cmp.lua;
     dependencies = {
-      # inherit sg;
+      inherit tailwind-tools;
       cmp-buffer.src = sources.cmp-buffer;
       cmp-cmdline.src = sources.cmp-cmdline;
       cmp-git = {
@@ -190,10 +190,10 @@ in rec {
   #   };
   # };
 
-  hover = {
-    src = sources."hover.nvim";
-    config = ./hover.lua;
-  };
+  # hover = {
+  #   src = sources."hover.nvim";
+  #   config = ./hover.lua;
+  # };
 
   ibl = {
     src = sources."indent-blankline.nvim";
@@ -258,7 +258,7 @@ in rec {
     src = sources.nvim-lspconfig;
     config = ./lsp.lua;
     dependencies = {
-      inherit conform fun lsp-file-operations lspkind;
+      inherit conform fun lsp-file-operations lspkind tailwind-tools;
       clangd_extensions = {
         src = sources."clangd_extensions.nvim";
       };
@@ -287,6 +287,9 @@ in rec {
       };
       schemastore = {
         src = sources."SchemaStore.nvim";
+      };
+      typescript-tools = {
+        src = sources."typescript-tools.nvim";
       };
     };
     paths = with pkgs;
@@ -466,6 +469,10 @@ in rec {
   tabout = {
     src = sources."tabout.nvim";
     config = ./tabout.lua;
+  };
+
+  tailwind-tools = {
+    src = sources."tailwind-tools.nvim";
   };
 
   telescope = {

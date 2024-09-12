@@ -142,10 +142,10 @@ return function()
         end,
         { buffer = bufnr, desc = "Type definition" },
       },
-      -- K = {
-      --   vim.lsp.buf.hover,
-      --   { buffer = bufnr, desc = "Hover" },
-      -- },
+      K = {
+        vim.lsp.buf.hover,
+        { buffer = bufnr, desc = "Hover" },
+      },
     }
 
     keymap.vnoremaps {
@@ -308,8 +308,8 @@ return function()
     "relay_lsp",
     "ruff_lsp",
     "sqruff",
-    "tailwindcss",
-    "ts_ls",
+    -- "tailwindcss",
+    -- "ts_ls",
     "yamlls",
     "zls",
   }
@@ -370,6 +370,38 @@ return function()
           border = "single",
         },
       },
+    }
+  end
+
+  if pcall(require, "tailwind-tools") then
+    require("tailwind-tools").setup {
+      server = {
+        on_attach = on_attach,
+      },
+      document_color = {
+        kind = "foreground",
+      },
+    }
+  else
+    lspconfig.tailwindcss.setup {
+      on_init = on_init,
+      on_attach = on_attach,
+      capabilities = updated_capabilities,
+    }
+  end
+
+  if pcall(require, "typescript-tools") then
+    require("typescript-tools").setup {
+      on_attach = on_attach,
+      settings = {
+        expose_as_code_action = "all",
+      },
+    }
+  else
+    lspconfig.ts_ls.setup {
+      on_init = on_init,
+      on_attach = on_attach,
+      capabilities = updated_capabilities,
     }
   end
 

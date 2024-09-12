@@ -395,6 +395,12 @@
         "rev": "923aea2613c9e7abf81e099d46086f62c7e54896",
         "type": "git"
     },
+    "tailwind-tools.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:luckasRanarison/tailwind-tools.nvim",
+        "rev": "a67d4b20eff105fbc234eea227682d15999a7733",
+        "type": "git"
+    },
     "telescope-docsets.nvim": {
         "branch": "main",
         "repo": "git@github.com:willruggiano/telescope-docsets.nvim",
@@ -453,6 +459,12 @@
         "branch": "main",
         "repo": "git@github.com:folke/twilight.nvim",
         "rev": "1584c0b0a979b71fd86b18d302ba84e9aba85b1b",
+        "type": "git"
+    },
+    "typescript-tools.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:pmizio/typescript-tools.nvim",
+        "rev": "f8c2e0b36b651c85f52ad5c5373ff8b07adc15a7",
         "type": "git"
     },
     "vim-abolish": {

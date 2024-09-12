@@ -33,6 +33,9 @@
       #   ];
       # };
     };
+    css = {
+      owner = "tree-sitter";
+    };
     dockerfile = {
       owner = "camdencheek";
     };

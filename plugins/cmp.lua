@@ -26,6 +26,7 @@ return function()
     },
     formatting = {
       format = require("lspkind").cmp_format {
+        before = require("tailwind-tools.cmp").lspkind_format,
         mode = "symbol",
         maxwidth = 50,
         menu = {

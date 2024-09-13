@@ -87,12 +87,6 @@ return function()
       end,
       { desc = "Buffers" },
     },
-    ["<space>f"] = {
-      function()
-        require("telescope.builtin").live_grep()
-      end,
-      { desc = "Find" },
-    },
     ["<space>h"] = {
       function()
         require("telescope.builtin").help_tags()

@@ -71,12 +71,6 @@
         "rev": "1a5fc1b6169bb80c29b0b986130c4f3f1a9ed82e",
         "type": "git"
     },
-    "crates.nvim": {
-        "branch": "main",
-        "repo": "ssh://git@github.com/saecki/crates.nvim",
-        "rev": "b3b9ac6ed9618955b24bf9adede7530ef608495b",
-        "type": "git"
-    },
     "dial.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/monaqa/dial.nvim",
@@ -207,12 +201,6 @@
         "branch": "main",
         "repo": "git@github.com:nvim-neo-tree/neo-tree.nvim",
         "rev": "0774fa2085c62a147fcc7b56f0ac37053cc80217",
-        "type": "git"
-    },
-    "none-ls.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:nvimtools/none-ls.nvim",
-        "rev": "9b98991e15dce8fc502993e23caac2528b8b667f",
         "type": "git"
     },
     "nui.nvim": {
@@ -477,12 +465,6 @@
         "branch": "main",
         "repo": "git@github.com:folke/twilight.nvim",
         "rev": "1584c0b0a979b71fd86b18d302ba84e9aba85b1b",
-        "type": "git"
-    },
-    "typescript-tools.nvim": {
-        "branch": "master",
-        "repo": "git@github.com:pmizio/typescript-tools.nvim",
-        "rev": "f8c2e0b36b651c85f52ad5c5373ff8b07adc15a7",
         "type": "git"
     },
     "vim-abolish": {

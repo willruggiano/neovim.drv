@@ -184,11 +184,7 @@ in rec {
 
   grug-far = {
     src = sources."grug-far.nvim";
-    keys = ''
-      {
-        { "<leader>f", "<cmd>GrugFar<cr>", desc = "Grug" }
-      }
-    '';
+    config = ./grug.lua;
     paths = with pkgs; [ast-grep ripgrep];
   };
 
@@ -272,26 +268,6 @@ in rec {
       clangd_extensions = {
         src = sources."clangd_extensions.nvim";
       };
-      null-ls = {
-        src = sources."none-ls.nvim";
-        dependencies = {
-          crates = {
-            src = sources."crates.nvim";
-            config = {
-              null_ls = {
-                enabled = true;
-                name = "crates";
-              };
-            };
-            paths = [pkgs.cargo];
-          };
-        };
-        paths = with pkgs; [
-          actionlint
-          cppcheck
-          statix
-        ];
-      };
       rust-tools = {
         src = sources."rust-tools.nvim";
       };
@@ -303,17 +279,17 @@ in rec {
         # FIXME: uses pnpm
         # paths = [config.packages.vtsls];
       };
-      # typescript-tools = {
-      #   src = sources."typescript-tools.nvim";
-      # };
     };
     paths = with pkgs;
     with config.packages; [
+      actionlint
       alejandra # used by nil for formatting
       basedpyright
       biome
       clang-tools
       cmake-language-server
+      cppcheck
+      efm-langserver
       haskellPackages.cabal-fmt
       haskellPackages.haskell-language-server
       haskellPackages.ormolu
@@ -329,6 +305,7 @@ in rec {
       rust-analyzer
       tailwindcss-language-server
       sqruff
+      statix
       sumneko-lua-language-server
     ];
   };
@@ -340,9 +317,6 @@ in rec {
   lualine = {
     src = sources."lualine.nvim";
     config = ./lualine.lua;
-    dependencies = {
-      # inherit lir;
-    };
   };
 
   lua-utf8 = let

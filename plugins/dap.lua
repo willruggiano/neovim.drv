@@ -179,7 +179,7 @@ return function()
       { desc = "[dap] Step out" },
     },
     -- TODO: It'd be nice for this to be part of hover?
-    ["<leader>e"] = {
+    ["<localleader>e"] = {
       dapui.eval,
       { desc = "[dap] Evaluate expression" },
     },

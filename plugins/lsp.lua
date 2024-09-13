@@ -66,36 +66,46 @@ return function()
 
     keymap.nnoremaps {
       -- TODO: Could we combine code actions and lenses?
-      ["<leader>ca"] = {
+      ["<localleader>ca"] = {
         vim.lsp.buf.code_action,
         { buffer = bufnr, desc = "Code actions" },
       },
-      ["<leader>cl"] = {
+      ["<localleader>cl"] = {
         vim.lsp.codelens.run,
         { buffer = bufnr, desc = "Code lens" },
       },
-      ["<leader>d"] = {
+      ["<localleader>d"] = {
         function()
           require("telescope.builtin").diagnostics { bufnr = bufnr }
         end,
         { buffer = bufnr, desc = "Diagnostics" },
       },
-      ["<leader><leader>d"] = {
+      ["<localleader>f"] = {
+        function()
+          require("conform").format {
+            async = true,
+            bufnr = bufnr,
+            lsp_fallback = true,
+          }
+        end,
+        { buffer = bufnr, desc = "Format" },
+      },
+      ["<localleader><localleader>d"] = {
         vim.diagnostic.open_float,
         { buffer = bufnr, desc = "Line diagnostics" },
       },
-      ["<leader><leader>w"] = {
+      ["<localleader><localleader>w"] = {
         function()
           vim.diagnostic.setqflist { open = false }
           vim.cmd.copen { mods = { split = "botright" } }
         end,
         { buffer = bufnr, desc = "Workspace diagnostics" },
       },
-      ["<leader>rn"] = {
+      ["<localleader>rn"] = {
         vim.lsp.buf.rename,
         { buffer = bufnr, desc = "Rename" },
       },
-      ["<leader>rr"] = {
+      ["<localleader>rr"] = {
         function()
           vim.lsp.stop_client(vim.lsp.get_clients { bufnr = bufnr }, true)
           vim.cmd.edit()
@@ -149,11 +159,11 @@ return function()
     }
 
     keymap.vnoremaps {
-      ["<leader>ca"] = {
+      ["<localleader>ca"] = {
         vim.lsp.buf.code_action,
         { buffer = bufnr, desc = "Code actions" },
       },
-      ["<leader>f"] = {
+      ["<localleader>f"] = {
         function()
           require("conform").format {
             async = true,
@@ -208,6 +218,50 @@ return function()
     clangd = {
       capabilities = {
         offsetEncoding = { "utf-16" },
+      },
+    },
+    efm = {
+      filetypes = { "cpp", "nix", "yaml" },
+      settings = {
+        languages = {
+          cpp = {
+            {
+              prefix = "cppcheck",
+              lintSource = "cppcheck",
+              lintCommand = [[cppcheck --quiet --enable=warning,style,performance,portability --language=cpp --error-exitcode=1 "${INPUT}"]],
+              lintStdin = false,
+              lintFormats = { "%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m" },
+              rootMarkers = { "CMakeLists.txt", "compile_commands.json", ".git" },
+            },
+          },
+          nix = {
+            {
+              prefix = "statix",
+              lintSource = "statix",
+              lintCommand = "statix check --stdin --format=errfmt",
+              lintStdin = true,
+              lintIgnoreExitCode = true,
+              lintFormats = { "<stdin>>%l:%c:%t:%n:%m" },
+              rootMarkers = { "flake.nix", "shell.nix", "default.nix" },
+            },
+          },
+          yaml = {
+            {
+              prefix = "actionlint",
+              lintSource = "actionlint",
+              lintCommand = [[actionlint -no-color -oneline -stdin-filename "${INPUT}" -]],
+              lintStdin = true,
+              lintFormats = {
+                "%f:%l:%c: %.%#: SC%n:%trror:%m",
+                "%f:%l:%c: %.%#: SC%n:%tarning:%m",
+                "%f:%l:%c: %.%#: SC%n:%tnfo:%m",
+                "%f:%l:%c: %m",
+              },
+              requireMarker = true,
+              rootMarkers = { ".github/" },
+            },
+          },
+        },
       },
     },
     jsonls = {
@@ -297,6 +351,7 @@ return function()
     "biome",
     "clangd",
     "cmake",
+    "efm",
     "graphql",
     "hls",
     "jsonls",
@@ -411,42 +466,4 @@ return function()
       capabilities = updated_capabilities,
     }
   end
-
-  --
-  -- null-ls :(
-  --
-
-  -- TODO: Move to separate file
-  local null_ls = require "null-ls"
-  null_ls.setup {
-    -- debug = true,
-    on_attach = on_attach,
-    sources = {
-      null_ls.builtins.code_actions.gitsigns,
-      null_ls.builtins.code_actions.statix,
-      null_ls.builtins.diagnostics.actionlint,
-      null_ls.builtins.diagnostics.statix,
-    },
-  }
-
-  null_ls.register {
-    null_ls.builtins.diagnostics.cppcheck.with {
-      filetypes = { "cpp" },
-      args = {
-        "--enable=warning,style,performance,portability",
-        "--language=cpp",
-        "--template=gcc",
-        "$FILENAME",
-      },
-    },
-    null_ls.builtins.diagnostics.cppcheck.with {
-      filetypes = { "c" },
-      args = {
-        "--enable=warning,style,performance,portability",
-        "--language=c",
-        "--template=gcc",
-        "$FILENAME",
-      },
-    },
-  }
 end

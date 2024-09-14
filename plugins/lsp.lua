@@ -215,6 +215,13 @@ return function()
   }
 
   local server_overrides = {
+    biome = {
+      capabilities = {
+        textDocument = {
+          onTypeFormatting = { dynamicRegistration = true },
+        },
+      },
+    },
     clangd = {
       capabilities = {
         offsetEncoding = { "utf-16" },
@@ -330,8 +337,22 @@ return function()
         },
       },
     },
+    prismals = {
+      capabilities = {
+        workspace = {
+          didChangeConfiguration = { dynamicRegistration = true },
+        },
+      },
+    },
     relay_lsp = {
       root_dir = util.root_pattern "relay.config.*",
+    },
+    sqruff = {
+      capabilities = {
+        textDocument = {
+          didSave = { dynamicRegistration = true },
+        },
+      },
     },
     tailwindcss = {
       root_dir = util.root_pattern "tailwind.config.*",

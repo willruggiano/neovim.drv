@@ -1,9 +1,9 @@
 {
   "url": "https://github.com/cstrahan/tree-sitter-nix",
-  "rev": "537095ddc80cf610fa75a2a0149fe9799b011014",
-  "date": "2024-08-26T18:13:41Z",
-  "sha256": "038gwrracjpldvxc53avg0whdv88hr1yyp9nizis2k2dg4d9xiih",
-  "hash": "sha256-MMaeGnlNTKHjjzZd70OGCO0GOXhbjcL6bvRKpnLmDw0=",
+  "rev": "01bc5b18693055aab7a863d7608f4b3f85843cf8",
+  "date": "2024-09-18T08:42:15Z",
+  "sha256": "0dabrqkbhsbk1ifypy9b70xaz6zs4s357f8j3v2fqkvpm5qc4cc7",
+  "hash": "sha256-hzHCcKl3T+zEHhK5U4Ym+puvOjgr+etdDHNpuCbOSzU=",
   "fetchLFS": false,
   "fetchSubmodules": false,
   "deepClone": false,

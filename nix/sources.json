@@ -221,12 +221,6 @@
         "rev": "ae644feb7b67bf1ce4260c231d1d4300b19c6f30",
         "type": "git"
     },
-    "nvim-colorizer.lua": {
-        "branch": "master",
-        "repo": "git@github.com:norcalli/nvim-colorizer.lua",
-        "rev": "a065833f35a3a7cc3ef137ac88b5381da2ba302e",
-        "type": "git"
-    },
     "nvim-dap": {
         "branch": "master",
         "repo": "ssh://git@github.com/mfussenegger/nvim-dap",

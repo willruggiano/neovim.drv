@@ -15,7 +15,10 @@
       inputs.flake-parts.follows = "flake-parts";
       # inputs.git-hooks.follows = ""; FIXME: SO :(
     };
-    neovim.url = "github:nix-community/neovim-nightly-overlay";
+    neovim = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nil.url = "github:oxalica/nil";
     nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";

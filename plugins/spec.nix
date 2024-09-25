@@ -183,19 +183,6 @@ in rec {
     paths = with pkgs; [ast-grep ripgrep];
   };
 
-  # hardtime = {
-  #   src = sources."hardtime.nvim";
-  #   config = true;
-  #   dependencies = {
-  #     inherit nui plenary;
-  #   };
-  # };
-
-  # hover = {
-  #   src = sources."hover.nvim";
-  #   config = ./hover.lua;
-  # };
-
   ibl = {
     src = sources."indent-blankline.nvim";
     config = ./indent-blankline.lua;
@@ -205,17 +192,6 @@ in rec {
     src = sources."iron.nvim";
     config = ./iron.lua;
   };
-
-  jqx = {
-    src = sources.nvim-jqx;
-    ft = ["json" "yaml"];
-    paths = with pkgs; [jq yq];
-  };
-
-  # karen-yank = {
-  #   src = sources."karen-yank.nvim";
-  #   config = true;
-  # };
 
   kulala = {
     src = sources."kulala.nvim";
@@ -333,12 +309,7 @@ in rec {
   };
 
   matchup = {
-    src = pkgs.fetchFromGitHub {
-      owner = "andymass";
-      repo = "vim-matchup";
-      rev = "pull/358/head";
-      hash = "sha256-8ooI0vSsaHzKY5pmM9hczd1L6cWPCVQ/wvudHduxAkw=";
-    };
+    src = sources.vim-matchup;
     init = ''
       function()
         vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
@@ -355,23 +326,9 @@ in rec {
     src = sources."neo-tree.nvim";
     config = ./neo-tree.lua;
     dependencies = {
-      inherit nvim-nonicons;
+      inherit nvim-web-devicons plenary;
+      nui.src = sources."nui.nvim";
     };
-  };
-
-  nui = {
-    src = sources."nui.nvim";
-  };
-
-  nvim-nonicons = {
-    src = sources.nvim-nonicons;
-  };
-
-  nvim-notify = {
-    src = sources.nvim-notify;
-    config = ./notify.lua;
-    lazy = false;
-    priority = 1001;
   };
 
   nvim-surround = {
@@ -401,7 +358,7 @@ in rec {
     src = sources.nvim-web-devicons;
     config = ./devicons.lua;
     dependencies = {
-      inherit nvim-nonicons;
+      nvim-nonicons.src = sources.nvim-nonicons;
     };
   };
 
@@ -414,11 +371,6 @@ in rec {
     src = sources."plenary.nvim";
   };
 
-  # pqf = {
-  #   src = sources.nvim-pqf;
-  #   config = ./pqf.lua;
-  # };
-
   quicker = {
     src = sources."quicker.nvim";
     config = ./quicker.lua;
@@ -430,18 +382,6 @@ in rec {
     inherit package;
     cpath = "${package}/lib/lua/5.1/?.so";
   };
-
-  # sg = let
-  #   package = inputs'.sg-nvim.packages.sg-nvim;
-  # in {
-  #   inherit package;
-  #   config = {
-  #     accept_tos = true;
-  #     download_binaries = false;
-  #   };
-  #   cpath = "${package}/lib/?.so";
-  #   paths = [inputs'.sg-nvim.packages.default];
-  # };
 
   statuscol = {
     src = sources."statuscol.nvim";

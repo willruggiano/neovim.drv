@@ -17,7 +17,11 @@
     };
     neovim = {
       url = "github:nix-community/neovim-nightly-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        git-hooks.follows = "";
+        hercules-ci-effects.follows = "";
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     nil.url = "github:oxalica/nil";
     nix-colors.url = "github:misterio77/nix-colors";

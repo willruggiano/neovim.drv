@@ -15,7 +15,6 @@ for _, d in ipairs { "j", "k" } do
   end)
 end
 
--- WhichKey doesn't seem to like these
 -- Opens line above or below the current line
 inoremap("<C-k>", "<C-o>O")
 inoremap("<C-j>", "<C-o>o")
@@ -35,31 +34,11 @@ nnoremap("<", "<C-w><")
 -- Leave terminal mode more ergonomically than ctrl-\ + ctrl-n
 tnoremap("<esc><esc>", "<C-\\><C-n>")
 
--- Jumplist as quickfix list
-nnoremap("<leader>j", function()
-  local jumplist = vim.fn.getjumplist()[1]
-  local sorted_jumplist = {}
-  for i = #jumplist, 1, -1 do
-    if vim.api.nvim_buf_is_valid(jumplist[i].bufnr) then
-      table.insert(sorted_jumplist, jumplist[i])
-    end
-  end
-  vim.fn.setqflist({}, "r", { id = "jl", title = "jumplist", items = sorted_jumplist })
-  vim.cmd.copen { mods = { split = "botright" } }
-end, { desc = "Jumplist" })
-
-nnoremap("<leader>J", function()
-  local bufnr = vim.api.nvim_get_current_buf()
-  local jumplist = vim.fn.getjumplist()[1]
-  local sorted_jumplist = {}
-  for i = #jumplist, 1, -1 do
-    if bufnr == jumplist[i].bufnr then
-      table.insert(sorted_jumplist, jumplist[i])
-    end
-  end
-  vim.fn.setloclist(vim.api.nvim_get_current_win(), {}, "r", { id = "jl", title = "jumplist", items = sorted_jumplist })
-  vim.cmd.lopen { mods = { split = "botright" } }
-end, { desc = "Jumplist (local)" })
+-- Thanks, Prime
+xnoremap("<leader>p", [["_dP]])
+noremap({ "n", "v" }, "<leader>y", [["+y]])
+nnoremap("<leader>Y", [["+Y]])
+noremap({ "n", "v" }, "<leader>d", [["_d]])
 
 -- Move lines
 nnoremap("<D-j>", function()
@@ -105,7 +84,7 @@ end, { desc = "Toggle quickfix" })
 
 require("which-key").add {
   { "<leader>h", group = "Hunk" },
-  { "<leader>m", group = "Mark" },
   { "<leader>t", group = "Toggle" },
-  { "<leader>w", group = "Workspace" },
 }
+
+vim.keymap.set("n", "Q", "<nop>")

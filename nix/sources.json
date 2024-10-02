@@ -278,7 +278,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter",
-        "rev": "d1e1f17cea23f14cbe230635b9bb654a835f02d7",
+        "rev": "3af8476530caa0906aa68f4dc911f76e77b478a9",
         "type": "git"
     },
     "nvim-treesitter-textobjects": {

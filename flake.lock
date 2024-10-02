@@ -395,11 +395,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1726153070,
-        "narHash": "sha256-HO4zgY0ekfwO5bX0QH/3kJ/h4KvUDFZg8YpkNwIbg1U=",
+        "lastModified": 1727826117,
+        "narHash": "sha256-K5ZLCyfO/Zj9mPFldf3iwS6oZStJcU4tSpiXTMYaaL0=",
         "owner": "hercules-ci",
         "repo": "flake-parts",
-        "rev": "bcef6817a8b2aa20a5a6dbb19b43e63c5bf8619a",
+        "rev": "3d04084d54bedc3d6b8b736c70ef449225c361b1",
         "type": "github"
       },
       "original": {
@@ -746,17 +746,19 @@
         "flake-parts": "flake-parts_3",
         "git-hooks": [],
         "hercules-ci-effects": [],
-        "neovim-src": "neovim-src",
+        "neovim-src": [
+          "neovim-src"
+        ],
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1727674961,
-        "narHash": "sha256-IkD7D2+zKyRXlNQ8sg+4dZZAfjkSNVSrWiVpVzY4jZw=",
+        "lastModified": 1727852635,
+        "narHash": "sha256-eY0Y5ZDMo5IS+K42kMwAMCLsYHoAgPW3R4UxeGfzP0U=",
         "owner": "nix-community",
         "repo": "neovim-nightly-overlay",
-        "rev": "23cdd6c58fe389f6c3da06b157b512fedd9d5f5a",
+        "rev": "377cf41246ee443c86c4ae48f66f5100038fe158",
         "type": "github"
       },
       "original": {
@@ -791,16 +793,17 @@
     "neovim-src": {
       "flake": false,
       "locked": {
-        "lastModified": 1727649824,
-        "narHash": "sha256-P7a5cu/kHSp0kI2DR048BaEblSvDAlmLsNr9SPa1zI4=",
+        "lastModified": 1727843252,
+        "narHash": "sha256-gOVPWg3lHbuGzDH0p0SOBjiZgrl6DwV7xcuxVU+7OtE=",
         "owner": "neovim",
         "repo": "neovim",
-        "rev": "20251be15a4ad3f6e7016450ca3338d52b2f0951",
+        "rev": "3d1e6c56f08f420c0d91ffbee888c05b20806a5e",
         "type": "github"
       },
       "original": {
         "owner": "neovim",
         "repo": "neovim",
+        "rev": "3d1e6c56f08f420c0d91ffbee888c05b20806a5e",
         "type": "github"
       }
     },
@@ -1494,6 +1497,7 @@
         "naersk": "naersk",
         "neovim": "neovim",
         "neovim-nix": "neovim-nix",
+        "neovim-src": "neovim-src",
         "nil": "nil",
         "nix-colors": "nix-colors",
         "nixpkgs": "nixpkgs_7",

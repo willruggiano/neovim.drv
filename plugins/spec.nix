@@ -138,27 +138,27 @@ in rec {
     src = sources.".nvim.nvim";
   };
 
+  fastaction = {
+    src = sources."fastaction.nvim";
+    config = {
+      dismiss_keys = ["<esc>" "j" "k"];
+      popup.border = "single";
+    };
+  };
+
   fidget = {
     src = sources."fidget.nvim";
-    config = {
-      text = {
-        spinner = "dots";
-      };
-      sources = {
-        null-ls = {
-          ignore = true;
-        };
+    config.text.spinner = "dots";
+    config.sources = {
+      null-ls = {
+        ignore = true;
       };
     };
   };
 
   flatten = {
     src = sources."flatten.nvim";
-    config = {
-      window = {
-        open = "alternate";
-      };
-    };
+    config.window.open = "alternate";
     lazy = false;
     priority = 1001;
   };
@@ -235,7 +235,7 @@ in rec {
     src = sources.nvim-lspconfig;
     config = ./lsp.lua;
     dependencies = {
-      inherit conform fun lsp-file-operations lspkind tailwind-tools;
+      inherit conform fastaction fun lsp-file-operations lspkind tailwind-tools;
       clangd_extensions = {
         src = sources."clangd_extensions.nvim";
       };

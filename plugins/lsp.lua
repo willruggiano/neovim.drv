@@ -66,13 +66,9 @@ return function()
 
     keymap.nnoremaps {
       -- TODO: Could we combine code actions and lenses?
-      ["<localleader>ca"] = {
-        vim.lsp.buf.code_action,
+      ["<localleader>a"] = {
+        require("fastaction").code_action,
         { buffer = bufnr, desc = "Code actions" },
-      },
-      ["<localleader>cl"] = {
-        vim.lsp.codelens.run,
-        { buffer = bufnr, desc = "Code lens" },
       },
       ["<localleader>d"] = {
         function()
@@ -89,6 +85,10 @@ return function()
           }
         end,
         { buffer = bufnr, desc = "Format" },
+      },
+      ["<localleader>l"] = {
+        vim.lsp.codelens.run,
+        { buffer = bufnr, desc = "Code lens" },
       },
       ["<localleader><localleader>d"] = {
         vim.diagnostic.open_float,
@@ -159,8 +159,8 @@ return function()
     }
 
     keymap.vnoremaps {
-      ["<localleader>ca"] = {
-        vim.lsp.buf.code_action,
+      ["<localleader>a"] = {
+        [[<esc><cmd>lua require("fastaction").range_code_action()<cr>]],
         { buffer = bufnr, desc = "Code actions" },
       },
       ["<localleader>f"] = {

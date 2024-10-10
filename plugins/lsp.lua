@@ -228,12 +228,11 @@ return function()
       },
     },
     efm = {
-      filetypes = { "cpp", "nix", "yaml" },
+      filetypes = { "cpp", "nix", "sql", "yaml" },
       settings = {
         languages = {
           cpp = {
             {
-              prefix = "cppcheck",
               lintSource = "cppcheck",
               lintCommand = [[cppcheck --quiet --enable=warning,style,performance,portability --language=cpp --error-exitcode=1 "${INPUT}"]],
               lintStdin = false,
@@ -243,7 +242,6 @@ return function()
           },
           nix = {
             {
-              prefix = "statix",
               lintSource = "statix",
               lintCommand = "statix check --stdin --format=errfmt",
               lintStdin = true,
@@ -252,9 +250,35 @@ return function()
               rootMarkers = { "flake.nix", "shell.nix", "default.nix" },
             },
           },
+          sql = {
+            {
+              formatCommand = "sqlfluff format --dialect ansi --nocolor --ignore ${INPUT}",
+              formatStdin = false,
+            },
+            {
+              lintSource = "sqlfluff",
+              lintCommand = "sqlfluff lint --dialect postgres --format github-annotation-native --annotation-level warning --nocolor --disable-progress-bar ${INPUT}",
+              lintIgnoreExitCode = true,
+              lintStdin = false,
+              lintFormats = {
+                "::%totice title=SQLFluff,file=%f,line=%l,col=%c,endLine=%e,endColumn=%k::%m",
+                "::%tarning title=SQLFluff,file=%f,line=%l,col=%c,endLine=%e,endColumn=%k::%m",
+                "::%trror title=SQLFluff,file=%f,line=%l,col=%c,endLine=%e,endColumn=%k::%m",
+              },
+            },
+            -- {
+            --   lintSource = "squawk",
+            --   lintCommand = "squawk --reporter gcc ${INPUT}",
+            --   lintStdin = false,
+            --   lintFormats = {
+            --     "%.%#:%l:%c: %trror: %m",
+            --     "%.%#:%l:%c: %tarning: %m",
+            --     "%.%#:%l:%c: %tnfo: %m",
+            --   },
+            -- },
+          },
           yaml = {
             {
-              prefix = "actionlint",
               lintSource = "actionlint",
               lintCommand = [[actionlint -no-color -oneline -stdin-filename "${INPUT}" -]],
               lintStdin = true,
@@ -357,6 +381,13 @@ return function()
     tailwindcss = {
       root_dir = util.root_pattern "tailwind.config.*",
     },
+    vtsls = {
+      settings = {
+        vtsls = {
+          autoUseWorkspaceTsdk = true,
+        },
+      },
+    },
     yamlls = {
       settings = {
         yaml = {
@@ -383,12 +414,18 @@ return function()
     "basedpyright",
     "relay_lsp",
     "ruff_lsp",
-    "sqruff",
-    -- "tailwindcss",
-    -- "ts_ls",
+    -- "sqruff",
     "yamlls",
     "zls",
   }
+
+  if pcall(require, "vtsls") then
+    require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+    vim.list_extend(servers, { "vtsls" })
+  else
+    vim.list_extend(servers, { "ts_ls" })
+  end
+
   for _, name in ipairs(servers) do
     lspconfig[name].setup(vim.tbl_deep_extend("force", {
       on_init = on_init,
@@ -460,28 +497,6 @@ return function()
     }
   else
     lspconfig.tailwindcss.setup {
-      on_init = on_init,
-      on_attach = on_attach,
-      capabilities = updated_capabilities,
-    }
-  end
-
-  if pcall(require, "vtsls") then
-    require("lspconfig.configs").vtsls = require("vtsls").lspconfig
-    lspconfig.vtsls.setup {
-      on_init = on_init,
-      on_attach = on_attach,
-      capabilities = updated_capabilities,
-    }
-  elseif pcall(require, "typescript-tools") then
-    require("typescript-tools").setup {
-      on_attach = on_attach,
-      settings = {
-        expose_as_code_action = "all",
-      },
-    }
-  else
-    lspconfig.ts_ls.setup {
       on_init = on_init,
       on_attach = on_attach,
       capabilities = updated_capabilities,

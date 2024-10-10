@@ -275,7 +275,9 @@ in rec {
       ruff-lsp
       rust-analyzer
       tailwindcss-language-server
+      sqlfluff
       sqruff
+      squawk
       statix
       sumneko-lua-language-server
     ];

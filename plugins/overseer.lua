@@ -54,56 +54,38 @@ return function()
     tags = { o.TAG.BUILD },
   }
 
-  o.register_template {
-    name = "bun run",
-    builder = function()
-      local file = vim.fn.expand "%"
-      return {
-        cmd = { "bun" },
-        args = { file },
-        components = {
-          { "display_duration", detail_level = 2 },
-          "on_exit_set_status",
-        },
-        strategy = {
-          "toggleterm",
-          open_on_start = true,
-          direction = "horizontal",
-          on_create = function()
-            vim.cmd.stopinsert()
-          end,
-        },
-      }
-    end,
-    condition = {
-      filetype = { "typescript" },
-    },
-    tags = { o.TAG.RUN },
-  }
+  local function register_bun_template(name, args, opts)
+    o.register_template(vim.tbl_deep_extend("force", {
+      name = name,
+      builder = function()
+        local file = vim.fn.expand "%"
+        return {
+          cmd = { "bun" },
+          args = { unpack(args), file },
+          components = {
+            { "display_duration", detail_level = 2 },
+            "on_exit_set_status",
+          },
+          strategy = {
+            "toggleterm",
+            open_on_start = true,
+            direction = "horizontal",
+            on_create = function()
+              vim.cmd.stopinsert()
+            end,
+          },
+        }
+      end,
+      condition = {
+        filetype = { "typescript" },
+      },
+      tags = { o.TAG.RUN },
+    }, opts or {}))
+  end
 
-  o.register_template {
-    name = "bun test",
-    builder = function()
-      local file = vim.fn.expand "%"
-      return {
-        cmd = { "bun" },
-        args = { "test", file },
-        components = {
-          { "display_duration", detail_level = 2 },
-          "on_exit_set_status",
-        },
-        strategy = {
-          "toggleterm",
-          open_on_start = true,
-          direction = "horizontal",
-          on_create = function()
-            vim.cmd.stopinsert()
-          end,
-        },
-      }
-    end,
+  register_bun_template("bun run", {})
+  register_bun_template("bun test", { "test" }, {
     condition = {
-      filetype = { "typescript" },
       callback = function()
         local file = vim.fn.expand "%"
         return vim.endswith(file, ".test.ts")
@@ -111,31 +93,9 @@ return function()
     },
     priority = 10,
     tags = { o.TAG.TEST },
-  }
-
-  o.register_template {
-    name = "bun test --only",
-    builder = function()
-      local file = vim.fn.expand "%"
-      return {
-        cmd = { "bun" },
-        args = { "test", "--only", file },
-        components = {
-          { "display_duration", detail_level = 2 },
-          "on_exit_set_status",
-        },
-        strategy = {
-          "toggleterm",
-          open_on_start = true,
-          direction = "horizontal",
-          on_create = function()
-            vim.cmd.stopinsert()
-          end,
-        },
-      }
-    end,
+  })
+  register_bun_template("bun test --update-snapshots", { "test", "--update-snapshots" }, {
     condition = {
-      filetype = { "typescript" },
       callback = function()
         local file = vim.fn.expand "%"
         return vim.endswith(file, ".test.ts")
@@ -143,7 +103,17 @@ return function()
     },
     priority = 11,
     tags = { o.TAG.TEST },
-  }
+  })
+  register_bun_template("bun test --only", { "test", "--only" }, {
+    condition = {
+      callback = function()
+        local file = vim.fn.expand "%"
+        return vim.endswith(file, ".test.ts")
+      end,
+    },
+    priority = 12,
+    tags = { o.TAG.TEST },
+  })
 
   local nnoremaps = require("bombadil.lib.keymap").nnoremaps
 

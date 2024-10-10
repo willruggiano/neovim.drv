@@ -32,6 +32,7 @@ return function()
       lua = { "stylua", "luacheck" },
       markdown = { "prettier", "injected" },
       sh = sh,
+      sql = { "sqlfluff" },
       typescript = js,
       typescriptreact = js,
       yaml = { "prettier" },

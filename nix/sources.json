@@ -150,9 +150,9 @@
         "type": "git"
     },
     "kulala.nvim": {
-        "branch": "fix/tmp-path-for-ro-fs-envs",
+        "branch": "main",
         "repo": "git@github.com:mistweaverco/kulala.nvim",
-        "rev": "0fbafed531ffb2a3c7121527eca588649abccab0",
+        "rev": "c7a2c793dca8509f9792e9d35d377de016c88a5b",
         "type": "git"
     },
     "leap.nvim": {

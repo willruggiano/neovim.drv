@@ -14,7 +14,7 @@ in rec {
     priority = 1000;
 
     dependencies = {
-      inherit lfs lua-utf8;
+      inherit lfs;
     };
   };
 
@@ -136,6 +136,7 @@ in rec {
 
   dot-nvim = {
     src = sources.".nvim.nvim";
+    dependencies = {inherit lfs;};
   };
 
   fastaction = {
@@ -290,13 +291,6 @@ in rec {
   lualine = {
     src = sources."lualine.nvim";
     config = ./lualine.lua;
-  };
-
-  lua-utf8 = let
-    package = luajitPackages.luautf8;
-  in {
-    inherit package;
-    cpath = "${package}/lib/lua/5.1/?.so";
   };
 
   lyaml = {

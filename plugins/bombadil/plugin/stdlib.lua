@@ -66,6 +66,3 @@ end
 function string:insert(pos, text)
   return self:sub(1, pos - 1) .. text .. self:sub(pos)
 end
-
----@diagnostic disable-next-line: lowercase-global
-utf8 = require "lua-utf8"

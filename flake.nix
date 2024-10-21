@@ -21,13 +21,13 @@
         git-hooks.follows = "";
         hercules-ci-effects.follows = "";
         nixpkgs.follows = "nixpkgs";
-        neovim-src.follows = "neovim-src";
+        # neovim-src.follows = "neovim-src";
       };
     };
-    neovim-src = {
-      url = "github:neovim/neovim/3d1e6c56f08f420c0d91ffbee888c05b20806a5e";
-      flake = false;
-    };
+    # neovim-src = {
+    #   url = "github:neovim/neovim";
+    #   flake = false;
+    # };
     nil.url = "github:oxalica/nil";
     nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";

@@ -58,6 +58,7 @@ in rec {
           inherit lspkind;
         };
       };
+      cmp-nvim-lsp-signature-help.src = sources.cmp-nvim-lsp-signature-help;
       cmp-path.src = sources.cmp-path;
     };
   };

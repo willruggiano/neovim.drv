@@ -68,55 +68,32 @@ return function()
       -- TODO: Could we combine code actions and lenses?
       ["<localleader>a"] = {
         require("fastaction").code_action,
-        { buffer = bufnr, desc = "Code actions" },
-      },
-      ["<localleader>d"] = {
-        function()
-          require("telescope.builtin").diagnostics { bufnr = bufnr }
-        end,
-        { buffer = bufnr, desc = "Diagnostics" },
-      },
-      ["<localleader>f"] = {
-        function()
-          require("conform").format {
-            async = true,
-            bufnr = bufnr,
-            lsp_fallback = true,
-          }
-        end,
-        { buffer = bufnr, desc = "Format" },
+        { buffer = bufnr, desc = "[lsp] codeaction" },
       },
       ["<localleader>l"] = {
         vim.lsp.codelens.run,
-        { buffer = bufnr, desc = "Code lens" },
+        { buffer = bufnr, desc = "[lsp] codelens" },
       },
-      ["<localleader><localleader>d"] = {
+      ["<localleader>e"] = {
         vim.diagnostic.open_float,
-        { buffer = bufnr, desc = "Line diagnostics" },
-      },
-      ["<localleader><localleader>w"] = {
-        function()
-          vim.diagnostic.setqflist { open = false }
-          vim.cmd.copen { mods = { split = "botright" } }
-        end,
-        { buffer = bufnr, desc = "Workspace diagnostics" },
+        { buffer = bufnr, desc = "[lsp] explain" },
       },
       ["<localleader>rn"] = {
         vim.lsp.buf.rename,
-        { buffer = bufnr, desc = "Rename" },
+        { buffer = bufnr, desc = "[lsp] rename symbol" },
       },
       ["<localleader>rr"] = {
         function()
           vim.lsp.stop_client(vim.lsp.get_clients { bufnr = bufnr }, true)
           vim.cmd.edit()
         end,
-        { buffer = bufnr, desc = "Restart lsp clients" },
+        { buffer = bufnr, desc = "[lsp] restart buffer clients" },
       },
-      ["<space>s"] = {
+      ["<localleader>fs"] = {
         require("telescope.builtin").lsp_document_symbols,
         { buffer = bufnr, desc = "Symbols" },
       },
-      ["<space>w"] = {
+      ["<localleader>fS"] = {
         require("telescope.builtin").lsp_dynamic_workspace_symbols,
         { buffer = bufnr, desc = "Workspace symbols" },
       },
@@ -126,15 +103,11 @@ return function()
             reuse_win = true,
           }
         end,
-        { buffer = bufnr, desc = "Definition" },
+        { buffer = bufnr, desc = "[lsp] goto definition" },
       },
       gi = {
         vim.lsp.buf.implementation,
-        { buffer = bufnr, desc = "Implementation" },
-      },
-      gr = {
-        vim.lsp.buf.references,
-        { buffer = bufnr, desc = "References" },
+        { buffer = bufnr, desc = "[lsp] goto implementation" },
       },
       gD = {
         function()
@@ -142,7 +115,7 @@ return function()
             reuse_win = true,
           }
         end,
-        { buffer = bufnr, desc = "Declaration" },
+        { buffer = bufnr, desc = "[lsp] goto declaration" },
       },
       gT = {
         function()
@@ -150,11 +123,11 @@ return function()
             reuse_win = true,
           }
         end,
-        { buffer = bufnr, desc = "Type definition" },
+        { buffer = bufnr, desc = "[lsp] goto typedef" },
       },
       K = {
         vim.lsp.buf.hover,
-        { buffer = bufnr, desc = "Hover" },
+        { buffer = bufnr, desc = "[lsp] hover" },
       },
     }
 
@@ -162,16 +135,6 @@ return function()
       ["<localleader>a"] = {
         [[<esc><cmd>lua require("fastaction").range_code_action()<cr>]],
         { buffer = bufnr, desc = "Code actions" },
-      },
-      ["<localleader>f"] = {
-        function()
-          require("conform").format {
-            async = true,
-            bufnr = bufnr,
-            lsp_fallback = true,
-          }
-        end,
-        { buffer = bufnr, desc = "Format" },
       },
     }
 

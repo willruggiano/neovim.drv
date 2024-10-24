@@ -5,25 +5,6 @@ return function()
   local cmp = require "cmp"
 
   cmp.setup {
-    sources = {
-      { name = "nvim_lsp" },
-      { name = "path" },
-      { name = "buffer" },
-    },
-    mapping = {
-      ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-      ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-      ["<C-y>"] = cmp.mapping(
-        cmp.mapping.confirm {
-          behavior = cmp.ConfirmBehavior.Insert,
-          select = true,
-        },
-        { "i", "c" }
-      ),
-      ["<C-space>"] = cmp.mapping {
-        i = cmp.mapping.complete(),
-      },
-    },
     formatting = {
       format = require("lspkind").cmp_format {
         before = require("tailwind-tools.cmp").lspkind_format,
@@ -39,6 +20,37 @@ return function()
           shell = "[ sh]",
         },
       },
+    },
+    mapping = {
+      ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+      ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+      ["<C-y>"] = cmp.mapping(
+        cmp.mapping.confirm {
+          behavior = cmp.ConfirmBehavior.Insert,
+          select = true,
+        },
+        { "i", "c" }
+      ),
+      ["<C-space>"] = cmp.mapping {
+        i = cmp.mapping.complete(),
+      },
+    },
+    sorting = {
+      comparators = {
+        cmp.config.compare.offset,
+        cmp.config.compare.exact,
+        cmp.config.compare.recently_used,
+        cmp.config.compare.kind,
+        cmp.config.compare.sort_text,
+        cmp.config.compare.length,
+        cmp.config.compare.order,
+      },
+    },
+    sources = {
+      { name = "nvim_lsp" },
+      { name = "nvim_lsp_signature_help" },
+      { name = "path" },
+      { name = "buffer" },
     },
   }
 

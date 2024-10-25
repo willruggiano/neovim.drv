@@ -56,87 +56,59 @@ return function()
     client.config.flags.allow_incremental_sync = true
   end
 
-  local keymap = require "bombadil.lib.keymap"
-
   -- Use an on_attach function to only map the following keys
   -- after the language server attaches to the current buffer
   local function on_attach(client, bufnr)
     -- Enable completion triggered by <c-x><c-o>
     vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 
-    keymap.nnoremaps {
-      -- TODO: Could we combine code actions and lenses?
-      ["<localleader>a"] = {
-        require("fastaction").code_action,
-        { buffer = bufnr, desc = "[lsp] codeaction" },
-      },
-      ["<localleader>l"] = {
-        vim.lsp.codelens.run,
-        { buffer = bufnr, desc = "[lsp] codelens" },
-      },
-      ["<localleader>e"] = {
-        vim.diagnostic.open_float,
-        { buffer = bufnr, desc = "[lsp] explain" },
-      },
-      ["<localleader>rn"] = {
-        vim.lsp.buf.rename,
-        { buffer = bufnr, desc = "[lsp] rename symbol" },
-      },
-      ["<localleader>rr"] = {
-        function()
-          vim.lsp.stop_client(vim.lsp.get_clients { bufnr = bufnr }, true)
-          vim.cmd.edit()
-        end,
-        { buffer = bufnr, desc = "[lsp] restart buffer clients" },
-      },
-      ["<localleader>fs"] = {
-        require("telescope.builtin").lsp_document_symbols,
-        { buffer = bufnr, desc = "Symbols" },
-      },
-      ["<localleader>fS"] = {
-        require("telescope.builtin").lsp_dynamic_workspace_symbols,
-        { buffer = bufnr, desc = "Workspace symbols" },
-      },
-      gd = {
-        function()
-          vim.lsp.buf.definition {
-            reuse_win = true,
-          }
-        end,
-        { buffer = bufnr, desc = "[lsp] goto definition" },
-      },
-      gi = {
-        vim.lsp.buf.implementation,
-        { buffer = bufnr, desc = "[lsp] goto implementation" },
-      },
-      gD = {
-        function()
-          vim.lsp.buf.declaration {
-            reuse_win = true,
-          }
-        end,
-        { buffer = bufnr, desc = "[lsp] goto declaration" },
-      },
-      gT = {
-        function()
-          vim.lsp.buf.type_definition {
-            reuse_win = true,
-          }
-        end,
-        { buffer = bufnr, desc = "[lsp] goto typedef" },
-      },
-      K = {
-        vim.lsp.buf.hover,
-        { buffer = bufnr, desc = "[lsp] hover" },
-      },
-    }
+    -- gra is by default mapped to vim.lsp.buf.code_action()
+    -- vim.keymap.del({ "n", "v" }, "gra", { buffer = bufnr })
 
-    keymap.vnoremaps {
-      ["<localleader>a"] = {
+    if client.supports_method "textDocument/codeAction" then
+      vim.keymap.set(
+        "n",
+        "<localleader>a",
+        require("fastaction").code_action,
+        { buffer = bufnr, desc = "[lsp] code action" }
+      )
+      vim.keymap.set(
+        "v",
+        "<localleader>a",
         [[<esc><cmd>lua require("fastaction").range_code_action()<cr>]],
-        { buffer = bufnr, desc = "Code actions" },
-      },
-    }
+        { buffer = bufnr, desc = "[lsp] code action" }
+      )
+    end
+
+    if client.supports_method "textDocument/codeLens" then
+      vim.keymap.set("n", "<localleader>l", vim.lsp.codelens.run, { buffer = bufnr, desc = "[lsp] codelens" })
+      vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.codelens.refresh { bufnr = bufnr }
+        end,
+      })
+    end
+
+    if client.supports_method "textDocument/declaration" then
+      vim.keymap.set("n", "gD", function()
+        vim.lsp.buf.declaration {
+          reuse_win = true,
+        }
+      end, { buffer = bufnr, desc = "[lsp] goto declaration" })
+    end
+
+    if client.supports_method "textDocument/definition" then
+      vim.keymap.set("n", "gd", function()
+        vim.lsp.buf.definition {
+          reuse_win = true,
+        }
+      end, { buffer = bufnr, desc = "[lsp] goto definition" })
+    end
+
+    if client.supports_method "textDocument/diagnostic" then
+      vim.keymap.set("n", "<localleader>e", vim.diagnostic.open_float, { buffer = bufnr, desc = "[lsp] explain" })
+    end
 
     if client.supports_method "textDocument/documentHighlight" then
       vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -149,13 +121,30 @@ return function()
       })
     end
 
-    if client.supports_method "textDocument/codeLens" then
-      vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.codelens.refresh { bufnr = bufnr }
-        end,
-      })
+    if client.supports_method "textDocument/documentSymbol" then
+      vim.keymap.set(
+        "n",
+        "<localleader>fs",
+        require("telescope.builtin").lsp_document_symbols,
+        { buffer = bufnr, desc = "[lsp] document symbols" }
+      )
+    end
+
+    if client.supports_method "textDocument/typeDefinition" then
+      vim.keymap.set("n", "gT", function()
+        vim.lsp.buf.type_definition {
+          reuse_win = true,
+        }
+      end, { buffer = bufnr, desc = "[lsp] typedef" })
+    end
+
+    if client.supports_method "workspace/symbol" then
+      vim.keymap.set(
+        "n",
+        "<localleader>fS",
+        require("telescope.builtin").lsp_dynamic_workspace_symbols,
+        { buffer = bufnr, desc = "[lsp] workspace symbols" }
+      )
     end
   end
 
@@ -214,10 +203,6 @@ return function()
             },
           },
           sql = {
-            {
-              formatCommand = "sqlfluff format --dialect ansi --nocolor --ignore ${INPUT}",
-              formatStdin = false,
-            },
             {
               lintSource = "sqlfluff",
               lintCommand = "sqlfluff lint --dialect postgres --format github-annotation-native --annotation-level warning --nocolor --disable-progress-bar ${INPUT}",
@@ -409,7 +394,24 @@ return function()
     }
   end
 
-  if not pcall(require, "rust-tools") then
+  if pcall(require, "rust-tools") then
+    local rt = require "rust-tools"
+    rt.setup {
+      server = {
+        on_attach = function(client, bufnr)
+          on_attach(client, bufnr)
+          vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr, desc = "[lsp] hover" })
+          vim.api.nvim_set_option_value("errorformat", " --> %f:%l:%c", { buf = bufnr })
+        end,
+      },
+      tools = {
+        executor = require("rust-tools.executors").quickfix,
+        hover_actions = {
+          border = "single",
+        },
+      },
+    }
+  else
     lspconfig.rust_analyzer.setup {
       on_init = on_init,
       on_attach = on_attach,
@@ -426,24 +428,6 @@ return function()
           procMacro = {
             enable = true,
           },
-        },
-      },
-    }
-  else
-    local rt = require "rust-tools"
-    rt.setup {
-      server = {
-        -- on_init = on_init,
-        on_attach = function(client, bufnr)
-          on_attach(client, bufnr)
-          keymap.nnoremap("K", rt.hover_actions.hover_actions, { buffer = bufnr, desc = "Hover actions" })
-          vim.api.nvim_set_option_value("errorformat", " --> %f:%l:%c", { buf = bufnr })
-        end,
-      },
-      tools = {
-        executor = require("rust-tools.executors").quickfix,
-        hover_actions = {
-          border = "single",
         },
       },
     }

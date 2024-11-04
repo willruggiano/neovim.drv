@@ -129,4 +129,31 @@ return function()
     desc = "Query docsets",
     nargs = "*",
   })
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local bufnr = args.buf
+      local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have a valid client")
+
+      local builtin = require "telescope.builtin"
+
+      if client.supports_method "textDocument/documentSymbol" then
+        vim.keymap.set(
+          "n",
+          "<localleader>fs",
+          builtin.lsp_document_symbols,
+          { buffer = bufnr, desc = "[lsp] document symbols" }
+        )
+      end
+
+      if client.supports_method "workspace/symbol" then
+        vim.keymap.set(
+          "n",
+          "<localleader>fS",
+          builtin.lsp_dynamic_workspace_symbols,
+          { buffer = bufnr, desc = "[lsp] workspace symbols" }
+        )
+      end
+    end,
+  })
 end

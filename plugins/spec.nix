@@ -80,7 +80,9 @@ in rec {
       shellcheck
       shellharden
       shfmt
-      sqlfluff
+      # sql formatting is such ass :/
+      sleek # really fucks up plpgsql
+      sqlfluff # can be really slow
       stylua
     ];
   };
@@ -278,7 +280,7 @@ in rec {
       rust-analyzer
       tailwindcss-language-server
       sqlfluff
-      sqruff
+      # sqruff
       squawk
       statix
       sumneko-lua-language-server

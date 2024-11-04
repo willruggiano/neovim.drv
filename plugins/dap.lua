@@ -178,11 +178,6 @@ return function()
       dap.step_out,
       { desc = "[dap] Step out" },
     },
-    -- TODO: It'd be nice for this to be part of hover?
-    ["<localleader>e"] = {
-      dapui.eval,
-      { desc = "[dap] Evaluate expression" },
-    },
   }
 
   vim.api.nvim_create_user_command("DapBreakpoints", function()

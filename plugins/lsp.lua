@@ -51,122 +51,16 @@ return function()
   -- Generic lsp configuration
   --
 
-  local function on_init(client)
-    client.config.flags = client.config.flags or {}
-    client.config.flags.allow_incremental_sync = true
-  end
+  local capabilities = vim.tbl_deep_extend(
+    "force",
+    {},
+    vim.lsp.protocol.make_client_capabilities(),
+    require("cmp_nvim_lsp").default_capabilities()
+  )
 
-  -- Use an on_attach function to only map the following keys
-  -- after the language server attaches to the current buffer
-  local function on_attach(client, bufnr)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-
-    -- gra is by default mapped to vim.lsp.buf.code_action()
-    -- vim.keymap.del({ "n", "v" }, "gra", { buffer = bufnr })
-
-    if client.supports_method "textDocument/codeAction" then
-      vim.keymap.set(
-        "n",
-        "<localleader>a",
-        require("fastaction").code_action,
-        { buffer = bufnr, desc = "[lsp] code action" }
-      )
-      vim.keymap.set(
-        "v",
-        "<localleader>a",
-        [[<esc><cmd>lua require("fastaction").range_code_action()<cr>]],
-        { buffer = bufnr, desc = "[lsp] code action" }
-      )
-    end
-
-    if client.supports_method "textDocument/codeLens" then
-      vim.keymap.set("n", "<localleader>l", vim.lsp.codelens.run, { buffer = bufnr, desc = "[lsp] codelens" })
-      vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "InsertLeave" }, {
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.codelens.refresh { bufnr = bufnr }
-        end,
-      })
-    end
-
-    if client.supports_method "textDocument/declaration" then
-      vim.keymap.set("n", "gD", function()
-        vim.lsp.buf.declaration {
-          reuse_win = true,
-        }
-      end, { buffer = bufnr, desc = "[lsp] goto declaration" })
-    end
-
-    if client.supports_method "textDocument/definition" then
-      vim.keymap.set("n", "gd", function()
-        vim.lsp.buf.definition {
-          reuse_win = true,
-        }
-      end, { buffer = bufnr, desc = "[lsp] goto definition" })
-    end
-
-    if client.supports_method "textDocument/diagnostic" then
-      vim.keymap.set("n", "<localleader>e", vim.diagnostic.open_float, { buffer = bufnr, desc = "[lsp] explain" })
-    end
-
-    if client.supports_method "textDocument/documentHighlight" then
-      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-        buffer = bufnr,
-        callback = vim.lsp.buf.document_highlight,
-      })
-      vim.api.nvim_create_autocmd({ "BufLeave", "CursorMoved", "CursorMovedI" }, {
-        buffer = bufnr,
-        callback = vim.lsp.buf.clear_references,
-      })
-    end
-
-    if client.supports_method "textDocument/documentSymbol" then
-      vim.keymap.set(
-        "n",
-        "<localleader>fs",
-        require("telescope.builtin").lsp_document_symbols,
-        { buffer = bufnr, desc = "[lsp] document symbols" }
-      )
-    end
-
-    if client.supports_method "textDocument/typeDefinition" then
-      vim.keymap.set("n", "gT", function()
-        vim.lsp.buf.type_definition {
-          reuse_win = true,
-        }
-      end, { buffer = bufnr, desc = "[lsp] typedef" })
-    end
-
-    if client.supports_method "workspace/symbol" then
-      vim.keymap.set(
-        "n",
-        "<localleader>fS",
-        require("telescope.builtin").lsp_dynamic_workspace_symbols,
-        { buffer = bufnr, desc = "[lsp] workspace symbols" }
-      )
-    end
-  end
-
-  local updated_capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-  updated_capabilities.textDocument.codeLens = {
-    dynamicRegistration = true,
-  }
-  updated_capabilities.textDocument.completion.completionItem.snippetSupport = true
-  updated_capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
-    },
-  }
-  updated_capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true,
-  }
-
-  local server_overrides = {
+  local servers = {
+    basedpyright = {},
+    bashls = {},
     biome = {
       capabilities = {
         textDocument = {
@@ -179,6 +73,7 @@ return function()
         offsetEncoding = { "utf-16" },
       },
     },
+    cmake = {},
     efm = {
       filetypes = { "cpp", "nix", "sql", "yaml" },
       settings = {
@@ -243,6 +138,8 @@ return function()
         },
       },
     },
+    graphql = {},
+    hls = {},
     jsonls = {
       cmd = { "vscode-json-languageserver", "--stdio" },
       settings = {
@@ -300,6 +197,7 @@ return function()
         },
       },
     },
+    marksman = {},
     nil_ls = {
       settings = {
         ["nil"] = {
@@ -319,13 +217,15 @@ return function()
     relay_lsp = {
       root_dir = util.root_pattern "relay.config.*",
     },
-    sqruff = {
-      capabilities = {
-        textDocument = {
-          didSave = { dynamicRegistration = true },
-        },
-      },
-    },
+    ruff_lsp = {},
+    rust_analyzer = {},
+    -- sqruff = {
+    --   capabilities = {
+    --     textDocument = {
+    --       didSave = { dynamicRegistration = true },
+    --     },
+    --   },
+    -- },
     tailwindcss = {
       root_dir = util.root_pattern "tailwind.config.*",
     },
@@ -346,107 +246,72 @@ return function()
     },
   }
 
-  local servers = {
-    "bashls",
-    "biome",
-    "clangd",
-    "cmake",
-    "efm",
-    "graphql",
-    "hls",
-    "jsonls",
-    "lua_ls",
-    "marksman",
-    "nil_ls",
-    "prismals",
-    "basedpyright",
-    "relay_lsp",
-    "ruff_lsp",
-    -- "sqruff",
-    "yamlls",
-    "zls",
-  }
+  for name, config in pairs(servers) do
+    config = vim.tbl_deep_extend("force", {}, {
+      capabilities = capabilities,
+    }, config)
 
-  if pcall(require, "vtsls") then
-    require("lspconfig.configs").vtsls = require("vtsls").lspconfig
-    vim.list_extend(servers, { "vtsls" })
-  else
-    vim.list_extend(servers, { "ts_ls" })
-  end
-
-  for _, name in ipairs(servers) do
-    lspconfig[name].setup(vim.tbl_deep_extend("force", {
-      on_init = on_init,
-      on_attach = on_attach,
-      capabilities = updated_capabilities,
-    }, server_overrides[name] or {}))
-  end
-
-  if os.getenv "ENABLE_POSTGRES_LSP" then
-    lspconfig.postgres_lsp.setup {
-      cmd = { "./target/debug/postgres_lsp" },
-      on_init = on_init,
-      on_attach = on_attach,
-      capabilities = updated_capabilities,
-      root_dir = function()
-        return vim.fn.getcwd()
-      end,
-    }
-  end
-
-  if pcall(require, "rust-tools") then
-    local rt = require "rust-tools"
-    rt.setup {
-      server = {
-        on_attach = function(client, bufnr)
-          on_attach(client, bufnr)
-          vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr, desc = "[lsp] hover" })
-          vim.api.nvim_set_option_value("errorformat", " --> %f:%l:%c", { buf = bufnr })
-        end,
-      },
-      tools = {
-        executor = require("rust-tools.executors").quickfix,
-        hover_actions = {
-          border = "single",
-        },
-      },
-    }
-  else
-    lspconfig.rust_analyzer.setup {
-      on_init = on_init,
-      on_attach = on_attach,
-      capabilities = updated_capabilities,
-      settings = {
-        ["rust-analyzer"] = {
-          assist = {
-            importGranularity = "module",
-            importPrefix = "by_self",
-          },
-          cargo = {
-            loadOutDirsFromCheck = true,
-          },
-          procMacro = {
-            enable = true,
-          },
-        },
-      },
-    }
+    lspconfig[name].setup(config)
   end
 
   if pcall(require, "tailwind-tools") then
     require("tailwind-tools").setup {
-      server = {
-        on_attach = on_attach,
-      },
       document_color = {
         kind = "foreground",
       },
     }
   else
     lspconfig.tailwindcss.setup {
-      on_init = on_init,
-      on_attach = on_attach,
-      capabilities = updated_capabilities,
+      capabilities = capabilities,
     }
   end
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local bufnr = args.buf
+      local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have a valid client")
+
+      -- TODO: I'm not sure what the exact method is for this one...?
+      -- Needless to say, what good is an lsp that doesn't provide diagnostic support :P
+      vim.keymap.set("n", "<localleader>e", vim.diagnostic.open_float, { buffer = bufnr, desc = "[lsp] explain" })
+
+      if client.supports_method "textDocument/codeAction" then
+        vim.keymap.set(
+          "n",
+          "<localleader>a",
+          require("fastaction").code_action,
+          { buffer = bufnr, desc = "[lsp] code action" }
+        )
+        vim.keymap.set(
+          "v",
+          "<localleader>a",
+          [[<esc><cmd>lua require("fastaction").range_code_action()<cr>]],
+          { buffer = bufnr, desc = "[lsp] code action" }
+        )
+      end
+
+      if client.supports_method "textDocument/declaration" then
+        vim.keymap.set("n", "gD", function()
+          vim.lsp.buf.declaration { reuse_win = true }
+        end, { buffer = bufnr, desc = "[lsp] goto declaration" })
+      end
+
+      if client.supports_method "textDocument/documentHighlight" then
+        vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+          buffer = bufnr,
+          callback = vim.lsp.buf.document_highlight,
+        })
+        vim.api.nvim_create_autocmd({ "BufLeave", "CursorMoved", "CursorMovedI" }, {
+          buffer = bufnr,
+          callback = vim.lsp.buf.clear_references,
+        })
+      end
+
+      if client.supports_method "textDocument/typeDefinition" then
+        vim.keymap.set("n", "gT", function()
+          vim.lsp.buf.type_definition { reuse_win = true }
+        end, { buffer = bufnr, desc = "[lsp] typedef" })
+      end
+    end,
+  })
 end

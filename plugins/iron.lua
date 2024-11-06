@@ -4,7 +4,11 @@ return function()
 
   iron.setup {
     config = {
+      highlight_last = false,
       repl_definition = {
+        sql = {
+          command = { "psql" },
+        },
         typescript = {
           command = { "ts-node" },
         },
@@ -12,4 +16,8 @@ return function()
       repl_open_cmd = view.split "30%",
     },
   }
+
+  vim.keymap.set("x", "<C-M>", function()
+    iron.send(nil, iron.mark_visual())
+  end, { desc = "[repl] visual send" })
 end

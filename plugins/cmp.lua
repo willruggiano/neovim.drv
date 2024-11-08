@@ -21,9 +21,7 @@ return function()
         },
       },
     },
-    mapping = {
-      ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-      ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+    mapping = cmp.mapping.preset.insert {
       ["<C-y>"] = cmp.mapping(
         cmp.mapping.confirm {
           behavior = cmp.ConfirmBehavior.Insert,
@@ -31,21 +29,18 @@ return function()
         },
         { "i", "c" }
       ),
-      ["<C-space>"] = cmp.mapping {
-        i = cmp.mapping.complete(),
-      },
     },
-    sorting = {
-      comparators = {
-        cmp.config.compare.offset,
-        cmp.config.compare.exact,
-        cmp.config.compare.recently_used,
-        cmp.config.compare.kind,
-        cmp.config.compare.sort_text,
-        cmp.config.compare.length,
-        cmp.config.compare.order,
-      },
-    },
+    -- sorting = {
+    --   comparators = {
+    --     cmp.config.compare.offset,
+    --     cmp.config.compare.exact,
+    --     cmp.config.compare.recently_used,
+    --     cmp.config.compare.kind,
+    --     cmp.config.compare.sort_text,
+    --     cmp.config.compare.length,
+    --     cmp.config.compare.order,
+    --   },
+    -- },
     sources = {
       { name = "nvim_lsp" },
       { name = "nvim_lsp_signature_help" },
@@ -62,6 +57,15 @@ return function()
       { name = "cmdline" },
     }),
     matching = { disallow_symbol_nonprefix_matching = false },
+  })
+
+  cmp.setup.cmdline("/", {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = "nvim_lsp_document_symbol" },
+    }, {
+      { name = "buffer" },
+    }),
   })
 
   cmp.setup.filetype("gitcommit", {

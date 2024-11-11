@@ -1,9 +1,9 @@
 {
   "url": "https://github.com/tree-sitter/tree-sitter-css",
-  "rev": "ccc4e2c4b30ddabc4b41c577ad0550b3cac4a74a",
-  "date": "2024-10-14T21:34:23-04:00",
-  "sha256": "14g05rmhz3mqs251kmfqrfy3v204af7ix0kyc4mdfsdgdlsc3l4s",
-  "hash": "sha256-mtDBNG2vadcqYX6CHo9TBIg9vMvY1RmK0LiOD2su4JE=",
+  "rev": "6a442a3cf461b0ce275339e5afa178693484c927",
+  "date": "2024-11-11T00:42:44-05:00",
+  "sha256": "0jzbann08gxvnl1iww1ghrwilpi2p4ha1sbq6kmmfaky2jklk6zr",
+  "hash": "sha256-+ZtJpxR+KlfrNHjpoCC5Il4aeYYvcB4Dtbs/BKxV60s=",
   "fetchLFS": false,
   "fetchSubmodules": false,
   "deepClone": false,

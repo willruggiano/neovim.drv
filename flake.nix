@@ -2,7 +2,7 @@
   inputs = {
     devenv = {
       url = "github:cachix/devenv";
-      inputs.pre-commit-hooks.follows = "git-hooks";
+      inputs.git-hooks.follows = "git-hooks";
     };
     git-hooks.url = "github:cachix/git-hooks.nix";
     naersk = {

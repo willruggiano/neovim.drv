@@ -217,7 +217,7 @@ return function()
     relay_lsp = {
       root_dir = util.root_pattern "relay.config.*",
     },
-    ruff_lsp = {},
+    ruff = {},
     rust_analyzer = {},
     -- sqruff = {
     --   capabilities = {

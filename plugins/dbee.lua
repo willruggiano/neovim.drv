@@ -52,9 +52,15 @@ return function()
     sources = {
       require("dbee.sources").MemorySource:new {
         {
-          name = "DATABASE_URL",
+          name = "localhost",
           type = "postgres",
-          url = vim.env.DATABASE_URL,
+          url = "postgresql://"
+            .. (vim.env.PGHOST or "localhost")
+            .. ":"
+            .. (vim.env.PGPORT or "5432")
+            .. "/"
+            .. (vim.env.PGDATABASE or "postgres")
+            .. (vim.env.PGSSLMODE and ("?sslmode=" .. vim.env.PGSSLMODE) or "?sslmode=disable"),
         },
       },
       require("dbee.sources").EnvSource:new "DBEE_CONNECTIONS",

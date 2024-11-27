@@ -10,6 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nix = {
+      # url = "path:///home/bombadil/dev/neovim.nix";
       url = "github:willruggiano/neovim.nix";
       inputs.example.follows = "";
       inputs.flake-parts.follows = "flake-parts";
@@ -109,9 +110,7 @@
               nix flake update &&
               niv update &&
               nix run .#nvim-treesitter.update-grammars &&
-              nix flake check --impure &&
-              git commit -am 'chore: 🌶️🌶️🌶️' &&
-              git push
+              nix flake check --impure
             '';
           };
         };

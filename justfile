@@ -1,5 +1,5 @@
 install:
-  nix profile upgrade 0
+  nix profile upgrade git+file://$(pwd)#packages.x86_64-linux.default
   notify-send --transient 'neovim be ready'
 
 build:

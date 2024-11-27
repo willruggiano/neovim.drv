@@ -1,9 +1,9 @@
 {
   "url": "https://github.com/IndianBoy42/tree-sitter-just",
-  "rev": "11b8c436bfcadaa22aa6299d9635685045ad97f3",
-  "date": "2024-11-17T02:09:44-05:00",
-  "sha256": "1mhhxqw69lxxb2r6xrqg2hfjc3bxf0hmv7jf1rblq2lzihlaxq3n",
-  "hash": "sha256-duCuKIyfCkxXDk6eXSFwfQ0mHRQP526yWL3TZDjuENY=",
+  "rev": "f6d29300f9fee15dcd8c2b25ab762001d38da731",
+  "date": "2024-11-19T14:02:52-05:00",
+  "sha256": "1y309841hvnkp7lflgsr3w7ryqd29nlbbzh6rgis30glsnvq73bg",
+  "hash": "sha256-b42Dt9X0gaHjywb+tahNomGfDx9ZP+roudNuGAhKYPg=",
   "fetchLFS": false,
   "fetchSubmodules": false,
   "deepClone": false,

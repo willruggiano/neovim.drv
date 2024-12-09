@@ -1,9 +1,9 @@
 {
   "url": "https://github.com/ikatyang/tree-sitter-yaml",
-  "rev": "7b03feefd36b5f155465ca736c6304aca983b267",
-  "date": "2024-05-08T11:44:24-04:00",
-  "sha256": "0d6kxdj6w0i1j77m2gsnafn78kvgf100hyhrymv359hcr6zm0dl6",
-  "hash": "sha256-hjZQv8kMpjJ29Rl6CEBwb090rFNWP1HPkSECbmTr0zQ=",
+  "rev": "b733d3f5f5005890f324333dd57e1f0badec5c87",
+  "date": "2024-12-04T00:40:05-05:00",
+  "sha256": "0z5fz9hiafzapi0ijhyz8np6rksq6c1pb16xv1vhnlfh75rg6zyv",
+  "hash": "sha256-23/zcjnQUQt32N2EdQMzWM9srkXfQxlBvOo7FWH6rnw=",
   "fetchLFS": false,
   "fetchSubmodules": false,
   "deepClone": false,

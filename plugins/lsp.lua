@@ -14,8 +14,6 @@ return function()
     },
   }
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" })
-
   --
   -- Diagnostics
   --
@@ -275,7 +273,7 @@ return function()
       -- Needless to say, what good is an lsp that doesn't provide diagnostic support :P
       vim.keymap.set("n", "<localleader>e", vim.diagnostic.open_float, { buffer = bufnr, desc = "[lsp] explain" })
 
-      if client.supports_method "textDocument/codeAction" then
+      if client:supports_method "textDocument/codeAction" then
         vim.keymap.set(
           "n",
           "<localleader>a",
@@ -290,13 +288,13 @@ return function()
         )
       end
 
-      if client.supports_method "textDocument/declaration" then
+      if client:supports_method "textDocument/declaration" then
         vim.keymap.set("n", "gD", function()
           vim.lsp.buf.declaration { reuse_win = true }
         end, { buffer = bufnr, desc = "[lsp] goto declaration" })
       end
 
-      if client.supports_method "textDocument/documentHighlight" then
+      if client:supports_method "textDocument/documentHighlight" then
         vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
           buffer = bufnr,
           callback = vim.lsp.buf.document_highlight,
@@ -307,7 +305,7 @@ return function()
         })
       end
 
-      if client.supports_method "textDocument/typeDefinition" then
+      if client:supports_method "textDocument/typeDefinition" then
         vim.keymap.set("n", "gT", function()
           vim.lsp.buf.type_definition { reuse_win = true }
         end, { buffer = bufnr, desc = "[lsp] typedef" })

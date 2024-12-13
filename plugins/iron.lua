@@ -10,7 +10,7 @@ return function()
           command = { "psql" },
         },
         typescript = {
-          command = { "ts-node" },
+          command = { "bun", "repl" },
         },
       },
       repl_open_cmd = view.split "30%",

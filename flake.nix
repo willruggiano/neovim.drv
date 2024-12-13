@@ -144,6 +144,7 @@
             ];
             meta.mainProgram = "nvim";
           };
+          ivy = pkgs.callPackage ./pkgs/ivy {};
           kulala-fmt = pkgs.callPackage ./pkgs/kulala-fmt {};
           luafun = pkgs.luajit.pkgs.callPackage ./pkgs/luafun.nix {};
           neovim-nightly = inputs'.neovim.packages.default;

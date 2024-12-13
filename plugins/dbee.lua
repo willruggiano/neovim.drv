@@ -54,13 +54,14 @@ return function()
         {
           name = "localhost",
           type = "postgres",
-          url = "postgresql://"
-            .. (vim.env.PGHOST or "localhost")
-            .. ":"
-            .. (vim.env.PGPORT or "5432")
-            .. "/"
+          url = "postgresql:///"
             .. (vim.env.PGDATABASE or "postgres")
-            .. (vim.env.PGSSLMODE and ("?sslmode=" .. vim.env.PGSSLMODE) or "?sslmode=disable"),
+            .. "?host="
+            .. (vim.env.PGHOST or "localhost")
+            .. "&port="
+            .. (vim.env.PGPORT or "5432")
+            .. "&sslmode="
+            .. (vim.env.PGSSLMODE or "disable"),
         },
       },
       require("dbee.sources").EnvSource:new "DBEE_CONNECTIONS",

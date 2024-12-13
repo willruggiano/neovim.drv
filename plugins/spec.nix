@@ -177,6 +177,12 @@ in rec {
     package = config.packages.luafun;
   };
 
+  ivy = {
+    package = config.packages.ivy.vimPlugin;
+    config = ./ivy.lua;
+    cpath = "${config.packages.ivy}/lib/?.so";
+  };
+
   gitsigns = {
     src = sources."gitsigns.nvim";
     config = ./gitsigns.lua;
@@ -196,6 +202,7 @@ in rec {
   iron = {
     src = sources."iron.nvim";
     config = ./iron.lua;
+    paths = [pkgs.bun];
   };
 
   kulala = {
@@ -252,8 +259,7 @@ in rec {
       };
       vtsls = {
         src = sources.nvim-vtsls;
-        # FIXME: uses pnpm
-        # paths = [config.packages.vtsls];
+        paths = [pkgs.vtsls];
       };
     };
     paths = with pkgs;

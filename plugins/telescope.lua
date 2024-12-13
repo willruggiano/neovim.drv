@@ -81,29 +81,29 @@ return function()
 
   local nnoremap = require("bombadil.lib.keymap").nnoremap
   local mappings = {
-    ["<space>b"] = {
-      function()
-        require("telescope.builtin").buffers()
-      end,
-      { desc = "Buffers" },
-    },
+    -- ["<space>b"] = {
+    --   function()
+    --     require("telescope.builtin").buffers()
+    --   end,
+    --   { desc = "Buffers" },
+    -- },
     ["<space>h"] = {
       function()
         require("telescope.builtin").help_tags()
       end,
       { desc = "Help" },
     },
-    ["<space>o"] = {
-      function()
-        require("telescope").extensions.smart_open.smart_open()
-      end,
-      { desc = "Open Anything™" },
-    },
+    -- ["<space>o"] = {
+    --   function()
+    --     require("telescope").extensions.smart_open.smart_open()
+    --   end,
+    --   { desc = "Open Anything™" },
+    -- },
     ["<space>u"] = {
       function()
         require("telescope").extensions.undo.undo()
       end,
-      { desc = "Open Anything™" },
+      { desc = "Undo" },
     },
     ["<c-,>f"] = {
       function()

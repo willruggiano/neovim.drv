@@ -149,6 +149,12 @@
         "rev": "e6b78ec1bc56eab63b3a9112d348b3d79836b672",
         "type": "git"
     },
+    "ivy.nvim": {
+        "branch": "0.x",
+        "repo": "git@github.com:AdeAttwood/ivy.nvim",
+        "rev": "cfa7e29ae4d955508d4f7f2ef08cc0c51ee745ed",
+        "type": "git"
+    },
     "karen-yank.nvim": {
         "branch": "main",
         "repo": "git@github.com:tenxsoydev/karen-yank.nvim",

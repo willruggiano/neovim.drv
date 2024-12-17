@@ -82,8 +82,9 @@ in rec {
       shellharden
       shfmt
       # sql formatting is such ass :/
-      sleek # really fucks up plpgsql
-      sqlfluff # can be really slow
+      # sleek # really fucks up plpgsql
+      # sqlfluff # can be really slow
+      python3.pkgs.sqlfmt # maybe?
       stylua
     ];
   };

@@ -7,7 +7,7 @@ in
   rustPlatform.buildRustPackage rec {
     name = "ivy";
     src = sources."ivy.nvim";
-    cargoHash = "sha256-sm+CP0bpD8VlB5zjA56cZuntQ8mpXwqbaeNNxugRloA=";
+    cargoHash = "sha256-YaDp+w+/68rs8pGl7iQX1au2Aouk0ex17d75drFX1HI=";
 
     passthru.vimPlugin = vimUtils.buildVimPlugin {
       inherit name src;

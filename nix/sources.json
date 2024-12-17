@@ -86,7 +86,7 @@
     "fastaction.nvim": {
         "branch": "main",
         "repo": "git@github.com:Chaitanyabsprip/fastaction.nvim",
-        "rev": "24255a74e0d35f1e1807aa78997f5c31ae419dbc",
+        "rev": "43ff7367353e1f965ac8f87b63ea1a17a14f405e",
         "type": "git"
     },
     "fidget.nvim": {

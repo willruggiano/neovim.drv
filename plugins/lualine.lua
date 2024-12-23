@@ -1,30 +1,6 @@
 return function()
   local extensions = {}
 
-  extensions.lir = {
-    filetypes = { "lir" },
-    sections = {
-      lualine_a = { "mode" },
-      lualine_b = { "branch" },
-      lualine_c = {
-        function()
-          return require("lir.vim").get_context().dir
-        end,
-      },
-      lualine_x = { "filetype" },
-      lualine_y = { "progress" },
-      lualine_z = { "location" },
-    },
-    inactive_sections = {
-      lualine_c = {
-        function()
-          return require("lir.vim").get_context().dir
-        end,
-      },
-      lualine_x = { "location" },
-    },
-  }
-
   extensions.telescope = {
     filetypes = { "TelescopePrompt" },
     sections = {
@@ -104,7 +80,6 @@ return function()
     extensions = {
       "quickfix",
       "toggleterm",
-      extensions.lir,
       extensions.telescope,
     },
   }

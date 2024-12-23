@@ -107,6 +107,12 @@
         "rev": "1ef72de6a02458d31b10039372c8a15ab8989e0d",
         "type": "git"
     },
+    "focus.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:nvim-focus/focus.nvim",
+        "rev": "d76338e58e49f844e8f6a7aff16a74a2a55a80ef",
+        "type": "git"
+    },
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",

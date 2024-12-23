@@ -242,6 +242,16 @@ return function()
         },
       },
     },
+    zls = {
+      settings = {
+        --
+        zls = {
+          -- enable_build_on_save = true, -- default with a check step
+          semantic_tokens = "full",
+          warn_style = true,
+        },
+      },
+    },
   }
 
   for name, config in pairs(servers) do
@@ -269,9 +279,21 @@ return function()
       local bufnr = args.buf
       local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have a valid client")
 
-      -- TODO: I'm not sure what the exact method is for this one...?
-      -- Needless to say, what good is an lsp that doesn't provide diagnostic support :P
-      vim.keymap.set("n", "<localleader>e", vim.diagnostic.open_float, { buffer = bufnr, desc = "[lsp] explain" })
+      if client:supports_method "textDocument/hover" then
+        vim.keymap.set("n", "K", function()
+          vim.lsp.buf.hover { border = "single" }
+        end, { buffer = bufnr, desc = "[lsp] hover" })
+      end
+
+      if client:supports_method "textDocument/signatureHelp" then
+        vim.keymap.set("i", "<C-s>", function()
+          vim.lsp.buf.signature_help { border = "single" }
+        end, { buffer = bufnr, desc = "[lsp] signature help" })
+      end
+
+      if client:supports_method "textDocument/diagnostic" then
+        vim.keymap.set("n", "<localleader>e", vim.diagnostic.open_float, { buffer = bufnr, desc = "[lsp] explain" })
+      end
 
       if client:supports_method "textDocument/codeAction" then
         vim.keymap.set(

@@ -1,7 +1,5 @@
 return function()
-  local toggleterm = require "toggleterm"
-
-  toggleterm.setup {
+  require("toggleterm").setup {
     float_opts = {
       border = "single",
     },
@@ -14,14 +12,4 @@ return function()
       end
     end,
   }
-
-  local nnoremap = require("bombadil.lib.keymap").nnoremap
-
-  nnoremap("<space><space>", function()
-    toggleterm.toggle_command("direction=float", vim.v.count)
-  end, { desc = "Toggle terminal" })
-
-  nnoremap("<c-space>", function()
-    toggleterm.toggle_command("direction=vertical", vim.v.count)
-  end, { desc = "Toggle terminal (floating)" })
 end

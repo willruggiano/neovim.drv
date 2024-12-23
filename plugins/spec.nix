@@ -169,6 +169,11 @@ in rec {
     priority = 1001;
   };
 
+  # focus = {
+  #   src = sources."focus.nvim";
+  #   config = true;
+  # };
+
   fugitive = {
     src = sources.vim-fugitive;
     config = ./fugitive.lua;
@@ -458,7 +463,8 @@ in rec {
 
   toggleterm = {
     src = sources."toggleterm.nvim";
-    config = ./toggleterm.lua;
+    # config = ./toggleterm.lua;
+    config = true;
   };
 
   twilight = {

@@ -17,6 +17,7 @@ in
   vimUtils.buildVimPlugin {
     name = "nvim-dbee";
     src = sources.nvim-dbee;
+    nvimRequireCheck = "dbee";
     propagatedBuildInputs = [bin];
     passthru.dbee = bin;
   }

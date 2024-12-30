@@ -15,5 +15,6 @@ in
         ./ivy-origin-api-missing.patch
         ./use-package-cpath.patch
       ];
+      doCheck = false;
     };
   }

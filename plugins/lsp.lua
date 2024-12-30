@@ -49,13 +49,6 @@ return function()
   -- Generic lsp configuration
   --
 
-  local capabilities = vim.tbl_deep_extend(
-    "force",
-    {},
-    vim.lsp.protocol.make_client_capabilities(),
-    require("cmp_nvim_lsp").default_capabilities()
-  )
-
   local servers = {
     basedpyright = {},
     bashls = {},
@@ -224,9 +217,9 @@ return function()
     --     },
     --   },
     -- },
-    tailwindcss = {
-      root_dir = util.root_pattern "tailwind.config.*",
-    },
+    -- tailwindcss = {
+    --   root_dir = util.root_pattern "tailwind.config.*",
+    -- },
     vtsls = {
       settings = {
         vtsls = {
@@ -255,10 +248,7 @@ return function()
   }
 
   for name, config in pairs(servers) do
-    config = vim.tbl_deep_extend("force", {}, {
-      capabilities = capabilities,
-    }, config)
-
+    config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
     lspconfig[name].setup(config)
   end
 
@@ -267,10 +257,6 @@ return function()
       document_color = {
         kind = "foreground",
       },
-    }
-  else
-    lspconfig.tailwindcss.setup {
-      capabilities = capabilities,
     }
   end
 

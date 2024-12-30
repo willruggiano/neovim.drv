@@ -6,13 +6,13 @@
 }: let
   sources = import ../nix/sources.nix {};
   inherit (pkgs) luajitPackages;
+  mkVimPlugin = pkgs.vimUtils.buildVimPlugin;
 in rec {
   bombadil = {
     src = pkgs.callPackage ./bombadil {inherit (config.neovim) colorscheme;};
     config = ./bombadil.lua;
     lazy = false;
     priority = 1000;
-
     dependencies = {
       inherit lfs;
     };
@@ -20,6 +20,23 @@ in rec {
 
   abolish = {
     src = sources.vim-abolish;
+  };
+
+  blink-cmp = {
+    package = inputs'.blink.packages.default;
+    config = {
+      appearance.nerd_font_variant = "mono";
+      completion = {
+        documentation = {
+          auto_show = true;
+          auto_show_delay_ms = 300;
+        };
+        ghost_text.enabled = true;
+      };
+      fuzzy.prebuilt_binaries.download = false;
+      keymap.preset = "default";
+      sources.default = ["lsp" "path" "buffer"];
+    };
   };
 
   bqf = {
@@ -41,28 +58,28 @@ in rec {
     ft = ["c" "cpp"];
   };
 
-  cmp = {
-    src = sources.nvim-cmp;
-    config = ./cmp.lua;
-    dependencies = {
-      inherit tailwind-tools;
-      cmp-buffer.src = sources.cmp-buffer;
-      cmp-cmdline.src = sources.cmp-cmdline;
-      cmp-git = {
-        src = sources.cmp-git;
-        config = true;
-      };
-      cmp-nvim-lsp = {
-        src = sources.cmp-nvim-lsp;
-        dependencies = {
-          inherit lspkind;
-        };
-      };
-      cmp-nvim-lsp-document-symbol.src = sources.cmp-nvim-lsp-document-symbol;
-      cmp-nvim-lsp-signature-help.src = sources.cmp-nvim-lsp-signature-help;
-      cmp-path.src = sources.cmp-path;
-    };
-  };
+  # cmp = {
+  #   src = sources.nvim-cmp;
+  #   config = ./cmp.lua;
+  #   dependencies = {
+  #     inherit tailwind-tools;
+  #     cmp-buffer.src = sources.cmp-buffer;
+  #     cmp-cmdline.src = sources.cmp-cmdline;
+  #     cmp-git = {
+  #       src = sources.cmp-git;
+  #       config = true;
+  #     };
+  #     cmp-nvim-lsp = {
+  #       src = sources.cmp-nvim-lsp;
+  #       dependencies = {
+  #         inherit lspkind;
+  #       };
+  #     };
+  #     cmp-nvim-lsp-document-symbol.src = sources.cmp-nvim-lsp-document-symbol;
+  #     cmp-nvim-lsp-signature-help.src = sources.cmp-nvim-lsp-signature-help;
+  #     cmp-path.src = sources.cmp-path;
+  #   };
+  # };
 
   Comment = {
     src = sources."Comment.nvim";
@@ -90,22 +107,39 @@ in rec {
   };
 
   dap = {
-    src = sources.nvim-dap;
+    package = mkVimPlugin {
+      name = "dap";
+      src = sources.nvim-dap;
+    };
     config = ./dap.lua;
     dependencies = {
       inherit rapidjson;
-      dapui = {
+      dapui.package = mkVimPlugin {
+        name = "dapui";
         src = sources.nvim-dap-ui;
+        doInstallCheck = true;
+        doCheck = false;
+        # nvimRequireCheck = "dapui";
+        # dependencies = [dap.package];
       };
-      nio = {
+      nio.package = mkVimPlugin {
+        name = "nio";
         src = sources.nvim-nio;
       };
       nvim-dap-virtual-text = {
-        src = sources.nvim-dap-virtual-text;
+        package = mkVimPlugin {
+          name = "nvim-dap-virtual-text";
+          src = sources.nvim-dap-virtual-text;
+          doCheck = false;
+        };
         config = true;
       };
       nvim-dap-vscode-js = {
-        src = sources.nvim-dap-vscode-js;
+        package = mkVimPlugin {
+          name = "nvim-dap-vscode-js";
+          src = sources.nvim-dap-vscode-js;
+          doCheck = false;
+        };
         config = {
           adapters = [
             "node-terminal"
@@ -126,12 +160,12 @@ in rec {
     ];
   };
 
-  dbee = let
-    package = config.packages.nvim-dbee;
-  in {
-    inherit package;
+  dbee = {
+    package = config.packages.nvim-dbee.overrideAttrs (_: {
+      dependencies = [nui.package];
+    });
     config = ./dbee.lua;
-    paths = [package.dbee];
+    paths = [config.packages.nvim-dbee.dbee];
   };
 
   dial = {
@@ -140,7 +174,11 @@ in rec {
   };
 
   dot-nvim = {
-    src = sources.".nvim.nvim";
+    package = mkVimPlugin {
+      name = "dot-nvim";
+      src = sources.".nvim.nvim";
+      doCheck = false;
+    };
     dependencies = {inherit lfs;};
   };
 
@@ -201,7 +239,11 @@ in rec {
   };
 
   ibl = {
-    src = sources."indent-blankline.nvim";
+    package = mkVimPlugin {
+      name = "ibl";
+      src = sources."indent-blankline.nvim";
+      nvimSkipModule = "ibl.config.types";
+    };
     config = ./indent-blankline.lua;
   };
 
@@ -242,7 +284,11 @@ in rec {
   };
 
   lsp-file-operations = {
-    src = sources.nvim-lsp-file-operations;
+    package = mkVimPlugin {
+      name = "lsp-file-operations";
+      src = sources.nvim-lsp-file-operations;
+      doCheck = false;
+    };
     config = true;
     dependencies = {
       inherit neo-tree;
@@ -250,21 +296,32 @@ in rec {
   };
 
   lspconfig = {
-    src = sources.nvim-lspconfig;
+    package = mkVimPlugin {
+      name = "lspconfig";
+      src = sources.nvim-lspconfig;
+    };
     config = ./lsp.lua;
     dependencies = {
-      inherit conform fastaction fun lsp-file-operations lspkind tailwind-tools;
+      inherit blink-cmp conform fastaction fun lsp-file-operations lspkind tailwind-tools;
       clangd_extensions = {
         src = sources."clangd_extensions.nvim";
       };
       rust-tools = {
-        src = sources."rust-tools.nvim";
+        package = mkVimPlugin {
+          name = "rust-tools";
+          src = sources."rust-tools.nvim";
+          dependencies = [lspconfig.package];
+        };
       };
       schemastore = {
         src = sources."SchemaStore.nvim";
       };
       vtsls = {
-        src = sources.nvim-vtsls;
+        package = mkVimPlugin {
+          name = "vtsls";
+          src = sources.nvim-vtsls;
+          nvimSkipModule = "vtsls.lspconfig";
+        };
         paths = [pkgs.vtsls];
       };
     };
@@ -321,7 +378,11 @@ in rec {
   };
 
   matchup = {
-    src = sources.vim-matchup;
+    package = mkVimPlugin {
+      name = "matchup";
+      src = sources.vim-matchup;
+      dependencies = [nvim-treesitter.package];
+    };
     init = ''
       function()
         vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
@@ -335,16 +396,29 @@ in rec {
   };
 
   neo-tree = {
-    src = sources."neo-tree.nvim";
+    package = mkVimPlugin {
+      name = "neo-tree";
+      src = sources."neo-tree.nvim";
+      dependencies = [plenary.package nui.package];
+      nvimRequireCheck = "neo-tree";
+    };
     config = ./neo-tree.lua;
     dependencies = {
-      inherit nvim-web-devicons plenary;
-      nui.src = sources."nui.nvim";
+      inherit nui nvim-web-devicons plenary;
     };
   };
 
+  nui.package = mkVimPlugin {
+    name = "nui";
+    src = sources."nui.nvim";
+  };
+
   nvim-surround = {
-    src = sources.nvim-surround;
+    package = mkVimPlugin {
+      name = "nvim-surround";
+      src = sources.nvim-surround;
+      nvimSkipModule = "nvim-surround.queries";
+    };
     config = true;
   };
 
@@ -354,7 +428,11 @@ in rec {
     dependencies = {
       inherit matchup nvim-ts-context-commentstring;
       nvim-treesitter-textobjects = {
-        src = sources.nvim-treesitter-textobjects;
+        package = mkVimPlugin {
+          name = "nvim-treesitter-textobjects";
+          src = sources.nvim-treesitter-textobjects;
+          dependencies = [nvim-treesitter.package];
+        };
       };
     };
   };
@@ -367,20 +445,33 @@ in rec {
   };
 
   nvim-web-devicons = {
-    src = sources.nvim-web-devicons;
+    package = mkVimPlugin {
+      name = "nvim-web-devicons";
+      src = sources.nvim-web-devicons;
+    };
     config = ./devicons.lua;
     dependencies = {
-      nvim-nonicons.src = sources.nvim-nonicons;
+      nvim-nonicons.package = mkVimPlugin {
+        name = "nvim-nonicons";
+        src = sources.nvim-nonicons;
+        dependencies = [nvim-web-devicons.package];
+      };
     };
   };
 
   overseer = {
-    src = sources."overseer.nvim";
+    package = mkVimPlugin {
+      name = "overseer";
+      src = sources."overseer.nvim";
+      nvimRequireCheck = "overseer";
+    };
     config = ./overseer.lua;
   };
 
   plenary = {
-    src = sources."plenary.nvim";
+    package = pkgs.vimPlugins.plenary-nvim.overrideAttrs (_: {
+      src = sources."plenary.nvim";
+    });
   };
 
   quicker = {
@@ -412,37 +503,46 @@ in rec {
   };
 
   telescope = {
-    src = sources."telescope.nvim";
+    package = mkVimPlugin {
+      name = "telescope";
+      src = sources."telescope.nvim";
+      dependencies = [plenary.package];
+    };
     config = ./telescope.lua;
     dependencies = {
       inherit nvim-web-devicons;
-      smart-open = {
-        src = sources."smart-open.nvim";
-        dependencies = {
-          sqlite = {
-            src = sources."sqlite.lua";
-            init = ''
-              function()
-                vim.g.sqlite_clib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so"
-              end
-            '';
-          };
-        };
-        paths = with pkgs; [ripgrep];
-      };
+      # smart-open = {
+      #   src = sources."smart-open.nvim";
+      #   dependencies = {
+      #     sqlite = {
+      #       src = sources."sqlite.lua";
+      #       init = ''
+      #         function()
+      #           vim.g.sqlite_clib_path = "${pkgs.sqlite.out}/lib/libsqlite3.so"
+      #         end
+      #       '';
+      #     };
+      #   };
+      #   paths = with pkgs; [ripgrep];
+      # };
       telescope-docsets = {
         src = sources."telescope-docsets.nvim";
         paths = with pkgs; [dasht elinks];
       };
       telescope-fzf-native = {
-        package = pkgs.vimUtils.buildVimPlugin {
+        package = mkVimPlugin {
           name = "telescope-fzf-native";
+          buildPhase = "make";
+          dependencies = [telescope.package];
           src = sources."telescope-fzf-native.nvim";
-          buildPhase = "";
         };
       };
       telescope-manix = {
-        src = sources.telescope-manix;
+        package = mkVimPlugin {
+          name = "telescope-manix";
+          src = sources.telescope-manix;
+          doCheck = false;
+        };
         paths = with pkgs; [manix];
       };
       telescope-symbols = {
@@ -452,7 +552,11 @@ in rec {
         src = sources."telescope-ui-select.nvim";
       };
       telescope-undo = {
-        src = sources."telescope-undo.nvim";
+        package = mkVimPlugin {
+          name = "telescope-undo";
+          src = sources."telescope-undo.nvim";
+          dependencies = [plenary.package telescope.package];
+        };
         dependencies = {
           inherit plenary;
         };
@@ -473,14 +577,17 @@ in rec {
   };
 
   which-key = {
-    src = sources."which-key.nvim";
+    package = mkVimPlugin {
+      name = "which-key";
+      src = sources."which-key.nvim";
+      nvimSkipModule = "which-key.docs";
+    };
     config = {
       icons.rules = false;
       notify = false;
     };
   };
 
-  # Gonna give cmp-cmdline another try lol
   # wilder = {
   #   src = sources."wilder.nvim";
   #   config = ./wilder.lua;

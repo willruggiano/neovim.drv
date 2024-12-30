@@ -248,7 +248,7 @@ return function()
         zls = {
           -- enable_build_on_save = true, -- default with a check step
           semantic_tokens = "full",
-          warn_style = true,
+          -- warn_style = true,
         },
       },
     },

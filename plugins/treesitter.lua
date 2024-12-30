@@ -11,6 +11,7 @@ return function()
 
     highlight = {
       enable = true,
+      disable = { "zig" },
     },
 
     indent = {
@@ -46,27 +47,10 @@ return function()
   }
 
   local highlights = {
-    -- cpp = {
-    --   ["alias.name"] = "Variable",
-    --   ["alias.type"] = "Type",
-    --   ["function.return"] = "Keyword",
-    --   ["function.parameter_type"] = "Keyword",
-    -- },
-    -- lua = {
-    --   -- ["repeat"] = "Keyword",
-    -- },
     markdown_inline = {
       ["text.emphasis"] = { italic = true },
       ["text.strike"] = { strikethrough = true },
       ["text.strong"] = { bold = true },
-    },
-    -- rust = {
-    --   ["storageclass.lifetime"] = "String",
-    --   ["type.qualifier"] = "Keyword",
-    -- },
-    zig = {
-      ["attribute"] = "@keyword",
-      ["type.qualifier"] = "@keyword",
     },
   }
 

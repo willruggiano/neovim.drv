@@ -35,7 +35,7 @@ in rec {
       };
       fuzzy.prebuilt_binaries.download = false;
       keymap.preset = "default";
-      sources.default = ["lsp" "path" "buffer"];
+      sources.default = ["lsp" "path"];
     };
   };
 

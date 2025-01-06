@@ -4,13 +4,8 @@ return function()
   local themes = require "telescope.themes"
 
   local default_theme = themes.get_ivy {
-    color_devicons = true,
-    layout_config = { preview_cutoff = 150 },
-    prompt_prefix = "> ",
-    scroll_strategy = "cycle",
+    layout_config = { height = 0.25 },
     selection_caret = "* ",
-    selection_strategy = "reset",
-    winblend = 5,
   }
 
   telescope.setup {
@@ -28,19 +23,13 @@ return function()
           ["<M-q>"] = false,
         },
       },
-
+      previewer = false,
       file_previewer = require("telescope.previewers").vim_buffer_cat.new,
       grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
       qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
     }),
 
     extensions = {
-      docsets = {
-        query_command = "dasht-query-line",
-        related = {
-          typescript = { "javascript", "typescript" },
-        },
-      },
       fzf = {
         fuzzy = true,
         override_generic_sorter = true,
@@ -72,50 +61,41 @@ return function()
     },
   }
 
-  telescope.load_extension "docsets"
   telescope.load_extension "fzf"
-  telescope.load_extension "manix"
-  -- telescope.load_extension "smart_open"
   telescope.load_extension "ui-select"
   telescope.load_extension "undo"
 
   local nnoremap = require("bombadil.lib.keymap").nnoremap
   local mappings = {
-    -- ["<space>b"] = {
-    --   function()
-    --     require("telescope.builtin").buffers()
-    --   end,
-    --   { desc = "Buffers" },
-    -- },
+    ["<space>b"] = {
+      function()
+        require("telescope.builtin").buffers()
+      end,
+      { desc = "Buffers" },
+    },
     ["<space>h"] = {
       function()
         require("telescope.builtin").help_tags()
       end,
-      { desc = "Help" },
+      { desc = "[telescope] help tags" },
     },
-    -- ["<space>o"] = {
-    --   function()
-    --     require("telescope").extensions.smart_open.smart_open()
-    --   end,
-    --   { desc = "Open Anything™" },
-    -- },
+    ["<space>f"] = {
+      function()
+        require("telescope.builtin").live_grep()
+      end,
+      { desc = "[telescope] grep" },
+    },
+    ["<space>o"] = {
+      function()
+        require("telescope.builtin").git_files { previewer = false }
+      end,
+      { desc = "[telescope] git files" },
+    },
     ["<space>u"] = {
       function()
         require("telescope").extensions.undo.undo()
       end,
-      { desc = "Undo" },
-    },
-    ["<c-,>f"] = {
-      function()
-        require("telescope.builtin").grep_string()
-      end,
-      { desc = "Grep CWORD" },
-    },
-    ["<c-,>k"] = {
-      function()
-        require("telescope").extensions.docsets.find_word_under_cursor { previewer = false }
-      end,
-      { desc = "Docsets CWORD" },
+      { desc = "[telescope] undo" },
     },
   }
 
@@ -123,36 +103,21 @@ return function()
     nnoremap(key, opts[1], opts[2])
   end
 
-  vim.api.nvim_create_user_command("K", function(args)
-    require("telescope").extensions.docsets.query(args.fargs or {}, { previewer = false })
-  end, {
-    desc = "Query docsets",
-    nargs = "*",
-  })
-
   vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)
       local bufnr = args.buf
       local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have a valid client")
 
-      local builtin = require "telescope.builtin"
-
-      if client.supports_method "textDocument/documentSymbol" then
-        vim.keymap.set(
-          "n",
-          "<localleader>fs",
-          builtin.lsp_document_symbols,
-          { buffer = bufnr, desc = "[lsp] document symbols" }
-        )
+      if client:supports_method "textDocument/documentSymbol" then
+        vim.keymap.set("n", "gO", function()
+          require("telescope.builtin").lsp_document_symbols()
+        end, { buffer = bufnr, desc = "[lsp] document symbols" })
       end
 
-      if client.supports_method "workspace/symbol" then
-        vim.keymap.set(
-          "n",
-          "<localleader>fS",
-          builtin.lsp_dynamic_workspace_symbols,
-          { buffer = bufnr, desc = "[lsp] workspace symbols" }
-        )
+      if client:supports_method "workspace/symbol" then
+        vim.keymap.set("n", "<space>s", function()
+          require("telescope.builtin").lsp_workspace_symbols()
+        end, { buffer = bufnr, desc = "[lsp] workspace symbols" })
       end
     end,
   })

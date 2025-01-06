@@ -1,4 +1,6 @@
 return function()
+  -- Trying an alternative to telescope.
+  -- I like this one because of how minimal it is.
   vim.opt.cmdheight = 1 -- ivy.nvim is really janky with cmdheight=0
   require("ivy").setup {
     backends = {

@@ -23,7 +23,7 @@ function M.setup(palette)
   hi.SignColumn = { fg = palette.base04, bg = palette.base00 }
   hi.IncSearch = { fg = palette.base01, bg = palette.base09 }
   -- hi.Substitute = "IncSearch"
-  hi.LineNr = { fg = palette.base04, bg = palette.base00 }
+  hi.LineNr = { fg = palette.base04 }
   -- hi.LineNrAbove = "LineNr"
   -- hi.LineNrBelow = "LineNr"
   -- hi.CursorLineNr = "LineNr"

@@ -11,10 +11,6 @@ in
 
     passthru.vimPlugin = vimUtils.buildVimPlugin {
       inherit name src;
-      patches = [
-        ./ivy-origin-api-missing.patch
-        ./use-package-cpath.patch
-      ];
       doCheck = false;
     };
   }

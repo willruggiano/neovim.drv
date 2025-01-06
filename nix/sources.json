@@ -157,8 +157,8 @@
     },
     "ivy.nvim": {
         "branch": "0.x",
-        "repo": "git@github.com:AdeAttwood/ivy.nvim",
-        "rev": "67ca10505d3a0c2d5e203893ccebeaedab60b16f",
+        "repo": "git@github.com:willruggiano/ivy.nvim",
+        "rev": "627d348b58c0ad6585cd4783b6dc70bf13ac26aa",
         "type": "git"
     },
     "karen-yank.nvim": {

@@ -1,5 +1,5 @@
 return function()
-  vim.opt.cmdheight = 1
+  vim.opt.cmdheight = 1 -- ivy.nvim is really janky with cmdheight=0
   require("ivy").setup {
     backends = {
       { "ivy.backends.buffers", { keymap = "<space>b" } },

@@ -23,7 +23,9 @@ in rec {
   };
 
   blink-cmp = {
-    package = inputs'.blink.packages.default;
+    package = inputs'.blink.packages.default.overrideAttrs {
+      nvimRequireCheck = "blink-cmp";
+    };
     config = {
       appearance.nerd_font_variant = "mono";
       completion = {

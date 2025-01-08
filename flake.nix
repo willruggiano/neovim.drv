@@ -22,13 +22,8 @@
         git-hooks.follows = "";
         hercules-ci-effects.follows = "";
         nixpkgs.follows = "nixpkgs";
-        # neovim-src.follows = "neovim-src";
       };
     };
-    # neovim-src = {
-    #   url = "github:neovim/neovim";
-    #   flake = false;
-    # };
 
     blink = {
       url = "github:Saghen/blink.cmp";
@@ -157,7 +152,6 @@
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
           nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
           sqruff = pkgs.callPackage ./pkgs/sqruff.nix {inherit inputs;};
-          # vtsls = pkgs.callPackage ./pkgs/vtsls {};
         };
       };
     };

@@ -130,6 +130,7 @@ return function()
       },
     },
     graphql = {},
+    -- harper_ls = {},
     hls = {},
     jsonls = {
       cmd = { "vscode-json-languageserver", "--stdio" },

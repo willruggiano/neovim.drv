@@ -44,11 +44,6 @@ in rec {
   bqf = {
     src = sources.nvim-bqf;
     config = true;
-    # dependencies = {
-    #   fzf = {
-    #     src = sources.fzf;
-    #   };
-    # };
   };
 
   # haven't written c++ in awhile... :sad sigh:
@@ -57,29 +52,6 @@ in rec {
     dependencies = {inherit lyaml;};
     ft = ["c" "cpp"];
   };
-
-  # cmp = {
-  #   src = sources.nvim-cmp;
-  #   config = ./cmp.lua;
-  #   dependencies = {
-  #     inherit tailwind-tools;
-  #     cmp-buffer.src = sources.cmp-buffer;
-  #     cmp-cmdline.src = sources.cmp-cmdline;
-  #     cmp-git = {
-  #       src = sources.cmp-git;
-  #       config = true;
-  #     };
-  #     cmp-nvim-lsp = {
-  #       src = sources.cmp-nvim-lsp;
-  #       dependencies = {
-  #         inherit lspkind;
-  #       };
-  #     };
-  #     cmp-nvim-lsp-document-symbol.src = sources.cmp-nvim-lsp-document-symbol;
-  #     cmp-nvim-lsp-signature-help.src = sources.cmp-nvim-lsp-signature-help;
-  #     cmp-path.src = sources.cmp-path;
-  #   };
-  # };
 
   Comment = {
     src = sources."Comment.nvim";
@@ -98,10 +70,7 @@ in rec {
       shellcheck
       shellharden
       shfmt
-      # sql formatting is such ass :/
-      # sleek # really fucks up plpgsql
-      # sqlfluff # can be really slow
-      python3.pkgs.sqlfmt # maybe?
+      python3.pkgs.sqlfmt
       stylua
     ];
   };
@@ -117,10 +86,8 @@ in rec {
       dapui.package = buildVimPlugin {
         name = "dapui";
         src = sources.nvim-dap-ui;
-        doInstallCheck = true;
         doCheck = false;
-        # nvimRequireCheck = "dapui";
-        # dependencies = [dap.package];
+        doInstallCheck = true;
       };
       nio.package = buildVimPlugin {
         name = "nio";
@@ -207,11 +174,6 @@ in rec {
     priority = 1001;
   };
 
-  # focus = {
-  #   src = sources."focus.nvim";
-  #   config = true;
-  # };
-
   fugitive = {
     src = sources.vim-fugitive;
     config = ./fugitive.lua;
@@ -220,12 +182,6 @@ in rec {
   fun = {
     package = config.packages.luafun;
   };
-
-  # ivy = {
-  #   package = config.packages.ivy.vimPlugin;
-  #   config = ./ivy.lua;
-  #   cpath = "${config.packages.ivy}/lib/?.so";
-  # };
 
   gitsigns = {
     src = sources."gitsigns.nvim";
@@ -335,6 +291,7 @@ in rec {
       cmake-language-server
       cppcheck
       efm-langserver
+      harper
       haskellPackages.cabal-fmt
       haskellPackages.haskell-language-server
       haskellPackages.ormolu
@@ -350,7 +307,6 @@ in rec {
       rust-analyzer
       tailwindcss-language-server
       sqlfluff
-      # sqruff
       squawk
       statix
       sumneko-lua-language-server
@@ -486,6 +442,20 @@ in rec {
     cpath = "${package}/lib/lua/5.1/?.so";
   };
 
+  sqlite = {
+    package = buildVimPlugin {
+      name = "sqlite.lua";
+      src = sources."sqlite.lua";
+      nvimRequireCheck = "sqlite";
+    };
+    cpath = "${pkgs.sqlite.out}/lib/?.so";
+    init = ''
+      function()
+        vim.g.sqlite_clib_path = package.searchpath("libsqlite3", package.cpath)
+      end
+    '';
+  };
+
   statuscol = {
     src = sources."statuscol.nvim";
     config = {
@@ -506,10 +476,6 @@ in rec {
     config = ./telescope.lua;
     dependencies = {
       inherit nvim-web-devicons;
-      # telescope-docsets = {
-      #   src = sources."telescope-docsets.nvim";
-      #   paths = with pkgs; [dasht elinks];
-      # };
       telescope-fzf-native = {
         package = buildVimPlugin {
           name = "telescope-fzf-native";
@@ -518,14 +484,16 @@ in rec {
           src = sources."telescope-fzf-native.nvim";
         };
       };
-      # telescope-manix = {
-      #   package = mkVimPlugin {
-      #     name = "telescope-manix";
-      #     src = sources.telescope-manix;
-      #     doCheck = false;
-      #   };
-      #   paths = with pkgs; [manix];
-      # };
+      telescope-smart-open = {
+        package = buildVimPlugin {
+          name = "smart-open.nvim";
+          src = sources."smart-open.nvim";
+          doCheck = false;
+          doInstallCheck = true;
+        };
+        dependencies = {inherit sqlite;};
+        paths = with pkgs; [ripgrep];
+      };
       telescope-symbols = {
         src = sources."telescope-symbols.nvim";
       };
@@ -551,7 +519,6 @@ in rec {
 
   toggleterm = {
     src = sources."toggleterm.nvim";
-    # config = ./toggleterm.lua;
     config = true;
   };
 
@@ -571,24 +538,6 @@ in rec {
       notify = false;
     };
   };
-
-  # wilder = {
-  #   src = sources."wilder.nvim";
-  #   config = ./wilder.lua;
-  #   dependencies = {
-  #     cpsm.package = pkgs.vimPlugins.cpsm;
-  #     fzy-lua-native = let
-  #       package = pkgs.vimUtils.buildVimPlugin {
-  #         name = "fzy-lua-native";
-  #         version = sources.fzy-lua-native.rev;
-  #         src = sources.fzy-lua-native;
-  #       };
-  #     in {
-  #       inherit package;
-  #       cpath = "${package}/static/?.so";
-  #     };
-  #   };
-  # };
 
   zen-mode = {
     src = sources."zen-mode.nvim";

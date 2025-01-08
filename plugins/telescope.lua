@@ -41,6 +41,11 @@ return function()
         case_mode = "smart_case",
       },
       smart_open = {
+        mappings = {
+          i = {
+            ["<C-w>"] = false,
+          },
+        },
         match_algorithm = "fzf",
       },
       undo = {
@@ -66,6 +71,7 @@ return function()
   }
 
   telescope.load_extension "fzf"
+  telescope.load_extension "smart_open"
   telescope.load_extension "ui-select"
   telescope.load_extension "undo"
 
@@ -91,9 +97,9 @@ return function()
     },
     ["<space>o"] = {
       function()
-        require("telescope.builtin").git_files { previewer = false }
+        require("telescope").extensions.smart_open.smart_open { cwd_only = true }
       end,
-      { desc = "[telescope] git files" },
+      { desc = "[telescope] files" },
     },
     ["<space>u"] = {
       function()

@@ -317,11 +317,6 @@ in rec {
     src = sources."lspkind.nvim";
   };
 
-  lualine = {
-    src = sources."lualine.nvim";
-    config = ./lualine.lua;
-  };
-
   lyaml = {
     package = pkgs.neovimUtils.buildNeovimPlugin {
       inherit (luajitPackages.lyaml) pname;

@@ -4,7 +4,6 @@ local keymap = require "bombadil.lib.keymap"
 local noremap = keymap.noremap
 local inoremap = keymap.inoremap
 local nnoremap = keymap.nnoremap
-local tnoremap = keymap.tnoremap
 local vnoremap = keymap.vnoremap
 local xnoremap = keymap.xnoremap
 
@@ -31,10 +30,7 @@ nnoremap("_", "<C-w>-")
 nnoremap(">", "<C-w>>")
 nnoremap("<", "<C-w><")
 
--- Leave terminal mode more ergonomically than ctrl-\ + ctrl-n
-tnoremap("<esc><esc>", "<C-\\><C-n>")
-
--- Thanks, Prime
+-- Thanks Prime
 xnoremap("<leader>p", [["_dP]])
 noremap({ "n", "v" }, "<leader>y", [["+y]])
 nnoremap("<leader>Y", [["+Y]])

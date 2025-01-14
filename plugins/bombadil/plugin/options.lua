@@ -37,7 +37,7 @@ vim.opt.inccommand = "split"
 vim.opt.incsearch = true
 vim.opt.laststatus = 3
 vim.opt.linebreak = false
-vim.opt.listchars = { space = "." }
+vim.opt.listchars = { space = ".", precedes = "<", extends = ">" }
 vim.opt.modelines = 1
 vim.opt.more = false
 vim.opt.mouse = "n"
@@ -71,4 +71,4 @@ vim.opt.timeoutlen = 500
 vim.opt.updatetime = 1000
 vim.opt.wildmode = { "longest", "full" }
 vim.opt.wildoptions = { "pum" }
-vim.opt.wrap = true
+vim.opt.wrap = false

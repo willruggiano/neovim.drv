@@ -279,7 +279,9 @@ return function()
       end
 
       if client:supports_method "textDocument/diagnostic" then
-        vim.keymap.set("n", "<localleader>e", vim.diagnostic.open_float, { buffer = bufnr, desc = "[lsp] explain" })
+        vim.keymap.set("n", "<localleader>e", function()
+          vim.diagnostic.open_float()
+        end, { buffer = bufnr, desc = "[lsp] explain" })
       end
 
       if client:supports_method "textDocument/codeAction" then

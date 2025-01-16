@@ -2,6 +2,7 @@ return function()
   local telescope = require "telescope"
   local actions = require "telescope.actions"
   local themes = require "telescope.themes"
+  local lga = require "telescope-live-grep-args.actions"
 
   local default_theme = themes.get_ivy {
     layout_config = { height = 0.25 },
@@ -40,6 +41,17 @@ return function()
         override_file_sorter = true,
         case_mode = "smart_case",
       },
+      live_grep_args = {
+        auto_quoting = true,
+        mappings = {
+          i = {
+            ["<C-'>"] = lga.quote_prompt(),
+            ["<C-i>"] = lga.quote_prompt { postfix = " --iglob " },
+            -- freeze the current list and start a fuzzy search in the frozen list
+            ["<C-space>"] = actions.to_fuzzy_refine,
+          },
+        },
+      },
       smart_open = {
         mappings = {
           i = {
@@ -71,6 +83,7 @@ return function()
   }
 
   telescope.load_extension "fzf"
+  telescope.load_extension "live_grep_args"
   telescope.load_extension "smart_open"
   telescope.load_extension "ui-select"
   telescope.load_extension "undo"
@@ -91,7 +104,7 @@ return function()
     },
     ["<space>f"] = {
       function()
-        require("telescope.builtin").live_grep()
+        require("telescope").extensions.live_grep_args.live_grep_args()
       end,
       { desc = "[telescope] grep" },
     },

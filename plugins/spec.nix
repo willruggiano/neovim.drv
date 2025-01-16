@@ -479,6 +479,15 @@ in rec {
           src = sources."telescope-fzf-native.nvim";
         };
       };
+      telescope-live-grep-args = {
+        package = buildVimPlugin {
+          name = "telescope-live-grep-args";
+          src = sources."telescope-live-grep-args.nvim";
+          paths = with pkgs; [ripgrep];
+          doCheck = false;
+          doInstallCheck = true;
+        };
+      };
       telescope-smart-open = {
         package = buildVimPlugin {
           name = "smart-open.nvim";

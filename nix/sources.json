@@ -401,6 +401,12 @@
         "rev": "dae2eac9d91464448b584c7949a31df8faefec56",
         "type": "git"
     },
+    "telescope-live-grep-args.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:nvim-telescope/telescope-live-grep-args.nvim",
+        "rev": "649b662a8f476fd2c0289570764459e95ebaa3f3",
+        "type": "git"
+    },
     "telescope-manix": {
         "branch": "master",
         "repo": "git@github.com:mrcjkb/telescope-manix",

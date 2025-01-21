@@ -71,5 +71,5 @@ vim.opt.timeoutlen = 500
 vim.opt.updatetime = 1000
 vim.opt.wildmode = { "longest", "full" }
 vim.opt.wildoptions = { "pum" }
-vim.opt.winbar = "%f %m"
+vim.opt.winbar = "%F %m"
 vim.opt.wrap = false

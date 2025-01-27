@@ -1,9 +1,9 @@
 {
   "url": "https://github.com/tree-sitter-grammars/tree-sitter-hyprlang",
-  "rev": "af796443b66d7ab00184992daa3bdaede0955c87",
-  "date": "2025-01-20T07:48:50+03:00",
-  "sha256": "1w369jnqxqn2x71dqy864bzfv9v63yx7xc0winqspr6wwkvqkj0f",
-  "hash": "sha256-DsiJ9+Tc5KuxjRywfrofZqft/iIGedzC6cLijq1MZvA=",
+  "rev": "d719158abe537b1916daaea6fa03287089f0b601",
+  "date": "2025-01-21T08:19:14+03:00",
+  "sha256": "1qnfmg1p5bwwm0yrwzcxdmg9il237ifkxbdcp58za4j3h51ya9z6",
+  "hash": "sha256-5iflQ4FDEvVRuaytPl08Q9CYXm2dfZ49qJyvcsOrzuI=",
   "fetchLFS": false,
   "fetchSubmodules": false,
   "deepClone": false,

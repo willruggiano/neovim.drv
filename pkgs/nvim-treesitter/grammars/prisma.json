@@ -1,9 +1,9 @@
 {
   "url": "https://github.com/victorhqc/tree-sitter-prisma",
-  "rev": "eca2596a355b1a9952b4f80f8f9caed300a272b5",
-  "date": "2023-01-05T15:24:25+01:00",
-  "sha256": "19zb3dkwp2kpyivygqxk8yph0jpl7hn9zzcry15mshn2n0rs9sih",
-  "hash": "sha256-MOqkM7DCQl1L8Jn9nyw89EoAr0ez4+d39HeKy2cb66c=",
+  "rev": "73f39a6d5401cfdcd143951e499336cf5ab2ffaa",
+  "date": "2025-01-24T17:03:54+01:00",
+  "sha256": "06k6xxz9bryiqz8njmghgx25sls0h9ii2pckvzzymhgnczwf20fk",
+  "hash": "sha256-0wHh+Gf2wer/35NdEWOCQFNdRH/wVWnRx9HnlX7vZho=",
   "fetchLFS": false,
   "fetchSubmodules": false,
   "deepClone": false,

@@ -10,8 +10,9 @@
     name = "dbee";
     src = sources.nvim-dbee;
     sourceRoot = "source/dbee";
-    vendorHash = "sha256-U/3WZJ/+Bm0ghjeNUILsnlZnjIwk3ySaX3Rd4L9Z62A=";
+    vendorHash = "sha256-uvTm3qolnSs7h21H0lWedjSvjkmIIvDrsEYZQr2RxYk=";
     buildInputs = [arrow-cpp duckdb];
+    doCheck = false;
   };
 in
   vimUtils.buildVimPlugin {

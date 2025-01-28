@@ -184,7 +184,12 @@ in rec {
   };
 
   gitsigns = {
-    src = sources."gitsigns.nvim";
+    package = buildVimPlugin {
+      name = "gitsigns.nvim";
+      src = sources."gitsigns.nvim";
+      nvimRequireCheck = "gitsigns";
+      dependencies = [plenary.package];
+    };
     config = ./gitsigns.lua;
   };
 

@@ -260,7 +260,7 @@
     "nvim-dbee": {
         "branch": "master",
         "repo": "git@github.com:kndndrj/nvim-dbee",
-        "rev": "98af3ed1fa93038030e48a0651dc762e851aa8b7",
+        "rev": "495f6f718ccfb98eba51c7998e30f3f3ea6e95e1",
         "type": "git"
     },
     "nvim-jqx": {

@@ -66,7 +66,7 @@ return function()
     },
     cmake = {},
     efm = {
-      filetypes = { "cpp", "nix", "sql", "yaml" },
+      filetypes = { "cpp", "nix", "yaml" },
       settings = {
         languages = {
           cpp = {
@@ -89,17 +89,6 @@ return function()
             },
           },
           sql = {
-            {
-              lintSource = "sqlfluff",
-              lintCommand = "sqlfluff lint --dialect postgres --format github-annotation-native --annotation-level warning --nocolor --disable-progress-bar ${INPUT}",
-              lintIgnoreExitCode = true,
-              lintStdin = false,
-              lintFormats = {
-                "::%totice title=SQLFluff,file=%f,line=%l,col=%c,endLine=%e,endColumn=%k::%m",
-                "::%tarning title=SQLFluff,file=%f,line=%l,col=%c,endLine=%e,endColumn=%k::%m",
-                "::%trror title=SQLFluff,file=%f,line=%l,col=%c,endLine=%e,endColumn=%k::%m",
-              },
-            },
             -- {
             --   lintSource = "squawk",
             --   lintCommand = "squawk --reporter gcc ${INPUT}",

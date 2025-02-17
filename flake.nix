@@ -10,7 +10,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nix = {
-      # url = "path:///home/bombadil/dev/neovim.nix";
       url = "github:willruggiano/neovim.nix";
       inputs.example.follows = "";
       inputs.flake-parts.follows = "flake-parts";
@@ -74,6 +73,9 @@
           inherit system;
           overlays = [
             inputs.rust-overlay.overlays.default
+            (final: prev: {
+              neovim-unwrapped = config.packages.neovim-nightly;
+            })
           ];
         };
       in {
@@ -144,11 +146,13 @@
             ];
             meta.mainProgram = "nvim";
           };
+          darkman-nvim = pkgs.callPackage ./pkgs/darkman-nvim {};
           ivy = pkgs.callPackage ./pkgs/ivy {};
           kulala-fmt = pkgs.callPackage ./pkgs/kulala-fmt {};
           luafun = pkgs.luajit.pkgs.callPackage ./pkgs/luafun.nix {};
           neovim-nightly = inputs'.neovim.packages.default;
           nvim = config.neovim.final;
+          nvim-rplugin = config.neovim.build.rplugin;
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
           nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
           sqruff = pkgs.callPackage ./pkgs/sqruff.nix {inherit inputs;};

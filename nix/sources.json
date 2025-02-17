@@ -77,6 +77,12 @@
         "rev": "a6f5bdb78caa305496357d17e962bbc4c0b392e2",
         "type": "git"
     },
+    "darkman.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:4e554c4c/darkman.nvim",
+        "rev": "300b441eaa1187ffaa541fc54971ee8ce731884f",
+        "type": "git"
+    },
     "dial.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/monaqa/dial.nvim",

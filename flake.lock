@@ -663,11 +663,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1732669286,
-        "narHash": "sha256-nvW5PFTGVL+uK9OxhT/yHV/V9PjPcJFltFRf+yvrXJE=",
+        "lastModified": 1739823904,
+        "narHash": "sha256-lkRwcU7juuu051KT4PB4Xwu5HnCQjggIPIhFPvp4J34=",
         "owner": "willruggiano",
         "repo": "neovim.nix",
-        "rev": "4da98de2964173066d32ce703fdb8fd8b9301c71",
+        "rev": "cb640dd85c0f02fe32cecc32988a1d45d4311f20",
         "type": "github"
       },
       "original": {

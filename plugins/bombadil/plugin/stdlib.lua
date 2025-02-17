@@ -1,7 +1,6 @@
 ---Captures the output of a program.
 ---@param cmd string the command to run
----@param raw boolean if true, command output will be returned as is, else beginning/trailing spaces
---and newlines will be removed
+---@param raw boolean? if true, command output will be returned as is, else beginning/trailing spaces and newlines will be removed
 ---@return string
 ---@see io.popen
 os.capture = function(cmd, raw)

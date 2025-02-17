@@ -14,7 +14,7 @@ in rec {
     lazy = false;
     priority = 1000;
     dependencies = {
-      inherit lfs;
+      inherit dot-nvim;
     };
   };
 
@@ -65,8 +65,6 @@ in rec {
     src = sources."conform.nvim";
     config = ./conform.lua;
     paths = with pkgs; [
-      biome
-      nodePackages.prettier # for markdown
       shellcheck
       shellharden
       shfmt
@@ -127,6 +125,17 @@ in rec {
     ];
   };
 
+  darkman = {
+    package = config.packages.darkman-nvim;
+    config = {
+      change_background = true;
+      colorscheme = {
+        dark = "flavours";
+        light = "flavours";
+      };
+    };
+  };
+
   dbee = {
     package = config.packages.nvim-dbee.overrideAttrs (_: {
       dependencies = [nui.package];
@@ -144,6 +153,7 @@ in rec {
     package = buildVimPlugin {
       name = "dot-nvim";
       src = sources.".nvim.nvim";
+      dependencies = [lfs.package];
       doCheck = false;
     };
     dependencies = {inherit lfs;};
@@ -291,7 +301,6 @@ in rec {
       actionlint
       alejandra # used by nil for formatting
       basedpyright
-      biome
       clang-tools
       cmake-language-server
       cppcheck
@@ -310,8 +319,6 @@ in rec {
       nodePackages.yaml-language-server
       ruff-lsp
       rust-analyzer
-      tailwindcss-language-server
-      sqlfluff
       squawk
       statix
       sumneko-lua-language-server

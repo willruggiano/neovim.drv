@@ -125,16 +125,16 @@ in rec {
     ];
   };
 
-  darkman = {
-    package = config.packages.darkman-nvim;
-    config = {
-      change_background = true;
-      colorscheme = {
-        dark = "flavours";
-        light = "flavours";
-      };
-    };
-  };
+  # darkman = {
+  #   package = config.packages.darkman-nvim;
+  #   config = {
+  #     change_background = true;
+  #     colorscheme = {
+  #       dark = "flavours";
+  #       light = "flavours";
+  #     };
+  #   };
+  # };
 
   dbee = {
     package = config.packages.nvim-dbee.overrideAttrs (_: {

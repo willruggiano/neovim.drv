@@ -10,7 +10,7 @@
     name = "dbee";
     src = sources.nvim-dbee;
     sourceRoot = "source/dbee";
-    vendorHash = "sha256-uvTm3qolnSs7h21H0lWedjSvjkmIIvDrsEYZQr2RxYk=";
+    vendorHash = "sha256-ah3gpaL1XSlktQNCE8sHNLJtKY5zBNNNDetinq/zySM=";
     buildInputs = [arrow-cpp duckdb];
     doCheck = false;
   };

@@ -1,10 +1,9 @@
 {
   inputs = {
-    devenv = {
-      url = "github:cachix/devenv";
-      inputs.git-hooks.follows = "git-hooks";
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    git-hooks.url = "github:cachix/git-hooks.nix";
     naersk = {
       url = "github:nix-community/naersk";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -36,18 +35,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     sg-nvim.url = "github:sourcegraph/sg.nvim";
+    treefmt = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     vscode-js-debug.url = "github:willruggiano/vscode-js-debug.nix";
     zls.url = "github:zigtools/zls";
   };
 
   nixConfig = {
     extra-substituters = [
-      "https://devenv.cachix.org"
       "https://nix-community.cachix.org"
       "https://willruggiano.cachix.org"
     ];
     extra-trusted-public-keys = [
-      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "willruggiano.cachix.org-1:rz00ME8/uQfWe+tN3njwK5vc7P8GLWu9qbAjjJbLoSw="
     ];
@@ -56,8 +57,9 @@
   outputs = {flake-parts, ...} @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        inputs.devenv.flakeModule
+        inputs.git-hooks.flakeModule
         inputs.neovim-nix.flakeModule
+        inputs.treefmt.flakeModule
         ./modules
       ];
 
@@ -117,23 +119,13 @@
           };
         };
 
-        devenv.shells.default = {
+        devShells.default = pkgs.mkShell {
           name = "neovim";
-          # https://github.com/cachix/devenv/issues/528
-          containers = lib.mkForce {};
-          packages = with pkgs; [alejandra just niv nodejs tree-sitter];
-          pre-commit.hooks = {
-            alejandra.enable = true;
-            stylua.enable = true;
-          };
-          scripts = {
-            plug-add.exec = ''
-              niv add git git@github.com:$1 && git add -A
-            '';
-          };
+          inputsFrom = [
+            config.pre-commit.devShell
+          ];
+          buildInputs = with pkgs; [alejandra just niv];
         };
-
-        formatter = pkgs.alejandra;
 
         packages = {
           default = pkgs.symlinkJoin {
@@ -155,7 +147,26 @@
           nvim-rplugin = config.neovim.build.rplugin;
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
           nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
+          # Currently not buildable with nix :(
+          # postgres_lsp = pkgs.callPackage ./pkgs/postgres_lsp {inherit inputs;};
           sqruff = pkgs.callPackage ./pkgs/sqruff.nix {inherit inputs;};
+        };
+
+        pre-commit.settings = {
+          hooks.treefmt = {
+            enable = true;
+            package = config.treefmt.build.wrapper;
+          };
+        };
+
+        treefmt.config = {
+          projectRootFile = "flake.nix";
+          programs = {
+            alejandra.enable = true;
+            prettier.enable = true;
+            stylua.enable = true;
+          };
+          settings.global.excludes = ["justfile" "*.vim" "*.scm" "*.snip*" "*.toml"];
         };
       };
     };

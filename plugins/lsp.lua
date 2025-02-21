@@ -210,6 +210,7 @@ return function()
     -- tailwindcss = {
     --   root_dir = util.root_pattern "tailwind.config.*",
     -- },
+    tsp_server = {},
     vtsls = {
       settings = {
         vtsls = {

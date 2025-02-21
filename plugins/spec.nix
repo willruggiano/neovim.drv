@@ -322,6 +322,7 @@ in rec {
       squawk
       statix
       sumneko-lua-language-server
+      # typespec # broken
     ];
   };
 

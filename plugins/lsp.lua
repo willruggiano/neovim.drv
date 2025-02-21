@@ -179,6 +179,7 @@ return function()
       },
     },
     marksman = {},
+    mdx_analyzer = {},
     nil_ls = {
       settings = {
         ["nil"] = {

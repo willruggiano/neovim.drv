@@ -213,6 +213,7 @@ return function()
     -- },
     tsp_server = {},
     vtsls = {
+      root_dir = util.root_pattern ".git",
       settings = {
         vtsls = {
           autoUseWorkspaceTsdk = true,

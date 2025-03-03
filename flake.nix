@@ -34,7 +34,6 @@
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    sg-nvim.url = "github:sourcegraph/sg.nvim";
     treefmt = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -139,7 +138,6 @@
             meta.mainProgram = "nvim";
           };
           darkman-nvim = pkgs.callPackage ./pkgs/darkman-nvim {};
-          ivy = pkgs.callPackage ./pkgs/ivy {};
           kulala-fmt = pkgs.callPackage ./pkgs/kulala-fmt {};
           luafun = pkgs.luajit.pkgs.callPackage ./pkgs/luafun.nix {};
           neovim-nightly = inputs'.neovim.packages.default;

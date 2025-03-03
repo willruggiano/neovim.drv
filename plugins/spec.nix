@@ -33,7 +33,7 @@ in rec {
           auto_show = true;
           auto_show_delay_ms = 300;
         };
-        ghost_text.enabled = true;
+        ghost_text.enabled = false;
       };
       fuzzy.prebuilt_binaries.download = false;
       keymap.preset = "default";
@@ -261,9 +261,6 @@ in rec {
       doCheck = false;
     };
     config = true;
-    dependencies = {
-      inherit neo-tree;
-    };
   };
 
   lspconfig = {
@@ -357,19 +354,6 @@ in rec {
         require("flavours").highlight.MatchParen = "LspReferenceText"
       end
     '';
-  };
-
-  neo-tree = {
-    package = buildVimPlugin {
-      name = "neo-tree";
-      src = sources."neo-tree.nvim";
-      dependencies = [plenary.package nui.package];
-      nvimRequireCheck = "neo-tree";
-    };
-    config = ./neo-tree.lua;
-    dependencies = {
-      inherit nui nvim-web-devicons plenary;
-    };
   };
 
   nui.package = buildVimPlugin {

@@ -79,9 +79,6 @@
       owner = "WhyNotHugo";
       url = "https://gitlab.com/${owner}/tree-sitter-jsonc";
     };
-    jsonnet = {
-      owner = "sourcegraph";
-    };
     just = {
       owner = "IndianBoy42";
     };

@@ -11,12 +11,6 @@
     ...
   } @ args: {
     neovim = {
-      # Environment variables to bake into the neovim environment.
-      # If an environment variable is already defined, the existing definition will take precedence.
-      env = {
-        SRC_ENDPOINT = "https://sourcegraph.com";
-      };
-
       package = config.packages.neovim-nightly;
 
       # Tools to bake into the neovim environment.
@@ -42,7 +36,7 @@
               "gzip"
               "matchit"
               "matchparen"
-              "netrwPlugin"
+              # "netrwPlugin"
               "shada"
               "spellfile"
               "tarPlugin"

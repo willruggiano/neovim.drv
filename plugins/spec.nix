@@ -313,8 +313,8 @@ in rec {
       inputs'.zls.packages.default
       marksman
       nodePackages.bash-language-server
-      nodePackages.graphql-language-service-cli
-      nodePackages.typescript-language-server
+      # nodePackages.graphql-language-service-cli
+      # nodePackages.typescript-language-server
       nodePackages.vscode-json-languageserver
       nodePackages.yaml-language-server
       ruff-lsp

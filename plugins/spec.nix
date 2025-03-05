@@ -528,6 +528,8 @@ in rec {
     config = true;
   };
 
+  vinegar.src = sources.vim-vinegar;
+
   which-key = {
     package = buildVimPlugin {
       name = "which-key";

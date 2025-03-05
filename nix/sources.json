@@ -408,6 +408,12 @@
     "rev": "65846025c15494983dafe5e3b46c8f88ab2e9635",
     "type": "git"
   },
+  "vim-vinegar": {
+    "branch": "master",
+    "repo": "git@github.com:tpope/vim-vinegar",
+    "rev": "bb1bcddf43cfebe05eb565a84ab069b357d0b3d6",
+    "type": "git"
+  },
   "which-key.nvim": {
     "branch": "main",
     "repo": "git@github.com:folke/which-key.nvim",

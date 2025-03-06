@@ -36,28 +36,10 @@ noremap({ "n", "v" }, "<leader>y", [["+y]])
 nnoremap("<leader>Y", [["+Y]])
 noremap({ "n", "v" }, "<leader>d", [["_d]])
 
--- Move lines
-nnoremap("<D-j>", function()
-  vim.cmd [[m .+1<CR>==]]
-end, { desc = "Move line down" })
-
-nnoremap("<D-k>", function()
-  vim.cmd [[m .-2<CR>==]]
-end, { desc = "Move line up" })
-
 -- Silent save
 nnoremap("<C-s>", function()
   vim.cmd.update { bang = true, mods = { silent = true } }
 end, { desc = "save" })
-
--- Move lines
-vnoremap("<D-j>", function()
-  vim.cmd [[m '>+1<CR>gv=gv]]
-end, { desc = "Move line down" })
-
-vnoremap("<D-k>", function()
-  vim.cmd [[m '<-2<CR>gv=gv]]
-end, { desc = "Move line up" })
 
 -- Toggle the quickfix list
 nnoremap("<space>q", function()

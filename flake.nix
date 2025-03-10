@@ -113,7 +113,7 @@
               nix flake update &&
               niv update &&
               nix run .#nvim-treesitter.update-grammars &&
-              nix flake check --impure
+              nix flake check
             '';
           };
         };

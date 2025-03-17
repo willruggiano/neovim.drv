@@ -66,7 +66,7 @@ return function()
     },
     cmake = {},
     efm = {
-      filetypes = { "cpp", "nix", "yaml" },
+      filetypes = { "cpp", "nix" },
       settings = {
         languages = {
           cpp = {
@@ -88,33 +88,6 @@ return function()
               rootMarkers = { "flake.nix", "shell.nix", "default.nix" },
             },
           },
-          sql = {
-            -- {
-            --   lintSource = "squawk",
-            --   lintCommand = "squawk --reporter gcc ${INPUT}",
-            --   lintStdin = false,
-            --   lintFormats = {
-            --     "%.%#:%l:%c: %trror: %m",
-            --     "%.%#:%l:%c: %tarning: %m",
-            --     "%.%#:%l:%c: %tnfo: %m",
-            --   },
-            -- },
-          },
-          yaml = {
-            {
-              lintSource = "actionlint",
-              lintCommand = [[actionlint -no-color -oneline -stdin-filename "${INPUT}" -]],
-              lintStdin = true,
-              lintFormats = {
-                "%f:%l:%c: %.%#: SC%n:%trror:%m",
-                "%f:%l:%c: %.%#: SC%n:%tarning:%m",
-                "%f:%l:%c: %.%#: SC%n:%tnfo:%m",
-                "%f:%l:%c: %m",
-              },
-              requireMarker = true,
-              rootMarkers = { ".github/" },
-            },
-          },
         },
       },
     },
@@ -131,7 +104,7 @@ return function()
                 description = "Configuration file for relay-compiler",
                 fileMatch = { "relay.config.json" },
                 name = "relay.config.json",
-                url = "https://raw.githubusercontent.com/facebook/relay/main/compiler/crates/relay-compiler/relay-compiler-config-schema.json",
+                url = "node_modules/relay-compiler/relay-compiler-config-schema.json",
               },
             },
           },
@@ -230,7 +203,6 @@ return function()
     },
     zls = {
       settings = {
-        --
         zls = {
           -- enable_build_on_save = true, -- default with a check step
           semantic_tokens = "full",

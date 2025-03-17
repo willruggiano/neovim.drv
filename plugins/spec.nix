@@ -230,9 +230,6 @@ in rec {
     dependencies = {
       inherit nvim-treesitter;
     };
-    paths = [
-      config.packages.kulala-fmt
-    ];
   };
 
   leap = {

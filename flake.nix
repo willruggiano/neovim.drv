@@ -138,7 +138,8 @@
             meta.mainProgram = "nvim";
           };
           darkman-nvim = pkgs.callPackage ./pkgs/darkman-nvim {};
-          kulala-fmt = pkgs.callPackage ./pkgs/kulala-fmt {};
+          # Not buildable since switch to bun
+          # kulala-fmt = pkgs.callPackage ./pkgs/kulala-fmt {};
           luafun = pkgs.luajit.pkgs.callPackage ./pkgs/luafun.nix {};
           neovim-nightly = inputs'.neovim.packages.default;
           nvim = config.neovim.final;
@@ -164,7 +165,7 @@
             prettier.enable = true;
             stylua.enable = true;
           };
-          settings.global.excludes = ["justfile" "*.vim" "*.scm" "*.snip*" "*.toml"];
+          settings.global.excludes = ["*.vim" "*.scm" "*.snip*" "*.toml" "justfile" "nix/sources.json"];
         };
       };
     };

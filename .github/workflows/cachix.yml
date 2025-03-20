@@ -11,22 +11,25 @@ concurrency:
 
 jobs:
   cachix:
-    runs-on: ubuntu-latest
+    runs-on: namespace-profile-cached-amd64-lg
     steps:
       - uses: actions/checkout@v4
+      - uses: namespacelabs/nscloud-cache-action@v1
+        with:
+          path: |
+            /nix
       - uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - uses: cachix/install-nix-action@v25
+      - uses: cachix/install-nix-action@v31
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
           extra_nix_config: |
             accept-flake-config = true
-      - uses: DeterminateSystems/magic-nix-cache-action@v4
-      - uses: cachix/cachix-action@v14
+      - uses: cachix/cachix-action@v16
         with:
           name: willruggiano
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
-      - run: nix flake check --impure
+      - run: nix flake check
       - run: nix build
       - run: cachix pin willruggiano nvim-drv "$(nix build --print-out-paths)"

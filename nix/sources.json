@@ -14,7 +14,7 @@
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
-        "rev": "236438da47cafc39b15d2017a229a6613c581055",
+        "rev": "e659e0c6ca06727ed898aaaeea3850f528898684",
         "type": "git"
     },
     "clang-format.nvim": {
@@ -32,7 +32,7 @@
     "conform.nvim": {
         "branch": "master",
         "repo": "git@github.com:stevearc/conform.nvim",
-        "rev": "f9ef25a7ef00267b7d13bfc00b0dea22d78702d5",
+        "rev": "b1a75324ddf96b7bb84963a297b1ed334db087c0",
         "type": "git"
     },
     "darkman.nvim": {
@@ -44,7 +44,7 @@
     "dial.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/monaqa/dial.nvim",
-        "rev": "1fc4475c66b794aad3dde39414f73b2e2b26230e",
+        "rev": "2c7e2750372918f072a20f3cf754d845e143d7c9",
         "type": "git"
     },
     "fastaction.nvim": {
@@ -80,7 +80,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "82fd88339b115f1159d66588191990d95fb41e88",
+        "rev": "e15cba0c8c7c9dd3388d260cf5b5de7fc044dfbc",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -92,13 +92,13 @@
     "gitsigns.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/lewis6991/gitsigns.nvim",
-        "rev": "7010000889bfb6c26065e0b0f7f1e6aa9163edd9",
+        "rev": "3c76f7fabac723aa682365ef782f88a83ccdb4ac",
         "type": "git"
     },
     "grug-far.nvim": {
         "branch": "main",
         "repo": "git@github.com:magicduck/grug-far.nvim",
-        "rev": "2c7ef09353714bd4954f5459d9a7e2579a050dc7",
+        "rev": "9411a99390014231753bbb7a2afe6886fda99257",
         "type": "git"
     },
     "indent-blankline.nvim": {
@@ -122,7 +122,7 @@
     "kulala.nvim": {
         "branch": "main",
         "repo": "git@github.com:mistweaverco/kulala.nvim",
-        "rev": "bde8be17bf9983f302442ec91ad443f651bdef47",
+        "rev": "791b8850e8faf0588955cf531a0817195bcab737",
         "type": "git"
     },
     "leap.nvim": {
@@ -152,7 +152,7 @@
     "nvim-bqf": {
         "branch": "main",
         "repo": "ssh://git@github.com/kevinhwang91/nvim-bqf",
-        "rev": "ebb6d2689e4427452180f17c53f29f7e460236f1",
+        "rev": "e20417d5e589e03eaaaadc4687904528500608be",
         "type": "git"
     },
     "nvim-cmp": {
@@ -164,7 +164,7 @@
     "nvim-dap": {
         "branch": "master",
         "repo": "ssh://git@github.com/mfussenegger/nvim-dap",
-        "rev": "6a5bba0ddea5d419a783e170c20988046376090d",
+        "rev": "7aade9e99bef5f0735cf966e715b3ce45515d786",
         "type": "git"
     },
     "nvim-dap-ui": {
@@ -188,7 +188,7 @@
     "nvim-dbee": {
         "branch": "master",
         "repo": "git@github.com:kndndrj/nvim-dbee",
-        "rev": "0027085fff82431b2c4dc74c072cf2c62ca579aa",
+        "rev": "b4aebcabedbf0f5aa90ca391c87d6095e365ac33",
         "type": "git"
     },
     "nvim-lsp-file-operations": {
@@ -200,7 +200,7 @@
     "nvim-lspconfig": {
         "branch": "master",
         "repo": "git@github.com:neovim/nvim-lspconfig",
-        "rev": "fb733ac734249ccf293e5c8018981d4d8f59fa8f",
+        "rev": "ff6471d4f837354d8257dfa326b031dd8858b16e",
         "type": "git"
     },
     "nvim-nio": {
@@ -224,7 +224,7 @@
     "nvim-treesitter": {
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter",
-        "rev": "e329e94a6a0a5ccf6ec8bfec1d10faf5eaae665f",
+        "rev": "9df671fda41bc4af91b9f7ea3fa1628ba988a77b",
         "type": "git"
     },
     "nvim-treesitter-textobjects": {
@@ -242,7 +242,7 @@
     "nvim-vtsls": {
         "branch": "main",
         "repo": "git@github.com:yioneko/nvim-vtsls",
-        "rev": "45c6dfea9f83a126e9bfc5dd63430562b3f8af16",
+        "rev": "b1f2dfc1ed21d741ebbc211fe02f830ea4545f09",
         "type": "git"
     },
     "nvim-web-devicons": {
@@ -254,7 +254,7 @@
     "overseer.nvim": {
         "branch": "master",
         "repo": "git@github.com:stevearc/overseer.nvim",
-        "rev": "d95931e9e8cc4429819c8bbae395da00a6800d1e",
+        "rev": "72c68aab0358c92f451168b704c411c4a3e3410e",
         "type": "git"
     },
     "plenary.nvim": {
@@ -266,7 +266,7 @@
     "postgres_lsp": {
         "branch": "main",
         "repo": "git@github.com:supabase/postgres_lsp",
-        "rev": "ff3ae5ab2d54598d03c130d5b23b0b17a10c2f74",
+        "rev": "4cbeb5d3f620f67c03ac6d7ecf90d0a976d9aa38",
         "submodules": true,
         "type": "git"
     },
@@ -381,7 +381,7 @@
     "vim-matchup": {
         "branch": "master",
         "repo": "git@github.com:andymass/vim-matchup",
-        "rev": "aca23ce53ebfe34e02c4fe07e29e9133a2026481",
+        "rev": "ea2ff43e09e68b63fc6d9268fc5d82d82d433cb3",
         "type": "git"
     },
     "vim-repeat": {

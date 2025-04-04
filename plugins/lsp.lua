@@ -162,6 +162,25 @@ return function()
         },
       },
     },
+    postgres_lsp = {
+      capabilities = {
+        workspace = {
+          -- I don't think pgt supports configuration through this notification.
+          didChangeConfiguration = { dynamicRegistration = true },
+        },
+      },
+      cmd = { "postgrestools", "lsp-proxy" },
+      filetypes = { "sql" },
+      single_file_support = true,
+      -- I also don't think it supports InitializeParams yet.
+      -- settings = {
+      --   postgres_lsp = {
+      --     db = {
+      --       database = "dev",
+      --     },
+      --   },
+      -- },
+    },
     prismals = {
       capabilities = {
         workspace = {

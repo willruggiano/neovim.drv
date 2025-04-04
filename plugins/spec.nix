@@ -311,6 +311,7 @@ in rec {
       # nodePackages.typescript-language-server
       nodePackages.vscode-json-languageserver
       nodePackages.yaml-language-server
+      postgrestools
       ruff-lsp
       rust-analyzer
       squawk

@@ -146,6 +146,7 @@
           nvim-rplugin = config.neovim.build.rplugin;
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
           nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
+          postgrestools = pkgs.callPackage ./pkgs/postgres_lsp {};
           # Currently not buildable with nix :(
           # postgres_lsp = pkgs.callPackage ./pkgs/postgres_lsp {inherit inputs;};
           sqruff = pkgs.callPackage ./pkgs/sqruff.nix {inherit inputs;};

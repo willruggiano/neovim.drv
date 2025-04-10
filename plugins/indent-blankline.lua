@@ -20,8 +20,8 @@ return function()
       },
     },
     indent = {
-      highlight = "base02_fg",
-      char = "|",
+      -- highlight = "base02_fg",
+      char = "⦙",
     },
     scope = { enabled = false },
   }

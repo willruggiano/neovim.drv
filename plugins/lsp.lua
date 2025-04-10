@@ -168,14 +168,13 @@ return function()
           didChangeConfiguration = { dynamicRegistration = true },
         },
       },
-      cmd = { "postgrestools", "lsp-proxy" },
+      cmd = { "/home/bombadil/dev/postgres_lsp/target/debug/postgrestools", "lsp-proxy" },
       filetypes = { "sql" },
       single_file_support = true,
       settings = {
         db = {
           username = vim.env.USER,
           password = vim.env.USER,
-          database = "dev",
         },
       },
     },
@@ -301,6 +300,14 @@ return function()
         vim.keymap.set("n", "gT", function()
           vim.lsp.buf.type_definition { reuse_win = true }
         end, { buffer = bufnr, desc = "[lsp] typedef" })
+      end
+
+      if client:supports_method "workspace/symbol" then
+        vim.keymap.set("n", "<space>s", function()
+          vim.ui.input({ prompt = "Query> " }, function(query)
+            vim.lsp.buf.workspace_symbol(query)
+          end)
+        end, { buffer = bufnr, desc = "[lsp] workspace symbols" })
       end
     end,
   })

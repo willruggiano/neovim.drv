@@ -29,7 +29,6 @@ return function()
       },
     },
     formatters_by_ft = {
-      bash = { "shellcheck", "shellharden", "shfmt" },
       graphql = { "prettier" },
       http = { "kulala" },
       javascript = function(bufnr)
@@ -41,8 +40,6 @@ return function()
       json = { "biome", "prettier", stop_after_first = true },
       lua = { "stylua" },
       markdown = { "prettier", "injected" },
-      sh = { "shellcheck", "shellharden", "shfmt" },
-      -- sql = { "sqlfmt" },
       typescript = function(bufnr)
         return { first(bufnr, "biome", "prettier"), "injected" }
       end,

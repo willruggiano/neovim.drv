@@ -65,7 +65,6 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = -1 -- use shiftwidth
 vim.opt.tabstop = 2
 
-vim.opt.termguicolors = true
 vim.opt.textwidth = 80
 vim.opt.timeoutlen = 500
 vim.opt.updatetime = 1000

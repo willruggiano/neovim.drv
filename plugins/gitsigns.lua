@@ -46,8 +46,8 @@ return function()
   }
 
   -- Not sure where these come from but they ugly :/
-  local hi = require("flavours").highlight
-  hi.Added = "DiffAdd"
-  hi.Changed = "DiffChange"
-  hi.Removed = "DiffDelete"
+  -- local hi = require("flavours").highlight
+  -- hi.Added = "DiffAdd"
+  -- hi.Changed = "DiffChange"
+  -- hi.Removed = "DiffDelete"
 end

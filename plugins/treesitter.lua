@@ -46,18 +46,18 @@ return function()
     },
   }
 
-  local highlights = {
-    markdown_inline = {
-      ["text.emphasis"] = { italic = true },
-      ["text.strike"] = { strikethrough = true },
-      ["text.strong"] = { bold = true },
-    },
-  }
-
-  local hi = require("flavours").highlight
-  for lang, maps in pairs(highlights) do
-    for group, opts in pairs(maps) do
-      hi["@" .. group .. "." .. lang] = opts
-    end
-  end
+  -- local highlights = {
+  --   markdown_inline = {
+  --     ["text.emphasis"] = { italic = true },
+  --     ["text.strike"] = { strikethrough = true },
+  --     ["text.strong"] = { bold = true },
+  --   },
+  -- }
+  --
+  -- local hi = require("flavours").highlight
+  -- for lang, maps in pairs(highlights) do
+  --   for group, opts in pairs(maps) do
+  --     hi["@" .. group .. "." .. lang] = opts
+  --   end
+  -- end
 end

@@ -136,12 +136,6 @@ return function()
           require("telescope.builtin").lsp_document_symbols()
         end, { buffer = bufnr, desc = "[lsp] document symbols" })
       end
-
-      if client:supports_method "workspace/symbol" then
-        vim.keymap.set("n", "<space>s", function()
-          require("telescope.builtin").lsp_workspace_symbols()
-        end, { buffer = bufnr, desc = "[lsp] workspace symbols" })
-      end
     end,
   })
 end

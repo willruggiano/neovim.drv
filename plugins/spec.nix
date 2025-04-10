@@ -13,8 +13,30 @@ in rec {
     config = ./bombadil.lua;
     lazy = false;
     priority = 1000;
-    dependencies = {
+    dependencies = rec {
       inherit dot-nvim;
+      doom-one.package = buildVimPlugin {
+        name = "doom-one";
+        src = sources."doom-one.nvim";
+      };
+      halfspace.package = buildVimPlugin {
+        name = "halfspace";
+        src = sources."halfspace.nvim";
+      };
+      mellifluous.package = buildVimPlugin {
+        name = "mellifluous";
+        src = sources."mellifluous.nvim";
+      };
+      polychrome.package = buildVimPlugin {
+        name = "polychrome";
+        src = sources."polychrome.nvim";
+      };
+      sunburn.package = buildVimPlugin {
+        name = "sunburn";
+        src = sources."sunburn.nvim";
+        dependencies = [polychrome.package];
+        nvimRequireCheck = "sunburn";
+      };
     };
   };
 
@@ -65,9 +87,7 @@ in rec {
     src = sources."conform.nvim";
     config = ./conform.lua;
     paths = with pkgs; [
-      shellcheck
       shellharden
-      shfmt
       python3.pkgs.sqlfmt
       stylua
     ];
@@ -271,13 +291,6 @@ in rec {
       clangd_extensions = {
         src = sources."clangd_extensions.nvim";
       };
-      rust-tools = {
-        package = buildVimPlugin {
-          name = "rust-tools";
-          src = sources."rust-tools.nvim";
-          dependencies = [lspconfig.package];
-        };
-      };
       schemastore = {
         src = sources."SchemaStore.nvim";
       };
@@ -292,31 +305,44 @@ in rec {
     };
     paths = with pkgs;
     with config.packages; [
-      actionlint
-      alejandra # used by nil for formatting
-      basedpyright
+      # c
       clang-tools
       cmake-language-server
       cppcheck
-      efm-langserver
-      harper
+      # github actions
+      actionlint
+      # haskell
       haskellPackages.cabal-fmt
       haskellPackages.haskell-language-server
       haskellPackages.ormolu
-      inputs'.nil.packages.default
-      inputs'.zls.packages.default
-      marksman
-      nodePackages.bash-language-server
-      # nodePackages.graphql-language-service-cli
-      # nodePackages.typescript-language-server
+      # json
       nodePackages.vscode-json-languageserver
       nodePackages.yaml-language-server
-      postgrestools
-      ruff-lsp
-      rust-analyzer
-      squawk
-      statix
+      # lua
       sumneko-lua-language-server
+      # markdown
+      marksman
+      # nix
+      alejandra # used by nil for formatting
+      inputs'.nil.packages.default
+      statix
+      # python
+      basedpyright
+      ruff-lsp
+      # rust
+      rust-analyzer
+      # shell
+      nodePackages.bash-language-server
+      shellcheck
+      shfmt
+      # sql
+      postgrestools
+      squawk
+      # zig
+      inputs'.zls.packages.default
+      # other
+      efm-langserver
+      harper
       # typespec # broken
     ];
   };
@@ -347,11 +373,11 @@ in rec {
         vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
       end
     '';
-    config = ''
-      function()
-        require("flavours").highlight.MatchParen = "LspReferenceText"
-      end
-    '';
+    # config = ''
+    #   function()
+    #     require("flavours").highlight.MatchParen = "LspReferenceText"
+    #   end
+    # '';
   };
 
   nui.package = buildVimPlugin {

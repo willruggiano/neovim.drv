@@ -47,6 +47,12 @@
         "rev": "2c7e2750372918f072a20f3cf754d845e143d7c9",
         "type": "git"
     },
+    "doom-one.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:NTBBloodbath/doom-one.nvim",
+        "rev": "2d910b0c10efb2417871157b42875832a4c626f5",
+        "type": "git"
+    },
     "fastaction.nvim": {
         "branch": "main",
         "repo": "git@github.com:Chaitanyabsprip/fastaction.nvim",
@@ -101,6 +107,12 @@
         "rev": "6ef402861468c6bd987155be17a34ba4291dc1d0",
         "type": "git"
     },
+    "halfspace.nvim": {
+        "branch": "main",
+        "repo": "https://gitlab.com/sxwpb/halfspace.nvim.git",
+        "rev": "54093a7cfa0b881ee7b619603f0ece052c1e9f15",
+        "type": "git"
+    },
     "indent-blankline.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/lukas-reineke/indent-blankline.nvim",
@@ -141,6 +153,12 @@
         "branch": "master",
         "repo": "git@github.com:luafun/luafun",
         "rev": "f1a57f25bf8554bf430faba5237dec7f04b2979a",
+        "type": "git"
+    },
+    "mellifluous.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:ramojus/mellifluous.nvim",
+        "rev": "d71befcc29b17c6f973fc54f1d8a58c4c1cf4758",
         "type": "git"
     },
     "nui.nvim": {
@@ -263,6 +281,12 @@
         "rev": "857c5ac632080dba10aae49dba902ce3abf91b35",
         "type": "git"
     },
+    "polychrome.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:loganswartz/polychrome.nvim",
+        "rev": "2ad5cbd62b153f9b37e309349bccd69062fc29f9",
+        "type": "git"
+    },
     "postgres_lsp": {
         "branch": "main",
         "repo": "git@github.com:supabase/postgres_lsp",
@@ -298,6 +322,12 @@
         "branch": "main",
         "repo": "ssh://git@github.com/luukvbaal/statuscol.nvim",
         "rev": "c399884e8f64019ec9bb581251f9710915b7f996",
+        "type": "git"
+    },
+    "sunburn.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:loganswartz/sunburn.nvim",
+        "rev": "c6047a9d9ef8589f3143bcf0d6834ed7be5cdfaf",
         "type": "git"
     },
     "tabout.nvim": {

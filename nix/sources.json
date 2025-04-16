@@ -167,6 +167,12 @@
         "rev": "dae70ec46e8a57dcaca37a0f015f1cdee0b624ce",
         "type": "git"
     },
+    "lush.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:rktjmp/lush.nvim",
+        "rev": "45a79ec4acb5af783a6a29673a999ce37f00497e",
+        "type": "git"
+    },
     "mellifluous.nvim": {
         "branch": "main",
         "repo": "git@github.com:ramojus/mellifluous.nvim",
@@ -318,6 +324,12 @@
         "rev": "676187908a1ce35ffcd727c654ed68d851299d3e",
         "type": "git"
     },
+    "shipwright.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:rktjmp/shipwright.nvim",
+        "rev": "e596ab48328c31873f4f4d2e070243bf9de16ff3",
+        "type": "git"
+    },
     "smart-open.nvim": {
         "branch": "main",
         "repo": "git@github.com:danielfalk/smart-open.nvim",
@@ -448,6 +460,12 @@
         "branch": "main",
         "repo": "git@github.com:folke/zen-mode.nvim",
         "rev": "863f150ca321b3dd8aa1a2b69b5f411a220e144f",
+        "type": "git"
+    },
+    "zenbones.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:mcchrish/zenbones.nvim",
+        "rev": "41735b6cf5e93593dfecb38a9b6e2ff14792b1fd",
         "type": "git"
     }
 }

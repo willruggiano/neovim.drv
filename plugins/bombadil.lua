@@ -8,7 +8,10 @@ return function()
     return "dark"
   end
 
-  local bg = os.capture "darkman get" or fallback()
+  local bg = os.capture "darkman get"
+  if bg == "" then
+    bg = fallback()
+  end
   vim.opt.background = bg
   vim.opt.termguicolors = true
 

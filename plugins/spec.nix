@@ -37,6 +37,18 @@ in rec {
         dependencies = [polychrome.package];
         nvimRequireCheck = "sunburn";
       };
+      zenbones = {
+        package = buildVimPlugin {
+          name = "zenbones";
+          src = sources."zenbones.nvim";
+          dependencies = [zenbones.dependencies.lush.package];
+          nvimRequireCheck = "zenbones";
+        };
+        dependencies.lush.package = buildVimPlugin {
+          name = "lush";
+          src = sources."lush.nvim";
+        };
+      };
     };
   };
 

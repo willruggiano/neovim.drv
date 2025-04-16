@@ -173,8 +173,10 @@ return function()
       single_file_support = true,
       settings = {
         db = {
-          username = vim.env.USER,
-          password = vim.env.USER,
+          host = vim.env.PGHOST,
+          database = vim.env.PGDATABASE,
+          username = vim.env.PGUSER,
+          password = vim.env.PGPASSWORD,
         },
       },
     },

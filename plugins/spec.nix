@@ -75,6 +75,31 @@ in rec {
     ft = ["c" "cpp"];
   };
 
+  codecompanion = {
+    package = buildVimPlugin {
+      name = "codecompanion";
+      src = sources."codecompanion.nvim";
+      nvimRequireCheck = "codecompanion";
+    };
+    config = ./codecompanion.lua;
+    dependencies = {
+      inherit plenary nvim-treesitter telescope;
+      mcphub = {
+        package = buildVimPlugin {
+          name = "mcphub";
+          src = sources."mcphub.nvim";
+          dependencies = [plenary.package];
+          nvimRequireCheck = "mcphub";
+        };
+        config.extensions.codecompanion = {
+          show_result_in_chat = true;
+          make_vars = true;
+          make_slash_commands = true;
+        };
+      };
+    };
+  };
+
   Comment = {
     src = sources."Comment.nvim";
     config = ./comment.lua;

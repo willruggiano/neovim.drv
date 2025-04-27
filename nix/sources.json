@@ -29,6 +29,12 @@
         "rev": "db28f29be928d18cbfb86fbfb9f83f584f658feb",
         "type": "git"
     },
+    "codecompanion.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:olimorris/codecompanion.nvim",
+        "rev": "a382a8ced48c7664bd3dad992ec9f9b8054dc952",
+        "type": "git"
+    },
     "conform.nvim": {
         "branch": "master",
         "repo": "git@github.com:stevearc/conform.nvim",
@@ -153,6 +159,12 @@
         "branch": "master",
         "repo": "git@github.com:luafun/luafun",
         "rev": "f1a57f25bf8554bf430faba5237dec7f04b2979a",
+        "type": "git"
+    },
+    "mcphub.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:ravitemer/mcphub.nvim",
+        "rev": "dae70ec46e8a57dcaca37a0f015f1cdee0b624ce",
         "type": "git"
     },
     "mellifluous.nvim": {

@@ -9,7 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mcp-hub = {
-      url = "github:ravitemer/mcp-hub";
+      # url = "github:ravitemer/mcp-hub";
+      url = "github:willruggiano/mcp-hub";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     naersk = {
@@ -19,7 +20,7 @@
     neovim-nix = {
       url = "github:willruggiano/neovim.nix";
       inputs.example.follows = "";
-      inputs.flake-parts.follows = "flake-parts";
+      inputs.nixpkgs.follows = "nixpkgs";
       # inputs.git-hooks.follows = ""; FIXME: SO :(
     };
     neovim = {

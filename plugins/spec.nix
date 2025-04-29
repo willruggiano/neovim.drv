@@ -366,7 +366,7 @@ in rec {
       statix
       # python
       basedpyright
-      ruff-lsp
+      ruff
       # rust
       rust-analyzer
       # shell
@@ -400,22 +400,10 @@ in rec {
     config = ./markdown.lua;
   };
 
-  matchup = {
-    package = buildVimPlugin {
-      name = "matchup";
-      src = sources.vim-matchup;
-      dependencies = [nvim-treesitter.package];
-    };
-    init = ''
-      function()
-        vim.g.matchup_matchparen_offscreen = { method = "status_manual" }
-      end
-    '';
-    # config = ''
-    #   function()
-    #     require("flavours").highlight.MatchParen = "LspReferenceText"
-    #   end
-    # '';
+  matchup.package = buildVimPlugin {
+    name = "matchup";
+    src = sources.vim-matchup;
+    dependencies = [nvim-treesitter.package];
   };
 
   nui.package = buildVimPlugin {
@@ -503,11 +491,7 @@ in rec {
       nvimRequireCheck = "sqlite";
     };
     cpath = "${pkgs.sqlite.out}/lib/?.so";
-    init = ''
-      function()
-        vim.g.sqlite_clib_path = package.searchpath("libsqlite3", package.cpath)
-      end
-    '';
+    init = ./sqlite.lua;
   };
 
   statuscol = {

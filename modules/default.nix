@@ -28,7 +28,9 @@
         xdg-utils # gx
       ];
 
-      source = [(lib.getExe config.agenix-shell.installationScript)];
+      # Doesn't quite work :( since it uses flake-root under the hood, with the
+      # implication that I can only open neovim in a directory with a flake.nix
+      # source = [(lib.getExe config.agenix-shell.installationScript)];
 
       lazy = {
         settings = {

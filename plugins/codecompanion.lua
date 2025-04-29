@@ -1,39 +1,11 @@
 return function()
   require("codecompanion").setup {
-    adapters = {
-      opts = { show_defaults = false },
-      --
-      codellama = function()
-        return require("codecompanion.adapters").extend("ollama", {
-          name = "codellama",
-          schema = {
-            model = {
-              default = "codellama",
-            },
-          },
-        })
-      end,
-      ["codellama:code"] = function()
-        return require("codecompanion.adapters").extend("ollama", {
-          name = "codellama:code",
-          schema = {
-            model = {
-              default = "codellama:code",
-            },
-          },
-        })
-      end,
-    },
-    display = {
-      action_palette = {
-        provider = "Telescope",
-      },
-    },
     strategies = {
       chat = {
-        adapter = "codellama",
+        adapter = "anthropic",
         tools = {
           mcp = {
+            -- calling it in a function would prevent mcphub from being loaded before it's needed
             callback = function()
               return require "mcphub.extensions.codecompanion"
             end,
@@ -41,11 +13,12 @@ return function()
           },
         },
       },
-      cmd = {
-        adapter = "codellama",
-      },
-      inline = {
-        adapter = "codellama",
+      inline = { adapter = "anhtropic" },
+      cmd = { adapter = "anthropic" },
+    },
+    display = {
+      action_palette = {
+        provider = "telescope",
       },
     },
   }

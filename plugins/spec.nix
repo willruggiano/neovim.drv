@@ -97,17 +97,18 @@ in rec {
     dependencies = {
       inherit plenary nvim-treesitter telescope;
       mcphub = {
+        config.extensions.codecompanion = {
+          show_result_in_chat = true;
+          make_vars = true;
+          make_slash_commands = true;
+        };
         package = buildVimPlugin {
           name = "mcphub";
           src = sources."mcphub.nvim";
           dependencies = [plenary.package];
           nvimRequireCheck = "mcphub";
         };
-        config.extensions.codecompanion = {
-          show_result_in_chat = true;
-          make_vars = true;
-          make_slash_commands = true;
-        };
+        paths = [inputs'.mcp-hub.packages.default];
       };
     };
   };

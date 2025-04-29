@@ -28,6 +28,8 @@
         xdg-utils # gx
       ];
 
+      source = [(lib.getExe config.agenix-shell.installationScript)];
+
       lazy = {
         settings = {
           performance.rtp = {

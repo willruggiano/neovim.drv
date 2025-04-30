@@ -22,11 +22,17 @@ return function()
     end
   end
 
+  local excluded = { "netrw" }
+
   require("gitsigns").setup {
     signs = signs,
     signs_staged = signs,
     numhl = false,
     on_attach = function(bufnr)
+      if vim.tbl_contains(excluded, vim.bo[bufnr].filetype) then
+        return false
+      end
+
       local g = package.loaded.gitsigns
 
       nnoremap("]c", nav_hunk(g, "next"), { buffer = bufnr, expr = true, desc = "Next hunk" })

@@ -336,6 +336,12 @@
         "rev": "7770b01ce4d551c143d7ec8589879320796621b9",
         "type": "git"
     },
+    "split.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:wurli/split.nvim",
+        "rev": "12c4fb27a9c617e0291ef0ae1609662ae409c9f8",
+        "type": "git"
+    },
     "sqlite.lua": {
         "branch": "master",
         "repo": "git@github.com:kkharji/sqlite.lua",

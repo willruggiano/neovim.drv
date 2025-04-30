@@ -484,6 +484,11 @@ in rec {
     cpath = "${package}/lib/lua/5.1/?.so";
   };
 
+  split = {
+    src = sources."split.nvim";
+    config = true; # maps: gs, gS
+  };
+
   sqlite = {
     package = buildVimPlugin {
       name = "sqlite.lua";

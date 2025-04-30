@@ -7,66 +7,29 @@ return function()
 
   vim.keymap.set({ "n", "x", "o" }, "ga", function()
     require("leap.treesitter").select()
-  end, { desc = "Leap (AST)" })
-
-  -- Linewise.
-  vim.keymap.set(
-    { "n", "x", "o" },
-    "gA",
-    'V<cmd>lua require("leap.treesitter").select()<cr>',
-    { desc = "Leap (AST/linewise)" }
-  )
+  end, { desc = "Leap (treesitter)" })
 
   -- Remote.
-  vim.keymap.set({ "n" }, "gR", function()
+  vim.keymap.set({ "n", "x", "o" }, "gR", function()
     require("leap.remote").action()
   end, { desc = "Leap (remote)" })
 
-  -- Op pending remote textobjects
-  local default_text_objects = {
-    "iw",
-    "iW",
-    "is",
-    "ip",
-    "i[",
-    "i]",
-    "i(",
-    "i)",
-    "ib",
-    "i>",
-    "i<",
-    "it",
-    "i{",
-    "i}",
-    "iB",
-    'i"',
-    "i'",
-    "i`",
-    "aw",
-    "aW",
-    "as",
-    "ap",
-    "a[",
-    "a]",
-    "a(",
-    "a)",
-    "ab",
-    "a>",
-    "a<",
-    "at",
-    "a{",
-    "a}",
-    "aB",
-    'a"',
-    "a'",
-    "a`",
-  }
-  -- Create remote versions of all native text objects by inserting `r`
-  -- into the middle (`iw` becomes `irw`, etc.):
-  for _, tobj in ipairs(default_text_objects) do
-    vim.keymap.set({ "x", "o" }, tobj:sub(1, 1) .. "r" .. tobj:sub(2), function()
-      require("leap.remote").action { input = tobj }
-    end, { desc = "remote " .. tobj })
+  -- Create remote versions of all a/i text objects by inserting `r`
+  -- into the middle (e.g. `iw` becomes `irw`).
+  do
+    local remote_text_object = function(prefix)
+      local ok, ch = pcall(vim.fn.getcharstr) -- pcall for handling <C-c>
+      if not ok or ch == vim.keycode "<esc>" then
+        return
+      end
+      require("leap.remote").action { input = prefix .. ch }
+    end
+    vim.keymap.set({ "x", "o" }, "ar", function()
+      remote_text_object "a"
+    end)
+    vim.keymap.set({ "x", "o" }, "ir", function()
+      remote_text_object "i"
+    end)
   end
 
   -- Automatically paste when doing a remote yank operation.

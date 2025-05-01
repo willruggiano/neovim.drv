@@ -7,6 +7,9 @@ local nnoremap = keymap.nnoremap
 local vnoremap = keymap.vnoremap
 local xnoremap = keymap.xnoremap
 
+-- `:e %%/` expands to `:e /path/to/dir/`
+vim.cmd "cabbrev %% %:p:h"
+
 -- Add large jumps to the jump list
 for _, d in ipairs { "j", "k" } do
   nnoremap(d, function()

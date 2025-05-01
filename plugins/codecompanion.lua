@@ -1,5 +1,19 @@
 return function()
   require("codecompanion").setup {
+    display = {
+      action_palette = {
+        provider = "telescope",
+      },
+    },
+    extensions = {
+      vectorcode = {
+        opts = {
+          add_tool = true,
+          add_slash_command = true,
+          tool_opts = {},
+        },
+      },
+    },
     strategies = {
       chat = {
         adapter = "anthropic",
@@ -15,11 +29,6 @@ return function()
       },
       inline = { adapter = "anhtropic" },
       cmd = { adapter = "anthropic" },
-    },
-    display = {
-      action_palette = {
-        provider = "telescope",
-      },
     },
   }
 end

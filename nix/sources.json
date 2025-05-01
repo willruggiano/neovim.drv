@@ -17,6 +17,12 @@
         "rev": "442901b78dca4da1078b32e25e1afb32460e0082",
         "type": "git"
     },
+    "VectorCode": {
+        "branch": "main",
+        "repo": "git@github.com:Davidyz/VectorCode",
+        "rev": "5d0c897b78aeb6ec0960abbcd7fbc406ee8ed76d",
+        "type": "git"
+    },
     "clang-format.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/willruggiano/clang-format.nvim",

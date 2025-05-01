@@ -110,6 +110,89 @@ in rec {
         };
         paths = [inputs'.mcp-hub.packages.default];
       };
+      vectorcode = {
+        config = true;
+        package = buildVimPlugin {
+          name = "vectorcode";
+          src = sources.VectorCode;
+          doCheck = false;
+        };
+        paths = [
+          # (pkgs.python3Packages.buildPythonApplication rec {
+          #   pname = "vectorcode";
+          #   version = "0.5.6";
+          #   pyproject = true;
+          #
+          #   src = sources.VectorCode;
+          #
+          #   build-system = with pkgs.python3Packages; [
+          #     pdm-backend
+          #   ];
+          #
+          #   dependencies = with pkgs.python3Packages;
+          #     [
+          #       charset-normalizer
+          #       chromadb
+          #       colorlog
+          #       httpx
+          #       numpy
+          #       pathspec
+          #       psutil
+          #       pygments
+          #       sentence-transformers
+          #       shtab
+          #       tabulate
+          #       transformers
+          #       tree-sitter
+          #       tree-sitter-language-pack
+          #     ]
+          #     ++ optional-dependencies.lsp;
+          #
+          #   optional-dependencies = with pkgs.python3Packages; {
+          #     intel = [
+          #       openvino
+          #       optimum
+          #     ];
+          #     legacy = [
+          #       numpy
+          #       torch
+          #       transformers
+          #     ];
+          #     lsp = [
+          #       lsprotocol
+          #       pygls
+          #     ];
+          #     mcp = [
+          #       mcp
+          #       pydantic
+          #     ];
+          #   };
+          #
+          #   pythonImportsCheck = ["vectorcode"];
+          #
+          #   nativeCheckInputs =
+          #     [
+          #       pkgs.versionCheckHook
+          #     ]
+          #     ++ (with pkgs.python3Packages; [
+          #       mcp
+          #       pygls
+          #       pytestCheckHook
+          #     ]);
+          #   versionCheckProgramArg = "version";
+          #
+          #   disabledTests = [
+          #     # Require internet access
+          #     "test_get_embedding_function"
+          #     "test_get_embedding_function_fallback"
+          #     "test_get_reranker"
+          #     "test_supported_rerankers_initialization"
+          #   ];
+          #
+          #   meta.mainProgram = "vectorcode";
+          # })
+        ];
+      };
     };
   };
 

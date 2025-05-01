@@ -139,7 +139,7 @@
           inputsFrom = [
             config.pre-commit.devShell
           ];
-          buildInputs = with pkgs; [alejandra just niv];
+          buildInputs = with pkgs; [alejandra just niv vectorcode];
           shellHook = ''
             source ${lib.getExe config.agenix-shell.installationScript}
           '';

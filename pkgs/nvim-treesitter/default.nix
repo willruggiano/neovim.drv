@@ -179,8 +179,8 @@
     lib.concatMapStringsSep "\n" f
     (lib.mapAttrsToList (k: v: {name = k;} // v) attrs);
 
-  update-grammars = writeShellApplication {
-    name = "update-grammars.sh";
+  updateScript = writeShellApplication {
+    name = "nvim-treesitter-update-script";
     runtimeInputs = [jq nix-prefetch-git];
     text = ''
       out="./pkgs/nvim-treesitter/grammars"
@@ -233,5 +233,5 @@ in
   symlinkJoin {
     name = "nvim-treesitter";
     paths = [src] ++ treesitterGrammars;
-    passthru = {inherit update-grammars;};
+    passthru = {inherit updateScript;};
   }

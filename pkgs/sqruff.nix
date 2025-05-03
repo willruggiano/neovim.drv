@@ -3,13 +3,14 @@
   fetchFromGitHub,
   inputs,
   rust-bin,
+  python3,
   ...
 }: let
   src = fetchFromGitHub {
     owner = "quarylabs";
     repo = "sqruff";
-    rev = "v0.18.0";
-    hash = "sha256-4UAO+d5pWatra1g5/+xHn/9B1wVCnDyNJFkDr+G9DXc=";
+    rev = "v0.26.3";
+    hash = "sha256-F2bS1XVAv7PKvJCEoCSsugFzzPQ4P1c0tca/367VTwg=";
   };
   toolchain = rust-bin.fromRustupToolchainFile "${src}/rust-toolchain.toml";
 
@@ -20,4 +21,5 @@
 in
   naersk.buildPackage {
     inherit src;
+    nativeBuildInputs = [python3];
   }

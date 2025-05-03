@@ -188,6 +188,7 @@ return function()
       },
     },
     relay_lsp = {
+      auto_start_compiler = true,
       root_dir = util.root_pattern "relay.config.*",
     },
     ruff = {},
@@ -202,7 +203,9 @@ return function()
     -- tailwindcss = {
     --   root_dir = util.root_pattern "tailwind.config.*",
     -- },
-    tsp_server = {},
+    tsp_server = {
+      root_markers = { "tspconfig.yaml" },
+    },
     vtsls = {
       root_dir = util.root_pattern ".git",
       settings = {
@@ -232,7 +235,14 @@ return function()
 
   for name, config in pairs(servers) do
     config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+    -- Doesn't seem like we're quite ready for this.
+    -- @see https://github.com/neovim/nvim-lspconfig/issues/3705
+    -- if vim.tbl_contains({ "mdx_analyzer", "relay_lsp" }, name) then
     lspconfig[name].setup(config)
+    -- else
+    --   vim.lsp.config(name, config)
+    -- end
+    -- vim.lsp.enable(name)
   end
 
   if pcall(require, "tailwind-tools") then

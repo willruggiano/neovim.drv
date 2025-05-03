@@ -8,13 +8,12 @@
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    mcp-hub = {
-      # url = "github:ravitemer/mcp-hub";
-      url = "github:willruggiano/mcp-hub";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     naersk = {
       url = "github:nix-community/naersk";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    mcp-hub = {
+      url = "github:ravitemer/mcp-hub";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nix = {
@@ -124,11 +123,13 @@
           };
           update.program = pkgs.writeShellApplication {
             name = "update.sh";
-            runtimeInputs = with pkgs; [niv];
+            runtimeInputs = with pkgs; [niv nix-update];
             text = ''
               nix flake update &&
               niv update &&
-              nix run .#nvim-treesitter.update-grammars &&
+              nix run .#nvim-treesitter.updateScript &&
+              nix-update --flake nvim-dbee --version=branch --subpackage dbee &&
+              nix-update --flake sqruff --version=branch --override-filename pkgs/sqruff.nix &&
               nix flake check
             '';
           };
@@ -139,7 +140,7 @@
           inputsFrom = [
             config.pre-commit.devShell
           ];
-          buildInputs = with pkgs; [alejandra just niv vectorcode];
+          buildInputs = with pkgs; [alejandra just niv nix-update vectorcode];
           shellHook = ''
             source ${lib.getExe config.agenix-shell.installationScript}
           '';

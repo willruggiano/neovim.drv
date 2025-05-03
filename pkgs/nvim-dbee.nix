@@ -1,14 +1,21 @@
 {
   buildGoModule,
+  fetchFromGitHub,
   vimUtils,
   arrow-cpp,
   duckdb,
   ...
 }: let
-  sources = import ../nix/sources.nix {};
-  bin = buildGoModule {
-    name = "dbee";
-    src = sources.nvim-dbee;
+  version = "0.1.9-unstable-2025-03-24";
+  src = fetchFromGitHub {
+    owner = "kndndrj";
+    repo = "nvim-dbee";
+    rev = "b4aebcabedbf0f5aa90ca391c87d6095e365ac33";
+    hash = "sha256-AZojgGP8SbPywWlxyeKa5aijK6QgACbRu9q4po+grqc=";
+  };
+  dbee = buildGoModule {
+    pname = "dbee";
+    inherit version src;
     sourceRoot = "source/dbee";
     vendorHash = "sha256-ah3gpaL1XSlktQNCE8sHNLJtKY5zBNNNDetinq/zySM=";
     buildInputs = [arrow-cpp duckdb];
@@ -16,9 +23,10 @@
   };
 in
   vimUtils.buildVimPlugin {
-    name = "nvim-dbee";
-    src = sources.nvim-dbee;
+    pname = "nvim-dbee";
+    inherit version src;
+    doCheck = false;
     nvimRequireCheck = "dbee";
-    propagatedBuildInputs = [bin];
-    passthru.dbee = bin;
+    propagatedBuildInputs = [dbee];
+    inherit dbee;
   }

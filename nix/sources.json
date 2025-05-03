@@ -227,12 +227,6 @@
         "rev": "03bd29672d7fab5e515fc8469b7d07cc5994bbf6",
         "type": "git"
     },
-    "nvim-dbee": {
-        "branch": "master",
-        "repo": "git@github.com:kndndrj/nvim-dbee",
-        "rev": "b4aebcabedbf0f5aa90ca391c87d6095e365ac33",
-        "type": "git"
-    },
     "nvim-lsp-file-operations": {
         "branch": "master",
         "repo": "git@github.com:antosha417/nvim-lsp-file-operations",

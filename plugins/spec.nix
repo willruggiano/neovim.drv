@@ -366,13 +366,13 @@ in rec {
     paths = [pkgs.bun];
   };
 
-  kulala = {
-    src = sources."kulala.nvim";
-    config = ./kulala.lua;
-    dependencies = {
-      inherit nvim-treesitter;
-    };
-  };
+  # kulala = {
+  #   src = sources."kulala.nvim";
+  #   config = ./kulala.lua;
+  #   dependencies = {
+  #     inherit nvim-treesitter;
+  #   };
+  # };
 
   leap = {
     src = sources."leap.nvim";

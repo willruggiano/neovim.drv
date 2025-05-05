@@ -427,6 +427,7 @@ in rec {
     };
     paths = with pkgs;
     with config.packages; [
+      inotify-tools
       # c
       clang-tools
       cmake-language-server

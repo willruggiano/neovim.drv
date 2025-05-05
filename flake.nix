@@ -129,7 +129,7 @@
               niv update &&
               nix run .#nvim-treesitter.updateScript &&
               nix-update --flake nvim-dbee --version=branch --subpackage dbee &&
-              nix-update --flake sqruff --version=branch --override-filename pkgs/sqruff.nix &&
+              nix-update --flake sqruff --version-regex='v(.*)' --override-filename pkgs/sqruff.nix &&
               nix flake check
             '';
           };

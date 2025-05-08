@@ -24,12 +24,7 @@ return function()
           ["<M-q>"] = false,
         },
       },
-      --
       previewer = false,
-      file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-      grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-      qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-      --
       prompt_title = false,
       results_title = false,
     }),
@@ -45,29 +40,28 @@ return function()
         auto_quoting = true,
         mappings = {
           i = {
+            ["<CR>"] = actions.select_drop + actions.center,
             ["<C-'>"] = lga.quote_prompt(),
             ["<C-i>"] = lga.quote_prompt { postfix = " --iglob " },
             -- freeze the current list and start a fuzzy search in the frozen list
-            ["<C-space>"] = actions.to_fuzzy_refine,
+            ["<C-space>"] = "to_fuzzy_refine",
+          },
+          n = {
+            ["<CR>"] = actions.select_drop + actions.center,
           },
         },
       },
       smart_open = {
         mappings = {
           i = {
+            ["<CR>"] = "select_drop",
             ["<C-w>"] = false,
+          },
+          n = {
+            ["<CR>"] = "select_drop",
           },
         },
         match_algorithm = "fzf",
-      },
-      undo = {
-        mappings = {
-          i = {
-            ["<C-y>"] = false,
-            ["<C-r>"] = false,
-          },
-        },
-        side_by_side = true,
       },
     },
 
@@ -75,7 +69,21 @@ return function()
       buffers = {
         mappings = {
           i = {
-            ["<C-d>"] = actions.delete_buffer,
+            ["<CR>"] = actions.select_drop + actions.center,
+            ["<C-d>"] = "delete_buffer",
+          },
+          n = {
+            ["<CR>"] = actions.select_drop + actions.center,
+          },
+        },
+      },
+      lsp_document_symbols = {
+        mappings = {
+          i = {
+            ["<CR>"] = actions.select_drop + actions.center,
+          },
+          n = {
+            ["<CR>"] = actions.select_drop + actions.center,
           },
         },
       },
@@ -86,10 +94,15 @@ return function()
   telescope.load_extension "live_grep_args"
   telescope.load_extension "smart_open"
   telescope.load_extension "ui-select"
-  telescope.load_extension "undo"
 
   local nnoremap = require("bombadil.lib.keymap").nnoremap
   local mappings = {
+    ["<leader>e"] = {
+      function()
+        require("telescope.builtin").symbols()
+      end,
+      { desc = "🚀" },
+    },
     ["<space>b"] = {
       function()
         require("telescope.builtin").buffers()
@@ -113,12 +126,6 @@ return function()
         require("telescope").extensions.smart_open.smart_open { cwd_only = true }
       end,
       { desc = "[telescope] files" },
-    },
-    ["<space>u"] = {
-      function()
-        require("telescope").extensions.undo.undo()
-      end,
-      { desc = "[telescope] undo" },
     },
   }
 

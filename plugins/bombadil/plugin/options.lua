@@ -40,7 +40,7 @@ vim.opt.linebreak = false
 vim.opt.listchars = { space = ".", precedes = "<", extends = ">" }
 vim.opt.modelines = 1
 vim.opt.more = false
-vim.opt.mouse = "n"
+vim.opt.mouse = "nvi"
 vim.opt.number = true
 vim.opt.pumblend = 17
 vim.opt.relativenumber = true

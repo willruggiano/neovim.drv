@@ -197,6 +197,11 @@ in rec {
     };
   };
 
+  colorizer = {
+    src = sources."nvim-colorizer.lua";
+    config = true;
+  };
+
   Comment = {
     src = sources."Comment.nvim";
     config = ./comment.lua;

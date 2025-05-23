@@ -19,6 +19,9 @@ return function()
       lsp_format = "fallback",
     },
     formatters = {
+      biome = {
+        command = "biome",
+      },
       kulala = {
         command = "kulala-fmt",
         args = { "$FILENAME" },

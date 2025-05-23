@@ -71,6 +71,7 @@ return function()
           i = {
             ["<CR>"] = actions.select_drop + actions.center,
             ["<C-d>"] = "delete_buffer",
+            ["<C-y>"] = "select_default",
           },
           n = {
             ["<CR>"] = actions.select_drop + actions.center,

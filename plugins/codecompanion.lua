@@ -6,6 +6,14 @@ return function()
       },
     },
     extensions = {
+      mcphub = {
+        callback = "mcphub.extensions.codecompanion",
+        opts = {
+          show_result_in_chat = true,
+          make_vars = true,
+          make_slash_commands = true,
+        },
+      },
       -- vectorcode = {
       --   opts = {
       --     add_tool = true,
@@ -15,18 +23,7 @@ return function()
       -- },
     },
     strategies = {
-      chat = {
-        adapter = "anthropic",
-        tools = {
-          mcp = {
-            -- calling it in a function would prevent mcphub from being loaded before it's needed
-            callback = function()
-              return require "mcphub.extensions.codecompanion"
-            end,
-            description = "Call tools and resources from MCP servers",
-          },
-        },
-      },
+      chat = { adapter = "anthropic" },
       inline = { adapter = "anhtropic" },
       cmd = { adapter = "anthropic" },
     },

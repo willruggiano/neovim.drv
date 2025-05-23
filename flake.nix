@@ -1,9 +1,5 @@
 {
   inputs = {
-    agenix-shell = {
-      url = "github:aciceri/agenix-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -64,18 +60,11 @@
   outputs = {flake-parts, ...} @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       imports = [
-        inputs.agenix-shell.flakeModules.default
         inputs.git-hooks.flakeModule
         inputs.neovim-nix.flakeModule
         inputs.treefmt.flakeModule
         ./modules
       ];
-
-      agenix-shell = {
-        secrets = {
-          ANTHROPIC_API_KEY.file = ./secrets/anthropic.age;
-        };
-      };
 
       systems = ["aarch64-darwin" "x86_64-linux"];
       perSystem = {
@@ -140,10 +129,7 @@
           inputsFrom = [
             config.pre-commit.devShell
           ];
-          buildInputs = with pkgs; [alejandra just niv nix-update vectorcode];
-          shellHook = ''
-            source ${lib.getExe config.agenix-shell.installationScript}
-          '';
+          buildInputs = with pkgs; [alejandra just niv nix-update];
         };
 
         packages = {

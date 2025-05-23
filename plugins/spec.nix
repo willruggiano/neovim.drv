@@ -98,11 +98,7 @@ in rec {
     dependencies = {
       inherit plenary nvim-treesitter telescope;
       mcphub = {
-        config.extensions.codecompanion = {
-          show_result_in_chat = true;
-          make_vars = true;
-          make_slash_commands = true;
-        };
+        config = true;
         package = buildVimPlugin {
           name = "mcphub";
           src = sources."mcphub.nvim";
@@ -112,87 +108,9 @@ in rec {
         paths = [inputs'.mcp-hub.packages.default];
       };
       # vectorcode = {
-      #   # config = true; # TODO: need the vectorcode binary
-      #   package = buildVimPlugin {
-      #     name = "vectorcode";
-      #     src = sources.VectorCode;
-      #     doCheck = false;
-      #   };
-      #   paths = [
-      #     # (pkgs.python3Packages.buildPythonApplication rec {
-      #     #   pname = "vectorcode";
-      #     #   version = "0.5.6";
-      #     #   pyproject = true;
-      #     #
-      #     #   src = sources.VectorCode;
-      #     #
-      #     #   build-system = with pkgs.python3Packages; [
-      #     #     pdm-backend
-      #     #   ];
-      #     #
-      #     #   dependencies = with pkgs.python3Packages;
-      #     #     [
-      #     #       charset-normalizer
-      #     #       chromadb
-      #     #       colorlog
-      #     #       httpx
-      #     #       numpy
-      #     #       pathspec
-      #     #       psutil
-      #     #       pygments
-      #     #       sentence-transformers
-      #     #       shtab
-      #     #       tabulate
-      #     #       transformers
-      #     #       tree-sitter
-      #     #       tree-sitter-language-pack
-      #     #     ]
-      #     #     ++ optional-dependencies.lsp;
-      #     #
-      #     #   optional-dependencies = with pkgs.python3Packages; {
-      #     #     intel = [
-      #     #       openvino
-      #     #       optimum
-      #     #     ];
-      #     #     legacy = [
-      #     #       numpy
-      #     #       torch
-      #     #       transformers
-      #     #     ];
-      #     #     lsp = [
-      #     #       lsprotocol
-      #     #       pygls
-      #     #     ];
-      #     #     mcp = [
-      #     #       mcp
-      #     #       pydantic
-      #     #     ];
-      #     #   };
-      #     #
-      #     #   pythonImportsCheck = ["vectorcode"];
-      #     #
-      #     #   nativeCheckInputs =
-      #     #     [
-      #     #       pkgs.versionCheckHook
-      #     #     ]
-      #     #     ++ (with pkgs.python3Packages; [
-      #     #       mcp
-      #     #       pygls
-      #     #       pytestCheckHook
-      #     #     ]);
-      #     #   versionCheckProgramArg = "version";
-      #     #
-      #     #   disabledTests = [
-      #     #     # Require internet access
-      #     #     "test_get_embedding_function"
-      #     #     "test_get_embedding_function_fallback"
-      #     #     "test_get_reranker"
-      #     #     "test_supported_rerankers_initialization"
-      #     #   ];
-      #     #
-      #     #   meta.mainProgram = "vectorcode";
-      #     # })
-      #   ];
+      #   config = true;
+      #   package = inputs'.vectorcode.packages.vimPlugin;
+      #   paths = [inputs'.vectorcode.packages.default];
       # };
     };
   };
@@ -450,6 +368,8 @@ in rec {
       sumneko-lua-language-server
       # markdown
       marksman
+      # nginx
+      nginx-language-server
       # nix
       alejandra # used by nil for formatting
       inputs'.nil.packages.default

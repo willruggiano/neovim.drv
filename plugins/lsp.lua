@@ -153,6 +153,7 @@ return function()
     },
     marksman = {},
     mdx_analyzer = {},
+    nginx_language_server = {},
     nil_ls = {
       settings = {
         ["nil"] = {
@@ -188,7 +189,7 @@ return function()
       },
     },
     relay_lsp = {
-      auto_start_compiler = true,
+      -- auto_start_compiler = true,
       root_dir = util.root_pattern "relay.config.*",
     },
     ruff = {},

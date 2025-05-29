@@ -420,6 +420,12 @@
         "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
         "type": "git"
     },
+    "triptych.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:simonmclean/triptych.nvim",
+        "rev": "3ee33448571ce7f32dc1017635af7ce94ecbc1b4",
+        "type": "git"
+    },
     "twilight.nvim": {
         "branch": "main",
         "repo": "git@github.com:folke/twilight.nvim",
@@ -454,12 +460,6 @@
         "branch": "master",
         "repo": "git@github.com:tpope/vim-repeat",
         "rev": "65846025c15494983dafe5e3b46c8f88ab2e9635",
-        "type": "git"
-    },
-    "vim-vinegar": {
-        "branch": "master",
-        "repo": "git@github.com:tpope/vim-vinegar",
-        "rev": "bb1bcddf43cfebe05eb565a84ab069b357d0b3d6",
         "type": "git"
     },
     "which-key.nvim": {

@@ -36,7 +36,7 @@
               "gzip"
               "matchit"
               "matchparen"
-              # "netrwPlugin"
+              "netrwPlugin"
               "shada"
               "spellfile"
               "tarPlugin"

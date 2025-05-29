@@ -90,7 +90,7 @@ in rec {
 
   codecompanion = {
     package = buildVimPlugin {
-      name = "codecompanion";
+      name = "codecompanion.nvim";
       src = sources."codecompanion.nvim";
       nvimRequireCheck = "codecompanion";
     };
@@ -585,12 +585,20 @@ in rec {
     config = true;
   };
 
+  triptych = {
+    package = buildVimPlugin {
+      name = "triptych.nvim";
+      src = sources."triptych.nvim";
+      dependencies = [plenary.package nvim-web-devicons.package lsp-file-operations.package];
+      nvimRequireCheck = "triptych";
+    };
+    config = ./triptych.lua;
+  };
+
   twilight = {
     src = sources."twilight.nvim";
     config = true;
   };
-
-  vinegar.src = sources.vim-vinegar;
 
   which-key = {
     package = buildVimPlugin {

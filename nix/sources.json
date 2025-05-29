@@ -14,13 +14,13 @@
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
-        "rev": "0098dde21296a454ae1426f9ac47340dd38c27ce",
+        "rev": "a9ba109549de51e3b4594d39a1c07f14b9d0cfa5",
         "type": "git"
     },
     "VectorCode": {
         "branch": "main",
         "repo": "git@github.com:Davidyz/VectorCode",
-        "rev": "20b8553441e4938c63f6b195782a883f48f82e04",
+        "rev": "bd09cbd9943dad3b44baf85bfeb0d842fa59fa84",
         "type": "git"
     },
     "clang-format.nvim": {
@@ -38,7 +38,7 @@
     "codecompanion.nvim": {
         "branch": "main",
         "repo": "git@github.com:olimorris/codecompanion.nvim",
-        "rev": "a5a8701bf8814ff0ba9bf5f76b3a3deedf3e5f28",
+        "rev": "43185768e353065f910dcf5915386404f0e950da",
         "type": "git"
     },
     "conform.nvim": {
@@ -68,7 +68,7 @@
     "fastaction.nvim": {
         "branch": "main",
         "repo": "git@github.com:Chaitanyabsprip/fastaction.nvim",
-        "rev": "6b4205aa380b1f118b7b4f6d004d3704b73d0d23",
+        "rev": "f9a986b84a6da2a5ebbe57bbda7762d06f1ac64d",
         "type": "git"
     },
     "fidget.nvim": {
@@ -80,7 +80,7 @@
     "flatten.nvim": {
         "branch": "main",
         "repo": "git@github.com:willothy/flatten.nvim",
-        "rev": "b17a3e65c2e4e2ecd1345a2d08435e80f982c4a6",
+        "rev": "72527798e75b5e34757491947c2cb853ce21dc0e",
         "type": "git"
     },
     "flit.nvim": {
@@ -98,7 +98,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "d18c0bf6948b4707684fe77631aff26a17cbc4fa",
+        "rev": "ffb6e28ca7ea6dbaaf5bdf3e0f71b45565cb7b67",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -110,13 +110,13 @@
     "gitsigns.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/lewis6991/gitsigns.nvim",
-        "rev": "8b729e489f1475615dc6c9737da917b3bc163605",
+        "rev": "8bdaccdb897945a3c99c1ad8df94db0ddf5c8790",
         "type": "git"
     },
     "grug-far.nvim": {
         "branch": "main",
         "repo": "git@github.com:magicduck/grug-far.nvim",
-        "rev": "f24022147ca4a0fe1d424a520a9437accbeba193",
+        "rev": "b8fa19b786333538ba89a444a8d31bfd3095ca3e",
         "type": "git"
     },
     "halfspace.nvim": {
@@ -152,7 +152,7 @@
     "leap.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/ggandor/leap.nvim",
-        "rev": "189102b07cdd24de3bd7132e57da8c9614c385fc",
+        "rev": "212429314c5bfa41f4154bfa8805f7227ba6a880",
         "type": "git"
     },
     "lspkind.nvim": {
@@ -176,7 +176,7 @@
     "mcphub.nvim": {
         "branch": "main",
         "repo": "git@github.com:ravitemer/mcphub.nvim",
-        "rev": "fec8c2d75fcf42f657247cab43cd01cfea6095ea",
+        "rev": "7303572ac1b804f88b7286c011986fc421fa18b7",
         "type": "git"
     },
     "mellifluous.nvim": {
@@ -188,7 +188,7 @@
     "nui.nvim": {
         "branch": "main",
         "repo": "git@github.com:muniftanjim/nui.nvim",
-        "rev": "f535005e6ad1016383f24e39559833759453564e",
+        "rev": "7cd18e73cfbd70e1546931b7268b3eebaeff9391",
         "type": "git"
     },
     "nvim-bqf": {
@@ -242,7 +242,7 @@
     "nvim-lspconfig": {
         "branch": "master",
         "repo": "git@github.com:neovim/nvim-lspconfig",
-        "rev": "3ea99227e316c5028f57a4d86a1a7fd01dd876d0",
+        "rev": "b8e7957bde4cbb3cb25a13a62548f7c273b026e9",
         "type": "git"
     },
     "nvim-nio": {
@@ -260,7 +260,7 @@
     "nvim-surround": {
         "branch": "main",
         "repo": "git@github.com:kylechui/nvim-surround",
-        "rev": "0e62500b98f4513feaaf7425c135472457ea5b7d",
+        "rev": "8dd9150ca7eae5683660ea20cec86edcd5ca4046",
         "type": "git"
     },
     "nvim-treesitter": {
@@ -314,7 +314,7 @@
     "postgres_lsp": {
         "branch": "main",
         "repo": "git@github.com:supabase/postgres_lsp",
-        "rev": "f24ddf6822975d1a0f30fafa995f21a62a7da5ff",
+        "rev": "a435c42eaeb3c33d4a6789db6aa1efd6746d4e70",
         "submodules": true,
         "type": "git"
     },
@@ -339,7 +339,7 @@
     "smart-open.nvim": {
         "branch": "main",
         "repo": "git@github.com:danielfalk/smart-open.nvim",
-        "rev": "7770b01ce4d551c143d7ec8589879320796621b9",
+        "rev": "f079c3201a0a62b1582563bd5ce4256c253634d4",
         "type": "git"
     },
     "split.nvim": {

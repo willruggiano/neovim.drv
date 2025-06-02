@@ -9,8 +9,8 @@
   src = fetchFromGitHub {
     owner = "quarylabs";
     repo = "sqruff";
-    rev = "v0.26.3";
-    hash = "sha256-F2bS1XVAv7PKvJCEoCSsugFzzPQ4P1c0tca/367VTwg=";
+    rev = "v0.26.4";
+    hash = "sha256-JDnbJxjK4r/OVXTQQhEbzKhOxA8GO43XGRPHQyeXHGc=";
   };
   toolchain = rust-bin.fromRustupToolchainFile "${src}/rust-toolchain.toml";
 

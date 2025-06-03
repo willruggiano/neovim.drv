@@ -169,7 +169,7 @@ return function()
           didChangeConfiguration = { dynamicRegistration = true },
         },
       },
-      cmd = { "/home/bombadil/dev/postgres_lsp/target/debug/postgrestools", "lsp-proxy" },
+      cmd = { "postgrestools", "lsp-proxy" },
       filetypes = { "sql" },
       single_file_support = true,
       settings = {
@@ -250,6 +250,11 @@ return function()
     require("tailwind-tools").setup {
       document_color = {
         kind = "foreground",
+      },
+      keymaps = {
+        smart_increment = {
+          enabled = false,
+        },
       },
     }
   end

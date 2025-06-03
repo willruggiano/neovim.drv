@@ -384,7 +384,7 @@ in rec {
       shellcheck
       shfmt
       # sql
-      postgrestools
+      postgres-lsp
       squawk
       sqruff
       # zig

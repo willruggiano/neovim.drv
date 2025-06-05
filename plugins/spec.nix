@@ -96,7 +96,7 @@ in rec {
     };
     config = ./codecompanion.lua;
     dependencies = {
-      inherit plenary nvim-treesitter telescope;
+      inherit fidget plenary nvim-treesitter telescope;
       mcphub = {
         config = true;
         package = buildVimPlugin {
@@ -113,6 +113,9 @@ in rec {
       #   paths = [inputs'.vectorcode.packages.default];
       # };
     };
+    # paths = [
+    #   (pkgs.python3.withPackages (ps: with ps; [llm llm-ollama]))
+    # ];
   };
 
   colorizer = {
@@ -234,12 +237,7 @@ in rec {
 
   fidget = {
     src = sources."fidget.nvim";
-    config.text.spinner = "dots";
-    config.sources = {
-      null-ls = {
-        ignore = true;
-      };
-    };
+    config.progress.ignore = ["null-ls"];
   };
 
   flatten = {

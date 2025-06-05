@@ -72,9 +72,9 @@
         "type": "git"
     },
     "fidget.nvim": {
-        "branch": "legacy",
-        "repo": "ssh://git@github.com/j-hui/fidget.nvim",
-        "rev": "2f7c08f45639a64a5c0abcf67321d52c3f499ae6",
+        "branch": "main",
+        "repo": "git@github.com:j-hui/fidget.nvim",
+        "rev": "d9ba6b7bfe29b3119a610892af67602641da778e",
         "type": "git"
     },
     "flatten.nvim": {

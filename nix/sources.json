@@ -125,6 +125,12 @@
         "rev": "23b367771f694479771735150311d41830133f95",
         "type": "git"
     },
+    "hunk.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:julienvincent/hunk.nvim",
+        "rev": "48713c5348bb0ba001a6ea781f301dcd74fe88d4",
+        "type": "git"
+    },
     "indent-blankline.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/lukas-reineke/indent-blankline.nvim",

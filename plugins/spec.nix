@@ -272,6 +272,16 @@ in rec {
     paths = with pkgs; [ast-grep ripgrep];
   };
 
+  hunk = {
+    package = buildVimPlugin {
+      name = "hunk.nvim";
+      src = sources."hunk.nvim";
+      dependencies = [nui.package nvim-web-devicons.package];
+    };
+    config = true;
+    dependencies = {inherit nui nvim-web-devicons;};
+  };
+
   ibl = {
     package = buildVimPlugin {
       name = "ibl";

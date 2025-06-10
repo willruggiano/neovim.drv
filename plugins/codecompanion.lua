@@ -77,6 +77,11 @@ return function()
   --    codecompanion.nvim
   --]]
 
+  local default_strategy = {
+    adapter = "ollama",
+    model = vim.env.CODECOMPANION_MODEL or "devstral:latest",
+  }
+
   require("codecompanion").setup {
     display = {
       action_palette = {
@@ -101,18 +106,9 @@ return function()
       },
     },
     strategies = {
-      chat = {
-        adapter = "ollama",
-        model = "qwen3:30b",
-      },
-      inline = {
-        adapter = "ollama",
-        model = "qwen3:30b",
-      },
-      cmd = {
-        adapter = "ollama",
-        model = "qwen3:30b",
-      },
+      chat = default_strategy,
+      inline = default_strategy,
+      cmd = default_strategy,
     },
   }
 end

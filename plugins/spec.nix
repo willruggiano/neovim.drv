@@ -107,11 +107,13 @@ in rec {
         };
         paths = [inputs'.mcp-hub.packages.default];
       };
-      # vectorcode = {
-      #   config = true;
-      #   package = inputs'.vectorcode.packages.vimPlugin;
-      #   paths = [inputs'.vectorcode.packages.default];
-      # };
+      vectorcode = {
+        config = {
+          async_backend = "lsp";
+        };
+        package = pkgs.vimPlugins.vectorcode-nvim;
+        paths = [pkgs.vectorcode];
+      };
     };
     # paths = [
     #   (pkgs.python3.withPackages (ps: with ps; [llm llm-ollama]))

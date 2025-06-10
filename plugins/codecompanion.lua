@@ -92,13 +92,13 @@ return function()
           make_slash_commands = true,
         },
       },
-      -- vectorcode = {
-      --   opts = {
-      --     add_tool = true,
-      --     add_slash_command = true,
-      --     tool_opts = {},
-      --   },
-      -- },
+      vectorcode = {
+        opts = {
+          add_tool = true,
+          add_slash_command = true,
+          tool_opts = {},
+        },
+      },
     },
     strategies = {
       chat = {

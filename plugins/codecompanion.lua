@@ -20,7 +20,6 @@ return function()
   local create_progress_handle = function(request)
     return progress.handle.create {
       title = " Requesting assistance (" .. request.data.strategy .. ")",
-      message = "In progress...",
       lsp_client = {
         name = llm_role_title(request.data.adapter),
       },
@@ -37,23 +36,12 @@ return function()
     handles[id] = handle
   end
 
-  local report_exit_status = function(handle, request)
-    if request.data.status == "success" then
-      handle.message = "Completed"
-    elseif request.data.status == "error" then
-      handle.message = "Error"
-    else
-      handle.message = "Cancelled"
-    end
-  end
-
   local group = vim.api.nvim_create_augroup("CodeCompanionFidgetHooks", { clear = true })
 
   vim.api.nvim_create_autocmd({ "User" }, {
     pattern = "CodeCompanionRequestStarted",
     group = group,
     callback = function(request)
-      vim.print "request started!"
       local handle = create_progress_handle(request)
       store_progress_handle(request.data.id, handle)
     end,
@@ -64,10 +52,7 @@ return function()
     group = group,
     callback = function(request)
       local handle = pop_progress_handle(request.data.id)
-      vim.print "request finished!"
       if handle then
-        vim.print "found a handle"
-        report_exit_status(handle, request)
         handle:finish()
       end
     end,
@@ -77,10 +62,18 @@ return function()
   --    codecompanion.nvim
   --]]
 
-  local default_strategy = {
-    adapter = "ollama",
-    model = vim.env.CODECOMPANION_MODEL or "devstral:latest",
-  }
+  local strategy = (function()
+    if vim.fn.executable "ollama" == 1 then
+      return {
+        adapter = "ollama",
+        model = vim.env.CODECOMPANION_MODEL or "devstral:latest",
+      }
+    else
+      return {
+        adapter = "openai",
+      }
+    end
+  end)()
 
   require("codecompanion").setup {
     display = {
@@ -106,9 +99,9 @@ return function()
       },
     },
     strategies = {
-      chat = default_strategy,
-      inline = default_strategy,
-      cmd = default_strategy,
+      chat = strategy,
+      inline = strategy,
+      cmd = strategy,
     },
   }
 end

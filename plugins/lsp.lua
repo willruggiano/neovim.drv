@@ -201,6 +201,7 @@ return function()
     --     },
     --   },
     -- },
+    superhtml = {},
     -- tailwindcss = {
     --   root_dir = util.root_pattern "tailwind.config.*",
     -- },

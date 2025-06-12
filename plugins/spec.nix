@@ -371,6 +371,8 @@ in rec {
       haskellPackages.cabal-fmt
       haskellPackages.haskell-language-server
       haskellPackages.ormolu
+      # html
+      superhtml
       # json
       nodePackages.vscode-json-languageserver
       nodePackages.yaml-language-server

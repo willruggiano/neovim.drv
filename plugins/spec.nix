@@ -137,6 +137,7 @@ in rec {
     src = sources."conform.nvim";
     config = ./conform.lua;
     paths = with pkgs; [
+      jq
       shellharden
       python3.pkgs.sqlfmt
       stylua

@@ -12,9 +12,9 @@
 
   # The grammars we care about:
   grammars = {
-    # bash = {
-    #   owner = "tree-sitter";
-    # };
+    bash = {
+      owner = "tree-sitter";
+    };
     # c = {
     #   owner = "tree-sitter";
     # };
@@ -106,9 +106,9 @@
     prisma = {
       owner = "victorhqc";
     };
-    # python = {
-    #   owner = "tree-sitter";
-    # };
+    python = {
+      owner = "tree-sitter";
+    };
     # query = {
     #   owner = "nvim-treesitter";
     # };

@@ -40,7 +40,7 @@ return function()
       javascriptreact = function(bufnr)
         return { first(bufnr, "biome", "prettier"), "injected" }
       end,
-      json = { "biome", "prettier", stop_after_first = true },
+      json = { "biome", "prettier", "jq", stop_after_first = true },
       lua = { "stylua" },
       markdown = { "prettier", "injected" },
       typescript = function(bufnr)

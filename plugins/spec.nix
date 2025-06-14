@@ -138,7 +138,7 @@ in rec {
     config = ./conform.lua;
     paths = with pkgs; [
       jq
-      shellharden
+      prettier
       python3.pkgs.sqlfmt
       stylua
     ];
@@ -300,13 +300,12 @@ in rec {
     paths = [pkgs.bun];
   };
 
-  # kulala = {
-  #   src = sources."kulala.nvim";
-  #   config = ./kulala.lua;
-  #   dependencies = {
-  #     inherit nvim-treesitter;
-  #   };
-  # };
+  kulala = {
+    package = pkgs.vimPlugins.kulala-nvim;
+    config = {
+      global_keymaps = true;
+    };
+  };
 
   leap = {
     src = sources."leap.nvim";

@@ -1,6 +1,7 @@
 return function()
   local conform = require "conform"
 
+  ---@source https://github.com/stevearc/conform.nvim/blob/master/doc/recipes.md#run-the-first-available-formatter-followed-by-more-formatters
   ---@param bufnr integer
   ---@param ... string
   ---@return string
@@ -40,7 +41,7 @@ return function()
       javascriptreact = function(bufnr)
         return { first(bufnr, "biome", "prettier"), "injected" }
       end,
-      json = { "biome", "prettier", "jq", stop_after_first = true },
+      json = { "jq" },
       lua = { "stylua" },
       markdown = { "prettier", "injected" },
       typescript = function(bufnr)

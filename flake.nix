@@ -99,7 +99,14 @@
           inputsFrom = [
             config.pre-commit.devShell
           ];
-          buildInputs = with pkgs; [alejandra cachix jq just niv nix-update];
+          buildInputs = with pkgs; [
+            alejandra
+            cachix
+            jq
+            just
+            niv
+            nix-update
+          ];
         };
 
         packages = {
@@ -114,8 +121,6 @@
             meta.mainProgram = "nvim";
           };
           darkman-nvim = pkgs.callPackage ./pkgs/darkman-nvim {};
-          # Not buildable since switch to bun
-          # kulala-fmt = pkgs.callPackage ./pkgs/kulala-fmt {};
           luafun = pkgs.luajit.pkgs.callPackage ./pkgs/luafun.nix {};
           neovim-nightly = inputs'.neovim.packages.default;
           nvim = config.neovim.final;

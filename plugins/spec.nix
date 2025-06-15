@@ -594,7 +594,7 @@ in rec {
 
   toggleterm = {
     src = sources."toggleterm.nvim";
-    config = true;
+    config = ./toggleterm.lua;
   };
 
   triptych = {

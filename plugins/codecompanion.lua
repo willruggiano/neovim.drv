@@ -104,4 +104,7 @@ return function()
       cmd = strategy,
     },
   }
+
+  vim.keymap.set("n", "<space>a", "<cmd>CodeCompanionActions<cr>", { desc = "CodeCompanion" })
+  vim.keymap.set("v", "<space>a", "<cmd>CodeCompanion<cr>", { desc = "CodeCompanion (inline)" })
 end

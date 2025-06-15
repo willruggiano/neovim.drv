@@ -279,10 +279,10 @@ in rec {
     package = buildVimPlugin {
       name = "hunk.nvim";
       src = sources."hunk.nvim";
-      dependencies = [nui.package nvim-web-devicons.package];
+      dependencies = [nui.package];
     };
-    config = true;
-    dependencies = {inherit nui nvim-web-devicons;};
+    config = ./hunk.lua;
+    dependencies = {inherit nui;};
   };
 
   ibl = {

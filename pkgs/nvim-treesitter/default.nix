@@ -39,6 +39,9 @@
     dockerfile = {
       owner = "camdencheek";
     };
+    elm = {
+      owner = "elm-tooling";
+    };
     fish = {
       owner = "ram02z";
     };

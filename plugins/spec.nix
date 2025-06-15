@@ -365,6 +365,8 @@ in rec {
       clang-tools
       cmake-language-server
       cppcheck
+      # elm?
+      elmPackages.elm-language-server
       # github actions
       actionlint
       # haskell

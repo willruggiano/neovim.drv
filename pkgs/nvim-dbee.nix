@@ -6,12 +6,12 @@
   duckdb,
   ...
 }: let
-  version = "0.1.9-unstable-2025-05-21";
+  version = "0.1.9-unstable-2025-06-13";
   src = fetchFromGitHub {
     owner = "kndndrj";
     repo = "nvim-dbee";
-    rev = "9656fc59841291e9dbd2f3b50b1cb4c77d9fea79";
-    hash = "sha256-iVJfJKswYTJ+1Gtfn1rISSRpIPvxlYOWb0k8h9paqhU=";
+    rev = "044e016127e63428b8d54116943cad29457db665";
+    hash = "sha256-0AA36Z2EqxdfT7ZLB6LS5EEh6yj22LQxD1XW/MmDSac=";
   };
   dbee = buildGoModule {
     pname = "dbee";

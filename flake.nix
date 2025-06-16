@@ -42,7 +42,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    vscode-js-debug.url = "github:willruggiano/vscode-js-debug.nix";
     zls.url = "github:zigtools/zls";
   };
 

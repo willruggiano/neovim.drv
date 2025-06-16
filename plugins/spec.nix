@@ -184,11 +184,9 @@ in rec {
             "pwa-msedge"
             "pwa-node"
           ];
-          debugger_cmd = [
-            "node"
-            "${inputs'.vscode-js-debug.packages.latest}/lib/node_modules/vscode-js-debug/dist/src/vsDebugServer.js"
-          ];
+          debugger_cmd = ["js-debug"];
         };
+        paths = [pkgs.vscode-js-debug];
       };
     };
     paths = with pkgs.haskellPackages; [

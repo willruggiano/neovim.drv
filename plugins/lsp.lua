@@ -274,7 +274,7 @@ return function()
 
       if client:supports_method "textDocument/signatureHelp" then
         vim.keymap.set("i", "<C-s>", function()
-          vim.lsp.buf.signature_help { border = "single" }
+          vim.lsp.buf.signature_help { border = "single", wrap = false }
         end, { buffer = bufnr, desc = "[lsp] signature help" })
       end
 

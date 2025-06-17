@@ -268,7 +268,7 @@ return function()
 
       if client:supports_method "textDocument/hover" then
         vim.keymap.set("n", "K", function()
-          vim.lsp.buf.hover { border = "single" }
+          vim.lsp.buf.hover { border = "single", wrap = false }
         end, { buffer = bufnr, desc = "[lsp] hover" })
       end
 

@@ -341,12 +341,9 @@ in rec {
     config = ./lsp.lua;
     dependencies = {
       inherit blink-cmp conform fastaction fun lsp-file-operations lspkind tailwind-tools;
-      clangd_extensions = {
-        src = sources."clangd_extensions.nvim";
-      };
-      schemastore = {
-        src = sources."SchemaStore.nvim";
-      };
+      clangd_extensions.src = sources."clangd_extensions.nvim";
+      # flutter-tools.package = pkgs.vimPlugins.flutter-tools-nvim;
+      schemastore.src = sources."SchemaStore.nvim";
       vtsls = {
         package = buildVimPlugin {
           name = "vtsls";

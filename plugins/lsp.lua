@@ -65,6 +65,7 @@ return function()
       },
     },
     cmake = {},
+    dartls = {},
     efm = {
       filetypes = { "cpp", "nix" },
       settings = {
@@ -266,7 +267,9 @@ return function()
       local bufnr = args.buf
       local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have a valid client")
 
-      if client:supports_method "textDocument/hover" then
+      if
+        client:supports_method "textDocument/hover" or client.name == "dartls" -- FIXME: lmao wat
+      then
         vim.keymap.set("n", "K", function()
           vim.lsp.buf.hover { border = "single", wrap = false }
         end, { buffer = bufnr, desc = "[lsp] hover" })
@@ -278,13 +281,9 @@ return function()
         end, { buffer = bufnr, desc = "[lsp] signature help" })
       end
 
-      if client:supports_method "textDocument/diagnostic" then
-        vim.keymap.set("n", "<localleader>e", function()
-          vim.diagnostic.open_float()
-        end, { buffer = bufnr, desc = "[lsp] explain" })
-      end
-
-      if client:supports_method "textDocument/codeAction" then
+      if
+        client:supports_method "textDocument/codeAction" or client.name == "dartls" -- FIXME: lmao wat
+      then
         vim.keymap.set(
           "n",
           "<localleader>a",

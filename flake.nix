@@ -1,5 +1,9 @@
 {
   inputs = {
+    blink = {
+      url = "github:Saghen/blink.cmp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,11 +29,6 @@
         hercules-ci-effects.follows = "";
         nixpkgs.follows = "nixpkgs";
       };
-    };
-
-    blink = {
-      url = "github:Saghen/blink.cmp";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     nil.url = "github:oxalica/nil";
     nix-colors.url = "github:misterio77/nix-colors";

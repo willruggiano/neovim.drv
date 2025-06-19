@@ -1,8 +1,6 @@
 -- TODO: Break this out into separate files per lsp
 return function()
   local lsp = require "bombadil.lsp"
-  local lspconfig = require "lspconfig"
-  local util = require "lspconfig.util"
 
   --
   -- Styling
@@ -13,6 +11,12 @@ return function()
       Copilot = "",
     },
   }
+
+  ---@diagnostic disable-next-line: missing-parameter
+  for type, icon in pairs(lsp.signs.get()) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+  end
 
   --
   -- Diagnostics
@@ -28,7 +32,6 @@ return function()
     update_in_insert = false,
     virtual_text = {
       format = function(diagnostic)
-        -- TODO: diagnostic.source?
         return string.format("%s  %s", lsp.signs.severity(diagnostic.severity), diagnostic.message)
       end,
       prefix = "",
@@ -39,228 +42,213 @@ return function()
     },
   }
 
-  ---@diagnostic disable-next-line: missing-parameter
-  for type, icon in pairs(lsp.signs.get()) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-  end
-
   --
   -- Generic lsp configuration
   --
 
-  local servers = {
-    basedpyright = {},
-    bashls = {},
-    biome = {
-      capabilities = {
-        textDocument = {
-          onTypeFormatting = { dynamicRegistration = true },
-        },
-      },
-    },
-    clangd = {
-      capabilities = {
-        offsetEncoding = { "utf-16" },
-      },
-    },
-    cmake = {},
-    dartls = {},
-    efm = {
-      filetypes = { "cpp", "nix" },
-      settings = {
-        languages = {
-          cpp = {
-            {
-              lintSource = "cppcheck",
-              lintCommand = [[cppcheck --quiet --enable=warning,style,performance,portability --language=cpp --error-exitcode=1 "${INPUT}"]],
-              lintStdin = false,
-              lintFormats = { "%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m" },
-              rootMarkers = { "CMakeLists.txt", "compile_commands.json", ".git" },
-            },
-          },
-          nix = {
-            {
-              lintSource = "statix",
-              lintCommand = "statix check --stdin --format=errfmt",
-              lintStdin = true,
-              lintIgnoreExitCode = true,
-              lintFormats = { "<stdin>>%l:%c:%t:%n:%m" },
-              rootMarkers = { "flake.nix", "shell.nix", "default.nix" },
-            },
-          },
-        },
-      },
-    },
-    elmls = {},
-    graphql = {},
-    -- harper_ls = {},
-    hls = {},
-    jsonls = {
-      cmd = { "vscode-json-languageserver", "--stdio" },
-      settings = {
-        json = {
-          schemas = require("schemastore").json.schemas {
-            extra = {
-              {
-                description = "Configuration file for relay-compiler",
-                fileMatch = { "relay.config.json" },
-                name = "relay.config.json",
-                url = "node_modules/relay-compiler/relay-compiler-config-schema.json",
-              },
-            },
-          },
-          validate = { enable = true },
-        },
-      },
-    },
-    lua_ls = {
-      root_dir = function(fname)
-        return util.find_git_ancestor(fname) or util.path.dirname(fname)
+  vim.lsp.config("dartls", {
+    commands = {
+      ["refactor.perform"] = function(command, ctx)
+        local client = assert(vim.lsp.get_client_by_id(ctx.client_id))
+
+        local kind = command.arguments[1]
+        if kind ~= "EXTRACT_METHOD" and kind ~= "EXTRACT_WIDGET" and kind ~= "EXTRACT_LOCAL_VARIABLE" then
+          client:request("workspace/executeCommand", command)
+          return
+        end
+
+        vim.ui.input({ prompt = kind .. "> " }, function(name)
+          if not name then
+            return
+          end
+          -- The 6th argument is the additional options of the refactor command.
+          -- For the extract method/local variable/widget commands, we can specify an optional `name` option.
+          -- see more: https://github.com/dart-lang/sdk/blob/e995cb5f7cd67d39c1ee4bdbe95c8241db36725f/pkg/analysis_server/lib/src/lsp/handlers/commands/perform_refactor.dart#L53
+          command.arguments[6] = { name = name }
+          client:request("workspace/executeCommand", command)
+        end)
       end,
-      settings = {
-        Lua = {
-          completion = {
-            callSnippet = "Replace",
-            keywordSnippet = "Replace",
-          },
-          format = {
-            enable = false,
-          },
-          runtime = {
-            version = "LuaJIT",
-            path = { "?.lua", "?/init.lua" },
-            pathStrict = true,
-          },
-          workspace = {
-            checkThirdParty = false,
-            library = (function()
-              local library = {}
+    },
+  })
 
-              local function add(dir)
-                for _, p in
-                  ipairs(vim.fn.expand(dir .. "/lua", false, true) --[=[@as string[]]=])
-                do
-                  table.insert(library, p)
-                end
-              end
-
-              add "$VIMRUNTIME"
-
-              return library
-            end)(),
+  vim.lsp.config("efm", {
+    filetypes = { "cpp", "nix" },
+    settings = {
+      languages = {
+        cpp = {
+          {
+            lintSource = "cppcheck",
+            lintCommand = [[cppcheck --quiet --enable=warning,style,performance,portability --language=cpp --error-exitcode=1 "${INPUT}"]],
+            lintStdin = false,
+            lintFormats = { "%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m" },
+            rootMarkers = { "CMakeLists.txt", "compile_commands.json", ".git" },
+          },
+        },
+        nix = {
+          {
+            lintSource = "statix",
+            lintCommand = "statix check --stdin --format=errfmt",
+            lintStdin = true,
+            lintIgnoreExitCode = true,
+            lintFormats = { "<stdin>>%l:%c:%t:%n:%m" },
+            rootMarkers = { "flake.nix", "shell.nix", "default.nix" },
           },
         },
       },
     },
-    marksman = {},
-    mdx_analyzer = {},
-    nginx_language_server = {},
-    nil_ls = {
-      settings = {
-        ["nil"] = {
-          formatting = {
-            command = { "alejandra", "-qq" },
+  })
+
+  vim.lsp.config("jsonls", {
+    cmd = { "vscode-json-languageserver", "--stdio" },
+    settings = {
+      json = {
+        schemas = require("schemastore").json.schemas {
+          extra = {
+            {
+              description = "Configuration file for relay-compiler",
+              fileMatch = { "relay.config.json" },
+              name = "relay.config.json",
+              url = "node_modules/relay-compiler/relay-compiler-config-schema.json",
+            },
           },
         },
+        validate = { enable = true },
       },
     },
-    postgres_lsp = {
-      capabilities = {
+  })
+
+  vim.lsp.config("lua_ls", {
+    on_init = function(client)
+      if client.workspace_folders then
+        local path = client.workspace_folders[1].name
+        if path ~= "/home/" .. vim.env.USER .. "/dev/neovim.drv" then
+          return
+        end
+      end
+
+      client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+        runtime = {
+          -- Tell the language server which version of Lua you're using (most
+          -- likely LuaJIT in the case of Neovim)
+          version = "LuaJIT",
+          -- Tell the language server how to find Lua modules same way as Neovim
+          -- (see `:h lua-module-load`)
+          path = {
+            "lua/?.lua",
+            "lua/?/init.lua",
+          },
+        },
+        -- Make the server aware of Neovim runtime files
         workspace = {
-          didChangeConfiguration = { dynamicRegistration = true },
+          checkThirdParty = false,
+          library = {
+            vim.env.VIMRUNTIME,
+            -- Depending on the usage, you might want to add additional paths
+            -- here.
+            -- '${3rd}/luv/library'
+            -- '${3rd}/busted/library'
+          },
+          -- Or pull in all of 'runtimepath'.
+          -- NOTE: this is a lot slower and will cause issues when working on
+          -- your own configuration.
+          -- See https://github.com/neovim/nvim-lspconfig/issues/3189
+          -- library = {
+          --   vim.api.nvim_get_runtime_file('', true),
+          -- }
         },
-      },
-      cmd = { "postgrestools", "lsp-proxy" },
-      filetypes = { "sql" },
-      single_file_support = true,
-      settings = {
-        db = {
-          host = vim.env.PGHOST,
-          database = vim.env.PGDATABASE,
-          username = vim.env.PGUSER,
-          password = vim.env.PGPASSWORD,
-        },
-      },
+      })
+    end,
+    settings = {
+      Lua = {},
     },
-    prismals = {
-      capabilities = {
-        workspace = {
-          didChangeConfiguration = { dynamicRegistration = true },
-        },
-      },
-    },
-    relay_lsp = {
-      -- auto_start_compiler = true,
-      root_dir = util.root_pattern "relay.config.*",
-    },
-    ruff = {},
-    rust_analyzer = {},
-    -- sqruff = {
-    --   capabilities = {
-    --     textDocument = {
-    --       didSave = { dynamicRegistration = true },
-    --     },
-    --   },
-    -- },
-    superhtml = {},
-    -- tailwindcss = {
-    --   root_dir = util.root_pattern "tailwind.config.*",
-    -- },
-    tsp_server = {
-      root_markers = { "tspconfig.yaml" },
-    },
-    vtsls = {
-      root_dir = util.root_pattern ".git",
-      settings = {
-        vtsls = {
-          autoUseWorkspaceTsdk = true,
+  })
+
+  vim.lsp.config("nil_ls", {
+    settings = {
+      ["nil"] = {
+        formatting = {
+          command = { "alejandra", "-qq" },
         },
       },
     },
-    yamlls = {
-      settings = {
-        yaml = {
-          schemas = require("schemastore").yaml.schemas(),
-          validate = { enable = true },
-        },
+  })
+
+  vim.lsp.config("postgres_lsp", {
+    capabilities = {
+      workspace = {
+        didChangeConfiguration = { dynamicRegistration = true },
       },
     },
-    zls = {
-      settings = {
-        zls = {
-          -- enable_build_on_save = true, -- default with a check step
-          semantic_tokens = "full",
-          -- warn_style = true,
-        },
+    cmd = { "postgrestools", "lsp-proxy" },
+    filetypes = { "sql" },
+    single_file_support = true,
+    settings = {
+      db = {
+        host = vim.env.PGHOST,
+        database = vim.env.PGDATABASE,
+        username = vim.env.PGUSER,
+        password = vim.env.PGPASSWORD,
       },
     },
+  })
+
+  vim.lsp.config("vtsls", {
+    root_markers = { "tsconfig.json" },
+    settings = {
+      vtsls = {
+        autoUseWorkspaceTsdk = true,
+      },
+    },
+  })
+
+  vim.lsp.config("yamlls", {
+    settings = {
+      yaml = {
+        schemas = require("schemastore").yaml.schemas(),
+        validate = { enable = true },
+      },
+    },
+  })
+
+  vim.lsp.config("zls", {
+    settings = {
+      zls = {
+        -- enable_build_on_save = true, -- default with a check step
+        semantic_tokens = "full",
+        -- warn_style = true,
+      },
+    },
+  })
+
+  vim.lsp.enable {
+    "basedpyright",
+    "bashls",
+    "biome",
+    "clangd",
+    "cmake",
+    "dartls",
+    "efm",
+    "elmls",
+    "graphql",
+    "hls",
+    "jsonls",
+    "lua_ls",
+    "marksman",
+    "mdx_analyzer",
+    "nginx_language_server",
+    "nil_ls",
+    "postgres_lsp",
+    "prismals",
+    -- "relay_lsp",
+    "ruff",
+    "rust_analyzer",
+    -- "sqruff",
+    "superhtml",
+    "tsp_server",
+    "vtsls",
+    "yamlls",
+    "zls",
   }
-
-  for name, config in pairs(servers) do
-    config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
-    -- Doesn't seem like we're quite ready for this.
-    -- @see https://github.com/neovim/nvim-lspconfig/issues/3705
-    -- if vim.tbl_contains({ "mdx_analyzer", "relay_lsp" }, name) then
-    lspconfig[name].setup(config)
-    -- else
-    --   vim.lsp.config(name, config)
-    -- end
-    -- vim.lsp.enable(name)
-  end
-
-  if pcall(require, "tailwind-tools") then
-    require("tailwind-tools").setup {
-      document_color = {
-        kind = "foreground",
-      },
-      keymaps = {
-        smart_increment = {
-          enabled = false,
-        },
-      },
-    }
-  end
 
   vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)

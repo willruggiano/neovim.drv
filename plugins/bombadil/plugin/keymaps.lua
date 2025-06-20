@@ -2,9 +2,7 @@ local jump = require "bombadil.lib.jump"
 local keymap = require "bombadil.lib.keymap"
 
 local noremap = keymap.noremap
-local inoremap = keymap.inoremap
 local nnoremap = keymap.nnoremap
-local vnoremap = keymap.vnoremap
 local xnoremap = keymap.xnoremap
 
 -- `:e %%/` expands to `:e /path/to/dir/`
@@ -16,10 +14,6 @@ for _, d in ipairs { "j", "k" } do
     jump(d)
   end)
 end
-
--- Opens line above or below the current line
-inoremap("<C-k>", "<C-o>O")
-inoremap("<C-j>", "<C-o>o")
 
 -- Better pane navigation
 nnoremap("<C-j>", "<C-w><C-j>")

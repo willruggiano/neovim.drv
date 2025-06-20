@@ -155,6 +155,12 @@
         "rev": "10c14af4ddfb34dbd7721f0bfb2b4d91f0558907",
         "type": "git"
     },
+    "leetcode.nvim": {
+        "branch": "master",
+        "repo": "git@github.com:kawre/leetcode.nvim",
+        "rev": "db7e1cd6b9191b34b4c1f2f96e4e3949cde9f951",
+        "type": "git"
+    },
     "lspkind.nvim": {
         "branch": "master",
         "repo": "git@github.com:onsails/lspkind.nvim",

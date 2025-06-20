@@ -71,7 +71,13 @@ in rec {
         ghost_text.enabled = false;
       };
       fuzzy.prebuilt_binaries.download = false;
-      keymap.preset = "default";
+      keymap = {
+        preset = "default";
+        "<C-b>" = false;
+        "<C-f>" = false;
+        "<C-u>" = ["scroll_documentation_up" "fallback"];
+        "<C-d>" = ["scroll_documentation_down" "fallback"];
+      };
       sources.default = ["lsp" "path"];
     };
   };
@@ -314,6 +320,19 @@ in rec {
         config = true;
       };
       vim-repeat.src = sources."vim-repeat";
+    };
+  };
+
+  leetcode = {
+    package = buildVimPlugin {
+      name = "leetcode.nvim";
+      src = sources."leetcode.nvim";
+      doCheck = false;
+    };
+    dependencies = {inherit telescope plenary nui;};
+    config = {
+      lang = "typescript";
+      picker.provider = "telescope";
     };
   };
 

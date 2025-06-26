@@ -50,7 +50,7 @@ in rec {
         };
       };
     };
-    paths = with pkgs; [darkman];
+    paths = with pkgs; [claude-code darkman];
   };
 
   abolish = {
@@ -94,37 +94,38 @@ in rec {
     ft = ["c" "cpp"];
   };
 
-  codecompanion = {
-    package = buildVimPlugin {
-      name = "codecompanion.nvim";
-      src = sources."codecompanion.nvim";
-      nvimRequireCheck = "codecompanion";
-    };
-    config = ./codecompanion.lua;
-    dependencies = {
-      inherit fidget plenary nvim-treesitter telescope;
-      mcphub = {
-        config = true;
-        package = buildVimPlugin {
-          name = "mcphub";
-          src = sources."mcphub.nvim";
-          dependencies = [plenary.package];
-          nvimRequireCheck = "mcphub";
-        };
-        paths = [inputs'.mcp-hub.packages.default];
-      };
-      vectorcode = {
-        config = {
-          async_backend = "lsp";
-        };
-        package = pkgs.vimPlugins.vectorcode-nvim;
-        paths = [pkgs.vectorcode];
-      };
-    };
-    # paths = [
-    #   (pkgs.python3.withPackages (ps: with ps; [llm llm-ollama]))
-    # ];
-  };
+  # codecompanion = {
+  #   package = buildVimPlugin {
+  #     name = "codecompanion.nvim";
+  #     src = sources."codecompanion.nvim";
+  #     nvimRequireCheck = "codecompanion";
+  #   };
+  #   config = ./codecompanion.lua;
+  #   dependencies = {
+  #     inherit fidget plenary nvim-treesitter telescope;
+  #     mcphub = {
+  #       config = true;
+  #       package = buildVimPlugin {
+  #         name = "mcphub";
+  #         src = sources."mcphub.nvim";
+  #         dependencies = [plenary.package];
+  #         nvimRequireCheck = "mcphub";
+  #       };
+  #       paths = [inputs'.mcp-hub.packages.default];
+  #     };
+  #     vectorcode = {
+  #       config = {
+  #         async_backend = "lsp";
+  #       };
+  #       package = pkgs.vimPlugins.vectorcode-nvim;
+  #       paths = [pkgs.vectorcode];
+  #     };
+  #   };
+  #   paths = with pkgs; [
+  #     claude-code
+  #     # (python3.withPackages (ps: with ps; [llm llm-ollama]))
+  #   ];
+  # };
 
   colorizer = {
     src = sources."nvim-colorizer.lua";
@@ -254,14 +255,8 @@ in rec {
     priority = 1001;
   };
 
-  fugitive = {
-    src = sources.vim-fugitive;
-    config = ./fugitive.lua;
-  };
-
-  fun = {
-    package = config.packages.luafun;
-  };
+  fugitive.src = sources.vim-fugitive;
+  fun.package = config.packages.luafun;
 
   gitsigns = {
     package = buildVimPlugin {

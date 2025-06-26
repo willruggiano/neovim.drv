@@ -74,6 +74,7 @@
       }: let
         pkgs = import inputs.nixpkgs {
           inherit system;
+          config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) ["claude-code"];
           overlays = [
             inputs.rust-overlay.overlays.default
             (final: prev: {

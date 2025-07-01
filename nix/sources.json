@@ -269,18 +269,6 @@
         "rev": "8dd9150ca7eae5683660ea20cec86edcd5ca4046",
         "type": "git"
     },
-    "nvim-treesitter": {
-        "branch": "master",
-        "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter",
-        "rev": "42fc28ba918343ebfd5565147a42a26580579482",
-        "type": "git"
-    },
-    "nvim-treesitter-textobjects": {
-        "branch": "master",
-        "repo": "ssh://git@github.com/nvim-treesitter/nvim-treesitter-textobjects",
-        "rev": "89ebe73cd2836db80a22d9748999ace0241917a5",
-        "type": "git"
-    },
     "nvim-ts-context-commentstring": {
         "branch": "main",
         "repo": "git@github.com:JoosepAlviste/nvim-ts-context-commentstring",

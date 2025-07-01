@@ -19,36 +19,77 @@ in rec {
         name = "doom-one";
         src = sources."doom-one.nvim";
       };
-      halfspace.package = buildVimPlugin {
-        name = "halfspace";
-        src = sources."halfspace.nvim";
+      treesitter.package = pkgs.symlinkJoin {
+        name = "treesitter-parsers";
+        paths = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+          bash
+          cmake
+          cpp
+          css
+          dockerfile
+          elm
+          fish
+          go
+          graphql
+          haskell
+          hcl
+          html
+          http
+          hyprlang
+          java
+          javascript
+          json
+          json5
+          jsonc
+          just
+          ledger
+          # lua <-- built into neovim
+          make
+          nix
+          python
+          regex
+          rust
+          scheme
+          sql
+          toml
+          tsx
+          typescript
+          # vim <-- built into neovim
+          # vimdoc <-- built into neovim
+          yaml
+          zig
+        ];
       };
-      mellifluous.package = buildVimPlugin {
-        name = "mellifluous";
-        src = sources."mellifluous.nvim";
-      };
-      polychrome.package = buildVimPlugin {
-        name = "polychrome";
-        src = sources."polychrome.nvim";
-      };
-      sunburn.package = buildVimPlugin {
-        name = "sunburn";
-        src = sources."sunburn.nvim";
-        dependencies = [polychrome.package];
-        nvimRequireCheck = "sunburn";
-      };
-      zenbones = {
-        package = buildVimPlugin {
-          name = "zenbones";
-          src = sources."zenbones.nvim";
-          dependencies = [zenbones.dependencies.lush.package];
-          nvimRequireCheck = "zenbones";
-        };
-        dependencies.lush.package = buildVimPlugin {
-          name = "lush";
-          src = sources."lush.nvim";
-        };
-      };
+      # halfspace.package = buildVimPlugin {
+      #   name = "halfspace";
+      #   src = sources."halfspace.nvim";
+      # };
+      # mellifluous.package = buildVimPlugin {
+      #   name = "mellifluous";
+      #   src = sources."mellifluous.nvim";
+      # };
+      # polychrome.package = buildVimPlugin {
+      #   name = "polychrome";
+      #   src = sources."polychrome.nvim";
+      # };
+      # sunburn.package = buildVimPlugin {
+      #   name = "sunburn";
+      #   src = sources."sunburn.nvim";
+      #   dependencies = [polychrome.package];
+      #   nvimRequireCheck = "sunburn";
+      # };
+      # zenbones = {
+      #   package = buildVimPlugin {
+      #     name = "zenbones";
+      #     src = sources."zenbones.nvim";
+      #     dependencies = [zenbones.dependencies.lush.package];
+      #     nvimRequireCheck = "zenbones";
+      #   };
+      #   dependencies.lush.package = buildVimPlugin {
+      #     name = "lush";
+      #     src = sources."lush.nvim";
+      #   };
+      # };
     };
     paths = with pkgs; [claude-code darkman];
   };
@@ -102,7 +143,7 @@ in rec {
   #   };
   #   config = ./codecompanion.lua;
   #   dependencies = {
-  #     inherit fidget plenary nvim-treesitter telescope;
+  #     inherit fidget plenary telescope;
   #     mcphub = {
   #       config = true;
   #       package = buildVimPlugin {
@@ -437,7 +478,7 @@ in rec {
   matchup.package = buildVimPlugin {
     name = "matchup";
     src = sources.vim-matchup;
-    dependencies = [nvim-treesitter.package];
+    nvimRequireCheck = "match-up";
   };
 
   nui.package = buildVimPlugin {
@@ -452,21 +493,6 @@ in rec {
       nvimSkipModule = "nvim-surround.queries";
     };
     config = true;
-  };
-
-  nvim-treesitter = {
-    package = config.packages.nvim-treesitter;
-    config = ./treesitter.lua;
-    dependencies = {
-      inherit matchup nvim-ts-context-commentstring;
-      nvim-treesitter-textobjects = {
-        package = buildVimPlugin {
-          name = "nvim-treesitter-textobjects";
-          src = sources.nvim-treesitter-textobjects;
-          dependencies = [nvim-treesitter.package];
-        };
-      };
-    };
   };
 
   nvim-ts-context-commentstring = {

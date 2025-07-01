@@ -125,7 +125,6 @@
           nvim = config.neovim.final;
           nvim-rplugin = config.neovim.build.rplugin;
           nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
-          nvim-treesitter = pkgs.callPackage ./pkgs/nvim-treesitter {};
           sqruff = pkgs.callPackage ./pkgs/sqruff.nix {inherit inputs;};
         };
 

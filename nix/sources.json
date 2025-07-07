@@ -14,7 +14,7 @@
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
-        "rev": "e4f80f37cd11ed58a6e914cc30850749f021b6a7",
+        "rev": "1ec3867f463dfe4ca37001348953d810c716d4d9",
         "type": "git"
     },
     "clang-format.nvim": {
@@ -32,13 +32,13 @@
     "codecompanion.nvim": {
         "branch": "main",
         "repo": "git@github.com:olimorris/codecompanion.nvim",
-        "rev": "cab997e5eead6641efa2530847004ae5078ab9bb",
+        "rev": "17f7cbb6cabdc12195f164acf4c59c7c7c205b64",
         "type": "git"
     },
     "conform.nvim": {
         "branch": "master",
         "repo": "git@github.com:stevearc/conform.nvim",
-        "rev": "00d7e92d170139569b1887ff2be298a0cdd7d9ae",
+        "rev": "973f3cb73887d510321653044791d7937c7ec0fa",
         "type": "git"
     },
     "darkman.nvim": {
@@ -50,7 +50,7 @@
     "dial.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/monaqa/dial.nvim",
-        "rev": "2c7e2750372918f072a20f3cf754d845e143d7c9",
+        "rev": "78bd73aaf2b9c8f80715a878feaf56f7ffa8b6ff",
         "type": "git"
     },
     "doom-one.nvim": {
@@ -92,7 +92,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "ce95adc66c27d97b8f1bb56f139b7efd3f53e5c4",
+        "rev": "0076ec2e8d66a725555c256acbe46292019dc1a7",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -104,7 +104,7 @@
     "gitsigns.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/lewis6991/gitsigns.nvim",
-        "rev": "1b0350ab707713b2bc6c236151f1a324175347b1",
+        "rev": "362fe61f9f19e9bceff178792780df5cce118a7d",
         "type": "git"
     },
     "grug-far.nvim": {
@@ -152,13 +152,13 @@
     "leap.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/ggandor/leap.nvim",
-        "rev": "10c14af4ddfb34dbd7721f0bfb2b4d91f0558907",
+        "rev": "87835bf56c3162bc0508065ccb127b9f565b8a95",
         "type": "git"
     },
     "leetcode.nvim": {
         "branch": "master",
         "repo": "git@github.com:kawre/leetcode.nvim",
-        "rev": "db7e1cd6b9191b34b4c1f2f96e4e3949cde9f951",
+        "rev": "74f2987292efbe0ba198a35d0ea412c5ae19d31c",
         "type": "git"
     },
     "lspkind.nvim": {
@@ -182,7 +182,7 @@
     "mcphub.nvim": {
         "branch": "main",
         "repo": "git@github.com:ravitemer/mcphub.nvim",
-        "rev": "46986569fb1ac69d97ee48fe3b192450ab995e90",
+        "rev": "15d490149502a8fb523a148dd564d597d34c3eb4",
         "type": "git"
     },
     "mellifluous.nvim": {
@@ -218,7 +218,7 @@
     "nvim-dap": {
         "branch": "master",
         "repo": "ssh://git@github.com/mfussenegger/nvim-dap",
-        "rev": "14fe46ae16eb272629144a93f7738f5279665a4f",
+        "rev": "1c75a797b4017fec6491f509cf196c8c8833f26f",
         "type": "git"
     },
     "nvim-dap-ui": {
@@ -248,7 +248,7 @@
     "nvim-lspconfig": {
         "branch": "master",
         "repo": "git@github.com:neovim/nvim-lspconfig",
-        "rev": "6bba673aa8993eceec233be17b42ddfb9540794b",
+        "rev": "7fac9025a967a4d0846660f751cd392fac6bb788",
         "type": "git"
     },
     "nvim-nio": {
@@ -290,7 +290,7 @@
     "overseer.nvim": {
         "branch": "master",
         "repo": "git@github.com:stevearc/overseer.nvim",
-        "rev": "65a96d82ed19a160d7eae95c66239a10b1f43e27",
+        "rev": "fe7b2f9ba263e150ab36474dfc810217b8cf7400",
         "type": "git"
     },
     "plenary.nvim": {
@@ -308,7 +308,7 @@
     "postgres_lsp": {
         "branch": "main",
         "repo": "git@github.com:supabase/postgres_lsp",
-        "rev": "1535b76d655f267323cc0486267deeea5d2a5c37",
+        "rev": "ffeb33f678dced3667586753287d946071ff1dc1",
         "submodules": true,
         "type": "git"
     },
@@ -447,7 +447,7 @@
     "vim-matchup": {
         "branch": "master",
         "repo": "git@github.com:andymass/vim-matchup",
-        "rev": "c478d4a72bbf397eff42743198f1939f6a264736",
+        "rev": "5456eaccf757606884ec1ac1ef3f564019973873",
         "type": "git"
     },
     "vim-repeat": {

@@ -13,7 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     mcp-hub = {
-      url = "github:ravitemer/mcp-hub";
+      url = "github:ravitemer/mcp-hub/v4.1.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nix = {

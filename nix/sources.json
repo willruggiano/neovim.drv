@@ -32,7 +32,7 @@
     "codecompanion.nvim": {
         "branch": "main",
         "repo": "git@github.com:olimorris/codecompanion.nvim",
-        "rev": "28eab4386b04dc222de6c27349ea5ae0d1a92866",
+        "rev": "164e95c6ff0becd6d152e06be56ccd98f53bc5a8",
         "type": "git"
     },
     "conform.nvim": {
@@ -182,7 +182,7 @@
     "mcphub.nvim": {
         "branch": "main",
         "repo": "git@github.com:ravitemer/mcphub.nvim",
-        "rev": "af9d6d4fcb95c73480a9ca410d210e74a966332a",
+        "rev": "95c5abe809887f2479e2bcbf6cdf22d0b0b9a847",
         "type": "git"
     },
     "mellifluous.nvim": {
@@ -316,6 +316,12 @@
         "branch": "master",
         "repo": "git@github.com:stevearc/quicker.nvim",
         "rev": "51d3926f183c2d98fbc237cc237ae0926839af3a",
+        "type": "git"
+    },
+    "render-markdown.nvim": {
+        "branch": "main",
+        "repo": "git@github.com:MeanderingProgrammer/render-markdown.nvim",
+        "rev": "12d951dfe3c884063e874bdfc0b4c86e0843237c",
         "type": "git"
     },
     "rust-tools.nvim": {

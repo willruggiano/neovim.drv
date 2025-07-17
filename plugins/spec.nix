@@ -13,7 +13,7 @@ in rec {
     config = ./bombadil.lua;
     lazy = false;
     priority = 1000;
-    dependencies = rec {
+    dependencies = {
       inherit dot-nvim;
       doom-one.package = buildVimPlugin {
         name = "doom-one";
@@ -135,38 +135,38 @@ in rec {
     ft = ["c" "cpp"];
   };
 
-  # codecompanion = {
-  #   package = buildVimPlugin {
-  #     name = "codecompanion.nvim";
-  #     src = sources."codecompanion.nvim";
-  #     nvimRequireCheck = "codecompanion";
-  #   };
-  #   config = ./codecompanion.lua;
-  #   dependencies = {
-  #     inherit fidget plenary telescope;
-  #     mcphub = {
-  #       config = true;
-  #       package = buildVimPlugin {
-  #         name = "mcphub";
-  #         src = sources."mcphub.nvim";
-  #         dependencies = [plenary.package];
-  #         nvimRequireCheck = "mcphub";
-  #       };
-  #       paths = [inputs'.mcp-hub.packages.default];
-  #     };
-  #     vectorcode = {
-  #       config = {
-  #         async_backend = "lsp";
-  #       };
-  #       package = pkgs.vimPlugins.vectorcode-nvim;
-  #       paths = [pkgs.vectorcode];
-  #     };
-  #   };
-  #   paths = with pkgs; [
-  #     claude-code
-  #     # (python3.withPackages (ps: with ps; [llm llm-ollama]))
-  #   ];
-  # };
+  codecompanion = {
+    package = buildVimPlugin {
+      name = "codecompanion.nvim";
+      src = sources."codecompanion.nvim";
+      nvimRequireCheck = "codecompanion";
+    };
+    config = ./codecompanion.lua;
+    dependencies = {
+      inherit fidget plenary telescope;
+      mcphub = {
+        config = true;
+        package = buildVimPlugin {
+          name = "mcphub";
+          src = sources."mcphub.nvim";
+          dependencies = [plenary.package];
+          nvimRequireCheck = "mcphub";
+        };
+        paths = with pkgs; [inputs'.mcp-hub.packages.default curl uv];
+      };
+      # render-markdown = {
+      #   src = sources."render-markdown.nvim";
+      #   ft = ["markdown" "codecompanion"];
+      # };
+      # vectorcode = {
+      #   config = {
+      #     async_backend = "lsp";
+      #   };
+      #   package = pkgs.vimPlugins.vectorcode-nvim;
+      #   paths = [pkgs.vectorcode];
+      # };
+    };
+  };
 
   colorizer = {
     src = sources."nvim-colorizer.lua";

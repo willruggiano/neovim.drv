@@ -19,10 +19,12 @@ in rec {
         name = "doom-one";
         src = sources."doom-one.nvim";
       };
-      treesitter.package = pkgs.symlinkJoin {
-        name = "treesitter-parsers";
+      treesitter.package = pkgs.buildEnv {
+        name = "treesitter";
         paths = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+          pkgs.vimPlugins.nvim-treesitter # we need them queries
           bash
+          c
           cmake
           cpp
           css
@@ -43,10 +45,13 @@ in rec {
           jsonc
           just
           ledger
-          # lua <-- built into neovim
+          lua
           make
+          pkgs.vimPlugins.nvim-treesitter-parsers.markdown
+          markdown_inline
           nix
           python
+          query
           regex
           rust
           scheme
@@ -54,11 +59,12 @@ in rec {
           toml
           tsx
           typescript
-          # vim <-- built into neovim
-          # vimdoc <-- built into neovim
+          vim
+          vimdoc
           yaml
           zig
         ];
+        pathsToLink = ["/parser" "/queries"];
       };
       # halfspace.package = buildVimPlugin {
       #   name = "halfspace";
@@ -173,13 +179,13 @@ in rec {
     config = true;
   };
 
-  Comment = {
-    src = sources."Comment.nvim";
-    config = ./comment.lua;
-    dependencies = {
-      inherit nvim-ts-context-commentstring;
-    };
-  };
+  # Comment = {
+  #   src = sources."Comment.nvim";
+  #   config = ./comment.lua;
+  #   dependencies = {
+  #     inherit nvim-ts-context-commentstring;
+  #   };
+  # };
 
   conform = {
     src = sources."conform.nvim";

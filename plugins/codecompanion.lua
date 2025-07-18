@@ -68,7 +68,7 @@ return function()
     if vim.fn.executable "ollama" == 1 then
       return {
         adapter = "ollama",
-        model = vim.env.CODECOMPANION_MODEL or "devstral:latest",
+        model = vim.env.CODECOMPANION_MODEL or "qwen3:30b",
       }
     else
       return {

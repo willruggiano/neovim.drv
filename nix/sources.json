@@ -179,12 +179,6 @@
         "rev": "45a79ec4acb5af783a6a29673a999ce37f00497e",
         "type": "git"
     },
-    "mcphub.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:ravitemer/mcphub.nvim",
-        "rev": "95c5abe809887f2479e2bcbf6cdf22d0b0b9a847",
-        "type": "git"
-    },
     "mellifluous.nvim": {
         "branch": "main",
         "repo": "git@github.com:ramojus/mellifluous.nvim",

@@ -183,6 +183,27 @@
     "flake-parts_4": {
       "inputs": {
         "nixpkgs-lib": [
+          "mcp-hub-nvim",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1743550720,
+        "narHash": "sha256-hIshGgKZCgWh6AYJpJmRgFdR3WUbkY04o82X05xqQiY=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "c621e8422220273271f52058f618c94e405bb0f5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
+    "flake-parts_5": {
+      "inputs": {
+        "nixpkgs-lib": [
           "neovim",
           "nixpkgs"
         ]
@@ -201,7 +222,7 @@
         "type": "github"
       }
     },
-    "flake-parts_5": {
+    "flake-parts_6": {
       "inputs": {
         "nixpkgs-lib": [
           "neovim-nix",
@@ -357,17 +378,37 @@
         ]
       },
       "locked": {
-        "lastModified": 1752597263,
-        "narHash": "sha256-hPWrrCpASLPOO97BgInONuPgzE4yuo0KryNTgi74Cxc=",
+        "lastModified": 1752750545,
+        "narHash": "sha256-h8X9l+H+vorOTIp7VF72d2ipIxyOjtU+4iWYrrR6x5Q=",
         "owner": "ravitemer",
         "repo": "mcp-hub",
-        "rev": "ef8a265f5847b223c52a40ae7bdf98f41795a59c",
+        "rev": "9ec95df7e60198419f42b999e3307d50e56035af",
         "type": "github"
       },
       "original": {
         "owner": "ravitemer",
-        "ref": "v4.1.0",
         "repo": "mcp-hub",
+        "type": "github"
+      }
+    },
+    "mcp-hub-nvim": {
+      "inputs": {
+        "flake-parts": "flake-parts_4",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1752855028,
+        "narHash": "sha256-ssvVhSZKAUQO9vFZiTWraxDqjZ8ljHGWA8cpvqs2aHE=",
+        "owner": "ravitemer",
+        "repo": "mcphub.nvim",
+        "rev": "b34fdd6e6a747bb0f2c0c342c52da2918fe3447f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ravitemer",
+        "repo": "mcphub.nvim",
         "type": "github"
       }
     },
@@ -394,7 +435,7 @@
     "neovim": {
       "inputs": {
         "flake-compat": "flake-compat_2",
-        "flake-parts": "flake-parts_4",
+        "flake-parts": "flake-parts_5",
         "git-hooks": [],
         "hercules-ci-effects": [],
         "neovim-src": "neovim-src",
@@ -420,7 +461,7 @@
     "neovim-nix": {
       "inputs": {
         "example": [],
-        "flake-parts": "flake-parts_5",
+        "flake-parts": "flake-parts_6",
         "git-hooks": "git-hooks_2",
         "nixpkgs": [
           "nixpkgs"
@@ -589,6 +630,7 @@
         "flake-parts": "flake-parts_2",
         "git-hooks": "git-hooks",
         "mcp-hub": "mcp-hub",
+        "mcp-hub-nvim": "mcp-hub-nvim",
         "naersk": "naersk",
         "neovim": "neovim",
         "neovim-nix": "neovim-nix",

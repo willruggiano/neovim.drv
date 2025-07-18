@@ -19,10 +19,10 @@ in rec {
         name = "doom-one";
         src = sources."doom-one.nvim";
       };
-      treesitter.package = pkgs.buildEnv {
+      treesitter.package = pkgs.symlinkJoin {
         name = "treesitter";
         paths = with pkgs.vimPlugins.nvim-treesitter-parsers; [
-          pkgs.vimPlugins.nvim-treesitter # we need them queries
+          pkgs.vimPlugins.nvim-treesitter # we need them queries, and some directives
           bash
           c
           cmake
@@ -64,7 +64,7 @@ in rec {
           yaml
           zig
         ];
-        pathsToLink = ["/parser" "/queries"];
+        # pathsToLink = ["/parser" "/queries"];
       };
       # halfspace.package = buildVimPlugin {
       #   name = "halfspace";
@@ -152,12 +152,8 @@ in rec {
       inherit fidget plenary telescope;
       mcphub = {
         config = true;
-        package = buildVimPlugin {
-          name = "mcphub";
-          src = sources."mcphub.nvim";
-          dependencies = [plenary.package];
-          nvimRequireCheck = "mcphub";
-        };
+        # config.config = ./mcphub-servers.json;
+        package = inputs'.mcp-hub-nvim.packages.default;
         paths = with pkgs; [inputs'.mcp-hub.packages.default curl uv];
       };
       # render-markdown = {

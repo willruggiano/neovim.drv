@@ -1,0 +1,74 @@
+{
+  "mcpServers": {
+    "claude": {
+      "args": [
+        "mcp",
+        "serve"
+      ],
+      "command": "claude",
+      "disabled": true,
+      "env": []
+    },
+    "context7": {
+      "disabled": false,
+      "type": "streamable-http",
+      "url": "https://mcp.context7.com/mcp"
+    },
+    "git": {
+      "args": [
+        "mcp-server-git",
+        "--repository",
+        "${PWD}"
+      ],
+      "command": "uvx",
+      "disabled": false
+    },
+    "github": {
+      "disabled": false,
+      "headers": {
+        "Authorization": "Bearer ${GH_TOKEN}"
+      },
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "notion": {
+      "args": [
+        "-y",
+        "@notionhq/notion-mcp-server"
+      ],
+      "command": "npx",
+      "disabled": true,
+      "env": {
+        "OPENAPI_MCP_HEADERS": "{\"Authorization\": \"Bearer ${NOTION_TOKEN}\", \"Notion-Version\": \"2022-06-28\" }"
+      }
+    },
+    "private_journal": {
+      "args": [
+        "-y",
+        "github:obra/private-journal-mcp"
+      ],
+      "command": "npx",
+      "disabled": false
+    },
+    "task_master": {
+      "args": [
+        "-y",
+        "--package=task-master-ai",
+        "task-master-ai"
+      ],
+      "command": "npx",
+      "disabled": true,
+      "env": {
+        "ANTHROPIC_API_KEY": "${ANTHROPIC_API_KEY}",
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}"
+      }
+    }
+  },
+  "nativeMCPServers": {
+    "mcphub": {
+      "disabled": false
+    },
+    "neovim": {
+      "disabled": true
+    }
+  }
+}

@@ -19,52 +19,65 @@ in rec {
         name = "doom-one";
         src = sources."doom-one.nvim";
       };
-      treesitter.package = pkgs.symlinkJoin {
-        name = "treesitter";
-        paths = with pkgs.vimPlugins.nvim-treesitter-parsers; [
-          pkgs.vimPlugins.nvim-treesitter # we need them queries, and some directives
-          bash
-          c
-          cmake
-          cpp
-          css
-          dockerfile
-          elm
-          fish
-          go
-          graphql
-          haskell
-          hcl
-          html
-          http
-          hyprlang
-          java
-          javascript
-          json
-          json5
-          jsonc
-          just
-          ledger
-          lua
-          make
-          pkgs.vimPlugins.nvim-treesitter-parsers.markdown
-          markdown_inline
-          nix
-          python
-          query
-          regex
-          rust
-          scheme
-          sql
-          toml
-          tsx
-          typescript
-          vim
-          vimdoc
-          yaml
-          zig
-        ];
-        # pathsToLink = ["/parser" "/queries"];
+      treesitter = {
+        dependencies = {
+          queries.package = pkgs.stdenv.mkDerivation {
+            name = "nvim-treesitter-queries";
+            src = sources.nvim-treesitter;
+            installPhase = ''
+              mkdir $out
+              mv runtime/queries $out
+            '';
+            dontBuild = true;
+            dontFixup = true;
+          };
+        };
+        package = pkgs.symlinkJoin {
+          name = "treesitter";
+          paths = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+            bash
+            c
+            cmake
+            cpp
+            css
+            dockerfile
+            elm
+            fish
+            go
+            graphql
+            haskell
+            hcl
+            html
+            http
+            hyprlang
+            java
+            javascript
+            json
+            json5
+            jsonc
+            just
+            ledger
+            lua
+            make
+            pkgs.vimPlugins.nvim-treesitter-parsers.markdown
+            markdown_inline
+            nix
+            python
+            query
+            regex
+            rust
+            scheme
+            sql
+            toml
+            tsx
+            typescript
+            vim
+            vimdoc
+            yaml
+            zig
+          ];
+          # pathsToLink = ["/parser" "/queries"];
+        };
       };
       # halfspace.package = buildVimPlugin {
       #   name = "halfspace";

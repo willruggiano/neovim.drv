@@ -5,7 +5,7 @@ It uses [neovim.nix] under the hood.
 
 ## Try it out
 
-```sh
+```bash
 nix run github:willruggiano/neovim.drv
 ```
 

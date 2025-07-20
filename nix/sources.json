@@ -263,6 +263,12 @@
         "rev": "8dd9150ca7eae5683660ea20cec86edcd5ca4046",
         "type": "git"
     },
+    "nvim-treesitter": {
+        "branch": "main",
+        "repo": "git@github.com:nvim-treesitter/nvim-treesitter",
+        "rev": "20d77c2e5ba71315dee7dcf47456557413b1481e",
+        "type": "git"
+    },
     "nvim-ts-context-commentstring": {
         "branch": "main",
         "repo": "git@github.com:JoosepAlviste/nvim-ts-context-commentstring",

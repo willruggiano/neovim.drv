@@ -34,7 +34,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    nil.url = "github:oxalica/nil";
     nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     rust-overlay = {

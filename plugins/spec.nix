@@ -451,8 +451,8 @@ in rec {
       # nginx
       nginx-language-server
       # nix
-      alejandra # used by nil for formatting
-      inputs'.nil.packages.default
+      alejandra
+      nil
       statix
       # python
       basedpyright

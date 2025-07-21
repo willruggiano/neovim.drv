@@ -45,7 +45,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zls.url = "github:zigtools/zls";
   };
 
   nixConfig = {

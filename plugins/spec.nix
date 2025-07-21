@@ -21,6 +21,7 @@ in rec {
       };
       treesitter = {
         dependencies = {
+          # NOTE: these are the queries from the 'main' branch
           queries.package = pkgs.stdenv.mkDerivation {
             name = "nvim-treesitter-queries";
             src = sources.nvim-treesitter;
@@ -76,7 +77,6 @@ in rec {
             yaml
             zig
           ];
-          # pathsToLink = ["/parser" "/queries"];
         };
       };
       # halfspace.package = buildVimPlugin {
@@ -468,7 +468,7 @@ in rec {
       squawk
       sqruff
       # zig
-      inputs'.zls.packages.default
+      zls
       # other
       efm-langserver
       harper

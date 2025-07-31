@@ -1,18 +1,25 @@
 {
   "mcpServers": {
     "claude": {
-      "args": ["mcp", "serve"],
+      "args": [
+        "mcp",
+        "serve"
+      ],
       "command": "claude",
       "disabled": true,
       "env": []
     },
     "context7": {
-      "disabled": false,
+      "disabled": true,
       "type": "streamable-http",
       "url": "https://mcp.context7.com/mcp"
     },
     "git": {
-      "args": ["mcp-server-git", "--repository", "${PWD}"],
+      "args": [
+        "mcp-server-git",
+        "--repository",
+        "${PWD}"
+      ],
       "command": "uvx",
       "disabled": false
     },
@@ -24,7 +31,10 @@
       "url": "https://api.githubcopilot.com/mcp/"
     },
     "notion": {
-      "args": ["-y", "@notionhq/notion-mcp-server"],
+      "args": [
+        "-y",
+        "@notionhq/notion-mcp-server"
+      ],
       "command": "npx",
       "disabled": true,
       "env": {
@@ -32,12 +42,19 @@
       }
     },
     "private_journal": {
-      "args": ["-y", "github:obra/private-journal-mcp"],
+      "args": [
+        "-y",
+        "github:obra/private-journal-mcp"
+      ],
       "command": "npx",
       "disabled": false
     },
     "task_master": {
-      "args": ["-y", "--package=task-master-ai", "task-master-ai"],
+      "args": [
+        "-y",
+        "--package=task-master-ai",
+        "task-master-ai"
+      ],
       "command": "npx",
       "disabled": true,
       "env": {

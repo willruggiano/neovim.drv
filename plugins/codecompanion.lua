@@ -64,18 +64,12 @@ return function()
   --    codecompanion.nvim
   --]]
 
-  local strategy = (function()
-    if vim.fn.executable "ollama" == 1 then
-      return {
-        adapter = "ollama",
-        model = vim.env.CODECOMPANION_MODEL or "qwen3:30b",
-      }
-    else
-      return {
-        adapter = "anthropic",
-      }
-    end
-  end)()
+  local strategy = {
+    adapter = {
+      name = "gemini",
+      model = "gemini-2.5-pro",
+    },
+  }
 
   require("codecompanion").setup {
     display = {

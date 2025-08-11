@@ -110,7 +110,7 @@ in rec {
       #   };
       # };
     };
-    paths = with pkgs; [claude-code darkman];
+    paths = with pkgs; [aider-chat-with-help claude-code darkman];
   };
 
   abolish = {

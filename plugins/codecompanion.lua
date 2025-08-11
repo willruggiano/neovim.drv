@@ -66,8 +66,8 @@ return function()
 
   local strategy = {
     adapter = {
-      name = "gemini",
-      model = "gemini-2.5-pro",
+      name = vim.env.CODECOMPANION_ADAPTER or "gemini",
+      model = vim.env.CODECOMPANION_MODEL or "gemini-2.5-pro",
     },
   }
 

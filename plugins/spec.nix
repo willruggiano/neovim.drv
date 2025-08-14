@@ -445,7 +445,8 @@ in rec {
       nodePackages.vscode-json-languageserver
       nodePackages.yaml-language-server
       # lua
-      sumneko-lua-language-server
+      emmylua-ls
+      # sumneko-lua-language-server
       # markdown
       marksman
       # nginx

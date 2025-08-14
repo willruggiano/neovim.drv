@@ -108,6 +108,23 @@
             niv
             nix-update
           ];
+          shellHook = let
+            emmyrc = pkgs.writeText "emmyrc" (builtins.toJSON {
+              "$schema" = "https://raw.githubusercontent.com/EmmyLuaLs/emmylua-analyzer-rust/refs/heads/main/crates/emmylua_code_analysis/resources/schema.json";
+              runtime = {
+                version = "LuaJIT";
+                requirePattern = [
+                  "lua/?.lua"
+                  "lua/?/init.lua"
+                ];
+              };
+              workspace = {
+                library = ["${config.packages.neovim-nightly}/share/nvim/runtime"];
+              };
+            });
+          in ''
+            ln -sf ${emmyrc} .emmyrc.json
+          '';
         };
 
         packages = {

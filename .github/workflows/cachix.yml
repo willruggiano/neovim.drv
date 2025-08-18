@@ -13,7 +13,7 @@ jobs:
   cachix:
     runs-on: namespace-profile-cached-amd64-lg
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: namespacelabs/nscloud-cache-action@v1
         with:
           path: |

@@ -467,7 +467,7 @@ in rec {
       # sql
       postgres-lsp
       squawk
-      sqruff
+      # sqruff
       # zig
       zls
       # other

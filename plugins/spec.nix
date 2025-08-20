@@ -468,6 +468,8 @@ in rec {
       postgres-lsp
       squawk
       # sqruff
+      # typst
+      tinymist
       # zig
       zls
       # other

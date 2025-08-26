@@ -110,7 +110,11 @@ in rec {
       #   };
       # };
     };
-    paths = with pkgs; [aider-chat-with-help claude-code darkman];
+    paths = with pkgs; [
+      # aider-chat-with-help
+      claude-code
+      darkman
+    ];
   };
 
   abolish = {
@@ -154,34 +158,34 @@ in rec {
     ft = ["c" "cpp"];
   };
 
-  codecompanion = {
-    package = buildVimPlugin {
-      name = "codecompanion.nvim";
-      src = sources."codecompanion.nvim";
-      nvimRequireCheck = "codecompanion";
-    };
-    config = ./codecompanion.lua;
-    dependencies = {
-      inherit fidget plenary telescope;
-      mcphub = {
-        config = true;
-        # config.config = ./mcphub-servers.json;
-        package = inputs'.mcp-hub-nvim.packages.default;
-        paths = with pkgs; [inputs'.mcp-hub.packages.default curl uv];
-      };
-      # render-markdown = {
-      #   src = sources."render-markdown.nvim";
-      #   ft = ["markdown" "codecompanion"];
-      # };
-      # vectorcode = {
-      #   config = {
-      #     async_backend = "lsp";
-      #   };
-      #   package = pkgs.vimPlugins.vectorcode-nvim;
-      #   paths = [pkgs.vectorcode];
-      # };
-    };
-  };
+  # codecompanion = {
+  #   package = buildVimPlugin {
+  #     name = "codecompanion.nvim";
+  #     src = sources."codecompanion.nvim";
+  #     nvimRequireCheck = "codecompanion";
+  #   };
+  #   config = ./codecompanion.lua;
+  #   dependencies = {
+  #     inherit fidget plenary telescope;
+  #     mcphub = {
+  #       config = true;
+  #       # config.config = ./mcphub-servers.json;
+  #       package = inputs'.mcp-hub-nvim.packages.default;
+  #       paths = with pkgs; [inputs'.mcp-hub.packages.default curl uv];
+  #     };
+  #     # render-markdown = {
+  #     #   src = sources."render-markdown.nvim";
+  #     #   ft = ["markdown" "codecompanion"];
+  #     # };
+  #     # vectorcode = {
+  #     #   config = {
+  #     #     async_backend = "lsp";
+  #     #   };
+  #     #   package = pkgs.vimPlugins.vectorcode-nvim;
+  #     #   paths = [pkgs.vectorcode];
+  #     # };
+  #   };
+  # };
 
   colorizer = {
     src = sources."nvim-colorizer.lua";
@@ -429,7 +433,7 @@ in rec {
       inotify-tools
       # c
       clang-tools
-      cmake-language-server
+      # cmake-language-server
       cppcheck
       # elm?
       elmPackages.elm-language-server
@@ -450,7 +454,7 @@ in rec {
       # markdown
       marksman
       # nginx
-      nginx-language-server
+      # nginx-language-server
       # nix
       alejandra
       nil

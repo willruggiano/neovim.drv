@@ -14,7 +14,7 @@ in rec {
     lazy = false;
     priority = 1000;
     dependencies = {
-      inherit dot-nvim;
+      inherit dot-nvim toggleterm which-key;
       doom-one.package = buildVimPlugin {
         name = "doom-one";
         src = sources."doom-one.nvim";
@@ -60,7 +60,7 @@ in rec {
             ledger
             lua
             make
-            pkgs.vimPlugins.nvim-treesitter-parsers.markdown
+            markdown
             markdown_inline
             nix
             python
@@ -79,6 +79,7 @@ in rec {
           ];
         };
       };
+      # A bunch of old colorschemes that I thought about using...
       # halfspace.package = buildVimPlugin {
       #   name = "halfspace";
       #   src = sources."halfspace.nvim";
@@ -151,54 +152,10 @@ in rec {
     config = true;
   };
 
-  # haven't written c++ in awhile... :sad sigh:
-  clang-format = {
-    src = sources."clang-format.nvim";
-    dependencies = {inherit lyaml;};
-    ft = ["c" "cpp"];
-  };
-
-  # codecompanion = {
-  #   package = buildVimPlugin {
-  #     name = "codecompanion.nvim";
-  #     src = sources."codecompanion.nvim";
-  #     nvimRequireCheck = "codecompanion";
-  #   };
-  #   config = ./codecompanion.lua;
-  #   dependencies = {
-  #     inherit fidget plenary telescope;
-  #     mcphub = {
-  #       config = true;
-  #       # config.config = ./mcphub-servers.json;
-  #       package = inputs'.mcp-hub-nvim.packages.default;
-  #       paths = with pkgs; [inputs'.mcp-hub.packages.default curl uv];
-  #     };
-  #     # render-markdown = {
-  #     #   src = sources."render-markdown.nvim";
-  #     #   ft = ["markdown" "codecompanion"];
-  #     # };
-  #     # vectorcode = {
-  #     #   config = {
-  #     #     async_backend = "lsp";
-  #     #   };
-  #     #   package = pkgs.vimPlugins.vectorcode-nvim;
-  #     #   paths = [pkgs.vectorcode];
-  #     # };
-  #   };
-  # };
-
   colorizer = {
     src = sources."nvim-colorizer.lua";
     config = true;
   };
-
-  # Comment = {
-  #   src = sources."Comment.nvim";
-  #   config = ./comment.lua;
-  #   dependencies = {
-  #     inherit nvim-ts-context-commentstring;
-  #   };
-  # };
 
   conform = {
     src = sources."conform.nvim";
@@ -415,7 +372,7 @@ in rec {
     };
     config = ./lsp.lua;
     dependencies = {
-      inherit blink-cmp conform fastaction fun lsp-file-operations lspkind tailwind-tools;
+      inherit blink-cmp conform fastaction fun lsp-file-operations lspkind;
       clangd_extensions.src = sources."clangd_extensions.nvim";
       # flutter-tools.package = pkgs.vimPlugins.flutter-tools-nvim;
       schemastore.src = sources."SchemaStore.nvim";
@@ -493,7 +450,7 @@ in rec {
     };
   };
 
-  markdown = {
+  vim-markdown = {
     src = sources.vim-markdown;
     config = ./markdown.lua;
   };
@@ -520,9 +477,7 @@ in rec {
 
   nvim-ts-context-commentstring = {
     src = sources.nvim-ts-context-commentstring;
-    config = {
-      enable_autocmd = false;
-    };
+    config = ./comment.lua;
   };
 
   nvim-web-devicons = {
@@ -594,10 +549,6 @@ in rec {
     config = ./tabout.lua;
   };
 
-  tailwind-tools = {
-    src = sources."tailwind-tools.nvim";
-  };
-
   telescope = {
     config = ./telescope.lua;
     dependencies = {
@@ -657,11 +608,6 @@ in rec {
     config = ./toggleterm.lua;
   };
 
-  twilight = {
-    src = sources."twilight.nvim";
-    config = true;
-  };
-
   which-key = {
     package = buildVimPlugin {
       name = "which-key";
@@ -671,23 +617,6 @@ in rec {
     config = {
       icons.rules = false;
       notify = false;
-    };
-  };
-
-  zen-mode = {
-    src = sources."zen-mode.nvim";
-    config = {
-      plugins = {
-        gitsigns.enabled = true;
-        twilight.enabled = false;
-      };
-      window = {
-        options = {
-          number = false;
-          relativenumber = false;
-          signcolumn = "yes";
-        };
-      };
     };
   };
 }

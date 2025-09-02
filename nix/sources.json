@@ -5,12 +5,6 @@
         "rev": "98c8fed572ffd9eaf4f8046435c7c63b38f438d4",
         "type": "git"
     },
-    "Comment.nvim": {
-        "branch": "master",
-        "repo": "git@github.com:numToStr/Comment.nvim",
-        "rev": "e30b7f2008e52442154b66f7c519bfd2f1e32acb",
-        "type": "git"
-    },
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
@@ -27,12 +21,6 @@
         "branch": "main",
         "repo": "git@github.com:p00f/clangd_extensions.nvim",
         "rev": "b67cc417d9020fb4b83d46662351b4d16894905e",
-        "type": "git"
-    },
-    "codecompanion.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:olimorris/codecompanion.nvim",
-        "rev": "c13422e23b45bfd49906c22014929dc4be8d67c7",
         "type": "git"
     },
     "conform.nvim": {
@@ -83,12 +71,6 @@
         "rev": "513e38abe61237c53a9e983e45595b1d2e7d5391",
         "type": "git"
     },
-    "focus.nvim": {
-        "branch": "master",
-        "repo": "git@github.com:nvim-focus/focus.nvim",
-        "rev": "5500e1a9e926eec5a361d910679282fd723c0a96",
-        "type": "git"
-    },
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
@@ -111,12 +93,6 @@
         "branch": "main",
         "repo": "git@github.com:magicduck/grug-far.nvim",
         "rev": "50d9ee2b5a19634670441948e7e4afaa042f1059",
-        "type": "git"
-    },
-    "halfspace.nvim": {
-        "branch": "main",
-        "repo": "https://gitlab.com/sxwpb/halfspace.nvim.git",
-        "rev": "23b367771f694479771735150311d41830133f95",
         "type": "git"
     },
     "hunk.nvim": {
@@ -171,18 +147,6 @@
         "branch": "master",
         "repo": "git@github.com:luafun/luafun",
         "rev": "12837884993a3d25bda8aaf835bb9d79132fcbc6",
-        "type": "git"
-    },
-    "lush.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:rktjmp/lush.nvim",
-        "rev": "9c60ec2279d62487d942ce095e49006af28eed6e",
-        "type": "git"
-    },
-    "mellifluous.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:ramojus/mellifluous.nvim",
-        "rev": "b51ffc0b3d39ce16dec3826b6b2a259f10367456",
         "type": "git"
     },
     "nui.nvim": {
@@ -299,12 +263,6 @@
         "rev": "b9fd5226c2f76c951fc8ed5923d85e4de065e509",
         "type": "git"
     },
-    "polychrome.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:loganswartz/polychrome.nvim",
-        "rev": "2ad5cbd62b153f9b37e309349bccd69062fc29f9",
-        "type": "git"
-    },
     "postgres_lsp": {
         "branch": "main",
         "repo": "git@github.com:supabase/postgres_lsp",
@@ -360,22 +318,10 @@
         "rev": "c46172d0911aa5d49ba5f39f4351d1bb7aa289cc",
         "type": "git"
     },
-    "sunburn.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:loganswartz/sunburn.nvim",
-        "rev": "c6047a9d9ef8589f3143bcf0d6834ed7be5cdfaf",
-        "type": "git"
-    },
     "tabout.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/abecodes/tabout.nvim",
         "rev": "9a3499480a8e53dcaa665e2836f287e3b7764009",
-        "type": "git"
-    },
-    "tailwind-tools.nvim": {
-        "branch": "master",
-        "repo": "git@github.com:luckasRanarison/tailwind-tools.nvim",
-        "rev": "fbe982901d4508b0dcd80e07addf0fcb6dab6c49",
         "type": "git"
     },
     "telescope-fzf-native.nvim": {
@@ -426,12 +372,6 @@
         "rev": "f30e48d8861adc69de01d65099d7b8922fb34f54",
         "type": "git"
     },
-    "twilight.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:folke/twilight.nvim",
-        "rev": "1584c0b0a979b71fd86b18d302ba84e9aba85b1b",
-        "type": "git"
-    },
     "vim-abolish": {
         "branch": "master",
         "repo": "git@github.com:tpope/vim-abolish",
@@ -466,18 +406,6 @@
         "branch": "main",
         "repo": "git@github.com:folke/which-key.nvim",
         "rev": "370ec46f710e058c9c1646273e6b225acf47cbed",
-        "type": "git"
-    },
-    "zen-mode.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:folke/zen-mode.nvim",
-        "rev": "863f150ca321b3dd8aa1a2b69b5f411a220e144f",
-        "type": "git"
-    },
-    "zenbones.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:mcchrish/zenbones.nvim",
-        "rev": "a934bc07d2ed4a98b74526c172d7f043736d8935",
         "type": "git"
     }
 }

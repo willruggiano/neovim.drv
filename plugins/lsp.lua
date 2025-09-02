@@ -139,6 +139,7 @@ return function()
     "rust_analyzer",
     -- "sqruff",
     "superhtml",
+    "tailwindcss",
     "tinymist",
     "tsp_server",
     "vtsls",

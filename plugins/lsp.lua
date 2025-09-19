@@ -120,6 +120,7 @@ return function()
     "biome",
     "clangd",
     "cmake",
+    -- "cue",
     "dartls",
     "efm",
     "elmls",

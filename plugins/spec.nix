@@ -41,6 +41,7 @@ in rec {
             cmake
             cpp
             css
+            cue
             dockerfile
             elm
             fish
@@ -392,6 +393,8 @@ in rec {
       clang-tools
       # cmake-language-server
       cppcheck
+      # cue
+      cue
       # elm?
       elmPackages.elm-language-server
       # github actions

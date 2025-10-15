@@ -215,9 +215,10 @@ in rec {
         paths = [pkgs.vscode-js-debug];
       };
     };
-    paths = with pkgs.haskellPackages; [
-      haskell-debug-adapter
-    ];
+    # NOTE: broken, but also unused, as of 10/16/25
+    # paths = with pkgs.haskellPackages; [
+    #   haskell-debug-adapter
+    # ];
   };
 
   # darkman = {

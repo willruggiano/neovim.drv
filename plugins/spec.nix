@@ -37,7 +37,7 @@ in rec {
           name = "treesitter";
           paths = with pkgs.vimPlugins.nvim-treesitter-parsers; [
             bash
-            c
+            # c
             cmake
             cpp
             css
@@ -59,10 +59,10 @@ in rec {
             jsonc
             just
             ledger
-            lua
+            # lua
             make
-            markdown
-            markdown_inline
+            # markdown
+            # markdown_inline
             nix
             python
             query

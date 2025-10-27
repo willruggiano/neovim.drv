@@ -153,10 +153,10 @@ in rec {
     config = true;
   };
 
-  colorizer = {
-    src = sources."nvim-colorizer.lua";
-    config = true;
-  };
+  # colorizer = {
+  #   src = sources."nvim-colorizer.lua";
+  #   config = true;
+  # };
 
   conform = {
     src = sources."conform.nvim";
@@ -232,13 +232,13 @@ in rec {
   #   };
   # };
 
-  dbee = {
-    package = config.packages.nvim-dbee.overrideAttrs (_: {
-      dependencies = [nui.package];
-    });
-    config = ./dbee.lua;
-    paths = [config.packages.nvim-dbee.dbee];
-  };
+  # dbee = {
+  #   package = config.packages.nvim-dbee.overrideAttrs (_: {
+  #     dependencies = [nui.package];
+  #   });
+  #   config = ./dbee.lua;
+  #   paths = [config.packages.nvim-dbee.dbee];
+  # };
 
   dial = {
     src = sources."dial.nvim";

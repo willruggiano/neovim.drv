@@ -17,6 +17,6 @@ run:
 update:
   nix flake update
   niv update
-  nix-update --flake nvim-dbee --version=branch --subpackage dbee
+  # nix-update --flake nvim-dbee --version=branch --subpackage dbee
   # nix-update --flake sqruff --version-regex='v(.*)' --override-filename pkgs/sqruff.nix
   nix flake check

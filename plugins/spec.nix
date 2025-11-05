@@ -430,7 +430,7 @@ in rec {
       shellcheck
       shfmt
       # sql
-      postgres-lsp
+      postgres-language-server
       squawk
       # sqruff
       # typst

@@ -113,6 +113,12 @@
         "rev": "746414e67adcd3ad2ad5dbe6262543b55ac3f3cd",
         "type": "git"
     },
+    "jj-diffconflicts": {
+        "branch": "main",
+        "repo": "git@github.com:rafikdraoui/jj-diffconflicts",
+        "rev": "bee239e847cf336fc10925a35c65052f41aa89e3",
+        "type": "git"
+    },
     "karen-yank.nvim": {
         "branch": "main",
         "repo": "git@github.com:tenxsoydev/karen-yank.nvim",

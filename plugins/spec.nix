@@ -245,6 +245,8 @@ in rec {
     config = ./dial.lua;
   };
 
+  diffconflicts.src = sources.jj-diffconflicts;
+
   dot-nvim = {
     package = buildVimPlugin {
       name = "dot-nvim";

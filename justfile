@@ -2,6 +2,10 @@ install:
   nix profile upgrade path:$(pwd)#packages.x86_64-linux.default
   notify-send --transient 'neovim be ready'
 
+no-builders:
+  nix profile upgrade path:$(pwd)#packages.x86_64-linux.default --builders ""
+  notify-send --transient 'neovim be ready'
+
 build:
   nom build
 

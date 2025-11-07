@@ -1,12 +1,16 @@
 return function()
   local telescope = require "telescope"
   local actions = require "telescope.actions"
+  local action_state = require "telescope.actions.state"
   local themes = require "telescope.themes"
   local lga = require "telescope-live-grep-args.actions"
 
   local default_theme = themes.get_ivy {
     layout_config = { height = 0.25 },
     selection_caret = "* ",
+  }
+  local cursor_theme = themes.get_cursor {
+    previewer = false, -- this is usually the case
   }
 
   telescope.setup {
@@ -96,8 +100,9 @@ return function()
   telescope.load_extension "smart_open"
   telescope.load_extension "ui-select"
 
-  local nnoremap = require("bombadil.lib.keymap").nnoremap
-  local mappings = {
+  local k = require "bombadil.lib.keymap"
+
+  k.noremaps({ "n" }, {
     ["<leader>e"] = {
       function()
         require("telescope.builtin").symbols()
@@ -128,11 +133,37 @@ return function()
       end,
       { desc = "[telescope] files" },
     },
-  }
+  })
 
-  for key, opts in pairs(mappings) do
-    nnoremap(key, opts[1], opts[2])
-  end
+  k.noremaps({ "i" }, {
+    ["<c-f>"] = {
+      function()
+        require("telescope.builtin").find_files(themes.get_cursor {
+          attach_mappings = function(_, map)
+            map("i", "<CR>", function(prompt_bufnr)
+              local symbol = action_state.get_selected_entry().value
+              actions.close(prompt_bufnr)
+              vim.schedule(function()
+                vim.api.nvim_put({ symbol }, "", true, true)
+              end)
+            end)
+            return true
+          end,
+          previewer = false, -- this is usually the case
+        })
+      end,
+      { desc = "[telescope] insert filepath" },
+    },
+  })
+
+  k.noremaps({ "x", "n" }, {
+    ["<leader>f"] = {
+      function()
+        require("telescope.builtin").grep_string(cursor_theme)
+      end,
+      { desc = "🔍" },
+    },
+  })
 
   vim.api.nvim_create_autocmd("LspAttach", {
     callback = function(args)

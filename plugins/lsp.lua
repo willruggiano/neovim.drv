@@ -1,16 +1,6 @@
 return function()
   local lsp = require "bombadil.lsp"
 
-  --
-  -- Styling
-  --
-
-  lsp.kind.init {
-    symbol_map = {
-      Copilot = "",
-    },
-  }
-
   ---@diagnostic disable-next-line: missing-parameter
   for type, icon in pairs(lsp.signs.get()) do
     local hl = "DiagnosticSign" .. type
@@ -58,31 +48,8 @@ return function()
         end, { buffer = bufnr, desc = "[lsp] hover" })
       end
 
-      if client:supports_method "textDocument/signatureHelp" then
-        vim.keymap.set("i", "<C-s>", function()
-          vim.lsp.buf.signature_help { border = "single", wrap = false }
-        end, { buffer = bufnr, desc = "[lsp] signature help" })
-      end
-
-      if
-        client:supports_method "textDocument/codeAction" or client.name == "dartls" -- FIXME: lmao wat
-      then
-        vim.keymap.set(
-          "n",
-          "<localleader>a",
-          require("fastaction").code_action,
-          { buffer = bufnr, desc = "[lsp] code action" }
-        )
-        vim.keymap.set(
-          "v",
-          "<localleader>a",
-          [[<esc><cmd>lua require("fastaction").range_code_action()<cr>]],
-          { buffer = bufnr, desc = "[lsp] code action" }
-        )
-      end
-
       if client:supports_method "textDocument/declaration" then
-        vim.keymap.set("n", "gD", function()
+        vim.keymap.set("n", "grd", function()
           vim.lsp.buf.declaration { reuse_win = true }
         end, { buffer = bufnr, desc = "[lsp] goto declaration" })
       end
@@ -96,12 +63,6 @@ return function()
           buffer = bufnr,
           callback = vim.lsp.buf.clear_references,
         })
-      end
-
-      if client:supports_method "textDocument/typeDefinition" then
-        vim.keymap.set("n", "gT", function()
-          vim.lsp.buf.type_definition { reuse_win = true }
-        end, { buffer = bufnr, desc = "[lsp] typedef" })
       end
 
       if client:supports_method "workspace/symbol" then

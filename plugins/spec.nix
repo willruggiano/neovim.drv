@@ -148,16 +148,6 @@ in rec {
     };
   };
 
-  bqf = {
-    src = sources.nvim-bqf;
-    config = true;
-  };
-
-  # colorizer = {
-  #   src = sources."nvim-colorizer.lua";
-  #   config = true;
-  # };
-
   conform = {
     src = sources."conform.nvim";
     config = ./conform.lua;

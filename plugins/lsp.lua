@@ -76,7 +76,7 @@ return function()
   })
 
   vim.lsp.enable {
-    "basedpyright",
+    -- "basedpyright",
     "bashls",
     "biome",
     "clangd",
@@ -104,6 +104,7 @@ return function()
     "tailwindcss",
     "tinymist",
     "tsp_server",
+    "ty",
     "vtsls",
     "yamlls",
     "zls",

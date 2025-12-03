@@ -3,7 +3,7 @@ vim.opt.belloff = "all"
 vim.opt.breakindent = true
 vim.opt.cindent = true
 vim.opt.clipboard = "unnamedplus"
--- vim.opt.cmdheight = 0
+vim.opt.cmdheight = 0
 -- vim.opt.conceallevel = 3
 vim.opt.cursorline = true
 vim.opt.equalalways = false
@@ -35,7 +35,7 @@ vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.inccommand = "split"
 vim.opt.incsearch = true
-vim.opt.laststatus = 0
+vim.opt.laststatus = 0 -- never
 vim.opt.linebreak = false
 vim.opt.listchars = { space = ".", precedes = "<", extends = ">" }
 vim.opt.modelines = 1

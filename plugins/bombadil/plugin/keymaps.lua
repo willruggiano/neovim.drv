@@ -3,6 +3,7 @@ local keymap = require "bombadil.lib.keymap"
 
 local noremap = keymap.noremap
 local nnoremap = keymap.nnoremap
+local vnoremap = keymap.vnoremap
 local xnoremap = keymap.xnoremap
 
 -- `:e %%/` expands to `:e /path/to/dir/`
@@ -57,8 +58,23 @@ nnoremap("<space>q", function()
   end
 end, { desc = "Toggle quickfix" })
 
+vim.keymap.set("v", "<leader>lp", function()
+  vim.cmd "noau normal! vy"
+  local filetype = vim.bo.filetype
+  local prompt_template = "%s\n```%s\n%s\n```"
+  local selection = vim.fn.getreg "v"
+  vim.ui.input({ prompt = "> " }, function(input)
+    if input and #input > 0 then
+      local prompt = prompt_template:format(input, filetype, selection)
+      -- FIXME: not quite :(
+      vim.cmd("pedit term://llm -t concise '" .. vim.fn.shellescape(prompt) .. "'")
+    end
+  end)
+end, { desc = "Prompt" })
+
 require("which-key").add {
   { "<leader>h", group = "Hunk" },
+  { "<leader>l", group = "LM" },
   { "<leader>t", group = "Toggle" },
 }
 

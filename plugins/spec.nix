@@ -1,6 +1,5 @@
 {
   config,
-  inputs',
   pkgs,
   ...
 }: let
@@ -123,30 +122,30 @@ in rec {
     src = sources.vim-abolish;
   };
 
-  blink-cmp = {
-    package = inputs'.blink.packages.default.overrideAttrs {
-      nvimRequireCheck = "blink-cmp";
-    };
-    config = {
-      appearance.nerd_font_variant = "mono";
-      completion = {
-        documentation = {
-          auto_show = true;
-          auto_show_delay_ms = 300;
-        };
-        ghost_text.enabled = false;
-      };
-      fuzzy.prebuilt_binaries.download = false;
-      keymap = {
-        preset = "default";
-        "<C-b>" = false;
-        "<C-f>" = false;
-        "<C-u>" = ["scroll_documentation_up" "fallback"];
-        "<C-d>" = ["scroll_documentation_down" "fallback"];
-      };
-      sources.default = ["lsp" "path"];
-    };
-  };
+  # blink-cmp = {
+  #   package = inputs'.blink.packages.default.overrideAttrs {
+  #     nvimRequireCheck = "blink-cmp";
+  #   };
+  #   config = {
+  #     appearance.nerd_font_variant = "mono";
+  #     completion = {
+  #       documentation = {
+  #         auto_show = true;
+  #         auto_show_delay_ms = 300;
+  #       };
+  #       ghost_text.enabled = false;
+  #     };
+  #     fuzzy.prebuilt_binaries.download = false;
+  #     keymap = {
+  #       preset = "default";
+  #       "<C-b>" = false;
+  #       "<C-f>" = false;
+  #       "<C-u>" = ["scroll_documentation_up" "fallback"];
+  #       "<C-d>" = ["scroll_documentation_down" "fallback"];
+  #     };
+  #     sources.default = ["lsp" "path"];
+  #   };
+  # };
 
   conform = {
     src = sources."conform.nvim";
@@ -366,7 +365,7 @@ in rec {
     };
     config = ./lsp.lua;
     dependencies = {
-      inherit blink-cmp conform fastaction fun lsp-file-operations lspkind;
+      inherit conform fastaction fun lsp-file-operations lspkind;
       clangd_extensions.src = sources."clangd_extensions.nvim";
       # flutter-tools.package = pkgs.vimPlugins.flutter-tools-nvim;
       schemastore.src = sources."SchemaStore.nvim";
@@ -457,6 +456,11 @@ in rec {
     nvimRequireCheck = "match-up";
   };
 
+  mini_icons = buildVimPlugin {
+    name = "mini.icons";
+    src = sources."mini.icons";
+  };
+
   nui.package = buildVimPlugin {
     name = "nui";
     src = sources."nui.nvim";
@@ -476,20 +480,20 @@ in rec {
     config = ./comment.lua;
   };
 
-  nvim-web-devicons = {
-    package = buildVimPlugin {
-      name = "nvim-web-devicons";
-      src = sources.nvim-web-devicons;
-    };
-    config = ./devicons.lua;
-    dependencies = {
-      nvim-nonicons.package = buildVimPlugin {
-        name = "nvim-nonicons";
-        src = sources.nvim-nonicons;
-        dependencies = [nvim-web-devicons.package];
-      };
-    };
-  };
+  # nvim-web-devicons = {
+  #   package = buildVimPlugin {
+  #     name = "nvim-web-devicons";
+  #     src = sources.nvim-web-devicons;
+  #   };
+  #   config = ./devicons.lua;
+  #   dependencies = {
+  #     nvim-nonicons.package = buildVimPlugin {
+  #       name = "nvim-nonicons";
+  #       src = sources.nvim-nonicons;
+  #       dependencies = [nvim-web-devicons.package];
+  #     };
+  #   };
+  # };
 
   overseer = {
     package = buildVimPlugin {
@@ -548,7 +552,6 @@ in rec {
   telescope = {
     config = ./telescope.lua;
     dependencies = {
-      inherit nvim-web-devicons;
       telescope-fzf-native = {
         package = buildVimPlugin {
           name = "telescope-fzf-native";

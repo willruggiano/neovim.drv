@@ -40,6 +40,12 @@ return function()
       local bufnr = args.buf
       local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have a valid client")
 
+      if client:supports_method "textDocument/completion" then
+        ---@diagnostic disable-next-line: need-check-nil
+        client.server_capabilities.completionProvider.triggerCharacters = {}
+        vim.lsp.completion.enable(true, client.id, bufnr, {})
+      end
+
       if
         client:supports_method "textDocument/hover" or client.name == "dartls" -- FIXME: lmao wat
       then

@@ -4,6 +4,7 @@ vim.opt.breakindent = true
 vim.opt.cindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 0
+vim.opt.completeopt = vim.opt.completeopt + "menuone" + "noselect"
 -- vim.opt.conceallevel = 3
 vim.opt.cursorline = true
 vim.opt.equalalways = false

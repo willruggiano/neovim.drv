@@ -6,6 +6,9 @@ local nnoremap = keymap.nnoremap
 local vnoremap = keymap.vnoremap
 local xnoremap = keymap.xnoremap
 
+-- <A-q> behaves like <C-w>q
+nnoremap("<A-q>", ":quit<CR>")
+
 -- `:e %%/` expands to `:e /path/to/dir/`
 vim.cmd "cabbrev %% %:p:h"
 
@@ -38,25 +41,6 @@ noremap({ "n", "v" }, "<leader>d", [["_d]])
 nnoremap("<C-s>", function()
   vim.cmd.update { bang = true, mods = { silent = true } }
 end, { desc = "save" })
-
--- Toggle the quickfix list
-nnoremap("<space>q", function()
-  local open = (function()
-    for _, win in ipairs(vim.fn.getwininfo()) do
-      if win["quickfix"] == 1 then
-        return true
-      end
-    end
-    return false
-  end)()
-  if open then
-    vim.cmd.cclose()
-  else
-    if not vim.tbl_isempty(vim.fn.getqflist()) then
-      vim.cmd.copen()
-    end
-  end
-end, { desc = "Toggle quickfix" })
 
 vim.keymap.set("v", "<leader>lp", function()
   vim.cmd "noau normal! vy"

@@ -1,6 +1,5 @@
 {
   buildEnv,
-  colorscheme,
   lib,
   ...
 }:
@@ -11,6 +10,5 @@ buildEnv {
       src = ./.;
       filter = name: _: !(lib.hasSuffix ".nix" name);
     })
-    colorscheme.final.palette
   ];
 }

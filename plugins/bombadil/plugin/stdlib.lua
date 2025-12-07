@@ -4,6 +4,7 @@
 ---@return string
 ---@see io.popen
 os.capture = function(cmd, raw)
+  ---@diagnostic disable-next-line: unnecessary-assert
   local f = assert(io.popen(cmd, "r"))
   local s = assert(f:read "*a")
   f:close()
@@ -47,7 +48,7 @@ function string:replace(old, new)
 
   while true do
     local start_idx, end_idx = s:find(old, search_start_idx, true)
-    if not start_idx then
+    if not start_idx or not end_idx then
       break
     end
     local postfix = s:sub(end_idx + 1)
@@ -59,7 +60,7 @@ function string:replace(old, new)
 end
 
 ---Inserts a string at a specific position.
----@param pos number
+---@param pos integer
 ---@param text string
 ---@return string
 function string:insert(pos, text)

@@ -1,11 +1,11 @@
-local icons = require "nvim-nonicons"
 local f = require "bombadil.lib.functional"
 
+-- At least VS**** has nice icons :P
 local signs = {
-  Error = icons.get "circle-slash",
-  Hint = icons.get "light-bulb",
-  Info = icons.get "info",
-  Warn = icons.get "alert",
+  Error = "",
+  Hint = "",
+  Info = "",
+  Warn = "",
 }
 
 local severity = vim.diagnostic.severity

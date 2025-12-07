@@ -155,6 +155,12 @@
         "rev": "12837884993a3d25bda8aaf835bb9d79132fcbc6",
         "type": "git"
     },
+    "mini.icons": {
+        "branch": "main",
+        "repo": "git@github.com:nvim-mini/mini.icons",
+        "rev": "ff2e4f1d29f659cc2bad0f9256f2f6195c6b2428",
+        "type": "git"
+    },
     "nui.nvim": {
         "branch": "main",
         "repo": "git@github.com:muniftanjim/nui.nvim",

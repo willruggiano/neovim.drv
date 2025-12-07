@@ -1,8 +1,4 @@
 {
-  imports = [
-    ./colorscheme
-  ];
-
   perSystem = {
     config,
     lib,

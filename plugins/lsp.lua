@@ -1,20 +1,11 @@
 return function()
   local lsp = require "bombadil.lsp"
 
-  ---@diagnostic disable-next-line: missing-parameter
-  for type, icon in pairs(lsp.signs.get()) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-  end
-
   --
   -- Diagnostics
   --
 
   vim.diagnostic.config {
-    float = {
-      border = "single",
-    },
     severity_sort = true,
     signs = false,
     underline = true,
@@ -44,14 +35,6 @@ return function()
         ---@diagnostic disable-next-line: need-check-nil
         client.server_capabilities.completionProvider.triggerCharacters = {}
         vim.lsp.completion.enable(true, client.id, bufnr, {})
-      end
-
-      if
-        client:supports_method "textDocument/hover" or client.name == "dartls" -- FIXME: lmao wat
-      then
-        vim.keymap.set("n", "K", function()
-          vim.lsp.buf.hover { border = "single", wrap = false }
-        end, { buffer = bufnr, desc = "[lsp] hover" })
       end
 
       if client:supports_method "textDocument/declaration" then

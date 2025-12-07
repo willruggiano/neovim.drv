@@ -8,7 +8,7 @@
   inherit (pkgs.vimUtils) buildVimPlugin;
 in rec {
   bombadil = {
-    src = pkgs.callPackage ./bombadil {inherit (config.neovim) colorscheme;};
+    src = pkgs.callPackage ./bombadil {};
     config = ./bombadil.lua;
     lazy = false;
     priority = 1000;
@@ -166,7 +166,6 @@ in rec {
     };
     config = ./dap.lua;
     dependencies = {
-      inherit rapidjson;
       dapui.package = buildVimPlugin {
         name = "dapui";
         src = sources.nvim-dap-ui;
@@ -456,9 +455,9 @@ in rec {
     nvimRequireCheck = "match-up";
   };
 
-  mini_icons = buildVimPlugin {
-    name = "mini.icons";
+  "mini.icons" = {
     src = sources."mini.icons";
+    config = true;
   };
 
   nui.package = buildVimPlugin {
@@ -513,13 +512,6 @@ in rec {
   quicker = {
     src = sources."quicker.nvim";
     config = ./quicker.lua;
-  };
-
-  rapidjson = let
-    package = luajitPackages.rapidjson;
-  in {
-    inherit package;
-    cpath = "${package}/lib/lua/5.1/?.so";
   };
 
   split = {

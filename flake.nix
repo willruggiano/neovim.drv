@@ -30,7 +30,6 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-colors.url = "github:misterio77/nix-colors";
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
@@ -81,15 +80,7 @@
           ];
         };
       in {
-        _module.args = {
-          inherit pkgs;
-          nix-colors =
-            inputs.nix-colors.lib
-            // {
-              contrib = inputs.nix-colors.lib-contrib {inherit pkgs;};
-              schemes = inputs.nix-colors.colorSchemes;
-            };
-        };
+        _module.args = {inherit pkgs;};
 
         devShells.default = pkgs.mkShell {
           name = "neovim";

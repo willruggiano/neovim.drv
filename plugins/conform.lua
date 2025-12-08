@@ -28,12 +28,9 @@ return function()
         args = { "$FILENAME" },
         stdin = false,
       },
-      stylua = {
-        require_cwd = true, -- only when it finds the root marker
-      },
     },
     formatters_by_ft = {
-      graphql = { "prettier" },
+      graphql = { "biome" },
       http = { "kulala" },
       javascript = function(bufnr)
         return { first(bufnr, "biome", "prettier"), "injected" }

@@ -1,11 +1,10 @@
 return function()
-  local inoremap = require("bombadil.lib.keymap").inoremap
-
   local tabout = require "tabout"
 
   -- NOTE: Disabling completion and manually setting it up below
+  ---@diagnostic disable-next-line: undefined-field
   tabout.setup { completion = false }
 
-  inoremap("<Tab>", tabout.tabout)
-  inoremap("<S-Tab>", tabout.taboutBack)
+  vim.keymap.set("i", "<Tab>", tabout.tabout, { desc = "tabout.tabout()", noremap = true })
+  vim.keymap.set("i", "<S-Tab>", tabout.taboutBack, { desc = "tabout.taboutback()", noremap = true })
 end

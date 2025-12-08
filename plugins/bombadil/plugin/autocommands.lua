@@ -19,8 +19,13 @@ vim.api.nvim_create_autocmd("BufWrite", {
 vim.api.nvim_create_autocmd("ColorScheme", {
   group = group,
   callback = function()
+    hi.CursorLine = {}
+    hi.CursorLineNr = { fg = hi.Cursor.bg }
     hi.MsgArea = "Pmenu"
     hi.NormalFloat = "Pmenu"
     hi.PreInsert = "Comment"
+    hi.StatusLine = "Pmenu"
+    hi.TabLineFill = "Pmenu"
+    hi.WinSeparator = { fg = hi.Pmenu.bg }
   end,
 })

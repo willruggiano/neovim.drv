@@ -134,7 +134,7 @@
     "leap.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/ggandor/leap.nvim",
-        "rev": "f19d43590c4b6d31188ee1ea2954d2b7558a9e11",
+        "rev": "3c49d309d49d66a9feb0dd824353f186b3ee5efa",
         "type": "git"
     },
     "leetcode.nvim": {
@@ -213,12 +213,6 @@
         "branch": "master",
         "repo": "git@github.com:antosha417/nvim-lsp-file-operations",
         "rev": "9744b738183a5adca0f916527922078a965515ed",
-        "type": "git"
-    },
-    "nvim-lspconfig": {
-        "branch": "master",
-        "repo": "git@github.com:neovim/nvim-lspconfig",
-        "rev": "d20d83b3f24f5884da73a9fc92fdc47e778b8d0d",
         "type": "git"
     },
     "nvim-nio": {
@@ -412,12 +406,6 @@
         "branch": "master",
         "repo": "git@github.com:tpope/vim-repeat",
         "rev": "65846025c15494983dafe5e3b46c8f88ab2e9635",
-        "type": "git"
-    },
-    "which-key.nvim": {
-        "branch": "main",
-        "repo": "git@github.com:folke/which-key.nvim",
-        "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
         "type": "git"
     }
 }

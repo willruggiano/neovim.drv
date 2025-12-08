@@ -4,12 +4,10 @@ vim.opt.breakindent = true
 vim.opt.cindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.cmdheight = 1
-vim.opt.completeopt = { "fuzzy", "menuone", "noselect", "popup" }
--- vim.opt.conceallevel = 3
+vim.opt.completeopt = { "fuzzy", "menu", "menuone", "nearest", "noselect", "popup" }
 vim.opt.cursorline = true
 vim.opt.equalalways = false
 vim.opt.expandtab = true
-vim.opt.exrc = true
 vim.opt.fillchars = {
   eob = " ",
   fold = " ",
@@ -18,18 +16,7 @@ vim.opt.fillchars = {
 }
 vim.opt.foldenable = true
 vim.opt.foldlevel = 99
--- stylua: ignore start
-vim.opt.formatoptions =
-  vim.opt.formatoptions
-    - "a"
-    + "c"
-    + "j"
-    + "n"
-    - "o"
-    + "q"
-    + "r"
-    - "t"
--- stylua: ignore end
+vim.opt.formatoptions = vim.opt.formatoptions + "n" + "r" - "t"
 vim.opt.grepprg = "rg --vimgrep --smart-case --follow"
 vim.opt.hidden = true
 vim.opt.hlsearch = true
@@ -52,10 +39,6 @@ vim.opt.secure = true
 vim.opt.sessionoptions = "buffers,curdir,folds,globals,tabpages,winpos,winsize"
 vim.opt.shada = { "!", "'1000", "<50", "s10", "h" }
 vim.opt.shortmess = "atToOCF"
-vim.opt.showbreak = "+++ "
--- vim.opt.showcmd = false
--- vim.opt.showmatch = false
--- vim.opt.showmode = false
 vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.splitbelow = true

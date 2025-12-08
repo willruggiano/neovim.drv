@@ -1,5 +1,6 @@
 local config = {
   cmd = { "vscode-json-languageserver", "--stdio" },
+  filetypes = { "json" },
   settings = {
     json = {
       schemas = require("schemastore").json.schemas(),

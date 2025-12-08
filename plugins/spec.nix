@@ -1,10 +1,5 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   sources = import ../nix/sources.nix {};
-  inherit (pkgs) luajitPackages;
   inherit (pkgs.vimUtils) buildVimPlugin;
 in rec {
   bombadil = {
@@ -13,11 +8,25 @@ in rec {
     lazy = false;
     priority = 1000;
     dependencies = {
-      inherit dot-nvim toggleterm which-key;
+      inherit toggleterm;
       doom-one.package = buildVimPlugin {
         name = "doom-one";
         src = sources."doom-one.nvim";
       };
+      clangd_extensions.src = sources."clangd_extensions.nvim";
+      # flutter-tools.package = pkgs.vimPlugins.flutter-tools-nvim;
+      lsp-file-operations = {
+        package = buildVimPlugin {
+          name = "lsp-file-operations";
+          src = sources.nvim-lsp-file-operations;
+          doCheck = false;
+        };
+        config = true;
+      };
+      lspkind = {
+        src = sources."lspkind.nvim";
+      };
+      schemastore.src = sources."SchemaStore.nvim";
       treesitter = {
         dependencies = {
           # NOTE: these are the queries from the 'main' branch
@@ -79,42 +88,70 @@ in rec {
           ];
         };
       };
-      # A bunch of old colorschemes that I thought about using...
-      # halfspace.package = buildVimPlugin {
-      #   name = "halfspace";
-      #   src = sources."halfspace.nvim";
-      # };
-      # mellifluous.package = buildVimPlugin {
-      #   name = "mellifluous";
-      #   src = sources."mellifluous.nvim";
-      # };
-      # polychrome.package = buildVimPlugin {
-      #   name = "polychrome";
-      #   src = sources."polychrome.nvim";
-      # };
-      # sunburn.package = buildVimPlugin {
-      #   name = "sunburn";
-      #   src = sources."sunburn.nvim";
-      #   dependencies = [polychrome.package];
-      #   nvimRequireCheck = "sunburn";
-      # };
-      # zenbones = {
-      #   package = buildVimPlugin {
-      #     name = "zenbones";
-      #     src = sources."zenbones.nvim";
-      #     dependencies = [zenbones.dependencies.lush.package];
-      #     nvimRequireCheck = "zenbones";
-      #   };
-      #   dependencies.lush.package = buildVimPlugin {
-      #     name = "lush";
-      #     src = sources."lush.nvim";
-      #   };
-      # };
+      vtsls = {
+        package = buildVimPlugin {
+          name = "vtsls";
+          src = sources.nvim-vtsls;
+          nvimSkipModule = "vtsls.lspconfig";
+        };
+        paths = [pkgs.vtsls];
+      };
     };
     paths = with pkgs; [
       # aider-chat-with-help
       claude-code
       darkman
+      inotify-tools
+      # c
+      clang-tools
+      # cmake-language-server
+      cppcheck
+      # cue
+      cue
+      # elm
+      elmPackages.elm-language-server
+      # github actions
+      actionlint
+      # haskell
+      haskellPackages.cabal-fmt
+      haskellPackages.haskell-language-server
+      haskellPackages.ormolu
+      # html
+      superhtml
+      # json
+      nodePackages.vscode-json-languageserver
+      nodePackages.yaml-language-server
+      # lua
+      emmylua-ls
+      # markdown
+      marksman
+      # nginx
+      # nginx-language-server
+      # nix
+      alejandra
+      nil
+      statix
+      # python
+      basedpyright
+      ruff
+      # rust
+      rust-analyzer
+      # shell
+      nodePackages.bash-language-server
+      shellcheck
+      shfmt
+      # sql
+      postgres-language-server
+      squawk
+      # sqruff
+      # typst
+      tinymist
+      # zig
+      zls
+      # other
+      efm-langserver
+      harper
+      # typespec # broken
     ];
   };
 
@@ -235,24 +272,6 @@ in rec {
 
   diffconflicts.src = sources.jj-diffconflicts;
 
-  dot-nvim = {
-    package = buildVimPlugin {
-      name = "dot-nvim";
-      src = sources.".nvim.nvim";
-      dependencies = [lfs.package];
-      doCheck = false;
-    };
-    dependencies = {inherit lfs;};
-  };
-
-  fastaction = {
-    src = sources."fastaction.nvim";
-    config = {
-      dismiss_keys = ["<esc>" "j" "k"];
-      popup.border = "single";
-    };
-  };
-
   fidget = {
     src = sources."fidget.nvim";
     config.progress.ignore = ["null-ls"];
@@ -266,7 +285,6 @@ in rec {
   };
 
   fugitive.src = sources.vim-fugitive;
-  fun.package = config.packages.luafun;
 
   gitsigns = {
     package = buildVimPlugin {
@@ -281,7 +299,10 @@ in rec {
   grug-far = {
     src = sources."grug-far.nvim";
     config = ./grug.lua;
-    paths = with pkgs; [ast-grep ripgrep];
+    paths = with pkgs; [
+      ast-grep
+      ripgrep
+    ];
   };
 
   hunk = {
@@ -338,109 +359,6 @@ in rec {
     config = {
       lang = "typescript";
       picker.provider = "telescope";
-    };
-  };
-
-  lfs = let
-    package = luajitPackages.luafilesystem;
-  in {
-    inherit package;
-    cpath = "${package}/lib/lua/5.1/?.so";
-  };
-
-  lsp-file-operations = {
-    package = buildVimPlugin {
-      name = "lsp-file-operations";
-      src = sources.nvim-lsp-file-operations;
-      doCheck = false;
-    };
-    config = true;
-  };
-
-  lspconfig = {
-    package = buildVimPlugin {
-      name = "lspconfig";
-      src = sources.nvim-lspconfig;
-    };
-    config = ./lsp.lua;
-    dependencies = {
-      inherit conform fastaction fun lsp-file-operations lspkind;
-      clangd_extensions.src = sources."clangd_extensions.nvim";
-      # flutter-tools.package = pkgs.vimPlugins.flutter-tools-nvim;
-      schemastore.src = sources."SchemaStore.nvim";
-      vtsls = {
-        package = buildVimPlugin {
-          name = "vtsls";
-          src = sources.nvim-vtsls;
-          nvimSkipModule = "vtsls.lspconfig";
-        };
-        paths = [pkgs.vtsls];
-      };
-    };
-    paths = with pkgs;
-    with config.packages; [
-      inotify-tools
-      # c
-      clang-tools
-      # cmake-language-server
-      cppcheck
-      # cue
-      cue
-      # elm?
-      elmPackages.elm-language-server
-      # github actions
-      actionlint
-      # haskell
-      haskellPackages.cabal-fmt
-      haskellPackages.haskell-language-server
-      haskellPackages.ormolu
-      # html
-      superhtml
-      # json
-      nodePackages.vscode-json-languageserver
-      nodePackages.yaml-language-server
-      # lua
-      emmylua-ls
-      # sumneko-lua-language-server
-      # markdown
-      marksman
-      # nginx
-      # nginx-language-server
-      # nix
-      alejandra
-      nil
-      statix
-      # python
-      basedpyright
-      ruff
-      # rust
-      rust-analyzer
-      # shell
-      nodePackages.bash-language-server
-      shellcheck
-      shfmt
-      # sql
-      postgres-language-server
-      squawk
-      # sqruff
-      # typst
-      tinymist
-      # zig
-      zls
-      # other
-      efm-langserver
-      harper
-      # typespec # broken
-    ];
-  };
-
-  lspkind = {
-    src = sources."lspkind.nvim";
-  };
-
-  lyaml = {
-    package = pkgs.neovimUtils.buildNeovimPlugin {
-      inherit (luajitPackages.lyaml) pname;
     };
   };
 
@@ -514,10 +432,10 @@ in rec {
     config = ./quicker.lua;
   };
 
-  split = {
-    src = sources."split.nvim";
-    config = true; # maps: gs, gS
-  };
+  # split = {
+  #   src = sources."split.nvim";
+  #   config = true; # maps: gs, gS
+  # };
 
   sqlite = {
     package = buildVimPlugin {
@@ -581,7 +499,10 @@ in rec {
         package = buildVimPlugin {
           name = "telescope-undo";
           src = sources."telescope-undo.nvim";
-          dependencies = [plenary.package telescope.package];
+          dependencies = [
+            plenary.package
+            telescope.package
+          ];
         };
         paths = with pkgs; [delta];
       };
@@ -591,23 +512,14 @@ in rec {
       src = sources."telescope.nvim";
       dependencies = [plenary.package];
     };
-    paths = with pkgs; [fd ripgrep];
+    paths = with pkgs; [
+      fd
+      ripgrep
+    ];
   };
 
   toggleterm = {
     src = sources."toggleterm.nvim";
     config = ./toggleterm.lua;
-  };
-
-  which-key = {
-    package = buildVimPlugin {
-      name = "which-key";
-      src = sources."which-key.nvim";
-      nvimSkipModule = "which-key.docs";
-    };
-    config = {
-      icons.rules = false;
-      notify = false;
-    };
   };
 }

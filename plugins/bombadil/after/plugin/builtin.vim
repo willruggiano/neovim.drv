@@ -1,2 +1,0 @@
-packadd cfilter
-packadd netrw

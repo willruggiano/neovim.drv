@@ -1,4 +1,5 @@
 local config = {
+  file_types = { "yaml" },
   settings = {
     yaml = {
       schemas = require("schemastore").yaml.schemas(),

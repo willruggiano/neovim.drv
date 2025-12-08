@@ -32,13 +32,11 @@ local function try_switch_source_header(bufnr, force, client, params)
 end
 
 M.switch_source_header = function(bufnr, force)
-  bufnr = util.validate_bufnr(bufnr)
-
-  local client = util.get_active_client_by_name(bufnr, "clangd")
+  local client = vim.lsp.get_clients { bufnr = bufnr, name = "clangd" }
   local params = { uri = vim.uri_from_bufnr(bufnr) }
 
-  if client then
-    try_switch_source_header(bufnr, force, client, params)
+  if #client > 0 then
+    try_switch_source_header(bufnr, force, client[1], params)
   else
     vim.notify(
       "method textDocument/switchSourceHeader is not supported by any servers active on the current buffer",

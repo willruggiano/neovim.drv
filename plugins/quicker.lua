@@ -1,6 +1,4 @@
 return function()
-  local signs = require "bombadil.lsp.signs"
-
   require("quicker").setup {
     borders = {
       vert = "|",
@@ -33,11 +31,11 @@ return function()
       signcolumn = "yes",
     },
     type_icons = {
-      E = signs.severity(vim.diagnostic.severity.ERROR),
-      W = signs.severity(vim.diagnostic.severity.WARN),
-      I = signs.severity(vim.diagnostic.severity.INFO),
-      N = signs.severity(vim.diagnostic.severity.INFO),
-      H = signs.severity(vim.diagnostic.severity.HINT),
+      E = " ",
+      W = " ",
+      I = " ",
+      N = " ",
+      H = " ",
     },
   }
 end

@@ -7,6 +7,9 @@ local function link(higroup, link_to)
 end
 
 local M = setmetatable({}, {
+  __index = function(_, higroup)
+    return vim.api.nvim_get_hl(0, { name = higroup })
+  end,
   __newindex = function(_, higroup, args)
     if type(args) == "string" then
       link(higroup, args)

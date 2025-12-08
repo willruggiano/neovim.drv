@@ -13,11 +13,7 @@ local config = {
       cfg.settings.editor.tabSize = vim.lsp.util.get_effective_tabstop()
     end
   end,
-  root_dir = function(bufnr, on_dir)
-    local project_root_markers = { "tailwind.config.js", "tailwind.config.ts" }
-    local project_root = vim.fs.root(bufnr, project_root_markers)
-    on_dir(project_root)
-  end,
+  root_markers = { "tailwind.config.js", "tailwind.config.ts" },
   --
   settings = {
     tailwindCSS = {

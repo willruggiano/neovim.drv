@@ -7,8 +7,7 @@ local lazygit = Terminal:new {
   hidden = true,
 }
 
-local nnoremap = require("bombadil.lib.keymap").nnoremap
-nnoremap("<space>g", function()
+vim.keymap.set("n", "<space>g", function()
   ---@diagnostic disable-next-line: missing-parameter
   lazygit:toggle()
-end, { desc = "Lazygit" })
+end, { desc = "Lazygit", noremap = true })

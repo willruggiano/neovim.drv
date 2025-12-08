@@ -1,10 +1,14 @@
 local jump = require "bombadil.lib.jump"
-local keymap = require "bombadil.lib.keymap"
 
-local noremap = keymap.noremap
-local nnoremap = keymap.nnoremap
-local vnoremap = keymap.vnoremap
-local xnoremap = keymap.xnoremap
+local noremap = function(mode, lhs, rhs, opts)
+  vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("keep", opts or {}, { noremap = true, silent = true }))
+end
+local nnoremap = function(lhs, rhs, opts)
+  noremap("n", lhs, rhs, opts)
+end
+local xnoremap = function(lhs, rhs, opts)
+  noremap("x", lhs, rhs, opts)
+end
 
 -- <A-q> behaves like <C-w>q
 nnoremap("<A-q>", ":quit<CR>")
@@ -18,18 +22,6 @@ for _, d in ipairs { "j", "k" } do
     jump(d)
   end)
 end
-
--- Better pane navigation
-nnoremap("<C-j>", "<C-w><C-j>")
-nnoremap("<C-k>", "<C-w><C-k>")
-nnoremap("<C-h>", "<C-w><C-h>")
-nnoremap("<C-l>", "<C-w><C-l>")
-
--- Better window resize
-nnoremap("+", "<C-w>+")
-nnoremap("_", "<C-w>-")
-nnoremap(">", "<C-w>>")
-nnoremap("<", "<C-w><")
 
 -- Thanks Prime
 xnoremap("<leader>p", [["_dP]])
@@ -56,10 +48,16 @@ vim.keymap.set("v", "<leader>lp", function()
   end)
 end, { desc = "Prompt" })
 
-require("which-key").add {
-  { "<leader>h", group = "Hunk" },
-  { "<leader>l", group = "LM" },
-  { "<leader>t", group = "Toggle" },
-}
-
 vim.keymap.set("n", "Q", "<nop>")
+
+-- Auto-select first item on confirm
+vim.keymap.set("i", "<C-y>", function()
+  if vim.fn.pumvisible() ~= 0 then
+    local info = vim.fn.complete_info { "selected" }
+    if info.selected == -1 then
+      vim.api.nvim_select_popupmenu_item(0, true, true, {})
+    else
+      vim.api.nvim_select_popupmenu_item(info.selected, true, true, {})
+    end
+  end
+end)

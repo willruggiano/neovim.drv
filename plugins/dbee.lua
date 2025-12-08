@@ -83,8 +83,8 @@ return function()
     -- },
   }
 
-  local nnoremap = require("bombadil.lib.keymap").nnoremap
-  nnoremap("<space>d", function()
+  vim.keymap.set("n", "<space>d", function()
+    ---@diagnostic disable-next-line: undefined-field
     require("dbee").toggle()
-  end, { desc = "[db] Toggle" })
+  end, { desc = "[db] Toggle", noremap = true })
 end

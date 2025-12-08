@@ -1,7 +1,9 @@
 local config = {
   cmd = { "ty", "server" },
   filetypes = { "python" },
-  root_markers = { "pyproject.toml" },
+  root_dir = function(bufnr, on_dir)
+    on_dir(vim.fs.root(bufnr, { "pyproject.toml" }))
+  end,
   settings = {
     ty = {
       experimental = {

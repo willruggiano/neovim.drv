@@ -8,7 +8,7 @@
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
-        "rev": "48dba219db5d45baad6f7491e754706f74d12676",
+        "rev": "8b92ea89835b8e5dbc779a675ebb0e5fcb9a1993",
         "type": "git"
     },
     "clang-format.nvim": {
@@ -20,13 +20,13 @@
     "clangd_extensions.nvim": {
         "branch": "main",
         "repo": "git@github.com:p00f/clangd_extensions.nvim",
-        "rev": "b67cc417d9020fb4b83d46662351b4d16894905e",
+        "rev": "6fd7f12df71a04dd9ec398fc63aaa23fbe9f525f",
         "type": "git"
     },
     "conform.nvim": {
         "branch": "master",
         "repo": "git@github.com:stevearc/conform.nvim",
-        "rev": "9b8fa5e0b78168f68bee9bf886dc20f287c61e02",
+        "rev": "5420c4b5ea0aeb99c09cfbd4fd0b70d257b44f25",
         "type": "git"
     },
     "darkman.nvim": {
@@ -38,7 +38,7 @@
     "dial.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/monaqa/dial.nvim",
-        "rev": "f97c0c7fa7d5111bc04a91d0f693900fb2d95861",
+        "rev": "f2634758455cfa52a8acea6f142dcd6271a1bf57",
         "type": "git"
     },
     "doom-one.nvim": {
@@ -56,7 +56,7 @@
     "fidget.nvim": {
         "branch": "main",
         "repo": "git@github.com:j-hui/fidget.nvim",
-        "rev": "e32b672d8fd343f9d6a76944fedb8c61d7d8111a",
+        "rev": "64463022a1f2ff1318ab22a2ea4125ed9313a483",
         "type": "git"
     },
     "flatten.nvim": {
@@ -74,7 +74,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "b3b221854b231c2385bd2aadfc1eb5ec3153cf3e",
+        "rev": "603240122e300d146cbae6f0bc9c52a1017ac3c8",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -92,7 +92,7 @@
     "grug-far.nvim": {
         "branch": "main",
         "repo": "git@github.com:magicduck/grug-far.nvim",
-        "rev": "b58b2d65863f4ebad88b10a1ddd519e5380466e0",
+        "rev": "bc589a1ba340a00ae40bf1436401eac5b1454687",
         "type": "git"
     },
     "hunk.nvim": {
@@ -128,7 +128,7 @@
     "kulala.nvim": {
         "branch": "main",
         "repo": "git@github.com:mistweaverco/kulala.nvim",
-        "rev": "b36aff673915391e415d4acc7c90ca6ca6891750",
+        "rev": "9fc4831a116fb32b0fd420ed483f5102a873446a",
         "type": "git"
     },
     "leap.nvim": {
@@ -212,7 +212,7 @@
     "nvim-lspconfig": {
         "branch": "master",
         "repo": "git@github.com:neovim/nvim-lspconfig",
-        "rev": "f3979663c9c8cd9ad258344b9cfb5ad83cff61c1",
+        "rev": "d20d83b3f24f5884da73a9fc92fdc47e778b8d0d",
         "type": "git"
     },
     "nvim-nio": {
@@ -236,7 +236,7 @@
     "nvim-treesitter": {
         "branch": "main",
         "repo": "git@github.com:nvim-treesitter/nvim-treesitter",
-        "rev": "d3218d988f72ed34414959c9ccd802d393432d6e",
+        "rev": "6e42d823ce0a5a76180c473c119c7677738a09d1",
         "type": "git"
     },
     "nvim-ts-context-commentstring": {
@@ -254,13 +254,13 @@
     "nvim-web-devicons": {
         "branch": "master",
         "repo": "ssh://git@github.com/kyazdani42/nvim-web-devicons",
-        "rev": "8dcb311b0c92d460fac00eac706abd43d94d68af",
+        "rev": "6788013bb9cb784e606ada44206b0e755e4323d7",
         "type": "git"
     },
     "overseer.nvim": {
         "branch": "master",
         "repo": "git@github.com:stevearc/overseer.nvim",
-        "rev": "afbac6c612b12772591640d801fad65423af02b9",
+        "rev": "20660642c99a3d3bfb301a29156bd20963961342",
         "type": "git"
     },
     "plenary.nvim": {
@@ -272,20 +272,20 @@
     "postgres_lsp": {
         "branch": "main",
         "repo": "git@github.com:supabase/postgres_lsp",
-        "rev": "ec847a432c10d5e07610b73d7d9d6240cd2455f3",
+        "rev": "6a7172b06b826561ba90048bacca501a7b0d7d8e",
         "submodules": true,
         "type": "git"
     },
     "quicker.nvim": {
         "branch": "master",
         "repo": "git@github.com:stevearc/quicker.nvim",
-        "rev": "9983d4b28881e1df626e3682167b45c284d4da8c",
+        "rev": "ad367a8f27aff3361db43ea2f41cd505ab573617",
         "type": "git"
     },
     "render-markdown.nvim": {
         "branch": "main",
         "repo": "git@github.com:MeanderingProgrammer/render-markdown.nvim",
-        "rev": "7a43c8b444fa15b7736b34b248addb951126f723",
+        "rev": "07d088bf8bdadd159eb807b90eaee86a4778383f",
         "type": "git"
     },
     "rust-tools.nvim": {
@@ -363,7 +363,7 @@
     "telescope.nvim": {
         "branch": "master",
         "repo": "git@github.com:nvim-telescope/telescope.nvim",
-        "rev": "e69b434b968a33815e2f02a5c7bd7b8dd4c7d4b2",
+        "rev": "e709d31454ee6e6157f0537f861f797bd44c0bad",
         "type": "git"
     },
     "toggleterm.nvim": {

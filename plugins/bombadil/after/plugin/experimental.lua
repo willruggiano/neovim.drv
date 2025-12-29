@@ -1,4 +1,4 @@
 require("vim._extui").enable {
-  enable = true,
+  enable = false, -- broken on latest nightly
   msg = { target = "cmd" },
 }

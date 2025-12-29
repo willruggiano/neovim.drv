@@ -19,9 +19,9 @@ return function()
 
   vim.keymap.set("n", "<C-w>x", function()
     iron.send_file()
-  end, { desc = "[iron] send file" })
+  end, { desc = "iron.send_file()" })
 
   vim.keymap.set("x", "<C-M>", function()
     iron.visual_send()
-  end, { desc = "[iron] visual send" })
+  end, { desc = "iron.visual_send()" })
 end

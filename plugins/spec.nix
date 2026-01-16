@@ -64,7 +64,7 @@ in rec {
             javascript
             json
             json5
-            jsonc
+            # jsonc
             just
             ledger
             # lua

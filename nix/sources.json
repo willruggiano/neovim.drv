@@ -26,7 +26,7 @@
     "conform.nvim": {
         "branch": "master",
         "repo": "git@github.com:stevearc/conform.nvim",
-        "rev": "238f542a118984a88124fc915d5b981680418707",
+        "rev": "c2526f1cde528a66e086ab1668e996d162c75f4f",
         "type": "git"
     },
     "darkman.nvim": {
@@ -74,7 +74,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "d1f037059ab57aa1c70abe124b2b72a710f4a28f",
+        "rev": "d01eaa9de3f0cfa1b57701e3577b4f7afee0e2be",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -116,7 +116,7 @@
     "jj-diffconflicts": {
         "branch": "main",
         "repo": "git@github.com:rafikdraoui/jj-diffconflicts",
-        "rev": "3fd00c8212ba3d7a933fbca270d8f0c8f0560789",
+        "rev": "6d9eedadf1fab87bccb0a4a7ceda829da8023efb",
         "type": "git"
     },
     "karen-yank.nvim": {
@@ -146,7 +146,7 @@
     "lspkind.nvim": {
         "branch": "master",
         "repo": "git@github.com:onsails/lspkind.nvim",
-        "rev": "3ddd1b4edefa425fda5a9f95a4f25578727c0bb3",
+        "rev": "53374a2dbcb959f1d0d5d3cf6c47c4b029151c6e",
         "type": "git"
     },
     "luafun": {
@@ -236,7 +236,7 @@
     "nvim-treesitter": {
         "branch": "main",
         "repo": "git@github.com:nvim-treesitter/nvim-treesitter",
-        "rev": "15b3416cc1f557c4932468e512a0bd45871167bc",
+        "rev": "d9a5fb8484374e8ed5d88dd9e0475a760c168d6a",
         "type": "git"
     },
     "nvim-ts-context-commentstring": {
@@ -285,7 +285,7 @@
     "render-markdown.nvim": {
         "branch": "main",
         "repo": "git@github.com:MeanderingProgrammer/render-markdown.nvim",
-        "rev": "ae89236e2389836cf1c3787b2b80d5d8685cc13f",
+        "rev": "c54380dd4d8d1738b9691a7c349ecad7967ac12e",
         "type": "git"
     },
     "rust-tools.nvim": {

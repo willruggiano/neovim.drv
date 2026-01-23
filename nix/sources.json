@@ -221,12 +221,6 @@
         "rev": "21f5324bfac14e22ba26553caf69ec76ae8a7662",
         "type": "git"
     },
-    "nvim-nonicons": {
-        "branch": "main",
-        "repo": "ssh://git@github.com/yamatsum/nvim-nonicons",
-        "rev": "ceda07dc7339f35444b5f4c4016f76a9eb42ac16",
-        "type": "git"
-    },
     "nvim-surround": {
         "branch": "main",
         "repo": "git@github.com:kylechui/nvim-surround",
@@ -249,12 +243,6 @@
         "branch": "main",
         "repo": "git@github.com:yioneko/nvim-vtsls",
         "rev": "0b5f73c9e50ce95842ea07bb3f05c7d66d87d14a",
-        "type": "git"
-    },
-    "nvim-web-devicons": {
-        "branch": "master",
-        "repo": "ssh://git@github.com/kyazdani42/nvim-web-devicons",
-        "rev": "803353450c374192393f5387b6a0176d0972b848",
         "type": "git"
     },
     "overseer.nvim": {

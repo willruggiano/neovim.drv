@@ -397,21 +397,6 @@ in rec {
     config = ./comment.lua;
   };
 
-  # nvim-web-devicons = {
-  #   package = buildVimPlugin {
-  #     name = "nvim-web-devicons";
-  #     src = sources.nvim-web-devicons;
-  #   };
-  #   config = ./devicons.lua;
-  #   dependencies = {
-  #     nvim-nonicons.package = buildVimPlugin {
-  #       name = "nvim-nonicons";
-  #       src = sources.nvim-nonicons;
-  #       dependencies = [nvim-web-devicons.package];
-  #     };
-  #   };
-  # };
-
   overseer = {
     package = buildVimPlugin {
       name = "overseer";

@@ -133,8 +133,8 @@
     },
     "leap.nvim": {
         "branch": "main",
-        "repo": "ssh://git@github.com/ggandor/leap.nvim",
-        "rev": "0033bcaefc3cd7cf5a70b28cd356fe4860e5c074",
+        "repo": "https://codeberg.org/andyg/leap.nvim.git",
+        "rev": "572fbcfd2cca5f7b3e56b1ac1d720861f2a4db78",
         "type": "git"
     },
     "leetcode.nvim": {

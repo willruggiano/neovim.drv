@@ -1,5 +1,6 @@
 local config = {
-  file_types = { "yaml" },
+  cmd = { "yaml-language-server", "--stdio" },
+  filetypes = { "yaml" },
   settings = {
     yaml = {
       schemas = require("schemastore").yaml.schemas(),

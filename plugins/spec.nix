@@ -144,6 +144,8 @@ in rec {
       postgres-language-server
       squawk
       # sqruff
+      # terraform
+      terraform-ls
       # typst
       tinymist
       # zig

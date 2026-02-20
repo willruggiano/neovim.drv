@@ -77,5 +77,6 @@ vim.lsp.enable {
   "marksman",
   "nil_ls",
   "superhtml",
+  "terraform-ls",
   "yamlls",
 }

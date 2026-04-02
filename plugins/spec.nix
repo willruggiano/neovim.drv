@@ -119,8 +119,8 @@ in rec {
       # html
       superhtml
       # json
-      nodePackages.vscode-json-languageserver
-      nodePackages.yaml-language-server
+      vscode-json-languageserver
+      yaml-language-server
       # lua
       emmylua-ls
       # markdown
@@ -137,7 +137,7 @@ in rec {
       # rust
       rust-analyzer
       # shell
-      nodePackages.bash-language-server
+      bash-language-server
       shellcheck
       shfmt
       # sql

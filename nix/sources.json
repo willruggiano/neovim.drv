@@ -8,7 +8,7 @@
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
-        "rev": "4f1c58a59d3a4da095743dd6f04b73caa0cefc3d",
+        "rev": "5f3dda4ddc40df27be848beb4cbada90e4de18da",
         "type": "git"
     },
     "clang-format.nvim": {
@@ -20,7 +20,7 @@
     "clangd_extensions.nvim": {
         "branch": "main",
         "repo": "git@github.com:p00f/clangd_extensions.nvim",
-        "rev": "92b720768fad9d8a333a3cbb167f0bab550f9f50",
+        "rev": "9ac242ec71609eeeb5b5baff6ea6d3a1cb015b64",
         "type": "git"
     },
     "conform.nvim": {
@@ -74,7 +74,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "0f0751b3b6e2bd6e3120a11e9c8f8652e93ae0a5",
+        "rev": "b7138e67a60638c02361c38f1053eadd09709660",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -86,7 +86,7 @@
     "gitsigns.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/lewis6991/gitsigns.nvim",
-        "rev": "e1fb5425c8812214209b3f24eaa582c6c552cf98",
+        "rev": "944ef13cc8d8fe8b846c91f36041c8dfb85ca000",
         "type": "git"
     },
     "grug-far.nvim": {
@@ -158,7 +158,7 @@
     "mini.icons": {
         "branch": "main",
         "repo": "git@github.com:nvim-mini/mini.icons",
-        "rev": "5b9076dae1bfbe47ba4a14bc8b967cde0ab5d77e",
+        "rev": "7fdae2443a0e2910015ca39ad74b50524ee682d3",
         "type": "git"
     },
     "nui.nvim": {
@@ -194,7 +194,7 @@
     "nvim-dap-ui": {
         "branch": "master",
         "repo": "ssh://git@github.com/rcarriga/nvim-dap-ui",
-        "rev": "f5b6673f374626515401c5bc51b005f784a4f252",
+        "rev": "d9770a55188bb34c2bdce7d90a6151181beb6966",
         "type": "git"
     },
     "nvim-dap-virtual-text": {
@@ -230,7 +230,7 @@
     "nvim-treesitter": {
         "branch": "main",
         "repo": "git@github.com:nvim-treesitter/nvim-treesitter",
-        "rev": "539abf6da5ee8702e37b82cc953131dadd570da2",
+        "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
         "type": "git"
     },
     "nvim-ts-context-commentstring": {

@@ -342,13 +342,6 @@ in rec {
   leap = {
     src = sources."leap.nvim";
     config = ./leap.lua;
-    dependencies = {
-      flit = {
-        src = sources."flit.nvim";
-        config = true;
-      };
-      vim-repeat.src = sources."vim-repeat";
-    };
   };
 
   leetcode = {
@@ -418,6 +411,8 @@ in rec {
     src = sources."quicker.nvim";
     config = ./quicker.lua;
   };
+
+  repeat.src = sources.vim-repeat;
 
   # split = {
   #   src = sources."split.nvim";

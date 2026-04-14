@@ -65,12 +65,6 @@
         "rev": "72527798e75b5e34757491947c2cb853ce21dc0e",
         "type": "git"
     },
-    "flit.nvim": {
-        "branch": "main",
-        "repo": "ssh://git@github.com/ggandor/flit.nvim",
-        "rev": "ef18183b22377741e154cffb5b914516381d3870",
-        "type": "git"
-    },
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",

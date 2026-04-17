@@ -43,6 +43,7 @@ return function()
 
   -- Enable the traversal keys to repeat the previous search without
   -- explicitly invoking Leap (`<cr><cr>...` instead of `s<cr><cr>...`):
+  --[[
   do
     local clever = require("leap.user").with_traversal_keys
     -- For relative directions, set the `backward` flags according to:
@@ -61,6 +62,7 @@ return function()
       }
     end)
   end
+  --]]
 
   -- Automatically paste when doing a remote yank operation.
   vim.api.nvim_create_autocmd("User", {

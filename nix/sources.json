@@ -8,7 +8,7 @@
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
-        "rev": "b2e84d00db4d5432f471d58898e796b478f075a7",
+        "rev": "250aed7415ddd6cb3ea321490c7b35094ed9148d",
         "type": "git"
     },
     "clang-format.nvim": {
@@ -20,7 +20,7 @@
     "clangd_extensions.nvim": {
         "branch": "main",
         "repo": "git@github.com:p00f/clangd_extensions.nvim",
-        "rev": "872893cb061044a4cc7ced59c0f2fe2d70db4382",
+        "rev": "78c2ecd659d54972be17aa6ba2deac3c53223b80",
         "type": "git"
     },
     "conform.nvim": {
@@ -68,7 +68,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "bd4a18d0a919791316609071612b3e2670676a8f",
+        "rev": "43f0508dd2c1830473488186b1c5eebd3dd3c974",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -80,7 +80,7 @@
     "gitsigns.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/lewis6991/gitsigns.nvim",
-        "rev": "8d82c240f190fc33723d48c308ccc1ed8baad69d",
+        "rev": "6d808f99bd63303646794406e270bd553ad7792e",
         "type": "git"
     },
     "grug-far.nvim": {
@@ -152,7 +152,7 @@
     "mini.icons": {
         "branch": "main",
         "repo": "git@github.com:nvim-mini/mini.icons",
-        "rev": "7fdae2443a0e2910015ca39ad74b50524ee682d3",
+        "rev": "bac6317300e205335df425296570d84322730067",
         "type": "git"
     },
     "nui.nvim": {
@@ -345,7 +345,7 @@
     "telescope.nvim": {
         "branch": "master",
         "repo": "git@github.com:nvim-telescope/telescope.nvim",
-        "rev": "f7c673b8e46e8f233ff581d3624a517d33a7e264",
+        "rev": "028d9a0695a0cc4cfa893889f8c408ed7ccc8adc",
         "type": "git"
     },
     "toggleterm.nvim": {
@@ -357,7 +357,7 @@
     "triptych.nvim": {
         "branch": "main",
         "repo": "git@github.com:simonmclean/triptych.nvim",
-        "rev": "18746e1d2b804ffb5922f0f6999f8df88f3f8c90",
+        "rev": "295df974d86074cce3a8c12414a5d453c38491f7",
         "type": "git"
     },
     "vim-abolish": {

@@ -8,7 +8,7 @@
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
-        "rev": "6db1246640e9e1bdf8a1d1f6d27a940fc0a572d5",
+        "rev": "7127911cc824a1d2f600492edd9667b476cf3eda",
         "type": "git"
     },
     "clang-format.nvim": {
@@ -68,7 +68,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "b4a86a9c8a688159131a27b6ec9dbce72ec11573",
+        "rev": "263eb4732fc6268f9fb35cffb634903ea8e2a26b",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -92,7 +92,7 @@
     "hunk.nvim": {
         "branch": "master",
         "repo": "git@github.com:julienvincent/hunk.nvim",
-        "rev": "a73c34934e87af4f2e615fea3a57ee28b2dceec8",
+        "rev": "c8a8e7b6973576f63e5bf39aa8338d7f37f4dc53",
         "type": "git"
     },
     "indent-blankline.nvim": {
@@ -128,7 +128,7 @@
     "leap.nvim": {
         "branch": "main",
         "repo": "https://codeberg.org/andyg/leap.nvim.git",
-        "rev": "5ad712bbc927c09b6b6ebd3df414669bb80b6c77",
+        "rev": "940bc5e716a8cde63bd47e1b13f30fd9075ec0c8",
         "type": "git"
     },
     "leetcode.nvim": {
@@ -267,7 +267,7 @@
     "render-markdown.nvim": {
         "branch": "main",
         "repo": "git@github.com:MeanderingProgrammer/render-markdown.nvim",
-        "rev": "3f3eea97b80839f629c951ca660ffd125bfa5b34",
+        "rev": "629eb9533ec989d9d5c6cab8f3ad5372422c24e0",
         "type": "git"
     },
     "rust-tools.nvim": {
@@ -315,7 +315,7 @@
     "telescope-fzf-native.nvim": {
         "branch": "main",
         "repo": "git@github.com:nvim-telescope/telescope-fzf-native.nvim",
-        "rev": "6fea601bd2b694c6f2ae08a6c6fab14930c60e2c",
+        "rev": "b25b749b9db64d375d782094e2b9dce53ad53a40",
         "type": "git"
     },
     "telescope-live-grep-args.nvim": {

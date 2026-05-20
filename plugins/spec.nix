@@ -112,6 +112,8 @@ in rec {
       elmPackages.elm-language-server
       # github actions
       actionlint
+      # go
+      gopls
       # haskell
       haskellPackages.cabal-fmt
       haskellPackages.haskell-language-server

@@ -35,9 +35,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     if client:supports_method "textDocument/declaration" then
-      vim.keymap.set("n", "grd", function()
-        vim.lsp.buf.declaration { reuse_win = true }
-      end, { buffer = bufnr, desc = "vim.lsp.buf.declaration()" })
+      vim.keymap.set("n", "grd", vim.lsp.buf.declaration, { buffer = bufnr, desc = "vim.lsp.buf.declaration()" })
     end
 
     if client:supports_method "textDocument/documentHighlight" then
@@ -58,11 +56,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     if client:supports_method "workspace/symbol" then
-      vim.keymap.set("n", "<space>s", function()
-        vim.ui.input({ prompt = "Query> " }, function(query)
-          vim.lsp.buf.workspace_symbol(query)
-        end)
-      end, { buffer = bufnr, desc = "vim.lsp.buf.workspace_symbols()" })
+      vim.keymap.set(
+        "n",
+        "<space>s",
+        vim.lsp.buf.workspace_symbol,
+        { buffer = bufnr, desc = "vim.lsp.buf.workspace_symbols()" }
+      )
     end
   end,
 })

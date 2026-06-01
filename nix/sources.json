@@ -8,7 +8,7 @@
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
-        "rev": "68ba9015c0cc77a0fe954bd2578dfa7a5c24134f",
+        "rev": "efa62017f59a6346486cc567d70acce965a00b12",
         "type": "git"
     },
     "clang-format.nvim": {
@@ -68,7 +68,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "07c5cd418526ed7e29ab7d0048f2583b961558b6",
+        "rev": "7d647c70c286720c225ebb8ab75896e5dbee6af6",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -122,7 +122,7 @@
     "kulala.nvim": {
         "branch": "main",
         "repo": "git@github.com:mistweaverco/kulala.nvim",
-        "rev": "5809fe0b599bba8a125adf02922b535303f78b01",
+        "rev": "e43f4d85c9cd57b0638cd557a1cf141fb5ef670b",
         "type": "git"
     },
     "leap.nvim": {
@@ -254,7 +254,7 @@
     "postgres_lsp": {
         "branch": "main",
         "repo": "git@github.com:supabase/postgres_lsp",
-        "rev": "d3e75b8156cc9fb67083b60f8e963733fc8d704c",
+        "rev": "83849e484c80d792dd9a8cfe8cc5000e0efc6010",
         "submodules": true,
         "type": "git"
     },
@@ -267,7 +267,7 @@
     "render-markdown.nvim": {
         "branch": "main",
         "repo": "git@github.com:MeanderingProgrammer/render-markdown.nvim",
-        "rev": "dcb77511efb1665b5073d8396a0033b3e4d680f6",
+        "rev": "5adf0895310c1904e5abfaad40a2baad7fe44a07",
         "type": "git"
     },
     "rust-tools.nvim": {

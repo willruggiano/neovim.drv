@@ -1,9 +1,9 @@
 install:
-  nix profile upgrade path:$(pwd)#packages.x86_64-linux.default
+  nix profile upgrade nvim
   notify-send --transient 'neovim be ready'
 
 no-builders:
-  nix profile upgrade path:$(pwd)#packages.x86_64-linux.default --builders ""
+  nix profile upgrade nvim --builders ""
   notify-send --transient 'neovim be ready'
 
 build:
@@ -21,6 +21,4 @@ run:
 update:
   nix flake update
   niv update
-  # nix-update --flake nvim-dbee --version=branch --subpackage dbee
-  # nix-update --flake sqruff --version-regex='v(.*)' --override-filename pkgs/sqruff.nix
   nix flake check

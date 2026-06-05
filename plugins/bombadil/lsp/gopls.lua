@@ -5,13 +5,16 @@ local config = {
   root_dir = function(bufnr, on_dir)
     on_dir(vim.fs.root(bufnr, { "go.mod" }))
   end,
+  init_options = {
+    semanticTokens = true,
+  },
   settings = {
     gopls = {
       analyses = {
         unusedparams = true,
       },
-      staticcheck = true,
       gofumpt = true,
+      staticcheck = true,
     },
   },
 }

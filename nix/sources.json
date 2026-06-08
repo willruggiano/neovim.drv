@@ -8,7 +8,7 @@
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
-        "rev": "efa62017f59a6346486cc567d70acce965a00b12",
+        "rev": "8fa7f9cb8805f8abf27432d4b1e7c4be83d76807",
         "type": "git"
     },
     "clang-format.nvim": {
@@ -68,7 +68,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "7d647c70c286720c225ebb8ab75896e5dbee6af6",
+        "rev": "f5fbfd848ec0a5c9771dd103e921e7064445c9ba",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -80,13 +80,13 @@
     "gitsigns.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/lewis6991/gitsigns.nvim",
-        "rev": "dd3f588bacbeb041be6facf1742e42097f62165d",
+        "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
         "type": "git"
     },
     "grug-far.nvim": {
         "branch": "main",
         "repo": "git@github.com:magicduck/grug-far.nvim",
-        "rev": "5506c2f59dc9ab2ed6c233585412b24d31d51521",
+        "rev": "c995bbacf8229dc096ec1c3d60f8531059c86c1b",
         "type": "git"
     },
     "hunk.nvim": {
@@ -122,13 +122,13 @@
     "kulala.nvim": {
         "branch": "main",
         "repo": "git@github.com:mistweaverco/kulala.nvim",
-        "rev": "e43f4d85c9cd57b0638cd557a1cf141fb5ef670b",
+        "rev": "34189185048988248a6a4b78fc35d83a6ac7f343",
         "type": "git"
     },
     "leap.nvim": {
         "branch": "main",
         "repo": "https://codeberg.org/andyg/leap.nvim.git",
-        "rev": "59d70b1bdf8e76e0637e6ebcc150fb6767f67fc5",
+        "rev": "d3641f9aa86e7460b14d9f4479e7454f88cc6b2d",
         "type": "git"
     },
     "leetcode.nvim": {
@@ -254,7 +254,7 @@
     "postgres_lsp": {
         "branch": "main",
         "repo": "git@github.com:supabase/postgres_lsp",
-        "rev": "83849e484c80d792dd9a8cfe8cc5000e0efc6010",
+        "rev": "51cb69d38146ca4578eb68224e6e9302301eb689",
         "submodules": true,
         "type": "git"
     },

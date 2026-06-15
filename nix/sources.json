@@ -8,7 +8,7 @@
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
-        "rev": "8fa7f9cb8805f8abf27432d4b1e7c4be83d76807",
+        "rev": "3dca2d2153cfbc9aab937c1be0441e371101b0b8",
         "type": "git"
     },
     "clang-format.nvim": {
@@ -68,7 +68,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "f5fbfd848ec0a5c9771dd103e921e7064445c9ba",
+        "rev": "3c9965a61a842ef54e976c7195b985ee43a3e776",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -122,13 +122,13 @@
     "kulala.nvim": {
         "branch": "main",
         "repo": "git@github.com:mistweaverco/kulala.nvim",
-        "rev": "34189185048988248a6a4b78fc35d83a6ac7f343",
+        "rev": "bf50254965aff8228fa51067d79bb16d2124461e",
         "type": "git"
     },
     "leap.nvim": {
         "branch": "main",
         "repo": "https://codeberg.org/andyg/leap.nvim.git",
-        "rev": "d3641f9aa86e7460b14d9f4479e7454f88cc6b2d",
+        "rev": "d7f8ee64155b7790188f17a993390f32577cfb81",
         "type": "git"
     },
     "leetcode.nvim": {
@@ -152,7 +152,7 @@
     "mini.icons": {
         "branch": "main",
         "repo": "git@github.com:nvim-mini/mini.icons",
-        "rev": "520995f1d75da0e4cc901ee95080b1ff2bc46b94",
+        "rev": "284509648db084c5e40a31afa9abb9887c49e04a",
         "type": "git"
     },
     "nui.nvim": {
@@ -218,7 +218,7 @@
     "nvim-surround": {
         "branch": "main",
         "repo": "git@github.com:kylechui/nvim-surround",
-        "rev": "2e93e154de9ff326def6480a4358bfc149d5da2c",
+        "rev": "8b47db616ef658b8fc27e61db2896aa2f40134de",
         "type": "git"
     },
     "nvim-treesitter": {
@@ -254,7 +254,7 @@
     "postgres_lsp": {
         "branch": "main",
         "repo": "git@github.com:supabase/postgres_lsp",
-        "rev": "51cb69d38146ca4578eb68224e6e9302301eb689",
+        "rev": "30b9684abda1b2017c8bc72f20d1906b67f603e2",
         "submodules": true,
         "type": "git"
     },

@@ -114,6 +114,8 @@ in rec {
       actionlint
       # go
       gopls
+      # graphql
+      graphql-language-service-cli
       # haskell
       haskellPackages.cabal-fmt
       haskellPackages.haskell-language-server

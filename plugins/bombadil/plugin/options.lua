@@ -16,7 +16,10 @@ vim.opt.fillchars = {
 }
 vim.opt.foldenable = true
 vim.opt.foldlevel = 99
-vim.opt.formatoptions = vim.opt.formatoptions + "n" + "r" - "t"
+do
+  vim.opt.formatoptions:append { "n", "t" }
+  vim.opt.formatoptions:remove "t"
+end
 vim.opt.grepprg = "rg --vimgrep --smart-case --follow"
 vim.opt.hidden = true
 vim.opt.hlsearch = true

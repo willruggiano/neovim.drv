@@ -8,7 +8,7 @@
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
-        "rev": "490afbd7fd3b316330550405ac74758a971104a4",
+        "rev": "6ff1f21b2e2b77ec59f7433ce2d9fbc052d908ac",
         "type": "git"
     },
     "clang-format.nvim": {
@@ -68,7 +68,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "9e2856559d50637df482b8598fd7b35b2d746485",
+        "rev": "f7392a8b63ba399582418f097026c80bab30bd12",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -80,7 +80,7 @@
     "gitsigns.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/lewis6991/gitsigns.nvim",
-        "rev": "2038c666bd9d8a0b7349a0b6ee00dc83104b9ecf",
+        "rev": "eb60cc7b94c46005237fd34170d76f3a089a90aa",
         "type": "git"
     },
     "grug-far.nvim": {
@@ -122,7 +122,7 @@
     "kulala.nvim": {
         "branch": "main",
         "repo": "git@github.com:mistweaverco/kulala.nvim",
-        "rev": "b78b1aab31844bdba8a94041ff22a61d1563ba35",
+        "rev": "5a2883ce52bc5feb6eb1f0ddd19de06bb4033144",
         "type": "git"
     },
     "leap.nvim": {
@@ -152,7 +152,7 @@
     "mini.icons": {
         "branch": "main",
         "repo": "git@github.com:nvim-mini/mini.icons",
-        "rev": "e56797f90192d81f1fda02e662fc3e8e3d775027",
+        "rev": "24dbea2195c477e57d581215839a6ab915f34b14",
         "type": "git"
     },
     "nui.nvim": {

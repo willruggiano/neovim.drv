@@ -8,7 +8,7 @@
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
-        "rev": "e954496f8ef22904e8a84f5078f4a110fdc7a0d3",
+        "rev": "e520902f405da5f5ad392d32babad5b5dd5ffa44",
         "type": "git"
     },
     "clang-format.nvim": {
@@ -68,7 +68,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "24832e97ef9640e5f859ede8dc163cf3c27145cb",
+        "rev": "235a726fae89bec3ac6d3e7facd2716d78bb625d",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -80,7 +80,7 @@
     "gitsigns.nvim": {
         "branch": "main",
         "repo": "ssh://git@github.com/lewis6991/gitsigns.nvim",
-        "rev": "eb60cc7b94c46005237fd34170d76f3a089a90aa",
+        "rev": "31d6fb2d618bca1482b9f274751ead5f03461408",
         "type": "git"
     },
     "grug-far.nvim": {
@@ -188,7 +188,7 @@
     "nvim-dap-ui": {
         "branch": "master",
         "repo": "ssh://git@github.com/rcarriga/nvim-dap-ui",
-        "rev": "1a66cabaa4a4da0be107d5eda6d57242f0fe7e49",
+        "rev": "cc9dd33aade7f20bae414d0cba163bc60d4d4b43",
         "type": "git"
     },
     "nvim-dap-virtual-text": {
@@ -212,7 +212,7 @@
     "nvim-nio": {
         "branch": "master",
         "repo": "git@github.com:nvim-neotest/nvim-nio",
-        "rev": "21f5324bfac14e22ba26553caf69ec76ae8a7662",
+        "rev": "edcc181a875301dd21840189aa2f2f9ad69fc172",
         "type": "git"
     },
     "nvim-surround": {
@@ -224,7 +224,7 @@
     "nvim-treesitter": {
         "branch": "main",
         "repo": "git@github.com:nvim-treesitter/nvim-treesitter",
-        "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
+        "rev": "7248feaca45e4d944591497964bc19afa89ad1c6",
         "type": "git"
     },
     "nvim-ts-context-commentstring": {
@@ -254,7 +254,7 @@
     "postgres_lsp": {
         "branch": "main",
         "repo": "git@github.com:supabase/postgres_lsp",
-        "rev": "96ad1afa513cf18b0e786c14f0db80efd5d7e43b",
+        "rev": "3e8cc0619dc03ae711717a2a2863ed6bfba64bb4",
         "submodules": true,
         "type": "git"
     },

@@ -8,7 +8,7 @@
     "SchemaStore.nvim": {
         "branch": "main",
         "repo": "git@github.com:b0o/SchemaStore.nvim",
-        "rev": "e520902f405da5f5ad392d32babad5b5dd5ffa44",
+        "rev": "3d2c297f7152208daf4a382ea7123f9e4ebf9da1",
         "type": "git"
     },
     "clang-format.nvim": {
@@ -68,7 +68,7 @@
     "fzf": {
         "branch": "master",
         "repo": "git@github.com:junegunn/fzf",
-        "rev": "235a726fae89bec3ac6d3e7facd2716d78bb625d",
+        "rev": "0efef298d2a47cf757d6deedaa804ecc0515bb28",
         "type": "git"
     },
     "fzy-lua-native": {
@@ -86,7 +86,7 @@
     "grug-far.nvim": {
         "branch": "main",
         "repo": "git@github.com:magicduck/grug-far.nvim",
-        "rev": "1cc080f55706b38aabfa97d40acb6adf59ac4a5a",
+        "rev": "0f6a5d0d7a70659b11bbcd6b3673ee0fe61b6024",
         "type": "git"
     },
     "hunk.nvim": {
@@ -104,7 +104,7 @@
     "iron.nvim": {
         "branch": "master",
         "repo": "git@github.com:vigemus/iron.nvim",
-        "rev": "88cd340407b959f1168af2a6ae5a3d180e6df32c",
+        "rev": "c7f8047d964fb155a701b7c860fa3d4143d713c5",
         "type": "git"
     },
     "jj-diffconflicts": {
@@ -122,13 +122,13 @@
     "kulala.nvim": {
         "branch": "main",
         "repo": "git@github.com:mistweaverco/kulala.nvim",
-        "rev": "a9e17ae0236e886371671a7a9f01f070201a9cc1",
+        "rev": "5c2234e1a0ae8a95911231682c52be2a13fcc117",
         "type": "git"
     },
     "leap.nvim": {
         "branch": "main",
         "repo": "https://codeberg.org/andyg/leap.nvim.git",
-        "rev": "d7f8ee64155b7790188f17a993390f32577cfb81",
+        "rev": "52bc56ba61b1f54f123e29d6df7d1b7a0393eeac",
         "type": "git"
     },
     "leetcode.nvim": {
@@ -224,7 +224,7 @@
     "nvim-treesitter": {
         "branch": "main",
         "repo": "git@github.com:nvim-treesitter/nvim-treesitter",
-        "rev": "7248feaca45e4d944591497964bc19afa89ad1c6",
+        "rev": "61df84986b4b4ec469ee745a182e433d49f8c27e",
         "type": "git"
     },
     "nvim-ts-context-commentstring": {
@@ -254,7 +254,7 @@
     "postgres_lsp": {
         "branch": "main",
         "repo": "git@github.com:supabase/postgres_lsp",
-        "rev": "3e8cc0619dc03ae711717a2a2863ed6bfba64bb4",
+        "rev": "6586ebfd9db3e20b3da3ea94111a100381aebb78",
         "submodules": true,
         "type": "git"
     },

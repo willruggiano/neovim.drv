@@ -21,7 +21,6 @@ return {
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescript.tsx",
     "typescriptreact",
   },
   root_markers = { "biome.json" }, -- or an entry in package.json?

@@ -233,18 +233,6 @@
         "rev": "6141a40173c6efa98242dc951ed4b6f892c97027",
         "type": "git"
     },
-    "nvim-vtsls": {
-        "branch": "main",
-        "repo": "git@github.com:yioneko/nvim-vtsls",
-        "rev": "0b5f73c9e50ce95842ea07bb3f05c7d66d87d14a",
-        "type": "git"
-    },
-    "overseer.nvim": {
-        "branch": "master",
-        "repo": "git@github.com:stevearc/overseer.nvim",
-        "rev": "a93d9f6d6defdac4bcd6d2c8ba988650e42e0a0e",
-        "type": "git"
-    },
     "plenary.nvim": {
         "branch": "master",
         "repo": "ssh://git@github.com/nvim-lua/plenary.nvim",

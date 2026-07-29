@@ -390,15 +390,6 @@ in rec {
     config = ./comment.lua;
   };
 
-  overseer = {
-    package = buildVimPlugin {
-      name = "overseer";
-      src = sources."overseer.nvim";
-      nvimRequireCheck = "overseer";
-    };
-    config = ./overseer.lua;
-  };
-
   plenary = {
     package = pkgs.vimPlugins.plenary-nvim.overrideAttrs (_: {
       src = sources."plenary.nvim";

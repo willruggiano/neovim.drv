@@ -44,6 +44,7 @@ in rec {
         package = pkgs.symlinkJoin {
           name = "treesitter";
           paths = with pkgs.vimPlugins.nvim-treesitter-parsers; [
+            # n.b. the commented out parsers are vendored by neovim
             bash
             # c
             cmake
@@ -73,7 +74,7 @@ in rec {
             # markdown_inline
             nix
             python
-            query
+            # query
             regex
             rust
             scheme
@@ -81,8 +82,8 @@ in rec {
             toml
             tsx
             typescript
-            vim
-            vimdoc
+            # vim
+            # vimdoc
             yaml
             zig
           ];

@@ -28,6 +28,7 @@ in rec {
       };
       schemastore.src = sources."SchemaStore.nvim";
       treesitter = {
+        config = ./treesitter.lua;
         dependencies = {
           # NOTE: these are the queries from the 'main' branch
           queries.package = pkgs.stdenv.mkDerivation {

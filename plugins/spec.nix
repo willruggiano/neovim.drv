@@ -197,7 +197,6 @@ in rec {
       jq
       kulala-fmt
       prettier
-      python3.pkgs.sqlfmt
       stylua
     ];
   };

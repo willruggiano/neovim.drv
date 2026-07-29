@@ -89,14 +89,6 @@ in rec {
           ];
         };
       };
-      vtsls = {
-        package = buildVimPlugin {
-          name = "vtsls";
-          src = sources.nvim-vtsls;
-          nvimSkipModule = "vtsls.lspconfig";
-        };
-        paths = [pkgs.vtsls];
-      };
     };
     paths = with pkgs; [
       # aider-chat-with-help
@@ -151,6 +143,8 @@ in rec {
       # sqruff
       # terraform
       terraform-ls
+      # typescript
+      vtsls
       # typst
       tinymist
       # zig

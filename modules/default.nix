@@ -1,11 +1,11 @@
-{
+{inputs, ...}: {
   perSystem = {
     config,
     lib,
     pkgs,
     inputs',
     ...
-  } @ args: {
+  }: {
     neovim = {
       package = config.packages.neovim-nightly;
 
@@ -41,7 +41,7 @@
           };
           pkg.enabled = false;
         };
-        plugins = import ../plugins/spec.nix args;
+        plugins = import ../plugins/spec.nix {inherit inputs inputs' pkgs;};
       };
     };
   };

@@ -1,4 +1,4 @@
-name: Push to cachix
+name: ci
 
 on:
   push:
@@ -10,23 +10,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  cachix:
+  check:
     runs-on: namespace-profile-cached-amd64-lg
     steps:
-      - uses: actions/checkout@v7
-      - uses: namespacelabs/nscloud-cache-action@v1
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: namespacelabs/nscloud-cache-action@c5f8dab7560444c4bf8dbc64f1b203431873c547 # v1.6.1
         with:
           path: |
             /nix
-      - uses: webfactory/ssh-agent@v0.10.0
+      - uses: webfactory/ssh-agent@e83874834305fe9a4a2997156cb26c5de65a8555 # v0.10.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - uses: cachix/install-nix-action@v31
+      - uses: cachix/install-nix-action@630ae543ea3a38a9a4166f03376c02c50f408342 # v31.11.0
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
           extra_nix_config: |
             accept-flake-config = true
-      - uses: cachix/cachix-action@v17
+      - uses: cachix/cachix-action@5f2d7c5294214f71b873db4b969586b980625e71 # v17
         with:
           name: willruggiano
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"

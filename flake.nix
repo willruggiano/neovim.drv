@@ -1,15 +1,7 @@
 {
   inputs = {
-    blink = {
-      url = "github:Saghen/blink.cmp";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     git-hooks = {
       url = "github:cachix/git-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    naersk = {
-      url = "github:nix-community/naersk";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-nix = {
@@ -30,6 +22,187 @@
     treefmt = {
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    # plugins
+    clangd-ext = {
+      url = "github:p00f/clangd_extensions.nvim";
+      flake = false;
+    };
+    conform = {
+      url = "github:stevearc/conform.nvim";
+      flake = false;
+    };
+    dial = {
+      url = "github:monaqa/dial.nvim";
+      flake = false;
+    };
+    doom-one = {
+      url = "github:NTBBloodbath/doom-one.nvim";
+      flake = false;
+    };
+    fidget = {
+      url = "github:j-hui/fidget.nvim";
+      flake = false;
+    };
+    flatten = {
+      url = "github:willothy/flatten.nvim";
+      flake = false;
+    };
+    gitsigns = {
+      url = "github:lewis6991/gitsigns.nvim";
+      flake = false;
+    };
+    grug-far = {
+      url = "github:magicduck/grug-far.nvim";
+      flake = false;
+    };
+    hunk = {
+      url = "github:julienvincent/hunk.nvim";
+      flake = false;
+    };
+    indent-blankline = {
+      url = "github:lukas-reineke/indent-blankline.nvim";
+      flake = false;
+    };
+    iron = {
+      url = "github:vigemus/iron.nvim";
+      flake = false;
+    };
+    jj-diffconflicts = {
+      url = "github:rafikdraoui/jj-diffconflicts";
+      flake = false;
+    };
+    leap = {
+      url = "git+https://codeberg.org/andyg/leap.nvim.git";
+      flake = false;
+    };
+    leetcode = {
+      url = "github:kawre/leetcode.nvim";
+      flake = false;
+    };
+    lspkind = {
+      url = "github:onsails/lspkind.nvim";
+      flake = false;
+    };
+    mini-icons = {
+      url = "github:nvim-mini/mini.icons";
+      flake = false;
+    };
+    nui = {
+      url = "github:muniftanjim/nui.nvim";
+      flake = false;
+    };
+    nvim-dap = {
+      url = "github:mfussenegger/nvim-dap";
+      flake = false;
+    };
+    nvim-dap-ui = {
+      url = "github:rcarriga/nvim-dap-ui";
+      flake = false;
+    };
+    nvim-nio = {
+      url = "github:nvim-neotest/nvim-nio";
+      flake = false;
+    };
+    nvim-dap-virtual-text = {
+      url = "github:thehamsta/nvim-dap-virtual-text";
+      flake = false;
+    };
+    nvim-dap-vscode-js = {
+      url = "github:mxsdev/nvim-dap-vscode-js";
+      flake = false;
+    };
+    nvim-lsp-file-ops = {
+      url = "github:antosha417/nvim-lsp-file-operations";
+      flake = false;
+    };
+    nvim-surround = {
+      url = "github:kylechui/nvim-surround";
+      flake = false;
+    };
+    nvim-treesitter = {
+      url = "github:nvim-treesitter/nvim-treesitter?ref=main";
+      flake = false;
+    };
+    nvim-ts-context-commentstring = {
+      url = "github:JoosepAlviste/nvim-ts-context-commentstring";
+      flake = false;
+    };
+    plenary = {
+      url = "github:nvim-lua/plenary.nvim";
+      flake = false;
+    };
+    quicker = {
+      url = "github:stevearc/quicker.nvim";
+      flake = false;
+    };
+    schemastore = {
+      url = "github:b0o/SchemaStore.nvim";
+      flake = false;
+    };
+    smart-open = {
+      url = "github:danielfalk/smart-open.nvim";
+      flake = false;
+    };
+    sqlite = {
+      url = "github:kkharji/sqlite.lua";
+      flake = false;
+    };
+    statuscol = {
+      url = "github:luukvbaal/statuscol.nvim";
+      flake = false;
+    };
+    tabout = {
+      url = "github:abecodes/tabout.nvim";
+      flake = false;
+    };
+    telescope = {
+      url = "github:nvim-telescope/telescope.nvim";
+      flake = false;
+    };
+    telescope-fzf-native = {
+      url = "github:nvim-telescope/telescope-fzf-native.nvim";
+      flake = false;
+    };
+    telescope-live-grep-args = {
+      url = "github:nvim-telescope/telescope-live-grep-args.nvim";
+      flake = false;
+    };
+    telescope-symbols = {
+      url = "github:nvim-telescope/telescope-symbols.nvim";
+      flake = false;
+    };
+    telescope-ui-select = {
+      url = "github:nvim-telescope/telescope-ui-select.nvim";
+      flake = false;
+    };
+    telescope-undo = {
+      url = "github:debugloop/telescope-undo.nvim";
+      flake = false;
+    };
+    toggleterm = {
+      url = "github:akinsho/toggleterm.nvim";
+      flake = false;
+    };
+    vim-abolish = {
+      url = "github:tpope/vim-abolish";
+      flake = false;
+    };
+    vim-fugitive = {
+      url = "github:tpope/vim-fugitive";
+      flake = false;
+    };
+    vim-markdown = {
+      url = "github:preservim/vim-markdown";
+      flake = false;
+    };
+    vim-matchup = {
+      url = "github:andymass/vim-matchup";
+      flake = false;
+    };
+    vim-repeat = {
+      url = "github:tpope/vim-repeat";
+      flake = false;
     };
   };
 
@@ -84,8 +257,6 @@
             cachix
             jq
             just
-            niv
-            nix-update
           ];
           shellHook = let
             emmyrc = pkgs.writeText "emmyrc" (builtins.toJSON {
@@ -117,13 +288,9 @@
             ];
             meta.mainProgram = "nvim";
           };
-          darkman-nvim = pkgs.callPackage ./pkgs/darkman-nvim {};
-          luafun = pkgs.luajit.pkgs.callPackage ./pkgs/luafun.nix {};
           neovim-nightly = inputs'.neovim.packages.default;
           nvim = config.neovim.final;
           nvim-rplugin = config.neovim.build.rplugin;
-          nvim-dbee = pkgs.callPackage ./pkgs/nvim-dbee.nix {};
-          sqruff = pkgs.callPackage ./pkgs/sqruff.nix {inherit inputs;};
         };
 
         pre-commit.settings = {
@@ -140,7 +307,7 @@
             prettier.enable = true;
             stylua.enable = true;
           };
-          settings.global.excludes = ["*.vim" "*.scm" "*.snip*" "*.toml" "justfile" "nix/sources.json"];
+          settings.global.excludes = ["*.vim" "*.scm" "*.snip*" "*.toml" "justfile"];
         };
       };
     };

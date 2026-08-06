@@ -1,5 +1,8 @@
-{pkgs, ...}: let
-  sources = import ../nix/sources.nix {};
+{
+  inputs,
+  pkgs,
+  ...
+}: let
   inherit (pkgs.vimUtils) buildVimPlugin;
 in rec {
   bombadil = {
@@ -11,29 +14,28 @@ in rec {
       inherit toggleterm;
       doom-one.package = buildVimPlugin {
         name = "doom-one";
-        src = sources."doom-one.nvim";
+        src = inputs.doom-one;
       };
-      clangd_extensions.src = sources."clangd_extensions.nvim";
-      # flutter-tools.package = pkgs.vimPlugins.flutter-tools-nvim;
+      clangd_extensions.src = inputs.clangd-ext;
       lsp-file-operations = {
         package = buildVimPlugin {
           name = "lsp-file-operations";
-          src = sources.nvim-lsp-file-operations;
+          src = inputs.nvim-lsp-file-ops;
           doCheck = false;
         };
         config = true;
       };
       lspkind = {
-        src = sources."lspkind.nvim";
+        src = inputs.lspkind;
       };
-      schemastore.src = sources."SchemaStore.nvim";
+      schemastore.src = inputs.schemastore;
       treesitter = {
         config = ./treesitter.lua;
         dependencies = {
           # NOTE: these are the queries from the 'main' branch
           queries.package = pkgs.stdenv.mkDerivation {
             name = "nvim-treesitter-queries";
-            src = sources.nvim-treesitter;
+            src = inputs.nvim-treesitter;
             installPhase = ''
               mkdir $out
               mv runtime/queries $out
@@ -93,7 +95,6 @@ in rec {
     };
     paths = with pkgs; [
       # aider-chat-with-help
-      claude-code
       darkman
       inotify-tools
       # c
@@ -158,36 +159,11 @@ in rec {
   };
 
   abolish = {
-    src = sources.vim-abolish;
+    src = inputs.vim-abolish;
   };
 
-  # blink-cmp = {
-  #   package = inputs'.blink.packages.default.overrideAttrs {
-  #     nvimRequireCheck = "blink-cmp";
-  #   };
-  #   config = {
-  #     appearance.nerd_font_variant = "mono";
-  #     completion = {
-  #       documentation = {
-  #         auto_show = true;
-  #         auto_show_delay_ms = 300;
-  #       };
-  #       ghost_text.enabled = false;
-  #     };
-  #     fuzzy.prebuilt_binaries.download = false;
-  #     keymap = {
-  #       preset = "default";
-  #       "<C-b>" = false;
-  #       "<C-f>" = false;
-  #       "<C-u>" = ["scroll_documentation_up" "fallback"];
-  #       "<C-d>" = ["scroll_documentation_down" "fallback"];
-  #     };
-  #     sources.default = ["lsp" "path"];
-  #   };
-  # };
-
   conform = {
-    src = sources."conform.nvim";
+    src = inputs.conform;
     config = ./conform.lua;
     paths = with pkgs; [
       jq
@@ -200,24 +176,24 @@ in rec {
   dap = {
     package = buildVimPlugin {
       name = "dap";
-      src = sources.nvim-dap;
+      src = inputs.nvim-dap;
     };
     config = ./dap.lua;
     dependencies = {
       dapui.package = buildVimPlugin {
         name = "dapui";
-        src = sources.nvim-dap-ui;
+        src = inputs.nvim-dap-ui;
         doCheck = false;
         doInstallCheck = true;
       };
       nio.package = buildVimPlugin {
         name = "nio";
-        src = sources.nvim-nio;
+        src = inputs.nvim-nio;
       };
       nvim-dap-virtual-text = {
         package = buildVimPlugin {
           name = "nvim-dap-virtual-text";
-          src = sources.nvim-dap-virtual-text;
+          src = inputs.nvim-dap-virtual-text;
           doCheck = false;
         };
         config = true;
@@ -225,7 +201,7 @@ in rec {
       nvim-dap-vscode-js = {
         package = buildVimPlugin {
           name = "nvim-dap-vscode-js";
-          src = sources.nvim-dap-vscode-js;
+          src = inputs.nvim-dap-vscode-js;
           doCheck = false;
         };
         config = {
@@ -247,50 +223,31 @@ in rec {
     # ];
   };
 
-  # darkman = {
-  #   package = config.packages.darkman-nvim;
-  #   config = {
-  #     change_background = true;
-  #     colorscheme = {
-  #       dark = "flavours";
-  #       light = "flavours";
-  #     };
-  #   };
-  # };
-
-  # dbee = {
-  #   package = config.packages.nvim-dbee.overrideAttrs (_: {
-  #     dependencies = [nui.package];
-  #   });
-  #   config = ./dbee.lua;
-  #   paths = [config.packages.nvim-dbee.dbee];
-  # };
-
   dial = {
-    src = sources."dial.nvim";
+    src = inputs.dial;
     config = ./dial.lua;
   };
 
-  diffconflicts.src = sources.jj-diffconflicts;
+  diffconflicts.src = inputs.jj-diffconflicts;
 
   fidget = {
-    src = sources."fidget.nvim";
+    src = inputs.fidget;
     config.progress.ignore = ["null-ls"];
   };
 
   flatten = {
-    src = sources."flatten.nvim";
+    src = inputs.flatten;
     config.window.open = "alternate";
     lazy = false;
     priority = 1001;
   };
 
-  fugitive.src = sources.vim-fugitive;
+  fugitive.src = inputs.vim-fugitive;
 
   gitsigns = {
     package = buildVimPlugin {
       name = "gitsigns.nvim";
-      src = sources."gitsigns.nvim";
+      src = inputs.gitsigns;
       nvimRequireCheck = "gitsigns";
       dependencies = [plenary.package];
     };
@@ -298,7 +255,7 @@ in rec {
   };
 
   grug-far = {
-    src = sources."grug-far.nvim";
+    src = inputs.grug-far;
     config = ./grug.lua;
     paths = with pkgs; [
       ast-grep
@@ -309,7 +266,7 @@ in rec {
   hunk = {
     package = buildVimPlugin {
       name = "hunk.nvim";
-      src = sources."hunk.nvim";
+      src = inputs.hunk;
       dependencies = [nui.package];
     };
     config = ./hunk.lua;
@@ -319,34 +276,27 @@ in rec {
   ibl = {
     package = buildVimPlugin {
       name = "ibl";
-      src = sources."indent-blankline.nvim";
+      src = inputs.indent-blankline;
       nvimSkipModule = "ibl.config.types";
     };
     config = ./indent-blankline.lua;
   };
 
   iron = {
-    src = sources."iron.nvim";
+    src = inputs.iron;
     config = ./iron.lua;
     paths = [pkgs.bun];
   };
 
-  # kulala = {
-  #   package = pkgs.vimPlugins.kulala-nvim;
-  #   config = {
-  #     global_keymaps = true;
-  #   };
-  # };
-
   leap = {
-    src = sources."leap.nvim";
+    src = inputs.leap;
     config = ./leap.lua;
   };
 
   leetcode = {
     package = buildVimPlugin {
       name = "leetcode.nvim";
-      src = sources."leetcode.nvim";
+      src = inputs.leetcode;
       doCheck = false;
     };
     dependencies = {inherit telescope plenary nui;};
@@ -357,62 +307,57 @@ in rec {
   };
 
   vim-markdown = {
-    src = sources.vim-markdown;
+    src = inputs.vim-markdown;
     config = ./markdown.lua;
   };
 
   matchup.package = buildVimPlugin {
     name = "matchup";
-    src = sources.vim-matchup;
+    src = inputs.vim-matchup;
     nvimRequireCheck = "match-up";
   };
 
   "mini.icons" = {
-    src = sources."mini.icons";
+    src = inputs.mini-icons;
     config = true;
   };
 
   nui.package = buildVimPlugin {
     name = "nui";
-    src = sources."nui.nvim";
+    src = inputs.nui;
   };
 
   nvim-surround = {
     package = buildVimPlugin {
       name = "nvim-surround";
-      src = sources.nvim-surround;
+      src = inputs.nvim-surround;
       nvimSkipModule = "nvim-surround.queries";
     };
     config = true;
   };
 
   nvim-ts-context-commentstring = {
-    src = sources.nvim-ts-context-commentstring;
+    src = inputs.nvim-ts-context-commentstring;
     config = ./comment.lua;
   };
 
   plenary = {
     package = pkgs.vimPlugins.plenary-nvim.overrideAttrs (_: {
-      src = sources."plenary.nvim";
+      src = inputs.plenary;
     });
   };
 
   quicker = {
-    src = sources."quicker.nvim";
+    src = inputs.quicker;
     config = ./quicker.lua;
   };
 
-  repeat.src = sources.vim-repeat;
-
-  # split = {
-  #   src = sources."split.nvim";
-  #   config = true; # maps: gs, gS
-  # };
+  repeat.src = inputs.vim-repeat;
 
   sqlite = {
     package = buildVimPlugin {
       name = "sqlite.lua";
-      src = sources."sqlite.lua";
+      src = inputs.sqlite;
       nvimRequireCheck = "sqlite";
     };
     cpath = "${pkgs.sqlite.out}/lib/?.so";
@@ -420,14 +365,14 @@ in rec {
   };
 
   statuscol = {
-    src = sources."statuscol.nvim";
+    src = inputs.statuscol;
     config = {
       setopt = true;
     };
   };
 
   tabout = {
-    src = sources."tabout.nvim";
+    src = inputs.tabout;
     config = ./tabout.lua;
   };
 
@@ -439,13 +384,13 @@ in rec {
           name = "telescope-fzf-native";
           buildPhase = "make";
           dependencies = [telescope.package];
-          src = sources."telescope-fzf-native.nvim";
+          src = inputs.telescope-fzf-native;
         };
       };
       telescope-live-grep-args = {
         package = buildVimPlugin {
           name = "telescope-live-grep-args";
-          src = sources."telescope-live-grep-args.nvim";
+          src = inputs.telescope-live-grep-args;
           paths = with pkgs; [ripgrep];
           doCheck = false;
           doInstallCheck = true;
@@ -454,7 +399,7 @@ in rec {
       telescope-smart-open = {
         package = buildVimPlugin {
           name = "smart-open.nvim";
-          src = sources."smart-open.nvim";
+          src = inputs.smart-open;
           doCheck = false;
           doInstallCheck = true;
         };
@@ -462,15 +407,15 @@ in rec {
         paths = with pkgs; [ripgrep];
       };
       telescope-symbols = {
-        src = sources."telescope-symbols.nvim";
+        src = inputs.telescope-symbols;
       };
       telescope-ui-select = {
-        src = sources."telescope-ui-select.nvim";
+        src = inputs.telescope-ui-select;
       };
       telescope-undo = {
         package = buildVimPlugin {
           name = "telescope-undo";
-          src = sources."telescope-undo.nvim";
+          src = inputs.telescope-undo;
           dependencies = [
             plenary.package
             telescope.package
@@ -481,7 +426,7 @@ in rec {
     };
     package = buildVimPlugin {
       name = "telescope";
-      src = sources."telescope.nvim";
+      src = inputs.telescope;
       dependencies = [plenary.package];
     };
     paths = with pkgs; [
@@ -491,7 +436,7 @@ in rec {
   };
 
   toggleterm = {
-    src = sources."toggleterm.nvim";
+    src = inputs.toggleterm;
     config = ./toggleterm.lua;
   };
 }

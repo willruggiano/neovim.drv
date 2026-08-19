@@ -294,9 +294,15 @@
         };
 
         pre-commit.settings = {
-          hooks.treefmt = {
-            enable = true;
-            package = config.treefmt.build.wrapper;
+          hooks = {
+            treefmt = {
+              enable = true;
+              package = config.treefmt.build.wrapper;
+            };
+            zizmor = {
+              enable = true;
+              files = "^.github/"; # include dependabot.yml
+            };
           };
         };
 

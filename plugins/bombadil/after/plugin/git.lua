@@ -8,6 +8,9 @@ local lazygit = Terminal:new {
 }
 
 vim.keymap.set("n", "<space>g", function()
-  ---@diagnostic disable-next-line: missing-parameter
   lazygit:toggle()
-end, { desc = "Lazygit", noremap = true })
+end, { desc = "lazygit:toggle()", noremap = true })
+
+vim.keymap.set("n", "gb", function()
+  vim.cmd("!git blame -L " .. vim.fn.line "." .. ",+1 -- %")
+end, { desc = ":!git blame cursor line" })

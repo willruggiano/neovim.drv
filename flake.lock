@@ -352,11 +352,11 @@
     "leap": {
       "flake": false,
       "locked": {
-        "lastModified": 1786953766,
-        "narHash": "sha256-0gF993CXulPD5LQhgV6VeDI8ToNkTl/SlXucFkUE6Vk=",
+        "lastModified": 1787563728,
+        "narHash": "sha256-H3m6Zsv3qHycp0w/ZZJHVqzLcfpaBCDoNRgvZkmdaTU=",
         "ref": "refs/heads/main",
-        "rev": "e51ba2a70169bb6fd58342312ccde591242ac739",
-        "revCount": 764,
+        "rev": "c1be35db274f5976cce683b93fcab99937420b63",
+        "revCount": 769,
         "type": "git",
         "url": "https://codeberg.org/andyg/leap.nvim.git"
       },
@@ -856,11 +856,11 @@
     "telescope": {
       "flake": false,
       "locked": {
-        "lastModified": 1782201384,
-        "narHash": "sha256-/GycCrepwDer0UvBN/f84pJUSvNp+ZfTIUPv0psl+IQ=",
+        "lastModified": 1786964191,
+        "narHash": "sha256-Ci7D8aTUhh9DwwHvEV8Pndma8b/iwylUcoDKrIKVYN4=",
         "owner": "nvim-telescope",
         "repo": "telescope.nvim",
-        "rev": "427b576c16792edad01a92b89721d923c19ad60f",
+        "rev": "40aedd8a68c78a656a10a8d62d80c54af59420fb",
         "type": "github"
       },
       "original": {

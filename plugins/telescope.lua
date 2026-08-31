@@ -140,9 +140,10 @@ return function()
           require("telescope.builtin").find_files(themes.get_cursor {
             attach_mappings = function(_, map)
               map("i", "<CR>", function(prompt_bufnr)
-                local symbol = action_state.get_selected_entry().value
+                local symbol = action_state.get_selected_entry().value --[[@as string]]
                 actions.close(prompt_bufnr)
                 vim.schedule(function()
+                  vim.cmd "startinsert!"
                   vim.api.nvim_put({ symbol }, "", true, true)
                 end)
               end)

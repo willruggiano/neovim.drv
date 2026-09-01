@@ -354,6 +354,24 @@ in rec {
 
   repeat.src = inputs.vim-repeat;
 
+  review = {
+    package = buildVimPlugin {
+      name = "review.nvim";
+      src = inputs.review;
+      nvimSkipModule = "review.picker"; # FIXME
+      patches = [
+        (pkgs.fetchpatch {
+          url = "https://github.com/georgeguimaraes/review.nvim/commit/50a8b549be1cc4b0197b02d9684b9c5724629080.patch";
+          hash = "sha256-8eK7OeUzcgHQYEE7jKNwaSXwjR+s5Bby2EyY8CoyDiY=";
+        })
+      ];
+    };
+    config = ./review.lua;
+    dependencies = {
+      codediff.package = pkgs.vimPlugins.codediff-nvim;
+    };
+  };
+
   sqlite = {
     package = buildVimPlugin {
       name = "sqlite.lua";

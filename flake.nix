@@ -136,6 +136,10 @@
       url = "github:stevearc/quicker.nvim";
       flake = false;
     };
+    review = {
+      url = "github:georgeguimaraes/review.nvim";
+      flake = false;
+    };
     schemastore = {
       url = "github:b0o/SchemaStore.nvim";
       flake = false;

@@ -282,16 +282,7 @@
         };
 
         packages = {
-          default = pkgs.symlinkJoin {
-            name = "nvim-bin";
-            paths = [
-              config.neovim.final # `nvim`
-              (pkgs.writeShellScriptBin "fvim" ''
-                nvim +'Telescope smart_open'
-              '')
-            ];
-            meta.mainProgram = "nvim";
-          };
+          default = config.neovim.final;
           neovim-nightly = inputs'.neovim.packages.default;
           nvim = config.neovim.final;
           nvim-rplugin = config.neovim.build.rplugin;

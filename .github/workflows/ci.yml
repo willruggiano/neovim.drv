@@ -1,6 +1,7 @@
 name: ci
 
 on:
+  pull_request:
   push:
     branches:
       - main
@@ -34,4 +35,6 @@ jobs:
         with:
           name: willruggiano
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - run: nix flake check
       - run: nix develop -c just push
+        if: github.event_name == 'push'
